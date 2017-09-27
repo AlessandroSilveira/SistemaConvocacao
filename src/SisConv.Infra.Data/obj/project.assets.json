@@ -1202,6 +1202,20 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlDocument.dll": {}
         }
+      },
+      "SisConv.Domain/1.0.0": {
+        "type": "project",
+        "framework": ".NETStandard,Version=v2.0",
+        "dependencies": {
+          "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
+          "Microsoft.Extensions.Configuration.Json": "2.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SisConv.Domain.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SisConv.Domain.dll": {}
+        }
       }
     }
   },
@@ -4665,6 +4679,11 @@
         "system.xml.xmldocument.4.3.0.nupkg.sha512",
         "system.xml.xmldocument.nuspec"
       ]
+    },
+    "SisConv.Domain/1.0.0": {
+      "type": "project",
+      "path": "../SisConv.Domain/SisConv.Domain.csproj",
+      "msbuildProject": "../SisConv.Domain/SisConv.Domain.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -4673,7 +4692,8 @@
       "Microsoft.EntityFrameworkCore.Tools >= 2.0.0",
       "Microsoft.Extensions.Configuration.Json >= 2.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 2.0.0",
-      "NETStandard.Library >= 2.0.0"
+      "NETStandard.Library >= 2.0.0",
+      "SisConv.Domain >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -4710,7 +4730,11 @@
       },
       "frameworks": {
         "netstandard2.0": {
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Alessandro Silveira\\Source\\Repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj": {
+              "projectPath": "C:\\Users\\Alessandro Silveira\\Source\\Repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using SisConv.Domain.Entities;
 
 namespace SisConv.Infra.Data.Context
 {
@@ -23,10 +24,10 @@ namespace SisConv.Infra.Data.Context
             optionsBuilder.UseSqlServer(config.GetConnectionString("DefaultConnection"));
         }
 
-        //public DbSet<CampanhaCrm> Campanhas { get; set; }
-        //public DbSet<Empresa> Empresas { get; set; }
-        //public DbSet<Pessoa> Pessoas { get; set; }
-        //public DbSet<Template> Templates { get; set; }
+        public DbSet<Cliente> Clientes { get; set; }
+        public DbSet<Pessoa> Empresas { get; set; }
+        public DbSet<Telefone> Telefones { get; set; }
+        public DbSet<Usuario> Templates { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
