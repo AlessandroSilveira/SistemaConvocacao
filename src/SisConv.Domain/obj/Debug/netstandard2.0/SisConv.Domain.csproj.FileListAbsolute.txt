@@ -4,3 +4,9 @@ C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netst
 C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.AssemblyInfoInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.AssemblyInfo.cs
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\bin\Debug\netstandard2.0\SisConv.Domain.deps.json
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\bin\Debug\netstandard2.0\SisConv.Domain.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.AssemblyInfoInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Domain\obj\Debug\netstandard2.0\SisConv.Domain.AssemblyInfo.cs

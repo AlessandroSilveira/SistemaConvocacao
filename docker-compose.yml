@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  sisconv.mvc:
+    image: sisconv.mvc
+    build:
+      context: ./src/SisConv.Mvc
+      dockerfile: Dockerfile
