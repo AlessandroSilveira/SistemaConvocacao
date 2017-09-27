@@ -186,11 +186,11 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
-      "projectName": "SisConv.Domain",
-      "projectPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Infra.Data\\SisConv.Infra.Data.csproj",
+      "projectName": "SisConv.Infra.Data",
+      "projectPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Infra.Data\\SisConv.Infra.Data.csproj",
       "packagesPath": "C:\\Users\\alesi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\obj\\",
+      "outputPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Infra.Data\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

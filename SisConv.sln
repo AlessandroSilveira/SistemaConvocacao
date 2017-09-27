@@ -17,7 +17,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.1-Data", "5.1-Data", "{09
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5.2-CrossCutting", "5.2-CrossCutting", "{4F9DB733-F3AF-40C8-BA6B-04ACA7C31C3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Domain", "src\SisConv.Domain\SisConv.Domain.csproj", "{A464CB76-809E-4683-88B3-BA1F01BB3930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SisConv.Domain", "src\SisConv.Domain\SisConv.Domain.csproj", "{A464CB76-809E-4683-88B3-BA1F01BB3930}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Infra.Data", "src\SisConv.Infra.Data\SisConv.Infra.Data.csproj", "{1CB30471-D625-4E6A-8B11-4E75187D08E0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +31,10 @@ Global
 		{A464CB76-809E-4683-88B3-BA1F01BB3930}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A464CB76-809E-4683-88B3-BA1F01BB3930}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A464CB76-809E-4683-88B3-BA1F01BB3930}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CB30471-D625-4E6A-8B11-4E75187D08E0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CB30471-D625-4E6A-8B11-4E75187D08E0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CB30471-D625-4E6A-8B11-4E75187D08E0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CB30471-D625-4E6A-8B11-4E75187D08E0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{09966308-F91C-49F3-BE1E-786B4335E417} = {0C30D30C-429E-42BC-9AA3-9F76E78C13AC}
 		{4F9DB733-F3AF-40C8-BA6B-04ACA7C31C3C} = {0C30D30C-429E-42BC-9AA3-9F76E78C13AC}
 		{A464CB76-809E-4683-88B3-BA1F01BB3930} = {487A8AF1-BC6C-4D56-80D8-6C7D556CB878}
+		{1CB30471-D625-4E6A-8B11-4E75187D08E0} = {09966308-F91C-49F3-BE1E-786B4335E417}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {E9AFC0DF-6517-4549-88ED-46D54F1DDC1B}
