@@ -1,0 +1,6 @@
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\bin\Debug\netstandard2.0\SisConv.Infra.Data.deps.json
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\bin\Debug\netstandard2.0\SisConv.Infra.Data.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\obj\Debug\netstandard2.0\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\obj\Debug\netstandard2.0\SisConv.Infra.Data.AssemblyInfoInputs.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\obj\Debug\netstandard2.0\SisConv.Infra.Data.AssemblyInfo.cs
+C:\Users\alesi\source\repos\SistemaConvocacao\src\SisConv.Infra.Data\obj\Debug\netstandard2.0\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
