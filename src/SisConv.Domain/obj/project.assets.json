@@ -1628,7 +1628,7 @@
       ]
     },
     "Newtonsoft.Json/10.0.1": {
-      "sha512": "jZ2d5Xteh3uEy4afacdGdneSpx4FfuyHxwrmDUICcrIUgTVOkCE4d4UrDOMPmKXMZXxIKXNR0+fJVQmtWGQ4NQ==",
+      "sha512": "ebWzW9j2nwxQeBo59As2TYn7nYr9BHicqqCwHOD1Vdo+50HBtLPuqdiCYJcLdTRknpYis/DSEOQz5KmZxwrIAg==",
       "type": "package",
       "path": "newtonsoft.json/10.0.1",
       "files": [
@@ -2591,7 +2591,7 @@
       ]
     },
     "System.Interactive.Async/3.1.1": {
-      "sha512": "2D+bk/DFoPMpWTz/eJE1IZsEHYzEgJAKbd85x6h3EimLzp7Nf2XhWHkVwLYYTke4yEKBYVR/+4JaraIW13eWEQ==",
+      "sha512": "hZccYiIE5RS1/J9Tb/BNtosAGVggdlsJm4Ojdu+gDV0p4AIi+LUfUogMKkRacljQEJd2AG6vYzvcjhQFkqoZmw==",
       "type": "package",
       "path": "system.interactive.async/3.1.1",
       "files": [
@@ -3825,7 +3825,7 @@
       ]
     },
     "System.Runtime.Serialization.Formatters/4.3.0": {
-      "sha512": "46VvcBKFvwq3FfL3ZIxaUXYYxHPnmL/zefEnrQJ1hh0CDYzfBdoCIR3FgF+FjO+oR7aTAGexlp1IUQmj9y1xjw==",
+      "sha512": "KT591AkTNFOTbhZlaeMVvfax3RqhH1EJlcwF50Wm7sfnBLuHiOeZRRKrr1ns3NESkM20KPZ5Ol/ueMq5vg4QoQ==",
       "type": "package",
       "path": "system.runtime.serialization.formatters/4.3.0",
       "files": [
@@ -4592,7 +4592,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Alessandro Silveira\\.nuget\\packages\\": {},
+    "C:\\Users\\alesi\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
@@ -4601,17 +4601,17 @@
       "hideWarningsAndErrors": true
     },
     "restore": {
-      "projectUniqueName": "C:\\Users\\Alessandro Silveira\\Source\\Repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
+      "projectUniqueName": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
       "projectName": "SisConv.Domain",
-      "projectPath": "C:\\Users\\Alessandro Silveira\\Source\\Repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
-      "packagesPath": "C:\\Users\\Alessandro Silveira\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Alessandro Silveira\\Source\\Repos\\SistemaConvocacao\\src\\SisConv.Domain\\obj\\",
+      "projectPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\SisConv.Domain.csproj",
+      "packagesPath": "C:\\Users\\alesi\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\alesi\\source\\repos\\SistemaConvocacao\\src\\SisConv.Domain\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Alessandro Silveira\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\alesi\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -4619,9 +4619,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\Alessandro Silveira\\.dotnet\\NuGetFallbackFolder": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://nuget.org/api/v2/": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
