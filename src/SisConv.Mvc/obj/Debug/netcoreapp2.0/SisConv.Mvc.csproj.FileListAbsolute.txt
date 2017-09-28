@@ -1,0 +1,8 @@
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\bin\Debug\netcoreapp2.0\SisConv.Mvc.deps.json
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\bin\Debug\netcoreapp2.0\SisConv.Mvc.runtimeconfig.json
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\bin\Debug\netcoreapp2.0\SisConv.Mvc.runtimeconfig.dev.json
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\bin\Debug\netcoreapp2.0\SisConv.Mvc.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\obj\Debug\netcoreapp2.0\SisConv.Mvc.csprojResolveAssemblyReference.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\obj\Debug\netcoreapp2.0\SisConv.Mvc.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\obj\Debug\netcoreapp2.0\SisConv.Mvc.AssemblyInfoInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\src\SisConv.Mvc\obj\Debug\netcoreapp2.0\SisConv.Mvc.AssemblyInfo.cs

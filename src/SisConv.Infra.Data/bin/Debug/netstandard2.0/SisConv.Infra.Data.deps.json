@@ -1,7 +1,7 @@
 {
   "runtimeTarget": {
     "name": ".NETStandard,Version=v2.0/",
-    "signature": "20188c06e2971cee59c4008ef5997d93102c7900"
+    "signature": "a7637b5739db545ed661bb1e20c6f1bf1494283a"
   },
   "compilationOptions": {},
   "targets": {
@@ -11,7 +11,9 @@
         "dependencies": {
           "Microsoft.EntityFrameworkCore.SqlServer": "2.0.0",
           "Microsoft.EntityFrameworkCore.Tools": "2.0.0",
-          "NETStandard.Library": "2.0.0"
+          "Microsoft.VisualStudio.Web.CodeGeneration.Design": "2.0.0",
+          "NETStandard.Library": "2.0.0",
+          "Microsoft.Extensions.Configuration": "2.0.0.0"
         },
         "runtime": {
           "SisConv.Infra.Data.dll": {}
@@ -142,6 +144,11 @@
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.0.0": {
+        "runtime": {
+          "lib/net461/dotnet-aspnet-codegenerator-design.exe": {}
+        }
+      },
       "Microsoft.Win32.Registry/4.4.0": {
         "dependencies": {
           "System.Security.AccessControl": "4.4.0",
@@ -461,6 +468,11 @@
           "Microsoft.NETCore.Targets": "1.1.0",
           "System.Runtime": "4.3.0"
         }
+      },
+      "Microsoft.Extensions.Configuration/2.0.0.0": {
+        "runtime": {
+          "Microsoft.Extensions.Configuration.dll": {}
+        }
       }
     }
   },
@@ -589,6 +601,13 @@
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
     },
+    "Microsoft.VisualStudio.Web.CodeGeneration.Design/2.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-14dGqnnOnNxKGrGZKFQGGzMDtQ23WVuIOZkcH5KE0LeHEhjc+9u8raAiFhXnRu8P/PHpXjbcgW/Zdq71sSqnlg==",
+      "path": "microsoft.visualstudio.web.codegeneration.design/2.0.0",
+      "hashPath": "microsoft.visualstudio.web.codegeneration.design.2.0.0.nupkg.sha512"
+    },
     "Microsoft.Win32.Registry/4.4.0": {
       "type": "package",
       "serviceable": true,
@@ -697,7 +716,7 @@
     "System.Interactive.Async/3.1.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-hZccYiIE5RS1/J9Tb/BNtosAGVggdlsJm4Ojdu+gDV0p4AIi+LUfUogMKkRacljQEJd2AG6vYzvcjhQFkqoZmw==",
+      "sha512": "sha512-2D+bk/DFoPMpWTz/eJE1IZsEHYzEgJAKbd85x6h3EimLzp7Nf2XhWHkVwLYYTke4yEKBYVR/+4JaraIW13eWEQ==",
       "path": "system.interactive.async/3.1.1",
       "hashPath": "system.interactive.async.3.1.1.nupkg.sha512"
     },
@@ -854,6 +873,11 @@
       "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
       "path": "system.threading.tasks/4.3.0",
       "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Configuration/2.0.0.0": {
+      "type": "reference",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }
