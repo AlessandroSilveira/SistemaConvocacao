@@ -1,0 +1,10 @@
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Application.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Application.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Domain.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Domain.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csprojResolveAssemblyReference.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csproj.CoreCompileInputs.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.pdb
