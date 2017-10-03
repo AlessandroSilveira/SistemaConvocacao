@@ -12,34 +12,36 @@ namespace SisConv.Infra.Data.EntityConfig
            Property(c => c.UsuarioId)
                 .HasColumnName("UsuarioId");
 
-           Property(c => c.Nome)
+            Property(c => c.Nome)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
 
-           Property(c => c.Email)
-                .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
 
-           Property(c => c.Login)
+            Property(c => c.Email)
                 .IsRequired()
-                .HasMaxLength(20)
-                .HasColumnType("varchar(20)");
+                .HasMaxLength(100);
 
-           Property(c => c.Senha)
-                .IsRequired()
-                .HasMaxLength(10)
-                .HasColumnType("varchar(10)");
 
-           Property(c => c.Perfil)
+            Property(c => c.Login)
                 .IsRequired()
-                .HasMaxLength(1)
-                .HasColumnType("varchar(1)");
+                .HasMaxLength(20);
 
-           Property(c => c.Ativo)
+
+            Property(c => c.Senha)
                 .IsRequired()
-                .HasColumnType("bool");
+                .HasMaxLength(10);
+
+
+            Property(c => c.Perfil)
+                .IsRequired()
+                .HasMaxLength(1);
+
+
+            Property(c => c.Ativo)
+                .IsRequired();
+
+            ToTable("Usuario");
+
         }
     }
 }

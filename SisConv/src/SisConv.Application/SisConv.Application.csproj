@@ -58,6 +58,7 @@
     <Compile Include="Services\PessoaAppService.cs" />
     <Compile Include="Services\TelefoneAppService.cs" />
     <Compile Include="Services\UsuarioAppService.cs" />
+    <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />

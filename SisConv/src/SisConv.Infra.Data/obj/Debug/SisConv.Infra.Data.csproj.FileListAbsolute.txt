@@ -8,6 +8,8 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.first_migration.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb

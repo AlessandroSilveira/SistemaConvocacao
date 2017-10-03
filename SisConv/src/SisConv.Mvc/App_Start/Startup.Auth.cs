@@ -5,7 +5,9 @@ using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Owin;
-using SisConv.Mvc.Models;
+using SisConv.Infra.CrossCutting.Identity.Context;
+using SisConv.Infra.CrossCutting.Identity.Model;
+
 
 namespace SisConv.Mvc
 {

@@ -14,13 +14,13 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.Ddd)
                 .IsRequired()
-                .HasMaxLength(2)
-                .HasColumnType("varchar(2)");
+                .HasMaxLength(2);
+
 
             Property(c => c.Numero)
                 .IsRequired()
-                .HasMaxLength(11)
-                .HasColumnType("varchar(11)");
+                .HasMaxLength(11);
+                
 
             ToTable("Telefone");
         }

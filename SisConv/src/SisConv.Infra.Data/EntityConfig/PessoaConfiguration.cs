@@ -14,121 +14,119 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.Nome)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Naturalidade)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Naturalidade)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Mae)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Pai)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
 
             Property(c => c.Documento)
                 .IsRequired()
-                .HasMaxLength(30)
-                .HasColumnType("varchar(30)");
+                .HasMaxLength(30);
+                
 
             Property(c => c.OrgaoEmissor)
                 .IsRequired()
-                .HasMaxLength(10)
-                .HasColumnType("varchar(10)");
+                .HasMaxLength(10);
 
             Property(c => c.Sexo)
-                .IsRequired()
-                .HasColumnType("bool");
+                .IsRequired();
+
 
             Property(c => c.EstadoCivil)
-                .IsRequired()
-                .HasColumnType("varchar(1)");
+                .IsRequired();
+
 
             Property(c => c.DataNascimento)
-                .IsRequired()
-                .HasColumnType("Datetime");
+                .IsRequired();
+                
 
             Property(c => c.Filhos)
                 .IsRequired();
 
             Property(c => c.Endereco)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Numero)
                 .IsRequired()
-                .HasMaxLength(6)
-                .HasColumnType("varchar(6)");
+                .HasMaxLength(6);
+
 
             Property(c => c.Complemento)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Bairro)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Cep)
                 .IsRequired()
-                .HasMaxLength(8)
-                .HasColumnType("varchar(8)");
+                .HasMaxLength(8);
+
 
             Property(c => c.Cidade)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Uf)
                 .IsRequired()
-                .HasMaxLength(2)
-                .HasColumnType("varchar(2)");
+                .HasMaxLength(2);
+
 
             Property(c => c.Cargo)
                 .IsRequired()
-                .HasMaxLength(6)
-                .HasColumnType("varchar(6)");
+                .HasMaxLength(6);
+
 
             Property(c => c.Deficiente)
-                .IsRequired()
-                .HasColumnType("bool");
+                .IsRequired();
+
 
             Property(c => c.Deficiencia)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.CondicaoEspecial)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Cpf)
                 .IsRequired()
-                .HasMaxLength(11)
-                .HasColumnType("varchar(11)");
+                .HasMaxLength(11);
+
 
             Property(c => c.Email)
                 .IsRequired()
-                .HasMaxLength(100)
-                .HasColumnType("varchar(100)");
+                .HasMaxLength(100);
+
 
             Property(c => c.Afro)
-                .IsRequired()
-                .HasColumnType("bool");
+                .IsRequired();
+                
 
             ToTable("Pessoa");
         }

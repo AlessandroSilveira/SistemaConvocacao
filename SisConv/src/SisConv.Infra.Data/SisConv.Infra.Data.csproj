@@ -52,6 +52,10 @@
     <Compile Include="EntityConfig\PessoaConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
+    <Compile Include="Migrations\201710011137172_first_migration.cs" />
+    <Compile Include="Migrations\201710011137172_first_migration.Designer.cs">
+      <DependentUpon>201710011137172_first_migration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\Base\RepositoryBase.cs" />
@@ -71,6 +75,10 @@
       <Name>SisConv.Domain</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201710011137172_first_migration.resx">
+      <DependentUpon>201710011137172_first_migration.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Application", "src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Mvc", "src\SisConv.Mvc\SisConv.Mvc.csproj", "{FD43D1C0-D6E4-440B-A592-16BD17CF6966}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Infra.CrossCutting.Identity", "src\SisConv.Infra.CrossCutting.Identity\SisConv.Infra.CrossCutting.Identity.csproj", "{90F803F7-D9DD-4D2E-B2D9-CD9280099418}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{FD43D1C0-D6E4-440B-A592-16BD17CF6966}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD43D1C0-D6E4-440B-A592-16BD17CF6966}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD43D1C0-D6E4-440B-A592-16BD17CF6966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F803F7-D9DD-4D2E-B2D9-CD9280099418}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F803F7-D9DD-4D2E-B2D9-CD9280099418}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F803F7-D9DD-4D2E-B2D9-CD9280099418}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F803F7-D9DD-4D2E-B2D9-CD9280099418}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +64,7 @@ Global
 		{C05893AF-92EB-4D91-ACFB-DF7B40083EEB} = {0383BD42-393C-44B1-AF8C-DFB26CDB21EA}
 		{C270B938-648C-40D4-B8C0-B272F5E407C1} = {C8264F01-BB18-4A4E-8C94-8BF4E65D124C}
 		{FD43D1C0-D6E4-440B-A592-16BD17CF6966} = {CDB1AEAA-8BBC-4536-BC62-E1E861B1EDBA}
+		{90F803F7-D9DD-4D2E-B2D9-CD9280099418} = {AA2B125E-269F-47BF-8FFB-1890343DE63E}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDE20837-9AF7-4C10-9F2E-6088954C6A61}

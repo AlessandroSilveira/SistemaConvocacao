@@ -10,7 +10,9 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;
-using SisConv.Mvc.Models;
+using SisConv.Infra.CrossCutting.Identity.Context;
+using SisConv.Infra.CrossCutting.Identity.Model;
+
 
 namespace SisConv.Mvc
 {
@@ -85,6 +87,11 @@ namespace SisConv.Mvc
                     new DataProtectorTokenProvider<ApplicationUser>(dataProtectionProvider.Create("ASP.NET Identity"));
             }
             return manager;
+        }
+
+        internal Task CreateAsync(Infra.CrossCutting.Identity.Model.ApplicationUser user, string password)
+        {
+            throw new NotImplementedException();
         }
     }
 
