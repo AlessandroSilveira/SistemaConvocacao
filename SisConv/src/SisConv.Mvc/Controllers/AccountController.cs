@@ -6,21 +6,23 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SisConv.Infra.CrossCutting.Identity.Model;
+using SisConv.Infra.CrossCutting.Identity.Configuration;
 
 namespace SisConv.Mvc.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private Infra.CrossCutting.Identity.Configuration.ApplicationSignInManager _signInManager;
-        private Infra.CrossCutting.Identity.Configuration.ApplicationUserManager _userManager;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-        public AccountController(Infra.CrossCutting.Identity.Configuration.ApplicationUserManager userManager, Infra.CrossCutting.Identity.Configuration.ApplicationSignInManager signInManager)
-        {
-            _userManager = userManager;
-            _signInManager = signInManager;
-        }
-
+		//public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		{
+			_userManager = userManager;
+			_signInManager = signInManager;
+		}
+	
         //
         // GET: /Account/Login
         [AllowAnonymous]

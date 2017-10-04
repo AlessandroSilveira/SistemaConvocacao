@@ -50,6 +50,7 @@
     <Compile Include="Context\SisConvContext.cs" />
     <Compile Include="EntityConfig\ClienteConfiguration.cs" />
     <Compile Include="EntityConfig\PessoaConfiguration.cs" />
+    <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="Migrations\201710011137172_first_migration.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Repository\Base\RepositoryBase.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\PessoaRepository.cs" />
+    <Compile Include="Repository\PrimeiroAcessoRepository.cs" />
     <Compile Include="Repository\TelefoneRepository.cs" />
     <Compile Include="Repository\UsuarioRepository.cs" />
     <Compile Include="UoW\UnitOfWork.cs" />

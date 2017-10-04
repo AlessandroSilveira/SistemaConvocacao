@@ -17,8 +17,9 @@ namespace SisConv.Infra.Data.Context
         public virtual DbSet<Pessoa> Pessoas { get; set; }
         public virtual DbSet<Telefone> Telefones { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
+	    public virtual DbSet<PrimeiroAcesso> PrimeiroAcessos { get; set; }
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+		protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -32,13 +33,14 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new PessoaConfiguration());
             modelBuilder.Configurations.Add(new TelefoneConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
-            
+	        modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
 
-            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
-            base.OnModelCreating(modelBuilder);
+			//modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+			//modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+			//modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+
+			base.OnModelCreating(modelBuilder);
         }
 
 

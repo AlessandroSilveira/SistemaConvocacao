@@ -3,9 +3,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
+using SisConv.Domain.Interfaces.Badr;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
 using SisConv.Domain.Services;
+using SisConv.Domain.Services.Base;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
@@ -27,8 +29,9 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<ITelefoneAppService, TelefoneAppService>(Lifestyle.Scoped);
             container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
 
-            //Domain
-            container.Register<IClienteService, ClienteService>(Lifestyle.Scoped);
+			//Domain
+			container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
+			container.Register<IClienteService, ClienteService>(Lifestyle.Scoped);
             container.Register<IPessoaService, PessoaService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
             container.Register<ITelefoneService, TelefoneService>(Lifestyle.Scoped);
