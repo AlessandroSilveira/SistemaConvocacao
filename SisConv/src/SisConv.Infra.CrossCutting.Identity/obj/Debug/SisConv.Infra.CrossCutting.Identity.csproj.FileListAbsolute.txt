@@ -38,3 +38,4 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.csprojResolveAssemblyReference.cache

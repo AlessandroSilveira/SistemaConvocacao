@@ -14,7 +14,7 @@ namespace SisConv.Application.ViewModels
         public Guid PessoaId { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        [Display(Name = "Nome")]
+        [Display(Name = "Nome Do Candidato")]
         public string Nome { get; set; }
 
         [Required(AllowEmptyStrings = false)]
