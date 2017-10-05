@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -44,6 +45,11 @@ namespace SisConv.Domain.Services
         public void Remove(Guid id)
         {
            _clienteRepository.Remove(id);
+        }
+
+        public IEnumerable<Cliente> Search(Expression<Func<Cliente, bool>> predicate)
+        {
+           return _clienteRepository.Search(predicate);
         }
     }
 }

@@ -1,7 +1,10 @@
-﻿namespace SisConv.Application.ViewModels
+﻿using System;
+
+namespace SisConv.Application.ViewModels
 {
 	public class PrimeiroAcessoViewModel
 	{
-		public bool primeiroAcesso { get; set; }
-	}
+	    public Guid PrimeiroAcessoId { get; set; }
+	    public bool primeiroAcesso { get; set; }
+    }
 }

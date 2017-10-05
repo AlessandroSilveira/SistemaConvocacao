@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using SisConv.Domain.Entities;
 
 namespace SisConv.Domain.Interfaces.Services
@@ -11,5 +12,6 @@ namespace SisConv.Domain.Interfaces.Services
 		IEnumerable<PrimeiroAcesso> GetAll();
 		PrimeiroAcesso Update(PrimeiroAcesso obj);
 		void Remove(Guid id);
-	}
+	    IEnumerable<PrimeiroAcesso> Search(Expression<Func<PrimeiroAcesso, bool>> predicate);
+    }
 }

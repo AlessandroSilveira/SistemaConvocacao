@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 
-namespace SisConv.Domain.Interfaces.Badr
+namespace SisConv.Domain.Interfaces.Base
 {
 	public interface IServiceBase<TEntity> where TEntity : class
 	{
@@ -11,5 +12,6 @@ namespace SisConv.Domain.Interfaces.Badr
 		void Update(TEntity obj);
 		void Remove(Guid obj);
 		void Dispose();
-	}
+	    IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
+    }
 }

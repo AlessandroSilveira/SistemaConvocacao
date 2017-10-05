@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -45,5 +46,10 @@ namespace SisConv.Domain.Services
 		{
 			_primeiroAcessoRepository.Remove(id);
 		}
+
+	    public IEnumerable<PrimeiroAcesso> Search(Expression<Func<PrimeiroAcesso, bool>> predicate)
+	    {
+	        return _primeiroAcessoRepository.Search(predicate);
+	    }
 	}
 }

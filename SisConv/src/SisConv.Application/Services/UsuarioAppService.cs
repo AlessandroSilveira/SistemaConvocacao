@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
@@ -55,6 +56,11 @@ namespace SisConv.Application.Services
             BeginTransaction();
             _usuarioService.Remove(id);
             Commit();
+        }
+
+        public IEnumerable<UsuarioViewModel> Search(Expression<Func<Usuario, bool>> predicate)
+        {
+            return Mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioViewModel>>(_usuarioService.Search(predicate));
         }
     }
 }
