@@ -17,5 +17,6 @@ namespace SisConv.Domain.Entities
         public string Telefone { get; set; }
         public string Imagem { get; set; }
         public bool Ativo { get; set; }
+        public string Senha { get; set; }
     }
 }
