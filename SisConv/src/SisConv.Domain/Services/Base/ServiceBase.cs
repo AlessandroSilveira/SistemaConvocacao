@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using SisConv.Domain.Interfaces.Badr;
+using System.Linq.Expressions;
+using SisConv.Domain.Interfaces.Base;
 using SisConv.Domain.Interfaces.Repositories;
 
 namespace SisConv.Domain.Services.Base
@@ -44,11 +45,14 @@ namespace SisConv.Domain.Services.Base
 			_repositoryBase.Dispose();
 		}
 
-		void IDisposable.Dispose()
+	    public IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate)
+	    {
+	        return _repositoryBase.Search(predicate);
+	    }
+
+	    void IDisposable.Dispose()
 		{
 			_repositoryBase.Dispose();
 		}
-
-
 	}
 }

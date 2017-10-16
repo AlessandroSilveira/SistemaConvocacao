@@ -1,47 +1,66 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
+using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
 	public class PrimeiroAcessoAppService : ApplicationService , IPrimeiroAcessoAppService
 	{
-		private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
-		public PrimeiroAcessoAppService(IUnitOfWork unitOfWork, IPrimeiroAcessoAppService primeiroAcessoAppService) : base(unitOfWork)
-		{
-			_primeiroAcessoAppService = primeiroAcessoAppService;
-		}
+	    private readonly IPrimeiroAcessoService _primeiroAcessoService;
 
-		public void Dispose()
-		{
-			_primeiroAcessoAppService.Dispose();
-		}
+	    public PrimeiroAcessoAppService(IUnitOfWork unitOfWork, IPrimeiroAcessoService primeiroAcessoService) : base(unitOfWork)
+	    {
+	        _primeiroAcessoService = primeiroAcessoService;
+	    }
 
-		public PrimeiroAcessoViewModel Add(PrimeiroAcessoViewModel obj)
-		{
-			return _primeiroAcessoAppService.Add(obj);
-		}
+	    public void Dispose()
+	    {
+	        _primeiroAcessoService.Dispose();
+	    }
 
-		public PrimeiroAcessoViewModel GetById(Guid id)
-		{
-			return _primeiroAcessoAppService.GetById(id);
-		}
+	    public PrimeiroAcessoViewModel Add(PrimeiroAcessoViewModel obj)
+	    {
+	        var primeiroAcesso = Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj);
+	        BeginTransaction();
+	        _primeiroAcessoService.Add(primeiroAcesso);
+	        Commit();
+	        return obj;
+        }
 
-		public IEnumerable<PrimeiroAcessoViewModel> GetAll()
-		{
-			return _primeiroAcessoAppService.GetAll();
-		}
+	    public PrimeiroAcessoViewModel GetById(Guid id)
+	    {
+	        return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetById(id));
+        }
 
-		public PrimeiroAcessoViewModel Update(PrimeiroAcessoViewModel obj)
-		{
-			return _primeiroAcessoAppService.Update(obj);
-		}
+	    public IEnumerable<PrimeiroAcessoViewModel> GetAll()
+	    {
+	        return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService.GetAll());
+        }
 
-		public void Remove(Guid id)
-		{
-			_primeiroAcessoAppService.Remove(id);
-		}
+	    public PrimeiroAcessoViewModel Update(PrimeiroAcessoViewModel obj)
+	    {
+	        BeginTransaction();
+	        _primeiroAcessoService.Update(Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj));
+	        Commit();
+	        return obj;
+        }
+
+	    public void Remove(Guid id)
+	    {
+	        BeginTransaction();
+	        _primeiroAcessoService.Remove(id);
+	        Commit();
+        }
+
+	    public IEnumerable<PrimeiroAcessoViewModel> Search(Expression<Func<PrimeiroAcesso, bool>> predicate)
+	    {
+	        return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService.Search(predicate));
+        }
 	}
 }

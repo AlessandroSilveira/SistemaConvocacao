@@ -1,0 +1,157 @@
+﻿@model SisConv.Application.ViewModels.Admin2ViewModel
+
+@{
+    ViewBag.Title = "PrimeiroAcesso";
+    Layout = "~/Views/Shared/_LayoutPrimeiroAcesso.cshtml";
+}
+<script src="~/Scripts/PrimeiroAcesso.js"></script>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="jumbotron" id="painel1" style="display:none">
+            <h1>Bem-Vindo ao Sistema de Convocações</h1>
+            <p>Esta é a primeira vez que o Sistema de Convocações está sendo executado e precisamos coletar algumas informações antes de prosseguir, Está pronto?</p>
+            <p><a class="btn btn-primary btn-lg" id="seguir_painel2">Prosseguir</a></p>
+        </div>
+
+
+        <div class="jumbotron" id="painel2" style="display: none">
+            <p>Sistema de Convocações</p>
+            <p>Primeiro vamos coletar alguns dados pessoais.</p>
+            <h3 id="mensagem_painel2" style="color: red"></h3>
+            <p>
+                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })
+            </p>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel3">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel3" style="display: none">
+            <p>Sistema de Convocações</p>
+            <p>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <h3 id="mensagem_painel3" style="color: red"></h3>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel4">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel4" style="display: none">
+            <p>Sistema de Convocações</p>
+            <p>@Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <h3 id="mensagem_painel4" style="color: red"></h3>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel5">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel5" style="display: none">
+            <p>Sistema de Convocações</p>
+           
+            <p>@Html.LabelFor(model => model.Cnpj, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <h3 id="mensagem_painel5" style="color: red"></h3>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Cnpj, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel6">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel6" style="display: none">
+            <p>Sistema de Convocações</p>
+            <p>@Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <h3 id="mensagem_painel6" style="color: red"></h3>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel7">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel7" style="display: none">
+            <p>Sistema de Convocações</p>
+            <p>@Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <div class="form-group">
+
+                <div class="col-md-10">
+                    @*@Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })*@
+                    <input type="file" name="Imagem" class="form-control" />
+                    @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
+                    @Html.HiddenFor(model => model.Ativo, new { Value = false });
+                </div>
+            </div>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel8">Próximo</a>
+            </p>
+        </div>
+
+        <div class="jumbotron" id="painel8" style="display: none">
+            <p>Sistema de Convocações</p>
+            <h2>Tudo pronto. Vamos começar?</h2>
+
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel9">Próximo</a>
+            </p>
+        </div>
+
+        @*<div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>*@
+
+
+        @*<div id="tab-container" class="tab-container">
+                <ul class='etabs'>
+                    <li class='tab'><a href="#tabs1-html">HTML Markup</a></li>
+                    <li class='tab'><a href="#tabs1-js">Required JS</a></li>
+                    <li class='tab'><a href="#tabs1-css">Example CSS</a></li>
+                </ul>
+                <div id="tabs1-html">
+                    <h2>HTML Markup for these tabs</h2>
+                    <!-- content -->
+                </div>
+                <div id="tabs1-js">
+                    <h2>JS for these tabs</h2>
+                    <!-- content -->
+                </div>
+                <div id="tabs1-css">
+                    <h2>CSS Styles for these tabs</h2>
+                    <!-- content -->
+                </div>
+            </div>*@
+    </div>
+}
+
+

@@ -191,3 +191,4 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.pdb
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\WebActivatorEx.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\WebActivatorEx.dll

@@ -5,6 +5,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using SisConv.Application.Interfaces.Repository;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 
@@ -16,11 +17,14 @@ namespace SisConv.Mvc.Controllers
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
+        private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
+
 		//public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPrimeiroAcessoAppService primeiroAcessoAppService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
+		    _primeiroAcessoAppService = primeiroAcessoAppService;
 		}
 	
         //
@@ -28,6 +32,13 @@ namespace SisConv.Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            var primeiroAcesso = _primeiroAcessoAppService.Search(a=>a.primeiroAcesso==false);
+
+            if (!primeiroAcesso.Any())
+            {
+                return RedirectToAction("PrimeiroAcesso", "Admin");
+            }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
