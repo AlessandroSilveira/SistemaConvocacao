@@ -13,7 +13,7 @@
     })
 </script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("PrimeiroAcesso","Admin",FormMethod.Post,new{@id="form"}))
 {
     @Html.AntiForgeryToken()
 
@@ -145,7 +145,7 @@
             <h2>Tudo pronto. Vamos começar?</h2>
 
             <p>
-                <a class="btn btn-primary btn-lg" id="seguir_painel9">Próximo</a>
+                <a class="btn btn-primary btn-lg" id="seguir_painel10">Próximo</a>
             </p>
         </div>
 

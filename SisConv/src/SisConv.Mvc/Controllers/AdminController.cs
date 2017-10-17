@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -114,6 +115,24 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult PrimeiroAcesso()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult PrimeiroAcesso(Admin2ViewModel form)
+        {
+            if (ModelState.IsValid)
+            {
+                var dados = _adminAppService.Add(form);
+
+               
+                
+            }
+            else
+            {
+                return View();
+            }
+
             return View();
         }
     }

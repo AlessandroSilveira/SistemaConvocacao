@@ -152,6 +152,9 @@
                 $("#painel9").fadeIn(1000);
             });
     });
+    $("#seguir_painel10").click(function() {
+        $("#form").submit();
+    })
 });
 function validacaoEmail(field) {
     var er = /^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9\._-]+\.)[a-zA-Z-0-9]{2,3}/;
