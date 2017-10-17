@@ -1,5 +1,6 @@
 ﻿$(document).ready(function () {
     $("#painel1").fadeIn(2000);
+    
 
     $("#seguir_painel2").click(function () {
         $("#painel1").fadeOut(1000,
@@ -11,13 +12,13 @@
     $("#seguir_painel3").click(function () {
         $("#mensagem_painel2").html("");
         var nome = $("#Nome").val();
-        if (nome == null || nome === "") {
-            $("#mensagem_painel3").html("*O campo Nome não pode estar vazio.");
+        if (nome === null || nome === "") {
+            $("#mensagem_painel2").html("*O campo Nome não pode estar vazio.");
             return false;
         }
         if (nome.length > 100) {
-            $("#mensagem_painel3").html("");
-            $("#mensagem_painel3").html("*O campo Nome não pode ter mais que 100 caracteres");
+            $("#mensagem_painel2").html("");
+            $("#mensagem_painel2").html("*O campo Nome não pode ter mais que 100 caracteres");
             return false;
         }
         $("#painel2").fadeOut(1000,
@@ -29,19 +30,19 @@
     $("#seguir_painel4").click(function () {
         $("#mensagem_painel3").html("");
         var email = $("#Email").val();
-        if (email == null || email === "") {
-            $("#mensagem_painel4").html("*O campo E-mail não pode estar vazio.");
+        if (email === null || email === "") {
+            $("#mensagem_painel3").html("*O campo E-mail não pode estar vazio.");
             return false;
         }
 
         if (email.length > 100) {
-            $("#mensagem_painel4").html("");
-            $("#mensagem_painel4").html("*O campo E-mail não pode ter mais que 100 caracteres");
+            $("#mensagem_painel3").html("");
+            $("#mensagem_painel3").html("*O campo E-mail não pode ter mais que 100 caracteres");
             return false;
         }
 
         if (!validacaoEmail(email)) {
-            $("#mensagem_painel4").html("*O campo E-mail está inválido.");
+            $("#mensagem_painel3").html("*O campo E-mail está inválido.");
             return false;
         }
 
@@ -54,16 +55,16 @@
 
     $("#seguir_painel5").click(function () {
         $("#mensagem_painel4").html("");
-        var empresa = $("#cnpj").val();
+        var empresa = $("#Empresa").val();
         
-        if (empresa == null || empresa === "") {
-            $("#mensagem_painel5").html("*O campo Empresa não pode estar vazio.");
+        if (empresa === null || empresa === "") {
+            $("#mensagem_painel4").html("*O campo Empresa não pode estar vazio.");
             return false;
         }
 
         if (empresa.length > 50) {
-            $("#mensagem_painel5").html("");
-            $("#mensagem_painel5").html("*O campo Empresa não pode ter mais que 50 caracteres");
+            $("#mensagem_painel4").html("");
+            $("#mensagem_painel4").html("*O campo Empresa não pode ter mais que 50 caracteres");
             return false;
         }
 
@@ -74,21 +75,81 @@
     });
     $("#seguir_painel6").click(function () {
         $("#mensagem_painel5").html("");
+        var cnpj = $("#Cnpj").val();
+
+        if (cnpj === null || cnpj === "") {
+            $("#mensagem_paine5").html("*O campo Empresa não pode estar vazio.");
+            return false;
+        }
+
+        if (validarCNPJ(cnpj)) {
+            $("#mensagem_paine5").html("*O CNPJ está inválido.");
+            return false;
+        }
+
         $("#painel5").fadeOut(1000,
             function () {
                 $("#painel6").fadeIn(1000);
             });
     });
     $("#seguir_painel7").click(function () {
+        $("#mensagem_paine6").html("");
+        var telefone = $("#Telefone").val();
+
+        if (telefone === null || telefone === "") {
+            $("#mensagem_paine6").html("*O campo Telefone não pode estar vazio.");
+            return false;
+        }
+
+        var telefone1 = telefone.replace("(", "");
+        var telefone2 = telefone1.replace(")", "");
+        var telefone3 = telefone2.replace("-", "");
+        var telefone4 = telefone3.replace(" ", "");
+
+        if (telefone4.length < 11) {
+            $("#mensagem_paine6").html("*O campo Telefone está inválido.");
+            return false;
+        } else {
+            $("#Telefone").val(telefone4);
+        }
+
+
         $("#painel6").fadeOut(1000,
             function () {
                 $("#painel7").fadeIn(1000);
             });
     });
     $("#seguir_painel8").click(function () {
+        $("#mensagem_paine7").html("");
+        var arquivo = $("#Imagem").val();
+
+        if (arquivo === null || arquivo === "") {
+            $("#mensagem_paine7").html("*O campo Imagem não pode estar vazio.");
+            return false;
+        }
+
         $("#painel7").fadeOut(1000,
             function () {
                 $("#painel8").fadeIn(1000);
+            });
+    });
+    $("#seguir_painel9").click(function () {
+        $("#mensagem_paine8").html("");
+        var senha = $("#Senha").val();
+
+        if (senha === null || senha === "") {
+            $("#mensagem_paine8").html("*O campo Senha não pode estar vazio.");
+            return false;
+        }
+
+        if (senha.length === 0 || senha.lengt < 10) {
+            $("#mensagem_paine8").html("*O campo Senha deve ter mais de 1 caractere e menor ou igual a 10 caracteres.");
+            return false;
+        }
+
+        $("#painel8").fadeOut(1000,
+            function () {
+                $("#painel9").fadeIn(1000);
             });
     });
 });

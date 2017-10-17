@@ -270,6 +270,7 @@
     <Content Include="Scripts\jquery.easytabs.js" />
     <Content Include="Scripts\jquery.easytabs.min.js" />
     <Content Include="Scripts\jquery.hashchange.min.js" />
+    <Content Include="Scripts\jquery.mask.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
