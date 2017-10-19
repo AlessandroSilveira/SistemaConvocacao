@@ -10,6 +10,7 @@ namespace SisConv.Mvc.Controllers
     {
 
         private readonly IAdminAppService _adminAppService;
+       
 
         public AdminController(IAdminAppService adminAppService)
         {
@@ -125,6 +126,12 @@ namespace SisConv.Mvc.Controllers
             {
                 var dados = _adminAppService.Add(form);
 
+                RegisterViewModel register = new RegisterViewModel()
+                {
+                    Email = form.Email,
+                    Password = form.Senha,
+                    ConfirmPassword = form.Senha
+                };
                
                 
             }

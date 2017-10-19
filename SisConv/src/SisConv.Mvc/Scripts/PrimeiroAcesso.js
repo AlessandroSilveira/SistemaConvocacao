@@ -86,6 +86,12 @@
             $("#mensagem_paine5").html("*O CNPJ está inválido.");
             return false;
         }
+        var cnpj1 = cnpj.replace(".", "");
+        var cnpj2 = cnpj1.replace("-", "");
+        var cnpj3 = cnpj2.replace("/", "");
+        var cnpj4 = cnpj3.replace(" ", "");
+
+        $("#Cnpj").val(cnpj4);
 
         $("#painel5").fadeOut(1000,
             function () {

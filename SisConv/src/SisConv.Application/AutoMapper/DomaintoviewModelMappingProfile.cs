@@ -6,28 +6,22 @@ namespace SisConv.Application.AutoMapper
 {
     public class DomaintoviewModelMappingProfile : Profile
     {
+        public override string ProfileName => "ViewModelToDomainMappings";
+
+      
         public DomaintoviewModelMappingProfile()
         {
-            //Mapper.Initialize(cfg =>
-            //{
-            //    cfg.CreateMap<ClienteViewModel, Cliente>();
-            //    cfg.CreateMap<PessoaViewModel, Pessoa>();
-            //    cfg.CreateMap<TelefoneViewModel, Telefone>();
-            //    cfg.CreateMap<UsuarioViewModel, Usuario>();
-            //});
-
-            //Mapper.AssertConfigurationIsValid();
-
             Mapper.Initialize(cfg => {
-                cfg.CreateMap<Cliente, ClienteViewModel>()
+                cfg.CreateMap<ClienteViewModel,Cliente>()
                     .ReverseMap();
-                cfg.CreateMap<Pessoa, PessoaViewModel>()
+                cfg.CreateMap<PessoaViewModel,Pessoa >()
                     .ReverseMap();
-                cfg.CreateMap<Telefone, TelefoneViewModel>()
+                cfg.CreateMap<TelefoneViewModel,Telefone >()
                     .ReverseMap();
-                cfg.CreateMap<Usuario, UsuarioViewModel>()
+                cfg.CreateMap<UsuarioViewModel,Usuario >()
                     .ReverseMap();
-
+                cfg.CreateMap<Admin2ViewModel,Admin >()
+                    .ReverseMap();
             });
         }
     }
