@@ -34,13 +34,14 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new TelefoneConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
 	        modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
+            modelBuilder.Configurations.Add(new AdminConfiguracao());
 
 
-			//modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-			//modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-			//modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
+            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
+            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
+            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
 
-			base.OnModelCreating(modelBuilder);
+            base.OnModelCreating(modelBuilder);
         }
 
 

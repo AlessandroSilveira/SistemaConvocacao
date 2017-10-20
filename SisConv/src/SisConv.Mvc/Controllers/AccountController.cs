@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -6,6 +7,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SisConv.Application.Interfaces.Repository;
+using SisConv.Application.ViewModels;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 
@@ -18,13 +20,15 @@ namespace SisConv.Mvc.Controllers
         private ApplicationUserManager _userManager;
 
         private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
+	    private readonly IAdminAppService _adminAppService;
 
 		//public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPrimeiroAcessoAppService primeiroAcessoAppService)
+		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPrimeiroAcessoAppService primeiroAcessoAppService, IAdminAppService adminAppService)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 		    _primeiroAcessoAppService = primeiroAcessoAppService;
+			_adminAppService = adminAppService;
 		}
 	
         //
@@ -35,17 +39,19 @@ namespace SisConv.Mvc.Controllers
             var primeiroAcesso = _primeiroAcessoAppService.Search(a=>a.primeiroAcesso==false);
 
             if (!primeiroAcesso.Any())
-            {
-                return RedirectToAction("PrimeiroAcesso", "Admin");
-            }
+                return RedirectToAction("PrimeiroAcesso", "Account");
 
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
-        //
-        // POST: /Account/Login
-        [HttpPost]
+	    [AllowAnonymous]
+		public ActionResult PrimeiroAcesso()
+		{
+			return View();
+		}
+		// POST: /Account/Login
+		[HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
@@ -406,9 +412,66 @@ namespace SisConv.Mvc.Controllers
             base.Dispose(disposing);
         }
 
-        #region Helpers
-        // Used for XSRF protection when adding external logins
-        private const string XsrfKey = "XsrfId";
+	    [HttpPost]
+	    [AllowAnonymous]
+	    [ValidateAntiForgeryToken]
+		public async Task<ActionResult> PrimeiroAcesso(RegisterViewModel model)
+	    {
+			if (ModelState.IsValid)
+			{
+				model.Cnpj = Regex.Replace(model.Cnpj, "[^0-9a-zA-Z]+", "");
+				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+			    var result = await _userManager.CreateAsync(user, model.Password);
+			    if (result.Succeeded)
+			    {
+				    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+
+				    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
+				    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+				    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta", "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
+				    ViewBag.Link = callbackUrl;
+				    AdicionarAdministrador(model);
+				    RegistraPrimeiroAcesso();
+					return View("DisplayEmail");
+			    }
+
+				
+
+				AddErrors(result);
+		    }
+
+		    // If we got this far, something failed, redisplay form
+		    return View(model);
+		}
+
+	    private void AdicionarAdministrador(RegisterViewModel model)
+	    {
+		    Admin2ViewModel admin = new Admin2ViewModel()
+		    {
+			    Nome = model.Nome,
+			    Ativo = true,
+			    Email = model.Email,
+			    Empresa = model.Empresa,
+			    Cnpj = model.Cnpj,
+			    Telefone = model.Telefone,
+			    Senha = model.Password
+		    };
+
+		    _adminAppService.Add(admin);
+	    }
+
+	    private void RegistraPrimeiroAcesso()
+	    {
+		    PrimeiroAcessoViewModel paModel = new PrimeiroAcessoViewModel()
+		    {
+			    primeiroAcesso = true
+		    };
+		    _primeiroAcessoAppService.Update(paModel);
+	    }
+
+	    #region Helpers
+		// Used for XSRF protection when adding external logins
+		private const string XsrfKey = "XsrfId";
 
         private IAuthenticationManager AuthenticationManager
         {

@@ -9,10 +9,11 @@ namespace SisConv.Application.AutoMapper
             Mapper.Initialize(x =>
             {
                 x.AddProfile<DomaintoviewModelMappingProfile>();
-               
+                x.AddProfile<ViewModelToDomainMappingProfile>();
+
             });
 
-            Mapper.AssertConfigurationIsValid();
+           
         }
     }
 }

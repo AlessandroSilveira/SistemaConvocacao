@@ -1,12 +1,19 @@
-﻿@model SisConv.Application.ViewModels.Admin2ViewModel
+﻿@model SisConv.Infra.CrossCutting.Identity.Model.RegisterViewModel
 
 @{
     ViewBag.Title = "PrimeiroAcesso";
     Layout = "~/Views/Shared/_LayoutPrimeiroAcesso.cshtml";
 }
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script src="~/Scripts/PrimeiroAcesso.js"></script>
+<script>
+    $(document).ready(function($) {
+        $("#Cnpj").mask("00.000.000/0000-00", { reverse: true });
+        $("#Telefone").mask('(00) 00000-0000');
+    })
+</script>
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("PrimeiroAcesso","Account",FormMethod.Post,new{@id="form"}))
 {
     @Html.AntiForgeryToken()
 
@@ -40,8 +47,9 @@
 
         <div class="jumbotron" id="painel3" style="display: none">
             <p>Sistema de Convocações</p>
-            <p>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
             <h3 id="mensagem_painel3" style="color: red"></h3>
+            <p>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+           
             <div class="form-group">
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
@@ -55,8 +63,9 @@
 
         <div class="jumbotron" id="painel4" style="display: none">
             <p>Sistema de Convocações</p>
-            <p>@Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
             <h3 id="mensagem_painel4" style="color: red"></h3>
+            <p>@Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            
             <div class="form-group">
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
@@ -86,8 +95,8 @@
 
         <div class="jumbotron" id="painel6" style="display: none">
             <p>Sistema de Convocações</p>
-            <p>@Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
             <h3 id="mensagem_painel6" style="color: red"></h3>
+            <p>@Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
             <div class="form-group">
                 <div class="col-md-10">
                     @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
@@ -101,14 +110,14 @@
 
         <div class="jumbotron" id="painel7" style="display: none">
             <p>Sistema de Convocações</p>
+            <h3 id="mensagem_painel7" style="color: red"></h3>
             <p>@Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
             <div class="form-group">
-
                 <div class="col-md-10">
-                    @*@Html.EditorFor(model => model.Imagem, new { htmlAttributes = new { @class = "form-control" } })*@
-                    <input type="file" name="Imagem" class="form-control" />
+                   
+                    <input type="file" name="Imagem" id="Imagem" class="form-control" />
                     @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.Ativo, new { Value = false });
+                    @Html.HiddenFor(model => model.Ativo, new { Value = true })
                 </div>
             </div>
             <p>
@@ -118,39 +127,28 @@
 
         <div class="jumbotron" id="painel8" style="display: none">
             <p>Sistema de Convocações</p>
-            <h2>Tudo pronto. Vamos começar?</h2>
-
+            <h3 id="mensagem_painel8" style="color: red"></h3>
+            <p>@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <div class="form-group">
+                <div class="col-md-10">
+                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+	                @Html.HiddenFor(model => model.ConfirmPassword, new { Value = "" })
+                </div>
+            </div>
             <p>
                 <a class="btn btn-primary btn-lg" id="seguir_painel9">Próximo</a>
             </p>
         </div>
 
-        @*<div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-            </div>*@
+        <div class="jumbotron" id="painel9" style="display: none">
+            <p>Sistema de Convocações</p>
+            <h2>Tudo pronto. Vamos começar?</h2>
 
-
-        @*<div id="tab-container" class="tab-container">
-                <ul class='etabs'>
-                    <li class='tab'><a href="#tabs1-html">HTML Markup</a></li>
-                    <li class='tab'><a href="#tabs1-js">Required JS</a></li>
-                    <li class='tab'><a href="#tabs1-css">Example CSS</a></li>
-                </ul>
-                <div id="tabs1-html">
-                    <h2>HTML Markup for these tabs</h2>
-                    <!-- content -->
-                </div>
-                <div id="tabs1-js">
-                    <h2>JS for these tabs</h2>
-                    <!-- content -->
-                </div>
-                <div id="tabs1-css">
-                    <h2>CSS Styles for these tabs</h2>
-                    <!-- content -->
-                </div>
-            </div>*@
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel10">Próximo</a>
+            </p>
+        </div>
     </div>
 }
 

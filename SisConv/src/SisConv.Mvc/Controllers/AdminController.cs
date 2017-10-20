@@ -2,13 +2,15 @@
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
-    public class AdminController : Controller
+	public class AdminController : Controller
     {
 
         private readonly IAdminAppService _adminAppService;
+       
 
         public AdminController(IAdminAppService adminAppService)
         {
@@ -24,12 +26,8 @@ namespace SisConv.Mvc.Controllers
         // GET: Admin2ViewModel/Details/5
         public ActionResult Details(Guid id)
         {
-            Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
-            if (admin2ViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(admin2ViewModel);
+	        Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
+	        return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
         }
 
         // GET: Admin2ViewModel/Create
@@ -58,13 +56,8 @@ namespace SisConv.Mvc.Controllers
         // GET: Admin2ViewModel/Edit/5
         public ActionResult Edit(Guid id)
         {
-
-            Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
-            if (admin2ViewModel == null)
-            {
-                return HttpNotFound();
-            }
-            return View(admin2ViewModel);
+	        Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
+	        return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
         }
 
         // POST: Admin2ViewModel/Edit/5
@@ -111,10 +104,6 @@ namespace SisConv.Mvc.Controllers
             }
             base.Dispose(disposing);
         }
-
-        public ActionResult PrimeiroAcesso()
-        {
-            return View();
-        }
+		
     }
 }
