@@ -90,8 +90,9 @@
         var cnpj2 = cnpj1.replace("-", "");
         var cnpj3 = cnpj2.replace("/", "");
         var cnpj4 = cnpj3.replace(" ", "");
+        var cnpj5 = cnpj4.replace(".", "");
 
-        $("#Cnpj").val(cnpj4);
+        $("#Cnpj").val(cnpj5);
 
         $("#painel5").fadeOut(1000,
             function () {
@@ -141,7 +142,7 @@
     });
     $("#seguir_painel9").click(function () {
         $("#mensagem_paine8").html("");
-        var senha = $("#Senha").val();
+        var senha = $("#Password").val();
 
         if (senha === null || senha === "") {
             $("#mensagem_paine8").html("*O campo Senha não pode estar vazio.");
@@ -153,6 +154,8 @@
             return false;
         }
 
+        $("#ConfirmPassword").val(senha);
+
         $("#painel8").fadeOut(1000,
             function () {
                 $("#painel9").fadeIn(1000);
@@ -160,7 +163,7 @@
     });
     $("#seguir_painel10").click(function() {
         $("#form").submit();
-    })
+    });
 });
 function validacaoEmail(field) {
     var er = /^[a-zA-Z0-9][a-zA-Z0-9\._-]+@([a-zA-Z0-9\._-]+\.)[a-zA-Z-0-9]{2,3}/;

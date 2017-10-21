@@ -194,3 +194,5 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\AutoMapper.Net4.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Application.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\AutoMapper.Net4.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Application.dll.config

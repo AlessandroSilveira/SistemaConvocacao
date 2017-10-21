@@ -20,3 +20,5 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\ob
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Application.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.Net4.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Application.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.Net4.dll

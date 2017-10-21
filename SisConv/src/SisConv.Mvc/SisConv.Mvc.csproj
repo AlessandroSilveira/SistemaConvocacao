@@ -331,7 +331,7 @@
     <Content Include="Views\Admin\Create.cshtml" />
     <Content Include="Views\Admin\Edit.cshtml" />
     <Content Include="Views\Admin\Delete.cshtml" />
-    <Content Include="Views\Admin\PrimeiroAcesso.cshtml" />
+    <Content Include="Views\Account\PrimeiroAcesso.cshtml" />
     <Content Include="Views\Shared\_LayoutPrimeiroAcesso.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -93,3 +93,4 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config
