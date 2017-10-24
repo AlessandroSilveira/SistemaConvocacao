@@ -22,6 +22,8 @@ namespace SisConv.Application.AutoMapper
                     .ReverseMap();
                 cfg.CreateMap<Admin2ViewModel,Admin >()
                     .ReverseMap();
+                cfg.CreateMap<PrimeiroAcessoViewModel, PrimeiroAcesso>()
+                    .ReverseMap();
             });
         }
     }

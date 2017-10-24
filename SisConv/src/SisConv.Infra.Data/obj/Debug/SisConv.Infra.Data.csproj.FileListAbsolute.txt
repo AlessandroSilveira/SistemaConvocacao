@@ -34,3 +34,8 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._05102017.resources
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._18102017.resources
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._18102017_2.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll.config
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.xml
