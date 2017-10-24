@@ -2,7 +2,6 @@
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {

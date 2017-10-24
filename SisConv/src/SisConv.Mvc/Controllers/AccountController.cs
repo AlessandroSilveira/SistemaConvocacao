@@ -36,10 +36,10 @@ namespace SisConv.Mvc.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            var primeiroAcesso = _primeiroAcessoAppService.Search(a=>a.primeiroAcesso==false);
+            //var primeiroAcesso = _primeiroAcessoAppService.Search(a=>a.primeiroAcesso==true);
 
-            if (!primeiroAcesso.Any())
-                return RedirectToAction("PrimeiroAcesso", "Account");
+            //if (!primeiroAcesso.Any())
+            //    return RedirectToAction("PrimeiroAcesso", "Account");
 
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -454,7 +454,8 @@ namespace SisConv.Mvc.Controllers
 			    Empresa = model.Empresa,
 			    Cnpj = model.Cnpj,
 			    Telefone = model.Telefone,
-			    Senha = model.Password
+			    Senha = model.Password,
+                Imagem = model.Imagem
 		    };
 
 		    _adminAppService.Add(admin);

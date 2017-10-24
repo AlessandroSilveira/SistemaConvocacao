@@ -1,0 +1,32 @@
+﻿@model Microsoft.AspNet.Identity.EntityFramework.IdentityRole
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Regras de Acesso</h2>
+
+<h3>Tem certeza de que deseja excluir esta Regra?</h3>
+<p>A exclusão desta regra irá remover todos os usuários dessa regra. Não eliminará os usuários.</p>
+<div>
+    <h4>Regra</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+    </dl>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Excluir" class="btn btn-default" /> |
+            @Html.ActionLink("Voltar", "Index")
+        </div>
+    }
+</div>
