@@ -30,7 +30,12 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.Telefone)
                 .IsRequired()
                 .HasMaxLength(20);
-               
+
+
+            Property(c => c.Password)
+                .IsRequired()
+                .HasMaxLength(10);
+
 
             ToTable("Cliente");
         }

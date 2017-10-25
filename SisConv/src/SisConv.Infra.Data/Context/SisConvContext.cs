@@ -11,6 +11,7 @@ namespace SisConv.Infra.Data.Context
         public SisConvContext()
             : base("DefaultConnection")
         {
+           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<SisConvContext, SisConvContextConfigutation>());
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }
@@ -35,15 +36,8 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
 	        modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
             modelBuilder.Configurations.Add(new AdminConfiguracao());
-
-
-            //modelBuilder.Entity<IdentityUserLogin>().HasKey<string>(l => l.UserId);
-            //modelBuilder.Entity<IdentityRole>().HasKey<string>(r => r.Id);
-            //modelBuilder.Entity<IdentityUserRole>().HasKey(r => new { r.RoleId, r.UserId });
-
+            
             base.OnModelCreating(modelBuilder);
         }
-
-
     }
 }

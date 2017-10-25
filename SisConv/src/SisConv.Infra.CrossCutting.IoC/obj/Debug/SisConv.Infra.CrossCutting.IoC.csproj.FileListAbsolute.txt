@@ -45,6 +45,7 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.csproj.CoreCompileInputs.cache
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.IoC.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.IoC.pdb
@@ -69,6 +70,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Owin.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\System.Web.WebPages.Deployment.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Domain.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.Identity.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll.config
@@ -92,5 +94,3 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Application.dll.config

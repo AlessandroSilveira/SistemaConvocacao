@@ -12,8 +12,13 @@
 
                 <table class="table table-striped table-hover ">
                     <tbody>
-                        @if (Request.IsAuthenticated && User.IsInRole("Admin"))
+                        @if (Request.IsAuthenticated && User.IsInRole("Administrator"))
                         {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Cadastro e Gerenciamento de Clientes", "Index", "Cliente")
+                                </td>
+                            </tr>
                             <tr>
                                 <td>
                                     @Html.ActionLink("Cadastro e Gerenciamento de Usuários", "Index", "UsersAdmin")
