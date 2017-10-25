@@ -15,7 +15,7 @@ namespace SisConv.Domain.Entities
         public string Empresa { get; set; }
         public string Cnpj { get; set; }
         public string Telefone { get; set; }
-        public string Imagem { get; set; }
+        public byte[] Imagem { get; set; }
         public bool Ativo { get; set; }
         public string Senha { get; set; }
     }

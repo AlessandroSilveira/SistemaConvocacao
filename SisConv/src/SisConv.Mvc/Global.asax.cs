@@ -8,7 +8,7 @@ using SisConv.Infra.CrossCutting.Identity.Helpers;
 
 namespace SisConv.Mvc
 {
-    public class MvcApplication : System.Web.HttpApplication
+	public class MvcApplication : System.Web.HttpApplication
     {
         protected void Application_Start()
         {

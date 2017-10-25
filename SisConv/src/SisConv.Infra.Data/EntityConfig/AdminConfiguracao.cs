@@ -35,9 +35,9 @@ namespace SisConv.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(50);
 
-            Property(c => c.Imagem)
-                .IsRequired()
-                .HasMaxLength(100);
+	        Property(c => c.Imagem)
+		        .IsRequired();
+               
 
             ToTable("Admin");
         }
