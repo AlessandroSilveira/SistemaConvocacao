@@ -1,15 +1,23 @@
-﻿using System;
-using System.Security.Cryptography;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
+using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Infra.CrossCutting.Identity.Helpers
 {
-    public static class IdentityHelper
+    public class IdentityHelper
     {
+        private static ApplicationSignInManager _signInManager;
+
+        public IdentityHelper(ApplicationSignInManager signInManager)
+        {
+            _signInManager = signInManager;
+        }
+
         public static void SeedIdentities(ApplicationDbContext context)
         {
             var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
@@ -32,71 +40,19 @@ namespace SisConv.Infra.CrossCutting.Identity.Helpers
                 roleManager.Create(new IdentityRole(RolesNames.ROLE_CONVOCADO));
             }
 
-            var email = "admin@admin.com.br";
-            var userName = "Admin";
-            var password = "123456";
+            const string email = "admin@admin.com.br";
+            const string password = "123456";
 
-            var user = userManager.FindByName(userName);
-            if (user == null)
+            var user = new ApplicationUser { UserName = email, Email = email };
+            var result = userManager.Create(user, password);
+
+            if (result.Succeeded)
             {
-                user = new ApplicationUser()
-                {
-                    Id = Guid.NewGuid().ToString(),
-                    PasswordHash = HashPassword(password),
-                    SecurityStamp = "",
-                    PhoneNumber = "",
-                    PhoneNumberConfirmed = true,
-                    TwoFactorEnabled = false,
-                    LockoutEndDateUtc = DateTime.Now,
-                    LockoutEnabled = false,
-                    AccessFailedCount = 0,
-                    UserName = userName,
-                    Email = email,
-                    EmailConfirmed = true
-
-                };
-                var userResult = userManager.Create(user, password);
-                if (userResult.Succeeded)
-                {
-                    userManager.AddToRole(user.Id, RolesNames.ROLE_ADMIN);
-                }
+                var user2 = userManager.FindByName(email);
+                userManager.AddToRole(user2.Id, RolesNames.ROLE_ADMIN);
+                _signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+                userManager.GenerateEmailConfirmationToken(user.Id);
             }
-
-            user = new ApplicationUser()
-            {
-                Id = Guid.NewGuid().ToString(),
-                PasswordHash = HashPassword(password),
-                SecurityStamp = "",
-                PhoneNumber = "",
-                PhoneNumberConfirmed = true,
-                TwoFactorEnabled = false,
-                LockoutEndDateUtc = DateTime.Now,
-                LockoutEnabled = false,
-                AccessFailedCount = 0,
-                UserName = userName,
-                Email = email,
-                EmailConfirmed = true
-            };
-            userManager.Create(user, password);
         }
-        public static string HashPassword(string password)
-        {
-            byte[] salt;
-            byte[] buffer2;
-            if (password == null)
-            {
-                throw new ArgumentNullException("password");
-            }
-            using (Rfc2898DeriveBytes bytes = new Rfc2898DeriveBytes(password, 0x10, 0x3e8))
-            {
-                salt = bytes.Salt;
-                buffer2 = bytes.GetBytes(0x20);
-            }
-            byte[] dst = new byte[0x31];
-            Buffer.BlockCopy(salt, 0, dst, 1, 0x10);
-            Buffer.BlockCopy(buffer2, 0, dst, 0x11, 0x20);
-            return Convert.ToBase64String(dst);
-        }
-       
     }
 }

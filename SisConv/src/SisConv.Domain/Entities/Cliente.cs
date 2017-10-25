@@ -1,5 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
+﻿using System;       
 
 namespace SisConv.Domain.Entities
 {
@@ -9,14 +8,13 @@ namespace SisConv.Domain.Entities
         {
             ClienteId = Guid.NewGuid();
         }
-
-        [Key]
+      
         public Guid ClienteId { get; set; }
-
         public string Nome { get; set; }
         public string Cnpj { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-
+        public string Password { get; set; }
+        public string ConfirmPassword { get; set; }
     }
 }

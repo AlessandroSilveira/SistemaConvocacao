@@ -43,7 +43,6 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\SisConv.Infra.CrossCutting.Identity.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
@@ -61,7 +60,6 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\System.Web.WebPages.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\System.Web.WebPages.Razor.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\Microsoft.AspNet.Identity.Owin.xml

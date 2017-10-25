@@ -17,7 +17,7 @@ namespace SisConv.Mvc
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             AutoMapperConfig.RegisterMapping();
-            ApplicationDbContext context = new ApplicationDbContext();
+            var context = new ApplicationDbContext();
             IdentityHelper.SeedIdentities(context);
         }
     }

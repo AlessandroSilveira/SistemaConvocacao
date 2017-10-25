@@ -434,9 +434,6 @@ namespace SisConv.Mvc.Controllers
 				    RegistraPrimeiroAcesso();
 					return View("DisplayEmail");
 			    }
-
-				
-
 				AddErrors(result);
 		    }
 
@@ -446,7 +443,7 @@ namespace SisConv.Mvc.Controllers
 
 	    private void AdicionarAdministrador(RegisterViewModel model)
 	    {
-		    Admin2ViewModel admin = new Admin2ViewModel()
+		    var admin = new Admin2ViewModel()
 		    {
 			    Nome = model.Nome,
 			    Ativo = true,
@@ -463,7 +460,7 @@ namespace SisConv.Mvc.Controllers
 
 	    private void RegistraPrimeiroAcesso()
 	    {
-		    PrimeiroAcessoViewModel paModel = new PrimeiroAcessoViewModel()
+		    var paModel = new PrimeiroAcessoViewModel()
 		    {
 			    primeiroAcesso = true
 		    };

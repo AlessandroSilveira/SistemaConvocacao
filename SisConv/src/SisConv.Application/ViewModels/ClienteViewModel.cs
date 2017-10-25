@@ -28,5 +28,16 @@ namespace SisConv.Application.ViewModels
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Telefone")]
         public string Telefone { get; set; }
+
+        [Required]
+        [StringLength(10, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Senha")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirmar Senha")]
+        [Compare("Password", ErrorMessage = "A senha e a confirmação de senha não conferem")]
+        public string ConfirmPassword { get; set; }
     }
 }
