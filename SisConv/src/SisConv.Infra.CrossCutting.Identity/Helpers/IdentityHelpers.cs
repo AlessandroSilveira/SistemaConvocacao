@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Security.Cryptography;
-using System.Text;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SisConv.Infra.CrossCutting.Identity.Context;
@@ -9,7 +8,7 @@ using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Infra.CrossCutting.Identity.Helpers
 {
-    public class IdentityHelper
+    public static class IdentityHelper
     {
         public static void SeedIdentities(ApplicationDbContext context)
         {
