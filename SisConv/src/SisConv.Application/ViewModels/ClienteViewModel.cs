@@ -45,7 +45,7 @@ namespace SisConv.Application.ViewModels
 	    [Display(Name = "Ativo")]
 	    public bool Ativo { get; set; }
 
-	    [Required(AllowEmptyStrings = false)]
+	    [Required]
 	    [Display(Name = "Imagem")]
 	    public string Imagem { get; set; }
 	}
