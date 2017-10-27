@@ -1,4 +1,5 @@
-﻿using System;       
+﻿using System;
+using System.Collections.Generic;
 
 namespace SisConv.Domain.Entities
 {
@@ -14,9 +15,11 @@ namespace SisConv.Domain.Entities
         public string Cnpj { get; set; }
         public string Email { get; set; }
         public string Telefone { get; set; }
-	    public byte[] Imagem { get; set; }
+	    public string Imagem { get; set; }
 	    public bool Ativo { get; set; }
 		public string Password { get; set; }
         public string ConfirmPassword { get; set; }
+
+        public virtual ICollection<Convocacao> Convocacoes { get; set; } = new List<Convocacao>();
     }
 }

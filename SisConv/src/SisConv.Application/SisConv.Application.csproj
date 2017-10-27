@@ -53,6 +53,7 @@
     <Compile Include="Interfaces\Repository\IAdminAppService.cs" />
     <Compile Include="Interfaces\Repository\IAppServiceBase.cs" />
     <Compile Include="Interfaces\Repository\IClienteAppService.cs" />
+    <Compile Include="Interfaces\Repository\IConvocacaoAppService.cs" />
     <Compile Include="Interfaces\Repository\IPessoaAppService.cs" />
     <Compile Include="Interfaces\Repository\IPrimeiroAcessoAppService.cs" />
     <Compile Include="Interfaces\Repository\ITelefoneAppService.cs" />
@@ -61,6 +62,7 @@
     <Compile Include="Services\AdminAppService.cs" />
     <Compile Include="Services\ApplicationService.cs" />
     <Compile Include="Services\ClienteAppService.cs" />
+    <Compile Include="Services\ConvocacaoAppService.cs" />
     <Compile Include="Services\PessoaAppService.cs" />
     <Compile Include="Services\PrimeiroAcessoAppService.cs" />
     <Compile Include="Services\TelefoneAppService.cs" />
@@ -68,6 +70,7 @@
     <Compile Include="ViewModels\Admin2ViewModel.cs" />
     <Compile Include="ViewModels\AdminViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
+    <Compile Include="ViewModels\ConvocacaoViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\PrimeiroAcessoViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />

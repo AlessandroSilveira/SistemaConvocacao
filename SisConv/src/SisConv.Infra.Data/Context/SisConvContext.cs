@@ -11,7 +11,7 @@ namespace SisConv.Infra.Data.Context
         public SisConvContext()
             : base("DefaultConnection")
         {
-           // Database.SetInitializer(new MigrateDatabaseToLatestVersion<SisConvContext, SisConvContextConfigutation>());
+           
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }
@@ -19,8 +19,9 @@ namespace SisConv.Infra.Data.Context
         public virtual DbSet<Telefone> Telefones { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
 	    public virtual DbSet<PrimeiroAcesso> PrimeiroAcessos { get; set; }
+        public virtual DbSet<Convocacao> Convocacoes { get; set; }
 
-		protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -36,7 +37,8 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
 	        modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
             modelBuilder.Configurations.Add(new AdminConfiguracao());
-            
+            modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
+
             base.OnModelCreating(modelBuilder);
         }
     }

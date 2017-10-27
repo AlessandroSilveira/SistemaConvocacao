@@ -3,7 +3,7 @@ namespace SisConv.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _25102017_2 : DbMigration
+    public partial class _26102017 : DbMigration
     {
         public override void Up()
         {
@@ -16,7 +16,7 @@ namespace SisConv.Infra.Data.Migrations
                         Cnpj = c.String(nullable: false, maxLength: 15, unicode: false),
                         Email = c.String(nullable: false, maxLength: 100, unicode: false),
                         Telefone = c.String(nullable: false, maxLength: 20, unicode: false),
-                        Imagem = c.Binary(nullable: false),
+                        Imagem = c.String(nullable: false, maxLength: 8000, unicode: false),
                         Ativo = c.Boolean(nullable: false),
                         Password = c.String(nullable: false, maxLength: 10, unicode: false),
                         ConfirmPassword = c.String(maxLength: 8000, unicode: false),

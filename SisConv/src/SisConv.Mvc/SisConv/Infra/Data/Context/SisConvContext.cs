@@ -20,5 +20,7 @@ namespace SisConv.Infra.Data.Context
         }
 
         public System.Data.Entity.DbSet<SisConv.Application.ViewModels.ClienteViewModel> ClienteViewModels { get; set; }
+
+        public System.Data.Entity.DbSet<SisConv.Application.ViewModels.ConvocacaoViewModel> ConvocacaoViewModels { get; set; }
     }
 }
