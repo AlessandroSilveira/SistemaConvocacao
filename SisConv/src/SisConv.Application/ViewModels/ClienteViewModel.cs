@@ -22,7 +22,8 @@ namespace SisConv.Application.ViewModels
         public string Cnpj { get; set; }
 
         [Required(AllowEmptyStrings = false)]
-        [Display(Name = "E-mail")]
+        [EmailAddress]
+		[Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -39,5 +40,13 @@ namespace SisConv.Application.ViewModels
         [Display(Name = "Confirmar Senha")]
         [Compare("Password", ErrorMessage = "A senha e a confirmação de senha não conferem")]
         public string ConfirmPassword { get; set; }
-    }
+
+	    [Required]
+	    [Display(Name = "Ativo")]
+	    public bool Ativo { get; set; }
+
+	    [Required]
+	    [Display(Name = "Imagem")]
+	    public string Imagem { get; set; }
+	}
 }

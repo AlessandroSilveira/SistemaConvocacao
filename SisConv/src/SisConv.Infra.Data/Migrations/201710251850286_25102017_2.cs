@@ -3,12 +3,12 @@ namespace SisConv.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Migration1 : DbMigration
+    public partial class _25102017_2 : DbMigration
     {
         public override void Up()
         {
             CreateTable(
-                "dbo.Cliente",
+                "dbo.Clientes",
                 c => new
                     {
                         ClienteId = c.Guid(nullable: false, identity: true),
@@ -16,6 +16,10 @@ namespace SisConv.Infra.Data.Migrations
                         Cnpj = c.String(nullable: false, maxLength: 15, unicode: false),
                         Email = c.String(nullable: false, maxLength: 100, unicode: false),
                         Telefone = c.String(nullable: false, maxLength: 20, unicode: false),
+                        Imagem = c.Binary(nullable: false),
+                        Ativo = c.Boolean(nullable: false),
+                        Password = c.String(nullable: false, maxLength: 10, unicode: false),
+                        ConfirmPassword = c.String(maxLength: 8000, unicode: false),
                     })
                 .PrimaryKey(t => t.ClienteId);
             
@@ -97,7 +101,7 @@ namespace SisConv.Infra.Data.Migrations
                         Empresa = c.String(nullable: false, maxLength: 50, unicode: false),
                         Cnpj = c.String(nullable: false, maxLength: 15, unicode: false),
                         Telefone = c.String(nullable: false, maxLength: 11, unicode: false),
-                        Imagem = c.String(nullable: false, maxLength: 100, unicode: false),
+                        Imagem = c.Binary(nullable: false),
                         Ativo = c.Boolean(nullable: false),
                         Senha = c.String(maxLength: 8000, unicode: false),
                     })
@@ -114,7 +118,7 @@ namespace SisConv.Infra.Data.Migrations
             DropTable("dbo.Telefone");
             DropTable("dbo.PrimeiroAcesso");
             DropTable("dbo.Pessoa");
-            DropTable("dbo.Cliente");
+            DropTable("dbo.Clientes");
         }
     }
 }

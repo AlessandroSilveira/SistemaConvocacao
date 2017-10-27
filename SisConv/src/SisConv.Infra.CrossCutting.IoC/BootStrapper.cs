@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
+using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Base;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -48,10 +49,10 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<IPrimeiroAcessoRepository, PrimeiroAcessoRepository>(Lifestyle.Scoped);
             container.Register<IAdminRepository, AdminRepository>(Lifestyle.Scoped);
+	        container.Register<IConversor, Conversor>(Lifestyle.Scoped);
 
-
-            //Context
-            container.Register<SisConvContext>(Lifestyle.Scoped);
+			//Context
+			container.Register<SisConvContext>(Lifestyle.Scoped);
             container.Register<ApplicationDbContext>(Lifestyle.Scoped);
 
             //Identity

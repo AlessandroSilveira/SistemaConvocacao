@@ -366,7 +366,7 @@
       <Name>SisConv.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.Identity\SisConv.Infra.CrossCutting.Identity.csproj">
-      <Project>{90F803F7-D9DD-4D2E-B2D9-CD9280099418}</Project>
+      <Project>{90f803f7-d9dd-4d2e-b2d9-cd9280099418}</Project>
       <Name>SisConv.Infra.CrossCutting.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.IoC\SisConv.Infra.CrossCutting.IoC.csproj">

@@ -36,6 +36,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -50,6 +51,8 @@
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\Telefone.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Helpers\Conversor.cs" />
+    <Compile Include="Helpers\IConversor.cs" />
     <Compile Include="Interfaces\Base\IServicesBase.cs" />
     <Compile Include="Interfaces\Repositories\IAdminRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
