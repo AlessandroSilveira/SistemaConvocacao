@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<SisConv.Application.ViewModels.ConvocacaoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Convocações";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nova Convocação", "Create")
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ClienteId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Nome)
         </th>
@@ -29,9 +26,6 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ClienteId)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.Nome)
         </td>
         <td>
@@ -41,9 +35,10 @@
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ConvocacaoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ConvocacaoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ConvocacaoId })
+            @Html.ActionLink("Editar", "Edit", new {id = item.ConvocacaoId}) |
+            @Html.ActionLink("Detalhes", "Details", new {id = item.ConvocacaoId}) |
+            @Html.ActionLink("Cargos", "Index","Cargo", new {id = item.ConvocacaoId},null) |
+            @Html.ActionLink("Excluír", "Delete", new {id = item.ConvocacaoId})
         </td>
     </tr>
 }

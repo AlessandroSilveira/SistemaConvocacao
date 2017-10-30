@@ -9,6 +9,8 @@ namespace SisConv.Infra.Data.EntityConfig
         {
             HasKey(c => c.ConvocacaoId);
 
+            
+
             Property(c => c.ConvocacaoId)
                 .HasColumnName("ConvocacaoId");
 
@@ -17,6 +19,7 @@ namespace SisConv.Infra.Data.EntityConfig
                 .HasMaxLength(100);
 
             Property(c => c.ClienteId)
+                
                 .IsRequired();
 
             Property(c => c.Ativo)

@@ -3,10 +3,38 @@ namespace SisConv.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _26102017 : DbMigration
+    public partial class _29102017 : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Cargos",
+                c => new
+                    {
+                        CargoId = c.Guid(nullable: false, identity: true),
+                        ConvocacaoId = c.Guid(nullable: false),
+                        Nome = c.String(nullable: false, maxLength: 100, unicode: false),
+                        CodigoCargo = c.String(nullable: false, maxLength: 4, unicode: false),
+                        Ativo = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.CargoId)
+                .ForeignKey("dbo.Convocacoes", t => t.ConvocacaoId)
+                .Index(t => t.ConvocacaoId);
+            
+            CreateTable(
+                "dbo.Convocacoes",
+                c => new
+                    {
+                        ConvocacaoId = c.Guid(nullable: false, identity: true),
+                        ClienteId = c.Guid(nullable: false),
+                        Nome = c.String(nullable: false, maxLength: 100, unicode: false),
+                        DataCriacao = c.DateTime(nullable: false),
+                        Ativo = c.Boolean(nullable: false),
+                    })
+                .PrimaryKey(t => t.ConvocacaoId)
+                .ForeignKey("dbo.Clientes", t => t.ClienteId)
+                .Index(t => t.ClienteId);
+            
             CreateTable(
                 "dbo.Clientes",
                 c => new
@@ -112,13 +140,19 @@ namespace SisConv.Infra.Data.Migrations
         public override void Down()
         {
             DropForeignKey("dbo.Telefone", "PessoaId_PessoaId", "dbo.Pessoa");
+            DropForeignKey("dbo.Convocacoes", "ClienteId", "dbo.Clientes");
+            DropForeignKey("dbo.Cargos", "ConvocacaoId", "dbo.Convocacoes");
             DropIndex("dbo.Telefone", new[] { "PessoaId_PessoaId" });
+            DropIndex("dbo.Convocacoes", new[] { "ClienteId" });
+            DropIndex("dbo.Cargos", new[] { "ConvocacaoId" });
             DropTable("dbo.Admin");
             DropTable("dbo.Usuario");
             DropTable("dbo.Telefone");
             DropTable("dbo.PrimeiroAcesso");
             DropTable("dbo.Pessoa");
             DropTable("dbo.Clientes");
+            DropTable("dbo.Convocacoes");
+            DropTable("dbo.Cargos");
         }
     }
 }

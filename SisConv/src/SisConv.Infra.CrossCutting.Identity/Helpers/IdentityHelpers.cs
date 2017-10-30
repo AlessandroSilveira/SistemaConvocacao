@@ -49,8 +49,8 @@ namespace SisConv.Infra.CrossCutting.Identity.Helpers
             {
                 var user2 = userManager.FindByName(email);
                 userManager.AddToRole(user2.Id, RolesNames.ROLE_ADMIN);
-                _signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
-                userManager.GenerateEmailConfirmationToken(user.Id);
+               // _signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
+               // userManager.GenerateEmailConfirmationToken(user.Id);
             }
         }
     }

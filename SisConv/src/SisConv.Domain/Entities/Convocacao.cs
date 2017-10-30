@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace SisConv.Domain.Entities
 {
@@ -16,5 +17,7 @@ namespace SisConv.Domain.Entities
         public bool Ativo { get; set; }
 
         public virtual Cliente Cliente { get; set; }
+
+        public virtual ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
     }
 }

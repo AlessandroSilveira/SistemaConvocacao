@@ -57,12 +57,13 @@ namespace SisConv.Mvc.Controllers
 
             SalvarImagemCliente(Imagem, cliente);
 
-            return RegistarClienteParaFazerLogin(clienteViewModel, out var actionResult) ? actionResult : RedirectToAction("Index");
+            return RegistarClienteParaFazerLogin(cliente, out var actionResult) ? actionResult : RedirectToAction("Index");
         }
 
         private bool RegistarClienteParaFazerLogin(ClienteViewModel clienteViewModel, out ActionResult actionResult)
         {
-            var user = new ApplicationUser {UserName = clienteViewModel.Email, Email = clienteViewModel.Email};
+            var cliente2 = _clienteAppService.Search(a => a.Email.Equals(clienteViewModel.Email)).FirstOrDefault();
+            var user = new ApplicationUser {Id=cliente2.ClienteId.ToString(),   UserName = clienteViewModel.Email, Email = clienteViewModel.Email};
             var result = _userManager.Create(user, clienteViewModel.Password);
 
             if (!result.Succeeded)
