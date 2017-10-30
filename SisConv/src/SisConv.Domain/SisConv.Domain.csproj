@@ -46,7 +46,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entities\Admin.cs" />
+    <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Convocacao.cs" />
     <Compile Include="Entities\PrimeiroAcesso.cs" />
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\Telefone.cs" />
@@ -55,7 +57,9 @@
     <Compile Include="Helpers\IConversor.cs" />
     <Compile Include="Interfaces\Base\IServicesBase.cs" />
     <Compile Include="Interfaces\Repositories\IAdminRepository.cs" />
+    <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IConvocacaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPrimeiroAcessoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
@@ -63,7 +67,9 @@
     <Compile Include="Interfaces\Repositories\IUnitOfWork.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
     <Compile Include="Interfaces\Services\IAdminService.cs" />
+    <Compile Include="Interfaces\Services\ICargoService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
     <Compile Include="Interfaces\Services\IPessoaService.cs" />
     <Compile Include="Interfaces\Services\IPrimeiroAcessoService.cs" />
     <Compile Include="Interfaces\Services\ITelefoneService.cs" />
@@ -71,7 +77,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\Base\ServiceBase.cs" />
+    <Compile Include="Services\CargoService.cs" />
     <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\ConvocacaoService.cs" />
     <Compile Include="Services\PessoaService.cs" />
     <Compile Include="Services\PrimeiroAcessoService.cs" />
     <Compile Include="Services\TelefoneService.cs" />

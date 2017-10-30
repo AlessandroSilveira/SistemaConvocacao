@@ -214,7 +214,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\ConvocacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -346,9 +348,20 @@
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
+    <Content Include="Views\Convocacao\Create.cshtml" />
+    <Content Include="Views\Convocacao\Delete.cshtml" />
+    <Content Include="Views\Convocacao\Details.cshtml" />
+    <Content Include="Views\Convocacao\Edit.cshtml" />
+    <Content Include="Views\Convocacao\Index.cshtml" />
+    <Content Include="Views\Cargo\Create.cshtml" />
+    <Content Include="Views\Cargo\Delete.cshtml" />
+    <Content Include="Views\Cargo\Details.cshtml" />
+    <Content Include="Views\Cargo\Edit.cshtml" />
+    <Content Include="Views\Cargo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Images\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

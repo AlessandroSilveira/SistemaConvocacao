@@ -26,9 +26,6 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.Migration1.resources
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.Migration2.resources
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
@@ -39,3 +36,5 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.xml
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._25102017_2.resources
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._29102017.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache

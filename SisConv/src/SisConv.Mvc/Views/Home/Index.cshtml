@@ -24,7 +24,14 @@
                                     @Html.ActionLink("Cadastro e Gerenciamento de Usuários", "Index", "UsersAdmin")
                                 </td>
                             </tr>
-                           
+                        }
+                        @if (Request.IsAuthenticated && User.IsInRole("Cliente"))
+                        {
+                            <tr>
+                                <td>
+                                    @Html.ActionLink("Cadastro e Gerenciamento de Convocações", "Index", "Convocacao")
+                                </td>
+                            </tr>
                         }
 
                     </tbody>

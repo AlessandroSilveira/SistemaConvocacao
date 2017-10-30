@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.ConvocacaoViewModel>
+
+@{
+    ViewBag.Title = "Convocações";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nova Convocação", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new {id = item.ConvocacaoId}) |
+            @Html.ActionLink("Detalhes", "Details", new {id = item.ConvocacaoId}) |
+            @Html.ActionLink("Cargos", "Index","Cargo", new {id = item.ConvocacaoId},null) |
+            @Html.ActionLink("Excluír", "Delete", new {id = item.ConvocacaoId})
+        </td>
+    </tr>
+}
+
+</table>
