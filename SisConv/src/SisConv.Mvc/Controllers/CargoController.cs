@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Infra.Data.Context;
 
 namespace SisConv.Mvc.Controllers
 {
