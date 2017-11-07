@@ -37,7 +37,6 @@ namespace SisConv.Infra.Data.EntityConfig
 
 	        Property(c => c.Imagem)
 		        .IsRequired();
-               
 
             ToTable("Admin");
         }

@@ -217,6 +217,7 @@
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ConvocacaoController.cs" />
+    <Compile Include="Controllers\ConvocadoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -358,6 +359,11 @@
     <Content Include="Views\Cargo\Details.cshtml" />
     <Content Include="Views\Cargo\Edit.cshtml" />
     <Content Include="Views\Cargo\Index.cshtml" />
+    <Content Include="Views\Convocado\Create.cshtml" />
+    <Content Include="Views\Convocado\Delete.cshtml" />
+    <Content Include="Views\Convocado\Details.cshtml" />
+    <Content Include="Views\Convocado\Edit.cshtml" />
+    <Content Include="Views\Convocado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

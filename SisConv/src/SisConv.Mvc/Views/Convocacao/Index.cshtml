@@ -38,6 +38,7 @@
             @Html.ActionLink("Editar", "Edit", new {id = item.ConvocacaoId}) |
             @Html.ActionLink("Detalhes", "Details", new {id = item.ConvocacaoId}) |
             @Html.ActionLink("Cargos", "Index","Cargo", new {id = item.ConvocacaoId},null) |
+            @Html.ActionLink("Carregar Convocados desta Convocação","Index", "Convocado", new {id = item.ConvocacaoId},null) |
             @Html.ActionLink("Excluír", "Delete", new {id = item.ConvocacaoId})
         </td>
     </tr>

@@ -16,32 +16,26 @@ namespace SisConv.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(100);
 
-
             Property(c => c.Email)
                 .IsRequired()
                 .HasMaxLength(100);
-
 
             Property(c => c.Login)
                 .IsRequired()
                 .HasMaxLength(20);
 
-
             Property(c => c.Senha)
                 .IsRequired()
                 .HasMaxLength(10);
-
 
             Property(c => c.Perfil)
                 .IsRequired()
                 .HasMaxLength(1);
 
-
             Property(c => c.Ativo)
                 .IsRequired();
 
             ToTable("Usuario");
-
         }
     }
 }

@@ -16,11 +16,9 @@ namespace SisConv.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(2);
 
-
             Property(c => c.Numero)
                 .IsRequired()
                 .HasMaxLength(11);
-                
 
             ToTable("Telefone");
         }

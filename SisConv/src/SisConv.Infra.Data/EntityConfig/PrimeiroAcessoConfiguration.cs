@@ -16,7 +16,6 @@ namespace SisConv.Infra.Data.EntityConfig
 				.IsRequired();
 
 			ToTable("PrimeiroAcesso");
-
 		}
 	}
 }
