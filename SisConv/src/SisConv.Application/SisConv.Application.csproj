@@ -55,6 +55,7 @@
     <Compile Include="Interfaces\Repository\ICargoAppService.cs" />
     <Compile Include="Interfaces\Repository\IClienteAppService.cs" />
     <Compile Include="Interfaces\Repository\IConvocacaoAppService.cs" />
+    <Compile Include="Interfaces\Repository\IConvocadoAppService.cs" />
     <Compile Include="Interfaces\Repository\IPessoaAppService.cs" />
     <Compile Include="Interfaces\Repository\IPrimeiroAcessoAppService.cs" />
     <Compile Include="Interfaces\Repository\ITelefoneAppService.cs" />
@@ -65,6 +66,7 @@
     <Compile Include="Services\CargoAppService.cs" />
     <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\ConvocacaoAppService.cs" />
+    <Compile Include="Services\ConvocadoAppService.cs" />
     <Compile Include="Services\PessoaAppService.cs" />
     <Compile Include="Services\PrimeiroAcessoAppService.cs" />
     <Compile Include="Services\TelefoneAppService.cs" />
@@ -74,6 +76,7 @@
     <Compile Include="ViewModels\CargoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\ConvocacaoViewModel.cs" />
+    <Compile Include="ViewModels\ConvocadoViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\PrimeiroAcessoViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />

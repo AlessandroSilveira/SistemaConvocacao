@@ -1,7 +1,7 @@
-﻿using SisConv.Domain.Entities;
-using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using SisConv.Domain.Entities;
 using SisConv.Infra.Data.EntityConfig;
 
 namespace SisConv.Infra.Data.Context
@@ -11,16 +11,16 @@ namespace SisConv.Infra.Data.Context
         public SisConvContext()
             : base("DefaultConnection")
         {
-           
         }
 
         public virtual DbSet<Cliente> Clientes { get; set; }
         public virtual DbSet<Pessoa> Pessoas { get; set; }
         public virtual DbSet<Telefone> Telefones { get; set; }
         public virtual DbSet<Usuario> Usuarios { get; set; }
-	    public virtual DbSet<PrimeiroAcesso> PrimeiroAcessos { get; set; }
+        public virtual DbSet<PrimeiroAcesso> PrimeiroAcessos { get; set; }
         public virtual DbSet<Convocacao> Convocacoes { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
+        public virtual DbSet<Convocado> Convocados { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -36,10 +36,11 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new PessoaConfiguration());
             modelBuilder.Configurations.Add(new TelefoneConfiguration());
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
-	        modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
+            modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
             modelBuilder.Configurations.Add(new AdminConfiguracao());
             modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
             modelBuilder.Configurations.Add(new CargoConfiguration());
+            modelBuilder.Configurations.Add(new ConvocadoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }
