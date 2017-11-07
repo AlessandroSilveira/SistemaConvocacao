@@ -39,3 +39,4 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._06112017.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._06112017.resources
