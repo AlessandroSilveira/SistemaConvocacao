@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
@@ -17,9 +18,12 @@ namespace SisConv.Mvc.Controllers
         }
 
         // GET: Convocado
-        public ActionResult Index()
+        public ActionResult Index(Guid id)
         {
-            return View(_convocadoAppService.GetAll());
+	        ViewBag.Id = id;
+	        var dados = _convocadoAppService.Search(a => a.ConvocacaoId.Equals(id));
+	        return RedirectToAction(dados.Any() ? "Index" : "Create");
+	       
         }
 
         // GET: Convocado/Details/5
