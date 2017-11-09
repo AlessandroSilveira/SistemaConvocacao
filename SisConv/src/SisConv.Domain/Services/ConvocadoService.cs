@@ -50,5 +50,10 @@ namespace SisConv.Domain.Services
         {
             return _convocadoRepository.Search(predicate);
         }
+
+	    public void SalvarCandidatos(string file)
+	    {
+		    _convocadoRepository.SalvarCandidatos(file);
+	    }
     }
 }

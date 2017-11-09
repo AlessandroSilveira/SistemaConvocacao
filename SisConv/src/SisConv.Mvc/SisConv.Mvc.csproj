@@ -218,6 +218,7 @@
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ConvocacaoController.cs" />
     <Compile Include="Controllers\ConvocadoController.cs" />
+    <Compile Include="Controllers\DadosConvocadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
@@ -364,6 +365,11 @@
     <Content Include="Views\Convocado\Details.cshtml" />
     <Content Include="Views\Convocado\Edit.cshtml" />
     <Content Include="Views\Convocado\Index.cshtml" />
+    <Content Include="Views\DadosConvocados\Create.cshtml" />
+    <Content Include="Views\DadosConvocados\Delete.cshtml" />
+    <Content Include="Views\DadosConvocados\Details.cshtml" />
+    <Content Include="Views\DadosConvocados\Edit.cshtml" />
+    <Content Include="Views\DadosConvocados\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
