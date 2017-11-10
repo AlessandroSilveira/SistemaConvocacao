@@ -26,5 +26,7 @@ namespace SisConv.Infra.Data.Context
         public System.Data.Entity.DbSet<SisConv.Application.ViewModels.CargoViewModel> CargoViewModels { get; set; }
 
         public System.Data.Entity.DbSet<SisConv.Application.ViewModels.ConvocadoViewModel> ConvocadoViewModels { get; set; }
-    }
+
+		public System.Data.Entity.DbSet<SisConv.Application.ViewModels.DadosConvocadosViewModel> DadosConvocadosViewModels { get; set; }
+	}
 }

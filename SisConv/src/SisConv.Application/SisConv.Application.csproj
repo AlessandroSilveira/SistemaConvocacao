@@ -77,6 +77,7 @@
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\ConvocacaoViewModel.cs" />
     <Compile Include="ViewModels\ConvocadoViewModel.cs" />
+    <Compile Include="ViewModels\DadosConvocadosViewModel.cs" />
     <Compile Include="ViewModels\PessoaViewModel.cs" />
     <Compile Include="ViewModels\PrimeiroAcessoViewModel.cs" />
     <Compile Include="ViewModels\TelefoneViewModel.cs" />

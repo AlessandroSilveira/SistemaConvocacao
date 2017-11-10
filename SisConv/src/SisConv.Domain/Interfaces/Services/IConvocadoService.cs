@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Convocado Update(Convocado obj);
         void Remove(Guid id);
         IEnumerable<Convocado> Search(Expression<Func<Convocado, bool>> predicate);
+	    void SalvarCandidatos(string file);
     }
 }
