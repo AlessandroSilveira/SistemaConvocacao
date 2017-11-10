@@ -11,6 +11,7 @@ namespace SisConv.Mvc.Controllers
     {
 
         private readonly IConvocadoAppService _convocadoAppService;
+       
 
         public ConvocadoController(IConvocadoAppService convocadoAppService)
         {
