@@ -5,7 +5,7 @@ using SisConv.Domain.Entities;
 
 namespace SisConv.Domain.Interfaces.Services
 {
-    public interface IConvocadoService : IDisposable
+    public interface IDadosConvocadosService : IDisposable
     {
         Convocado Add(Convocado obj);
         Convocado GetById(Guid id);
@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Convocado Update(Convocado obj);
         void Remove(Guid id);
         IEnumerable<Convocado> Search(Expression<Func<Convocado, bool>> predicate);
+        void SalvarCandidatos(Convocado map);
     }
 }

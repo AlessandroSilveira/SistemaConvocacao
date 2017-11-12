@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.OleDb;
+using System.Linq;
 using System.Linq.Expressions;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
@@ -10,6 +13,7 @@ namespace SisConv.Domain.Services
     public class ConvocadoService : IConvocadoService
     {
         private readonly IConvocadoRepository _convocadoRepository;
+
 
         public ConvocadoService(IConvocadoRepository convocadoRepository)
         {
@@ -43,7 +47,7 @@ namespace SisConv.Domain.Services
 
         public void Remove(Guid id)
         {
-             _convocadoRepository.Remove(id);
+            _convocadoRepository.Remove(id);
         }
 
         public IEnumerable<Convocado> Search(Expression<Func<Convocado, bool>> predicate)
@@ -51,9 +55,5 @@ namespace SisConv.Domain.Services
             return _convocadoRepository.Search(predicate);
         }
 
-	    public void SalvarCandidatos(string file)
-	    {
-		    _convocadoRepository.SalvarCandidatos(file);
-	    }
     }
 }

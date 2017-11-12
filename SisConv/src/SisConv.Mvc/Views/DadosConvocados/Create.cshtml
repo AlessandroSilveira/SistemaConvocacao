@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create","DadosConvocados",FormMethod.Post,new{@id="form", enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -17,7 +17,8 @@
         <div class="form-group">
             @Html.LabelFor(model => model.File, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.File, new { htmlAttributes = new { @class = "form-control" } })
+                <input type="file" name="File" value="" class="form-control"/>
+                <input type="hidden" name="Id" value="@ViewBag.id" class="form-control"/>
                 @Html.ValidationMessageFor(model => model.File, "", new { @class = "text-danger" })
             </div>
         </div>

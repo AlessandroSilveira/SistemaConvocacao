@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using System.Web;
 using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
@@ -62,10 +63,5 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Convocado>, IEnumerable<ConvocadoViewModel>>(_convocadoService.Search(predicate));
         }
-
-	    public void SalvarCandidatos(string file)
-	    {
-		    _convocadoService.SalvarCandidatos(file);
-	    }
     }
 }

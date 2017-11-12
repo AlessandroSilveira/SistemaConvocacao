@@ -14,6 +14,5 @@ namespace SisConv.Application.Interfaces.Repository
         ConvocadoViewModel Update(ConvocadoViewModel obj);
         void Remove(Guid id);
         IEnumerable<ConvocadoViewModel> Search(Expression<Func<Convocado, bool>> predicate);
-	    void SalvarCandidatos(string file);
     }
 }
