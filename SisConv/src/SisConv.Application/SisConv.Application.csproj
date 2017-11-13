@@ -39,6 +39,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,6 +57,7 @@
     <Compile Include="Interfaces\Repository\IClienteAppService.cs" />
     <Compile Include="Interfaces\Repository\IConvocacaoAppService.cs" />
     <Compile Include="Interfaces\Repository\IConvocadoAppService.cs" />
+    <Compile Include="Interfaces\Repository\IDadosConvocacaoAppService.cs" />
     <Compile Include="Interfaces\Repository\IPessoaAppService.cs" />
     <Compile Include="Interfaces\Repository\IPrimeiroAcessoAppService.cs" />
     <Compile Include="Interfaces\Repository\ITelefoneAppService.cs" />
@@ -67,6 +69,7 @@
     <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\ConvocacaoAppService.cs" />
     <Compile Include="Services\ConvocadoAppService.cs" />
+    <Compile Include="Services\DadosConvocadosAppService.cs" />
     <Compile Include="Services\PessoaAppService.cs" />
     <Compile Include="Services\PrimeiroAcessoAppService.cs" />
     <Compile Include="Services\TelefoneAppService.cs" />

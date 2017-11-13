@@ -2,7 +2,7 @@
 
 namespace SisConv.Domain.Interfaces.Repositories
 {
-    public interface IAdminRepository : IRepositoryBase<Admin>
+    public interface IDadosConvocadosRepository : IRepositoryBase<Convocado>
     {
     }
 }

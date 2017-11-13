@@ -10,10 +10,7 @@ namespace SisConv.Application.AutoMapper
             {
                 x.AddProfile<DomaintoviewModelMappingProfile>();
                 x.AddProfile<ViewModelToDomainMappingProfile>();
-
             });
-
-           
         }
     }
 }

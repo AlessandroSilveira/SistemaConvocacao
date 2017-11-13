@@ -30,13 +30,11 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="SisConv.Application">
-      <HintPath>..\SisConv.Mvc\Bin\SisConv.Application.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -62,17 +60,20 @@
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocacaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocadoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IDadosConvocadosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPrimeiroAcessoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IRepositoryBase.cs" />
     <Compile Include="Interfaces\Repositories\ITelefoneRepository.cs" />
     <Compile Include="Interfaces\Repositories\IUnitOfWork.cs" />
     <Compile Include="Interfaces\Repositories\IUsuarioRepository.cs" />
+    <Compile Include="Interfaces\Services\DadosConvocados.cs" />
     <Compile Include="Interfaces\Services\IAdminService.cs" />
     <Compile Include="Interfaces\Services\ICargoService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
     <Compile Include="Interfaces\Services\IConvocadoService.cs" />
+    <Compile Include="Interfaces\Services\IDadosConvocadosService.cs" />
     <Compile Include="Interfaces\Services\IPessoaService.cs" />
     <Compile Include="Interfaces\Services\IPrimeiroAcessoService.cs" />
     <Compile Include="Interfaces\Services\ITelefoneService.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
     <Compile Include="Services\ConvocadoService.cs" />
+    <Compile Include="Services\DadosConvocadosService.cs" />
     <Compile Include="Services\PessoaService.cs" />
     <Compile Include="Services\PrimeiroAcessoService.cs" />
     <Compile Include="Services\TelefoneService.cs" />

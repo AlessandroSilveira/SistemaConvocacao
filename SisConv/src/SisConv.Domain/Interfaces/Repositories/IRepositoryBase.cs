@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
+
 namespace SisConv.Domain.Interfaces.Repositories
 {
     public interface IRepositoryBase<TEntity> where TEntity : class
