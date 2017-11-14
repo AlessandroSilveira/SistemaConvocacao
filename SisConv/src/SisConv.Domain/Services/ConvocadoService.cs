@@ -55,5 +55,6 @@ namespace SisConv.Domain.Services
             return _convocadoRepository.Search(predicate);
         }
 
+	  
     }
 }
