@@ -12,5 +12,10 @@ namespace SisConv.Infra.Data.Repository
         public ConvocadoRepository(SisConvContext sisConvContext) : base(sisConvContext)
         {
         }
+
+	    public void SalvarCandidatos(string file)
+	    {
+		    throw new System.NotImplementedException();
+	    }
     }
 }
