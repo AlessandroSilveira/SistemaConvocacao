@@ -67,5 +67,10 @@ namespace SisConv.Application.Services
         {
             _dadosConvocadosService.SalvarCandidatos(Mapper.Map<DadosConvocadosViewModel, Convocado>(file));
         }
+
+        public void SalvarCandidatos(Guid id, string file)
+        {
+            _dadosConvocadosService.SalvarCandidatos(id,file);
+        }
     }
 }
