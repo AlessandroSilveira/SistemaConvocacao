@@ -55,10 +55,13 @@ namespace SisConv.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
+                var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+                var arquivo = Request.Files[0];
+                var nomeArquivo = Path.GetFileName(arquivo.FileName);
                 ActionResult view;
-                if (SalvarArquivoConvocados(out view)) return view;
+                if (SalvarArquivoConvocados(out view)) 
 
-                _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel);
+                _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id, string.Format("{0}{1}",pathArquivo,nomeArquivo));
 
             }
 
