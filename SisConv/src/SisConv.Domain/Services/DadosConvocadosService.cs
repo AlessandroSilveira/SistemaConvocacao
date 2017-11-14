@@ -99,7 +99,7 @@ namespace SisConv.Domain.Services
 						}).ToList();
 					foreach (var dados in listaCandidatos)
 					{
-						Update(dados);
+						Add(dados);
 					}
 				}
 
