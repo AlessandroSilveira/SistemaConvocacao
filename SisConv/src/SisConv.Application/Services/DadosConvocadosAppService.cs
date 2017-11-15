@@ -62,12 +62,7 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Convocado>, IEnumerable<DadosConvocadosViewModel>>(_dadosConvocadosService.Search(predicate));
         }
-
-        public void SalvarCandidatos(DadosConvocadosViewModel file)
-        {
-            _dadosConvocadosService.SalvarCandidatos(Mapper.Map<DadosConvocadosViewModel, Convocado>(file));
-        }
-
+      
         public void SalvarCandidatos(Guid id, string file)
         {
             _dadosConvocadosService.SalvarCandidatos(id,file);
