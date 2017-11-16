@@ -1,15 +1,13 @@
 ﻿using System;
 using System.IO;
-using System.Web;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Infra.Data.Context;
 
 namespace SisConv.Mvc.Controllers
 {
-	public class DadosConvocadosController : Controller
+    public class DadosConvocadosController : Controller
 	{
 		private readonly IDadosConvocacaoAppService _dadosConvocacaoAppService;
 
@@ -17,27 +15,6 @@ namespace SisConv.Mvc.Controllers
 		{
 			_dadosConvocacaoAppService = dadosConvocacaoAppService;
 		}
-
-		// GET: DadosConvocados
-        //public ActionResult Index()
-        //{
-        //    return View(db.DadosConvocadosViewModels.ToList());
-        //}
-
-        // GET: DadosConvocados/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    DadosConvocadosViewModel dadosConvocadosViewModel = db.DadosConvocadosViewModels.Find(id);
-        //    if (dadosConvocadosViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(dadosConvocadosViewModel);
-        //}
 
         // GET: DadosConvocados/Create
         public ActionResult Create(Guid id)
@@ -53,17 +30,13 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,File")] DadosConvocadosViewModel dadosConvocadosViewModel)
         {
-            if (ModelState.IsValid)
-            {
-                var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
-                var arquivo = Request.Files[0];
-                var nomeArquivo = Path.GetFileName(arquivo.FileName);
-                ActionResult view;
-                if (SalvarArquivoConvocados(out view)) 
-
+            if (!ModelState.IsValid) return View(dadosConvocadosViewModel);
+            var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+            var arquivo = Request.Files[0];
+            if (arquivo == null) return View(dadosConvocadosViewModel);
+            var nomeArquivo = Path.GetFileName(arquivo.FileName);
+            if (SalvarArquivoConvocados(out _)) 
                 _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id, string.Format("{0}{1}",pathArquivo,nomeArquivo));
-
-            }
 
             return View(dadosConvocadosViewModel);
         }
@@ -102,63 +75,6 @@ namespace SisConv.Mvc.Controllers
 	        view = null;
 	        return false;
 	    }
-
-	    // GET: DadosConvocados/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    DadosConvocadosViewModel dadosConvocadosViewModel = db.DadosConvocadosViewModels.Find(id);
-        //    if (dadosConvocadosViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(dadosConvocadosViewModel);
-        //}
-
-        // POST: DadosConvocados/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "Id,File")] DadosConvocadosViewModel dadosConvocadosViewModel)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        db.Entry(dadosConvocadosViewModel).State = EntityState.Modified;
-        //        db.SaveChanges();
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(dadosConvocadosViewModel);
-        //}
-
-        // GET: DadosConvocados/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    DadosConvocadosViewModel dadosConvocadosViewModel = db.DadosConvocadosViewModels.Find(id);
-        //    if (dadosConvocadosViewModel == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(dadosConvocadosViewModel);
-        //}
-
-        // POST: DadosConvocados/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    DadosConvocadosViewModel dadosConvocadosViewModel = db.DadosConvocadosViewModels.Find(id);
-        //    db.DadosConvocadosViewModels.Remove(dadosConvocadosViewModel);
-        //    db.SaveChanges();
-        //    return RedirectToAction("Index");
-        //}
 
         protected override void Dispose(bool disposing)
         {

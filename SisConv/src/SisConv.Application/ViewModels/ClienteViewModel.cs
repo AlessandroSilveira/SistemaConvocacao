@@ -13,7 +13,7 @@ namespace SisConv.Application.ViewModels
         [Key]
         public Guid ClienteId { get; set; }
 
-        [Required(AllowEmptyStrings = false)]
+        [Required(AllowEmptyStrings = false),]
         [Display(Name = "Nome")]
         public string Nome { get; set; }
 

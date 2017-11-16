@@ -51,11 +51,11 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.Telefone)
                 .IsRequired()
-                .HasMaxLength(11);
+                .HasMaxLength(20);
 
             Property(c => c.Celular)
                 .IsRequired()
-                .HasMaxLength(11);
+                .HasMaxLength(20);
 
             Property(c => c.Endereco)
                 .IsRequired()
@@ -63,7 +63,7 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.Numero)
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(50);
 
             Property(c => c.Complemento)
                 .IsRequired()
@@ -87,7 +87,7 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.Cargo)
                 .IsRequired()
-                .HasMaxLength(8);
+                .HasMaxLength(100);
 
             Property(c => c.CargoId)
                 .IsRequired();
