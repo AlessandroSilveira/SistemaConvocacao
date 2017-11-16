@@ -99,7 +99,15 @@ namespace SisConv.Domain.Services
 						}).ToList();
 					foreach (var dados in listaCandidatos)
 					{
-						Add(dados);
+					    try
+					    {
+					        Add(dados);
+                        }
+					    catch (Exception e)
+					    {
+					        
+					    }
+						
 					}
 				}
 
