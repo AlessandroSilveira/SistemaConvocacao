@@ -370,6 +370,8 @@
     <Content Include="Views\DadosConvocados\Details.cshtml" />
     <Content Include="Views\DadosConvocados\Edit.cshtml" />
     <Content Include="Views\DadosConvocados\Index.cshtml" />
+    <Content Include="Views\Convocacao\EscolherCargo.cshtml" />
+    <Content Include="Views\Convocacao\ListaConvocados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

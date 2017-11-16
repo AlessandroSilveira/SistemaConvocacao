@@ -1,0 +1,57 @@
+﻿@model SisConv.Application.ViewModels.ConvocacaoViewModel
+
+@{
+	ViewBag.Title = "Lista de Candidatos";
+}
+
+<h2>@ViewBag.DadosConvocacao.Nome</h2>
+<table class="table">
+	<tr>
+		<th>
+			Inscrição
+		</th>
+		<th>
+			Nome
+		</th>
+		<th>
+			Cpf
+		</th>
+		<th>
+			Pontuacao
+		</th>
+		<th>
+			Posição
+		</th>
+		<th>
+			Resultado
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in ViewBag.ListaCandidatos) {
+		<tr>
+			<td>
+				@item.Inscricao;
+			</td>
+			<td>
+				@item.Nome;
+			</td>
+			<td>
+				@item.Cpf;
+			</td>
+			<td>
+				@item.Pontuacao;
+			</td>
+			<td>
+				@item.Posicao;
+			</td>
+			<td>
+				@item.Resultado;
+			</td>
+			<td></td>
+		</tr>
+	}
+
+</table>
+
+
