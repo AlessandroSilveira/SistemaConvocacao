@@ -5,6 +5,9 @@
 }
 
 <h2>@ViewBag.DadosConvocacao.Nome</h2>
+<h3>
+	@ViewBag.DadosCargo.Nome
+</h3>
 <table class="table">
 	<tr>
 		<th>
@@ -14,10 +17,10 @@
 			Nome
 		</th>
 		<th>
-			Cpf
+			CPF
 		</th>
 		<th>
-			Pontuacao
+			Pontuação
 		</th>
 		<th>
 			Posição
@@ -25,33 +28,32 @@
 		<th>
 			Resultado
 		</th>
-		<th></th>
+		<th>Convocar?</th>
 	</tr>
 
 	@foreach (var item in ViewBag.ListaCandidatos) {
 		<tr>
 			<td>
-				@item.Inscricao;
+				@item.Inscricao
 			</td>
 			<td>
-				@item.Nome;
+				@item.Nome.ToString().ToUpper()
 			</td>
 			<td>
-				@item.Cpf;
+				@item.Cpf
 			</td>
 			<td>
-				@item.Pontuacao;
+				@item.Pontuacao
 			</td>
 			<td>
-				@item.Posicao;
+				@item.Posicao
 			</td>
 			<td>
-				@item.Resultado;
+				@item.Resultado.ToString().ToUpper()
 			</td>
-			<td></td>
+			<td>@Html.CheckBox("Convocado",new{Value=item.ConvocadoId})</td>
 		</tr>
 	}
-
 </table>
 
 

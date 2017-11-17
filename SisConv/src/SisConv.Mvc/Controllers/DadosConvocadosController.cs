@@ -31,10 +31,12 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Create([Bind(Include = "Id,File")] DadosConvocadosViewModel dadosConvocadosViewModel)
         {
             if (!ModelState.IsValid) return View(dadosConvocadosViewModel);
+
             var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
             var arquivo = Request.Files[0];
             if (arquivo == null) return View(dadosConvocadosViewModel);
             var nomeArquivo = Path.GetFileName(arquivo.FileName);
+
             if (SalvarArquivoConvocados(out _)) 
                 _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id, string.Format("{0}{1}",pathArquivo,nomeArquivo));
 

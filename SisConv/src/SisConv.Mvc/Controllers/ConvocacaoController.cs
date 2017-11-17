@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
@@ -103,10 +104,16 @@ namespace SisConv.Mvc.Controllers
 		public ActionResult ListaConvocados(string cargo,string id)
 	    {
 		    var Cargo = Guid.Parse(cargo);
-		    var Id = Guid.Parse(id);
 
-		    ViewBag.DadosConvocacao = _convocacaoAppService.GetById(Id);
-		    ViewBag.ListaCandidatos = _convocadoAppService.Search(a => a.CargoId.Equals(Cargo));
+		    var dadosConvocadoViewModel = new ConvocadoViewModel()
+		    {
+			    CargoId = Guid.Parse(cargo),
+				ConvocacaoId = Guid.Parse(id)
+		    };
+
+		    ViewBag.DadosConvocacao = _convocacaoAppService.GetById(dadosConvocadoViewModel.ConvocacaoId);
+			ViewBag.ListaCandidatos = _convocadoAppService.Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId) ).OrderBy(a=>a.Posicao);
+		    ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
 			return View();
 	    }
 
