@@ -30,8 +30,8 @@ namespace SisConv.Domain.Entities
         public string Cep { get; set; }
         public string Cargo { get; set; }
         public Guid CargoId { get; set; }
-        public string Pontuacao { get; set; }
-        public string Posicao { get; set; }
+        public int Pontuacao { get; set; }
+        public int Posicao { get; set; }
         public string Resultado { get; set; }
     }
 }

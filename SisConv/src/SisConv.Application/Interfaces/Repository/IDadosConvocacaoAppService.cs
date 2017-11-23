@@ -15,5 +15,6 @@ namespace SisConv.Application.Interfaces.Repository
         void Remove(Guid id);
         IEnumerable<DadosConvocadosViewModel> Search(Expression<Func<Convocado, bool>> predicate);
         void SalvarCandidatos(Guid id, string file);
+	    void SalvarCargos(Guid id, string format);
     }
 }

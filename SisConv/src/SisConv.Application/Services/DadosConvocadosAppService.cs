@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.OleDb;
-using System.Linq;
 using System.Linq.Expressions;
 using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
@@ -13,7 +10,7 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-    public class DadosConvocadosAppService : ApplicationService, IDadosConvocacaoAppService
+	public class DadosConvocadosAppService : ApplicationService, IDadosConvocacaoAppService
     {
         private readonly IDadosConvocadosService _dadosConvocadosService;
 
@@ -72,5 +69,12 @@ namespace SisConv.Application.Services
 			_dadosConvocadosService.SalvarCandidatos(id,file);
 			Commit();
         }
+
+	    public void SalvarCargos(Guid id, string file)
+	    {
+		    BeginTransaction();
+			_dadosConvocadosService.SalvarCargos(id,file);
+		    Commit();
+		}
     }
 }

@@ -12,12 +12,14 @@ namespace SisConv.Domain.Services
 {
 	public class DadosConvocadosService : IDadosConvocadosService
 	{
-
 		private readonly IDadosConvocadosRepository _dadosConvocadosRepository;
+		private readonly ICargoRepository _cargoRepository;
+		
 
-		public DadosConvocadosService(IDadosConvocadosRepository dadosConvocadosRepository)
+		public DadosConvocadosService(IDadosConvocadosRepository dadosConvocadosRepository, ICargoRepository cargoRepository)
 		{
 			_dadosConvocadosRepository = dadosConvocadosRepository;
+			_cargoRepository = cargoRepository;
 		}
 
 		public Convocado Add(Convocado obj)
@@ -50,14 +52,8 @@ namespace SisConv.Domain.Services
 			return _dadosConvocadosRepository.Search(predicate);
 		}
 
-		public void SalvarCandidatos(Convocado map)
-		{
-			throw new NotImplementedException();
-		}
-
 		public void SalvarCandidatos(Guid id, string file)
 		{
-
 			DataSet ds;
 			var conexao = ConexaoComAPlanilhaExcel(file, out var command, out var adapter, out ds);
 
@@ -65,7 +61,25 @@ namespace SisConv.Domain.Services
 			{
 				ObtemDadosDaPlanilhaExcel(id, conexao, adapter, ds, command);
 			}
-			catch (Exception ex)
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
+			finally
+			{
+				conexao.Close();
+			}
+		}
+
+		public void SalvarCargos(Guid id, string file)
+		{
+			var conexao = ConexaoComAPlanilhaExcel(file, out var command, out var adapter, out var ds);
+
+			try
+			{
+				ObterListaCargos(id, conexao, adapter, ds, command);
+			}
+			catch (Exception)
 			{
 				// return RedirectToAction("EmailCandidatosViaExcel", "EnvioEmails", new { @msg = ex.Message });
 			}
@@ -75,12 +89,63 @@ namespace SisConv.Domain.Services
 			}
 		}
 
-		private void ObtemDadosDaPlanilhaExcel(Guid id, OleDbConnection conexao, OleDbDataAdapter adapter, DataSet ds,
-		   OleDbCommand command)
+		private void ObterListaCargos(Guid id, OleDbConnection conexao, OleDbDataAdapter adapter, DataSet ds,
+			OleDbCommand command)
 		{
 			conexao.Open();
 			adapter.Fill(ds);
-			using (var dr = command.ExecuteReader())
+			using (command.ExecuteReader())
+			{
+				var listaCargos = ObterTodosOsCargosDoExcel(ds, out var listaCargo);
+				PreencheAListaDeCargosParaSalvarNoBanco(id, listaCargos, listaCargo);
+
+				SalvarCargos(listaCargo);
+			}
+		}
+
+		private void SalvarCargos(IEnumerable<Cargo> listaCargo)
+		{
+			foreach (var itens in listaCargo)
+				_cargoRepository.Add(itens);
+		}
+
+		private static void PreencheAListaDeCargosParaSalvarNoBanco(Guid id, List<Cargo> listaCargos, List<Cargo> listaCargo)
+		{
+			foreach (var itens in listaCargos)
+			{
+				var itemcargo = itens.Nome.Split('-');
+				var codigo = itemcargo[0].Trim();
+				var nome = itemcargo[1].Trim();
+
+				if (!listaCargo.Any(a => a.CodigoCargo.Equals(codigo)))
+					listaCargo.Add(new Cargo
+					{
+						Ativo = true,
+						CargoId = Guid.NewGuid(),
+						CodigoCargo = codigo,
+						ConvocacaoId = id,
+						Nome = nome
+					});
+			}
+		}
+
+		private static List<Cargo> ObterTodosOsCargosDoExcel(DataSet ds, out List<Cargo> listaCargo)
+		{
+			var listaCargos = ds.Tables[0].AsEnumerable()
+				.Select(row => new Cargo
+				{
+					Nome = row.Field<string>(17) == null ? "-" : row.Field<string>(17).ToString()
+				}).ToList();
+			listaCargo = new List<Cargo>();
+			return listaCargos;
+		}
+
+		private void ObtemDadosDaPlanilhaExcel(Guid id, IDbConnection conexao, IDataAdapter adapter, DataSet ds,
+			OleDbCommand command)
+		{
+			conexao.Open();
+			adapter.Fill(ds);
+			using (command.ExecuteReader())
 			{
 				var listaCandidatos = ds.Tables[0].AsEnumerable()
 					.Select(row => new Convocado
@@ -104,12 +169,13 @@ namespace SisConv.Domain.Services
 						Cep = row.Field<string>(16) == null ? "-" : row.Field<string>(16).ToString(),
 						Cargo = row.Field<string>(17) == null ? "-" : row.Field<string>(17).ToString(),
 						CargoId = Guid.NewGuid(),
-						Pontuacao = row.Field<string>(18).ToString(),
-						Posicao = row.Field<string>(19).ToString(),
+						Pontuacao = Convert.ToInt32(row.Field<string>(18)) ,
+						Posicao = Convert.ToInt32(row.Field<string>(19)),
 						Resultado = row.Field<string>(20) == null ? "-" : row.Field<string>(20).ToString(),
 						ConvocadoId = Guid.NewGuid(),
 						ConvocacaoId = id
 					}).ToList();
+
 				InsereDadosExcelNoBanco(listaCandidatos);
 			}
 		}
@@ -118,22 +184,35 @@ namespace SisConv.Domain.Services
 		{
 			foreach (var dados in listaCandidatos)
 			{
+				FormataCpf(dados);
+
+				FormataCelular(dados);
+
+				FormataTelefone(dados);
+
+				var itemCargo = dados.Cargo.Split('-');
+
+				string Codigo = itemCargo[0].ToString().Trim();
+
+				var dadosCargo = _cargoRepository.Search(a =>
+					a.ConvocacaoId.Equals(dados.ConvocacaoId) && a.CodigoCargo.Equals(Codigo));
+
+				foreach (var cargo in dadosCargo)
+				{
+					dados.CargoId = cargo.CargoId;
+					break;
+				}
+
 				try
 				{
-					FormataCpf(dados);
-
-					FormataCelular(dados);
-
-					FormataTelefone(dados);
-
-
 					Add(dados);
-
 				}
 				catch (Exception e)
 				{
-
+					Console.WriteLine(e);
+					throw;
 				}
+				
 			}
 		}
 
@@ -141,7 +220,7 @@ namespace SisConv.Domain.Services
 			out OleDbDataAdapter adapter, out DataSet ds)
 		{
 			var conexao = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + file +
-											  ";Extended Properties='Excel 12.0 Xml;HDR=YES';");
+			                                  ";Extended Properties='Excel 12.0 Xml;HDR=YES';");
 			command = new OleDbCommand("select * from [Dados-Classificados-Conc-6$]", conexao);
 			adapter = new OleDbDataAdapter(command);
 			ds = new DataSet();
@@ -165,7 +244,6 @@ namespace SisConv.Domain.Services
 			if (dados.Cpf.Length < 11)
 				dados.Cpf = dados.Cpf.PadLeft(11, '0');
 		}
-
 
 		public int SaveChanges()
 		{
