@@ -1,4 +1,5 @@
-﻿@model IEnumerable<SisConv.Application.ViewModels.ConvocacaoViewModel>
+﻿@using System.Web.Mvc.Html
+@model IEnumerable<SisConv.Application.ViewModels.ConvocacaoViewModel>
 
 @{
     ViewBag.Title = "Convocações";
@@ -25,9 +26,9 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nome)
-        </td>
+		<td>
+			 @Html.ActionLink(item.Nome,"EscolherCargo", "Convocacao", new { id = item.ConvocacaoId },null) 
+		</td>
         <td>
             @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>

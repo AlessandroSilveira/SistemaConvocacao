@@ -1,21 +1,23 @@
 ﻿using System;
-using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Infra.Data.Context;
 
 namespace SisConv.Mvc.Controllers
 {
     public class ConvocacaoController : Controller
     {
         private readonly IConvocacaoAppService _convocacaoAppService;
+	    private readonly ICargoAppService _cargoAppService;
+	    private readonly IConvocadoAppService _convocadoAppService;
 
-        public ConvocacaoController(IConvocacaoAppService convocacaoAppService)
+        public ConvocacaoController(IConvocacaoAppService convocacaoAppService, ICargoAppService cargoAppService, IConvocadoAppService convocadoAppService)
         {
-            _convocacaoAppService = convocacaoAppService;
+	        _convocacaoAppService = convocacaoAppService;
+	        _cargoAppService = cargoAppService;
+	        _convocadoAppService = convocadoAppService;
         }
 
         // GET: Convocacao
@@ -87,14 +89,40 @@ namespace SisConv.Mvc.Controllers
             return RedirectToAction("Index");
         }
 
-        protected override void Dispose(bool disposing)
+
+	    public ActionResult EscolherCargo(Guid id)
+	    {
+		    ViewBag.DadosConvocacao = _convocacaoAppService.GetById(id);
+		    ViewBag.Cargos = _cargoAppService.Search(a => a.ConvocacaoId.Equals(id)) ;
+		    ViewBag.Id = id;
+		    return View();
+	    }
+
+
+	    [HttpPost]
+
+		public ActionResult ListaConvocados(string cargo,string id)
+	    {
+		    var Cargo = Guid.Parse(cargo);
+
+		    var dadosConvocadoViewModel = new ConvocadoViewModel()
+		    {
+			    CargoId = Guid.Parse(cargo),
+				ConvocacaoId = Guid.Parse(id)
+		    };
+
+		    ViewBag.DadosConvocacao = _convocacaoAppService.GetById(dadosConvocadoViewModel.ConvocacaoId);
+			ViewBag.ListaCandidatos = _convocadoAppService.Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId) ).OrderBy(a=>a.Posicao);
+		    ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
+			return View();
+	    }
+
+		protected override void Dispose(bool disposing)
         {
             if (disposing)
                 _convocacaoAppService.Dispose();
             
             base.Dispose(disposing);
         }
-
-       
     }
 }

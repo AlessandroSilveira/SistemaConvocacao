@@ -17,8 +17,8 @@ namespace SisConv.Application.ViewModels
         public string Inscricao { get; set; }
         public string Nome { get; set; }
         public string Mae { get; set; }
-        public bool Sexo { get; set; }
-        public DateTime Nascimento { get; set; }
+        public string Sexo { get; set; }
+        public string Nascimento { get; set; }
         public string Documento { get; set; }
         public string Cpf { get; set; }
         public string Email { get; set; }
@@ -33,8 +33,8 @@ namespace SisConv.Application.ViewModels
         public string Cep { get; set; }
         public string Cargo { get; set; }
         public Guid CargoId { get; set; }
-        public int Pontuacao { get; set; }
-        public int Posicao { get; set; }
+        public string Pontuacao { get; set; }
+        public string Posicao { get; set; }
         public string Resultado { get; set; }
     }
 }
