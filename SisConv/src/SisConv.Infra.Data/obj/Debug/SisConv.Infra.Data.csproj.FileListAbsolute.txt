@@ -1,26 +1,3 @@
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll.config
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._29102017.resources
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._06112017.resources
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._14112017.resources
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._15112016.resources
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
@@ -45,3 +22,23 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._23112017.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Application.dll.config
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\AutoMapper.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._23112017_3.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.Cache
