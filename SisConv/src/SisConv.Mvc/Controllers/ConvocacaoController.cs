@@ -93,7 +93,7 @@ namespace SisConv.Mvc.Controllers
 	    public ActionResult EscolherCargo(Guid id)
 	    {
 		    ViewBag.DadosConvocacao = _convocacaoAppService.GetById(id);
-		    ViewBag.Cargos = _cargoAppService.Search(a => a.ConvocacaoId.Equals(id)) ;
+		    ViewBag.Cargos = _cargoAppService.Search(a => a.ConvocacaoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(a=>a.CodigoCargo)  ;
 		    ViewBag.Id = id;
 		    return View();
 	    }

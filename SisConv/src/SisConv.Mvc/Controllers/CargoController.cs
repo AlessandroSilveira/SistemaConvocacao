@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
@@ -19,7 +20,7 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Index(Guid id)
         {
             ViewBag.id = id;
-            return View(_cargoAppService.GetAll());
+            return View(_cargoAppService.GetAll().OrderBy(a=>a.CodigoCargo));
         }
 
         // GET: Cargo/Details/5

@@ -7,23 +7,30 @@
 @using (Html.BeginForm("ListaConvocados", "Convocacao", FormMethod.Post, new { @id = "form" }))
 {
 
-	<div class="form-group">
-		<div class="col-md-offset-1 col-md-10">
-			Escolha um cargo:
-			<select name="cargo" class="form-control">
-				<option>Selecione</option>
-				@foreach (var itens in ViewBag.Cargos)
-				{
-					<option value="@itens.CargoId">@itens.Nome</option>
-				}
-			</select>
-		</div>
-	</div>
-	<div class="form-group">
-		<div class="col-md-offset-1 col-md-10">
-			<input type="submit" value="Salvar" class="btn btn-default" />
-		</div>
-	</div>
-	<input type="hidden" name="Id" value="@ViewBag.Id" />
+    <table class="table">
+        <tr>
+            <th>
+                Escolha um Cargo:
+            </th>
+            <th>
+                <select name="cargo" class="form-control">
+                    <option>Selecione</option>
+                    @foreach (var itens in ViewBag.Cargos)
+                    {
+                        <option value="@itens.CargoId">@itens.Nome</option>
+                    }
+                </select>
+                <input type="submit" value="Buscar" class="btn btn-default" />
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="hidden" name="Id" value="@ViewBag.Id" />
+                
+            </td>
+        </tr>
+    </table>
+
+	
 
 }
