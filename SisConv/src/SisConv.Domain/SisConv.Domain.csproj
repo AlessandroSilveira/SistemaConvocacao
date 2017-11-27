@@ -47,6 +47,7 @@
     <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Convocacao.cs" />
+    <Compile Include="Entities\Processo.cs" />
     <Compile Include="Entities\Convocado.cs" />
     <Compile Include="Entities\DadosConvocados.cs" />
     <Compile Include="Entities\PrimeiroAcesso.cs" />
@@ -60,6 +61,7 @@
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IProcessoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocadoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDadosConvocadosRepository.cs" />
     <Compile Include="Interfaces\Repositories\IPessoaRepository.cs" />
@@ -73,6 +75,7 @@
     <Compile Include="Interfaces\Services\ICargoService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
+    <Compile Include="Interfaces\Services\IProcessoService.cs" />
     <Compile Include="Interfaces\Services\IConvocadoService.cs" />
     <Compile Include="Interfaces\Services\IDadosConvocadosService.cs" />
     <Compile Include="Interfaces\Services\IPessoaService.cs" />
@@ -85,6 +88,7 @@
     <Compile Include="Services\CargoService.cs" />
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
+    <Compile Include="Services\ProcessoService.cs" />
     <Compile Include="Services\ConvocadoService.cs" />
     <Compile Include="Services\DadosConvocadosService.cs" />
     <Compile Include="Services\PessoaService.cs" />

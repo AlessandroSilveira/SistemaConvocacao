@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace SisConv.Domain.Entities
 {
@@ -10,14 +9,14 @@ namespace SisConv.Domain.Entities
             ConvocacaoId = Guid.NewGuid();
         }
 
-        public Guid ConvocacaoId { get; set; }
-        public Guid ClienteId { get; set; }
-        public string Nome { get; set; }
-        public DateTime DataCriacao { get; set; }
+        public Guid ConvocacaoId  { get; set; }
+        public Guid ProcessoId { get; set; }
+        public Guid PessoaId { get; set; }
+        public DateTime DataEntregaDocumentos { get; set; }
+        public string HorarioEntregaDocumento { get; set; }
+        public string  EnderecoEntregaDocumento { get; set; }
+        public bool EnviouEmail { get; set; }
+        public bool Desistente { get; set; }
         public bool Ativo { get; set; }
-
-        public virtual Cliente Cliente { get; set; }
-
-        public virtual ICollection<Cargo> Cargos { get; set; } = new List<Cargo>();
     }
 }

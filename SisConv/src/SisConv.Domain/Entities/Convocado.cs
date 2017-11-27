@@ -10,7 +10,7 @@ namespace SisConv.Domain.Entities
         }
 
         public Guid ConvocadoId { get; set; }
-        public Guid ConvocacaoId { get; set; }
+        public Guid ProcessoId { get; set; }
         public string Inscricao { get; set; }
         public string Nome { get; set; }
         public string  Mae { get; set; }

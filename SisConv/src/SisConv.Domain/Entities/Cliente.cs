@@ -20,6 +20,6 @@ namespace SisConv.Domain.Entities
 		public string Password { get; set; }
         public string ConfirmPassword { get; set; }
 
-        public virtual ICollection<Convocacao> Convocacoes { get; set; } = new List<Convocacao>();
+        public virtual ICollection<Processo> Convocacoes { get; set; } = new List<Processo>();
     }
 }

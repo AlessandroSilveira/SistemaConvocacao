@@ -26,9 +26,9 @@ namespace SisConv.Application.Services
 
         public ConvocacaoViewModel Add(ConvocacaoViewModel obj)
         {
-            var admin = Mapper.Map<ConvocacaoViewModel, Convocacao>(obj);
+            var convocacao = Mapper.Map<ConvocacaoViewModel, Convocacao>(obj);
             BeginTransaction();
-            _convocacaoService.Add(admin);
+            _convocacaoService.Add(convocacao);
             Commit();
             return obj;
         }
@@ -40,7 +40,7 @@ namespace SisConv.Application.Services
 
         public IEnumerable<ConvocacaoViewModel> GetAll()
         {
-            return Mapper.Map<IEnumerable<Convocacao>,IEnumerable<ConvocacaoViewModel> >(_convocacaoService.GetAll());
+            return Mapper.Map<IEnumerable<Convocacao>, IEnumerable<ConvocacaoViewModel>>(_convocacaoService.GetAll());
         }
 
         public ConvocacaoViewModel Update(ConvocacaoViewModel obj)
@@ -60,7 +60,8 @@ namespace SisConv.Application.Services
 
         public IEnumerable<ConvocacaoViewModel> Search(Expression<Func<Convocacao, bool>> predicate)
         {
-            return Mapper.Map<IEnumerable<Convocacao>, IEnumerable<ConvocacaoViewModel>>(_convocacaoService.Search(predicate));
+            return Mapper.Map<IEnumerable<Convocacao>, IEnumerable<ConvocacaoViewModel>>(
+                _convocacaoService.Search(predicate));
         }
     }
 }

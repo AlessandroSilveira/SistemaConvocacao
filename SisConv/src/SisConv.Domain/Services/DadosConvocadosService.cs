@@ -123,7 +123,7 @@ namespace SisConv.Domain.Services
 						Ativo = true,
 						CargoId = Guid.NewGuid(),
 						CodigoCargo = codigo,
-						ConvocacaoId = id,
+						ProcessoId = id,
 						Nome = nome
 					});
 			}
@@ -173,7 +173,7 @@ namespace SisConv.Domain.Services
 						Posicao = Convert.ToInt32(row.Field<string>(19)),
 						Resultado = row.Field<string>(20) == null ? "-" : row.Field<string>(20).ToString(),
 						ConvocadoId = Guid.NewGuid(),
-						ConvocacaoId = id
+						ProcessoId = id
 					}).ToList();
 
 				InsereDadosExcelNoBanco(listaCandidatos);
@@ -195,7 +195,7 @@ namespace SisConv.Domain.Services
 				string Codigo = itemCargo[0].ToString().Trim();
 
 				var dadosCargo = _cargoRepository.Search(a =>
-					a.ConvocacaoId.Equals(dados.ConvocacaoId) && a.CodigoCargo.Equals(Codigo));
+					a.ProcessoId.Equals(dados.ProcessoId) && a.CodigoCargo.Equals(Codigo));
 
 				foreach (var cargo in dadosCargo)
 				{

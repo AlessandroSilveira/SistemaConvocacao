@@ -1,0 +1,48 @@
+﻿@using System.Web.Mvc.Html
+@model IEnumerable<SisConv.Application.ViewModels.ProcessoViewModel>
+
+@{
+    ViewBag.Title = "Convocações";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+    @Html.ActionLink("Nova Convocação", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataCriacao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+		<td>
+			 @Html.ActionLink(item.Nome,"EscolherCargo", "Convocacao", new { id = item.ProcessoId },null) 
+		</td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataCriacao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new {id = item.ProcessoId }) |
+            @Html.ActionLink("Detalhes", "Details", new {id = item.ProcessoId }) |
+            @Html.ActionLink("Cargos", "Index","Cargo", new {id = item.ProcessoId },null) |
+            @Html.ActionLink("Carregar Convocados desta Convocação","Create", "DadosConvocados", new {id = item.ProcessoId },null) |
+            @Html.ActionLink("Excluír", "Delete", new {id = item.ProcessoId })
+        </td>
+    </tr>
+}
+
+</table>

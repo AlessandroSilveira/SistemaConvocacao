@@ -10,10 +10,10 @@ namespace SisConv.Domain.Entities
         }
 
         public Guid CargoId { get; set; }
-        public Guid ConvocacaoId { get; set; }
+        public Guid ProcessoId { get; set; }
         public string Nome { get; set; }
         public string CodigoCargo { get; set; }
         public bool Ativo { get; set; }
-        public virtual Convocacao Convocacao { get; set; }
+        public virtual Processo Processo { get; set; }
     }
 }

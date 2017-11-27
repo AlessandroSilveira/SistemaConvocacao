@@ -12,8 +12,8 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.ConvocadoId)
                 .HasColumnName("ConvocadoId");
 
-            Property(c => c.ConvocacaoId)
-                .HasColumnName("ConvocacaoId");
+            Property(c => c.ProcessoId)
+                .HasColumnName("ProcessoId");
 
             Property(c => c.Nome)
                 .IsRequired()

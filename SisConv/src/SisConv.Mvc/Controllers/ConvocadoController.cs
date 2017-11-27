@@ -22,7 +22,7 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Index(Guid id)
         {
 	        ViewBag.Id = id;
-	        var dados = _convocadoAppService.Search(a => a.ConvocacaoId.Equals(id));
+	        var dados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id));
 	        return RedirectToAction(dados.Any() ? "Index" : "Create");
 	       
         }

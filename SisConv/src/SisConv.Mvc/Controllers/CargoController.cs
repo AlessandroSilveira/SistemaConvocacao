@@ -24,9 +24,9 @@ namespace SisConv.Mvc.Controllers
         }
 
         // GET: Cargo/Details/5
-        public ActionResult Details(Guid? id, Guid ConvocacaoId)
+        public ActionResult Details(Guid? id, Guid ProcessoId)
         {
-	        ViewBag.Id = ConvocacaoId;
+	        ViewBag.Id = ProcessoId;
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cargoViewModel = _cargoAppService.GetById(Guid.Parse(id.ToString()));
             return cargoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(cargoViewModel);
@@ -49,7 +49,7 @@ namespace SisConv.Mvc.Controllers
             if (!ModelState.IsValid) return View(cargoViewModel);
             cargoViewModel.CargoId = Guid.NewGuid();
             _cargoAppService.Add(cargoViewModel);
-            return RedirectToAction("Index",new{@Id= cargoViewModel.ConvocacaoId});
+            return RedirectToAction("Index",new{@Id= cargoViewModel.ProcessoId });
         }
 
         // GET: Cargo/Edit/5
@@ -69,13 +69,13 @@ namespace SisConv.Mvc.Controllers
         {
             if (!ModelState.IsValid) return View(cargoViewModel);
             _cargoAppService.Update(cargoViewModel);
-            return RedirectToAction("Index",new{@Id= cargoViewModel.ConvocacaoId });
+            return RedirectToAction("Index",new{@Id= cargoViewModel.ProcessoId });
         }
 
         // GET: Cargo/Delete/5
-        public ActionResult Delete(Guid? id, Guid ConvocacaoId)
+        public ActionResult Delete(Guid? id, Guid ProcessoId)
         {
-	        ViewBag.Id = ConvocacaoId;
+	        ViewBag.Id = ProcessoId;
 
 			if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cargoViewModel = _cargoAppService.GetById(Guid.Parse(id.ToString()));

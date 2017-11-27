@@ -7,7 +7,7 @@ namespace SisConv.Application.ViewModels
     {
         [Key]
         public Guid CargoId { get; set; }
-        public Guid ConvocacaoId { get; set; }
+        public Guid ProcessoId { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Preencher o campo Nome")]
         [Display(Name = "Nome")]

@@ -9,3 +9,4 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Deb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojResolveAssemblyReference.cache

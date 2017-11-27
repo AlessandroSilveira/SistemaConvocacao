@@ -11,18 +11,30 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.ConvocacaoId)
                 .HasColumnName("ConvocacaoId");
+            
+            Property(c => c.ProcessoId)
+                .IsRequired();
 
-            Property(c => c.Nome)
-                .IsRequired()
-                .HasMaxLength(100);
-
-            Property(c => c.ClienteId)
+            Property(c => c.PessoaId)
                 .IsRequired();
 
             Property(c => c.Ativo)
                 .IsRequired();
 
-            Property(c => c.DataCriacao)
+            Property(c => c.DataEntregaDocumentos)
+                .IsRequired();
+
+            Property(c => c.HorarioEntregaDocumento)
+                .IsRequired();
+
+            Property(c => c.EnderecoEntregaDocumento)
+                .HasMaxLength(150)
+                .IsRequired();
+
+            Property(c => c.EnviouEmail)
+                .IsRequired();
+
+            Property(c => c.Desistente)
                 .IsRequired();
 
             ToTable("Convocacoes");

@@ -1,0 +1,154 @@
+﻿@model SisConv.Application.ViewModels.ProcessoViewModel
+
+@{
+	ViewBag.Title = "Lista de Candidatos";
+}
+
+
+<h2>@ViewBag.DadosConvocacao.Nome</h2>
+<h3>
+	@ViewBag.DadosCargo.Nome
+</h3>
+    <table class="table">
+        <tr>
+            <th>
+                Inscrição
+            </th>
+            <th>
+                Nome
+            </th>
+            <th>
+                CPF
+            </th>
+            <th>
+                Pontuação
+            </th>
+            <th>
+                Posição
+            </th>
+            <th>
+                Resultado
+            </th>
+            <th>Convocar?</th>
+        </tr>
+
+        @foreach (var item in ViewBag.ListaCandidatos) {
+            <tr>
+                <td>
+                    @item.Inscricao
+                </td>
+                <td>
+                    @item.Nome.ToString().ToUpper()
+                </td>
+                <td>
+                    @item.Cpf
+                </td>
+                <td>
+                    @item.Pontuacao
+                </td>
+                <td>
+                    @item.Posicao
+                </td>
+                <td>
+                    @item.Resultado.ToString().ToUpper()
+                </td>
+                <td>@Html.CheckBox("Convocado",new{Value=item.ConvocadoId})</td>
+            </tr>
+        }
+        <tr>
+            <td colspan="7" align="center">
+                <input type="submit" value="Enviar Candidatos Selecionados" />
+                <input type="button" value="Voltar" />
+
+            </td>
+        </tr>
+
+    </table>
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+            @using (Html.BeginForm("SalvarTopicoAtribuido", "TopicoAtribuido", FormMethod.Post, new { form = "form" }))
+            {
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Atribuição de Novo Item de Prova - Disciplinas Escolhidas</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h5 class="modal-title">As seguintes dsiciplinas foram escolhidas para atribuição</h5>
+                        <br />
+                        <span id="disc"></span>
+                        @Html.Hidden("CandidatosSelecionados")
+                        <br />
+                        <h5 class="modal-title">Preencha os dados abaixo para seguir com a convocação:</h5>
+                        <br />
+                        <form class="form-horizontal">
+                            <fieldset>
+                                <div class="form-group">
+                                    <label for="inputProjeto" class="col-lg-3 control-label">Projeto</label>
+                                    <div class="col-lg-10">
+                                        @*@Html.DropDownList("ProjetoId", (IEnumerable<SelectListItem>)ViewBag.ProjetoId, "Selecione", new { @class = "form-control" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputMestre" class="col-lg-3 control-label">Mestre</label>
+                                    <div class="col-lg-10">
+                                        @*@Html.DropDownList("MestreId", (IEnumerable<SelectListItem>)ViewBag.MestreId, "Selecione", new { @class = "form-control" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputArea" class="col-lg-3 control-label">Área</label>
+                                    <div class="col-lg-10">
+                                        @*@Html.DropDownList("AreaId", (IEnumerable<SelectListItem>)ViewBag.AreaId, "Selecione", new { @class = "form-control" })*@
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputValor" class="col-lg-3 control-label">Valor</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputValor" name="inputValor" placeholder="Valor">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputData" class="col-lg-3 control-label">Data de Entrega</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputData" name="inputData" placeholder="Data de Entrega">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNumQuestao" class="col-lg-3 control-label">Núm de Questões </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputNumQuestao" name="inputNumQuestao" placeholder="Núm de Questões">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputNumRespostas" class="col-lg-3 control-label">Núm de Respostas </label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputNumRespostas" name="inputNumRespostas" placeholder="Núm de Respostas">
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="Nivel" class="col-lg-3 control-label">Nível</label>
+                                    <div class="col-lg-10">
+                                        @Html.DropDownList("Nivel", null, new { @class = "form-control" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="inputObservacoes" class="col-lg-3 control-label">Observações</label>
+                                    <div class="col-lg-10">
+                                        <input type="text" class="form-control" id="inputObservacoes" name="inputObservacoes" placeholder="Observações">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="Submit" class="btn btn-primary">Salvar</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </div>
+                
+            }
+        </div>
+    </div>
+
+

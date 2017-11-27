@@ -216,11 +216,11 @@
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
-    <Compile Include="Controllers\ConvocacaoController.cs" />
     <Compile Include="Controllers\ConvocadoController.cs" />
     <Compile Include="Controllers\DadosConvocadosController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\ProcessosController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -333,11 +333,6 @@
     <Content Include="Views\UserAdmin\Edit.cshtml" />
     <Content Include="Views\UserAdmin\Index.cshtml" />
     <Content Include="Views\Account\DisplayEmail.cshtml" />
-    <Content Include="Views\Admin\Index.cshtml" />
-    <Content Include="Views\Admin\Details.cshtml" />
-    <Content Include="Views\Admin\Create.cshtml" />
-    <Content Include="Views\Admin\Edit.cshtml" />
-    <Content Include="Views\Admin\Delete.cshtml" />
     <Content Include="Views\Account\PrimeiroAcesso.cshtml" />
     <Content Include="Views\Shared\_LayoutPrimeiroAcesso.cshtml" />
     <Content Include="Views\RolesAdmin\Create.cshtml" />
@@ -350,11 +345,6 @@
     <Content Include="Views\Cliente\Details.cshtml" />
     <Content Include="Views\Cliente\Edit.cshtml" />
     <Content Include="Views\Cliente\Index.cshtml" />
-    <Content Include="Views\Convocacao\Create.cshtml" />
-    <Content Include="Views\Convocacao\Delete.cshtml" />
-    <Content Include="Views\Convocacao\Details.cshtml" />
-    <Content Include="Views\Convocacao\Edit.cshtml" />
-    <Content Include="Views\Convocacao\Index.cshtml" />
     <Content Include="Views\Cargo\Create.cshtml" />
     <Content Include="Views\Cargo\Delete.cshtml" />
     <Content Include="Views\Cargo\Details.cshtml" />
@@ -370,8 +360,13 @@
     <Content Include="Views\DadosConvocados\Details.cshtml" />
     <Content Include="Views\DadosConvocados\Edit.cshtml" />
     <Content Include="Views\DadosConvocados\Index.cshtml" />
-    <Content Include="Views\Convocacao\EscolherCargo.cshtml" />
-    <Content Include="Views\Convocacao\ListaConvocados.cshtml" />
+    <Content Include="Views\Processos\Create.cshtml" />
+    <Content Include="Views\Processos\Delete.cshtml" />
+    <Content Include="Views\Processos\Details.cshtml" />
+    <Content Include="Views\Processos\Edit.cshtml" />
+    <Content Include="Views\Processos\Index.cshtml" />
+    <Content Include="Views\Processos\EscolherCargo.cshtml" />
+    <Content Include="Views\Processos\ListaConvocados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

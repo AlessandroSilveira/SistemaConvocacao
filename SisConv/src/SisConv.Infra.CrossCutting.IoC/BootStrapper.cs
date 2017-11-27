@@ -30,10 +30,12 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IUsuarioAppService, UsuarioAppService>(Lifestyle.Scoped);
             container.Register<IPrimeiroAcessoAppService, PrimeiroAcessoAppService>(Lifestyle.Scoped);
             container.Register<IAdminAppService, AdminAppService>(Lifestyle.Scoped);
-            container.Register<IConvocacaoAppService, ConvocacaoAppService>(Lifestyle.Scoped);
+            container.Register<IProcessoAppService, ProcessoAppService>(Lifestyle.Scoped);
             container.Register<ICargoAppService, CargoAppService>(Lifestyle.Scoped);
             container.Register<IConvocadoAppService, ConvocadoAppService>(Lifestyle.Scoped);
             container.Register<IDadosConvocacaoAppService, DadosConvocadosAppService>(Lifestyle.Scoped);
+            container.Register<IConvocacaoAppService, ConvocacaoAppService>(Lifestyle.Scoped);
+           
 
             //Domain
             container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
@@ -43,10 +45,13 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<ITelefoneService, TelefoneService>(Lifestyle.Scoped);
             container.Register<IPrimeiroAcessoService, PrimeiroAcessoService>(Lifestyle.Scoped);
             container.Register<IAdminService, AdminService>(Lifestyle.Scoped);
-            container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
+            container.Register<IProcessoService, ProcessoService>(Lifestyle.Scoped);
             container.Register<ICargoService, CargoService>(Lifestyle.Scoped);
             container.Register<IConvocadoService, ConvocadoService>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosService, DadosConvocadosService>(Lifestyle.Scoped);
+            container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
+            
+
 
             //Infra Dados
             container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
@@ -58,10 +63,12 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IPrimeiroAcessoRepository, PrimeiroAcessoRepository>(Lifestyle.Scoped);
             container.Register<IAdminRepository, AdminRepository>(Lifestyle.Scoped);
 	        container.Register<IConversor, Conversor>(Lifestyle.Scoped);
-            container.Register<IConvocacaoRepository, ConvocacaoRepository>(Lifestyle.Scoped);
+            container.Register<IProcessoRepository, ProcessoRepository>(Lifestyle.Scoped);
             container.Register<ICargoRepository, CargoRepository>(Lifestyle.Scoped);
             container.Register<IConvocadoRepository, ConvocadoRepository>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosRepository, DadosConvocadosRepository>(Lifestyle.Scoped);
+            container.Register<IConvocacaoRepository, ConvocacaoRepository>(Lifestyle.Scoped);
+           
 
             //Context
             container.Register<SisConvContext>(Lifestyle.Scoped);

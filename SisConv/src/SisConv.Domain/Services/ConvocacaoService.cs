@@ -9,6 +9,7 @@ namespace SisConv.Domain.Services
 {
     public class ConvocacaoService : IConvocacaoService
     {
+
         private readonly IConvocacaoRepository _convocacaoRepository;
 
         public ConvocacaoService(IConvocacaoRepository convocacaoRepository)
@@ -43,7 +44,7 @@ namespace SisConv.Domain.Services
 
         public void Remove(Guid id)
         {
-            _convocacaoRepository.Remove(id);
+             _convocacaoRepository.Remove(id);
         }
 
         public IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate)

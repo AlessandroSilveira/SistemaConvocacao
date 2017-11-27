@@ -21,6 +21,7 @@ namespace SisConv.Infra.Data.Context
         public virtual DbSet<Convocacao> Convocacoes { get; set; }
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Convocado> Convocados { get; set; }
+        public virtual DbSet<Processo> Processos { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -38,9 +39,10 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new UsuarioConfiguration());
             modelBuilder.Configurations.Add(new PrimeiroAcessoConfiguration());
             modelBuilder.Configurations.Add(new AdminConfiguracao());
-            modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
+            modelBuilder.Configurations.Add(new ProcessoConfiguration());
             modelBuilder.Configurations.Add(new CargoConfiguration());
             modelBuilder.Configurations.Add(new ConvocadoConfiguration());
+            modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

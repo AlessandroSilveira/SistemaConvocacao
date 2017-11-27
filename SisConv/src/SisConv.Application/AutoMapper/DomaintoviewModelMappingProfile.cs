@@ -24,13 +24,15 @@ namespace SisConv.Application.AutoMapper
                     .ReverseMap();
                 cfg.CreateMap<PrimeiroAcessoViewModel, PrimeiroAcesso>()
                     .ReverseMap();
-                cfg.CreateMap<ConvocacaoViewModel, Convocacao>()
+                cfg.CreateMap<ProcessoViewModel, Processo>()
                     .ReverseMap();
                 cfg.CreateMap<CargoViewModel, Cargo>()
                     .ReverseMap();
                 cfg.CreateMap<ConvocadoViewModel, Convocado>()
                     .ReverseMap();
                 cfg.CreateMap<DadosConvocadosViewModel, Convocado>()
+                    .ReverseMap();
+                cfg.CreateMap<ConvocacaoViewModel, Convocacao>()
                     .ReverseMap();
             });
         }

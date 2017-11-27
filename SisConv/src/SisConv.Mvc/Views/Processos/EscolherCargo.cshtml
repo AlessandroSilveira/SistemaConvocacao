@@ -1,0 +1,36 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.ProcessoViewModel>
+@{
+	ViewBag.Title = "Escolha um cargo";
+}
+
+<h2>@ViewBag.DadosConvocacao.Nome</h2>
+@using (Html.BeginForm("ListaConvocados", "Processos", FormMethod.Post, new { @id = "form" }))
+{
+
+    <table class="table">
+        <tr>
+            <th>
+                Escolha um Cargo:
+            </th>
+            <th>
+                <select name="cargo" class="form-control">
+                    <option>Selecione</option>
+                    @foreach (var itens in ViewBag.Cargos)
+                    {
+                        <option value="@itens.CargoId">@itens.Nome</option>
+                    }
+                </select>
+                <input type="submit" value="Buscar" class="btn btn-default" />
+            </th>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <input type="hidden" name="Id" value="@ViewBag.Id" />
+                
+            </td>
+        </tr>
+    </table>
+
+	
+
+}
