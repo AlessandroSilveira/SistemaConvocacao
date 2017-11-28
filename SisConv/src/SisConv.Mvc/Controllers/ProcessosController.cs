@@ -115,6 +115,7 @@ namespace SisConv.Mvc.Controllers
             ViewBag.ListaCandidatos = _convocadoAppService
                 .Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId)).OrderBy(a => a.Posicao);
             ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
+	        ViewBag.ProcessoId = id;
             return View();
         }
 

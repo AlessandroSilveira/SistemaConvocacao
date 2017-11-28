@@ -15,20 +15,16 @@ namespace SisConv.Mvc.Controllers
 		{
 			_dadosConvocacaoAppService = dadosConvocacaoAppService;
 		}
-
-		// GET: DadosConvocados/Create
+		
 		public ActionResult Create(Guid id)
 		{
 			ViewBag.id = id;
 			return View();
 		}
-
-		// POST: DadosConvocados/Create
-		// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-		// more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create([Bind(Include = "Id,File")] DadosConvocadosViewModel dadosConvocadosViewModel)
+		public ActionResult Create( DadosConvocadosViewModel dadosConvocadosViewModel)
 		{
 			if (!ModelState.IsValid) return View(dadosConvocadosViewModel);
 
@@ -43,7 +39,7 @@ namespace SisConv.Mvc.Controllers
 			_dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id,
 				string.Format("{0}{1}", pathArquivo, nomeArquivo));
 
-			return View(dadosConvocadosViewModel);
+			return RedirectToAction("Index", "Processos");
 		}
 
 		private bool SalvarArquivoConvocados(out ActionResult view)
