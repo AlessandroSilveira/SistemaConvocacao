@@ -1,0 +1,75 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.ConvocacaoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProcessoId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PessoaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataEntregaDocumentos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HorarioEntregaDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnderecoEntregaDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EnviouEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Desistente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProcessoId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PessoaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataEntregaDocumentos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.HorarioEntregaDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnderecoEntregaDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EnviouEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Desistente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ConvocacaoId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ConvocacaoId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ConvocacaoId })
+        </td>
+    </tr>
+}
+
+</table>

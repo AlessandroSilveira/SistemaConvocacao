@@ -3,7 +3,7 @@ namespace SisConv.Infra.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class _23112017_4 : DbMigration
+    public partial class _28112017 : DbMigration
     {
         public override void Up()
         {
@@ -25,7 +25,7 @@ namespace SisConv.Infra.Data.Migrations
             
             AddColumn("dbo.Cargos", "ProcessoId", c => c.Guid(nullable: false));
             AddColumn("dbo.Convocacoes", "ProcessoId", c => c.Guid(nullable: false));
-            AddColumn("dbo.Convocacoes", "PessoaId", c => c.Guid(nullable: false));
+            AddColumn("dbo.Convocacoes", "ConvocadoId", c => c.Guid(nullable: false));
             AddColumn("dbo.Convocacoes", "DataEntregaDocumentos", c => c.DateTime(nullable: false));
             AddColumn("dbo.Convocacoes", "HorarioEntregaDocumento", c => c.String(nullable: false, maxLength: 8000, unicode: false));
             AddColumn("dbo.Convocacoes", "EnderecoEntregaDocumento", c => c.String(nullable: false, maxLength: 150, unicode: false));
@@ -57,7 +57,7 @@ namespace SisConv.Infra.Data.Migrations
             DropColumn("dbo.Convocacoes", "EnderecoEntregaDocumento");
             DropColumn("dbo.Convocacoes", "HorarioEntregaDocumento");
             DropColumn("dbo.Convocacoes", "DataEntregaDocumentos");
-            DropColumn("dbo.Convocacoes", "PessoaId");
+            DropColumn("dbo.Convocacoes", "ConvocadoId");
             DropColumn("dbo.Convocacoes", "ProcessoId");
             DropColumn("dbo.Cargos", "ProcessoId");
             DropTable("dbo.Processos");

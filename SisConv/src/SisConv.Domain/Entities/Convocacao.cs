@@ -11,7 +11,7 @@ namespace SisConv.Domain.Entities
 
         public Guid ConvocacaoId  { get; set; }
         public Guid ProcessoId { get; set; }
-        public Guid PessoaId { get; set; }
+        public Guid ConvocadoId { get; set; }
         public DateTime DataEntregaDocumentos { get; set; }
         public string HorarioEntregaDocumento { get; set; }
         public string  EnderecoEntregaDocumento { get; set; }

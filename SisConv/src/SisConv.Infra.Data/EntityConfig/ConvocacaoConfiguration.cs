@@ -15,7 +15,7 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.ProcessoId)
                 .IsRequired();
 
-            Property(c => c.PessoaId)
+            Property(c => c.ConvocadoId)
                 .IsRequired();
 
             Property(c => c.Ativo)

@@ -7,13 +7,13 @@ namespace SisConv.Infra.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class _23112017_3 : IMigrationMetadata
+    public sealed partial class _28112017 : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_23112017_3));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_28112017));
         
         string IMigrationMetadata.Id
         {
-            get { return "201711240114337_23112017_3"; }
+            get { return "201711280215188_28112017"; }
         }
         
         string IMigrationMetadata.Source

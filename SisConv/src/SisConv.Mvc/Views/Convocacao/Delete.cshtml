@@ -1,0 +1,88 @@
+﻿@model SisConv.Application.ViewModels.ConvocacaoViewModel
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ConvocacaoViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcessoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcessoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PessoaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PessoaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEntregaDocumentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntregaDocumentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorarioEntregaDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorarioEntregaDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoEntregaDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoEntregaDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnviouEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnviouEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desistente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desistente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
