@@ -1,0 +1,90 @@
+﻿@model SisConv.Application.ViewModels.ConvocacaoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ConvocacaoViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcessoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcessoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConvocadoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConvocadoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataEntregaDocumentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataEntregaDocumentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HorarioEntregaDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HorarioEntregaDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnderecoEntregaDocumento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnderecoEntregaDocumento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EnviouEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EnviouEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Desistente)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Desistente)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CandidatosSelecionados)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CandidatosSelecionados)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ConvocacaoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
