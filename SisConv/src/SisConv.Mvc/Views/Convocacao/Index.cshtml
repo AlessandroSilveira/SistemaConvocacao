@@ -15,7 +15,7 @@
             @Html.DisplayNameFor(model => model.ProcessoId)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.PessoaId)
+            @Html.DisplayNameFor(model => model.ConvocadoId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.DataEntregaDocumentos)
@@ -35,6 +35,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CandidatosSelecionados)
+        </th>
         <th></th>
     </tr>
 
@@ -44,7 +47,7 @@
             @Html.DisplayFor(modelItem => item.ProcessoId)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.PessoaId)
+            @Html.DisplayFor(modelItem => item.ConvocadoId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataEntregaDocumentos)
@@ -63,6 +66,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Ativo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CandidatosSelecionados)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConvocacaoId }) |

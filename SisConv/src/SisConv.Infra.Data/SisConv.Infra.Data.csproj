@@ -60,9 +60,13 @@
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="Migrations\201711280215188_28112017.cs" />
-    <Compile Include="Migrations\201711280215188_28112017.Designer.cs">
-      <DependentUpon>201711280215188_28112017.cs</DependentUpon>
+    <Compile Include="Migrations\201711240114337_23112017_3.cs" />
+    <Compile Include="Migrations\201711240114337_23112017_3.Designer.cs">
+      <DependentUpon>201711240114337_23112017_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201711262323577_23112017_4.cs" />
+    <Compile Include="Migrations\201711262323577_23112017_4.Designer.cs">
+      <DependentUpon>201711262323577_23112017_4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,8 +99,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711280215188_28112017.resx">
-      <DependentUpon>201711280215188_28112017.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201711240114337_23112017_3.resx">
+      <DependentUpon>201711240114337_23112017_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201711262323577_23112017_4.resx">
+      <DependentUpon>201711262323577_23112017_4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
