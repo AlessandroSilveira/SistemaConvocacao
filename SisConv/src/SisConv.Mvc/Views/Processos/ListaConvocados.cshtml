@@ -83,6 +83,7 @@
                         @Html.HiddenFor(model=>model.CandidatosSelecionados)
 	                    @Html.HiddenFor(model=>model.ProcessoId,new{Value=@ViewBag.ProcessoId})
 	                    @Html.HiddenFor(model=>model.Ativo, new {Value=true })
+                        @Html.Hidden("Cargo",new{Value=@ViewBag.DadosCargo.CargoId})
                         <h5 class="modal-title">Preencha os dados abaixo para seguir com a convocação:</h5>
                         <br />
                         <form class="form-horizontal">
