@@ -34,7 +34,7 @@ namespace SisConv.Mvc.Controllers
 		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(ConvocacaoViewModel convocacaoViewModel)
+		public ActionResult Create(ConvocacaoViewModel convocacaoViewModel, string Cargo)
 		{
 			if (!ModelState.IsValid) return View(convocacaoViewModel);
 
@@ -46,7 +46,7 @@ namespace SisConv.Mvc.Controllers
 				_convocacaoAppService.Add(convocacaoViewModel);
 			}
 
-			return RedirectToAction("Index");
+			return RedirectToAction("ListaConvocados","Processos", new{cargo = Cargo, id = convocacaoViewModel.ProcessoId});
 		}
 		
 		public ActionResult Edit(Guid? id)

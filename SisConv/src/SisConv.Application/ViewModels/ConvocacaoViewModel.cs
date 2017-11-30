@@ -5,7 +5,6 @@ namespace SisConv.Application.ViewModels
 {
     public class ConvocacaoViewModel
     {
-
 		[Key]
         public Guid ConvocacaoId { get; set; }
         public Guid ProcessoId { get; set; }
@@ -17,6 +16,5 @@ namespace SisConv.Application.ViewModels
         public bool Desistente { get; set; }
         public bool Ativo { get; set; }
 		public string CandidatosSelecionados { get; set; }
-
 	}
 }
