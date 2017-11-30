@@ -12,6 +12,7 @@ namespace SisConv.Mvc.Controllers
         private readonly IProcessoAppService _processoAppService;
         private readonly ICargoAppService _cargoAppService;
         private readonly IConvocadoAppService _convocadoAppService;
+	    private readonly IConvocacaoAppService _convocacaoAppService;
 
         public ProcessosController(IProcessoAppService processoAppService, ICargoAppService cargoAppService,
             IConvocadoAppService convocadoAppService)
@@ -110,6 +111,7 @@ namespace SisConv.Mvc.Controllers
                 CargoId = Guid.Parse(cargo),
                 ProcessoId = Guid.Parse(id)
             };
+
 
             ViewBag.DadosConvocacao = _processoAppService.GetById(dadosConvocadoViewModel.ProcessoId);
             ViewBag.ListaCandidatos = _convocadoAppService
