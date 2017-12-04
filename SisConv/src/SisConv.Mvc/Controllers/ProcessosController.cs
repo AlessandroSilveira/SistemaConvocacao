@@ -15,11 +15,12 @@ namespace SisConv.Mvc.Controllers
 	    private readonly IConvocacaoAppService _convocacaoAppService;
 
         public ProcessosController(IProcessoAppService processoAppService, ICargoAppService cargoAppService,
-            IConvocadoAppService convocadoAppService)
+            IConvocadoAppService convocadoAppService, IConvocacaoAppService convocacaoAppService)
         {
             _processoAppService = processoAppService;
             _cargoAppService = cargoAppService;
             _convocadoAppService = convocadoAppService;
+	        _convocacaoAppService = convocacaoAppService;
         }
 
         // GET: Processos
@@ -112,11 +113,14 @@ namespace SisConv.Mvc.Controllers
                 ProcessoId = Guid.Parse(id)
             };
 
+	        var convocados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(dadosConvocadoViewModel.ProcessoId));
 
-            ViewBag.DadosConvocacao = _processoAppService.GetById(dadosConvocadoViewModel.ProcessoId);
-            ViewBag.ListaCandidatos = _convocadoAppService
-                .Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId)).OrderBy(a => a.Posicao);
-            ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
+			ViewBag.DadosConvocacao = _processoAppService.GetById(dadosConvocadoViewModel.ProcessoId);
+	        ViewBag.ListaCandidatos = _convocadoAppService
+		        .Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId)).OrderBy(a => a.Posicao)
+		        .Where(a => convocados.All(p2 => p2.ConvocadoId != a.ConvocadoId));
+
+			ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
 	        ViewBag.ProcessoId = id;
             return View();
         }

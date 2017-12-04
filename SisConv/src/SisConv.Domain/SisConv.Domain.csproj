@@ -75,6 +75,7 @@
     <Compile Include="Interfaces\Services\ICargoService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
+    <Compile Include="Interfaces\Services\IEmailServices.cs" />
     <Compile Include="Interfaces\Services\IProcessoService.cs" />
     <Compile Include="Interfaces\Services\IConvocadoService.cs" />
     <Compile Include="Interfaces\Services\IDadosConvocadosService.cs" />
@@ -88,6 +89,7 @@
     <Compile Include="Services\CargoService.cs" />
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
+    <Compile Include="Services\EmailServices.cs" />
     <Compile Include="Services\ProcessoService.cs" />
     <Compile Include="Services\ConvocadoService.cs" />
     <Compile Include="Services\DadosConvocadosService.cs" />
