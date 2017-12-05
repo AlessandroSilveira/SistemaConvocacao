@@ -1,7 +1,10 @@
-﻿namespace SisConv.Domain.Interfaces.Services
+﻿using SisConv.Domain.Entities;
+using SisConv.Domain.Services;
+
+namespace SisConv.Domain.Interfaces.Services
 {
 	public interface IEmailServices
 	{
-		bool EnviarEmail();
+		EnviaEmailBuilder EnviarEmail(Convocacao convocacao, string corpoEmail);
 	}
 }

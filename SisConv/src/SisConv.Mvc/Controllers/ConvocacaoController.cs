@@ -3,16 +3,22 @@ using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Mvc.Controllers
 {
 	public class ConvocacaoController : Controller
 	{
 		private readonly IConvocacaoAppService _convocacaoAppService;
+		private readonly IEmailServices _emailServices;
+		private readonly IEnviadorEmail _enviadorEmail;
 
-		public ConvocacaoController(IConvocacaoAppService convocacaoAppService)
+
+		public ConvocacaoController(IConvocacaoAppService convocacaoAppService, IEmailServices emailServices, IEnviadorEmail enviadorEmail)
 		{
 			_convocacaoAppService = convocacaoAppService;
+			_emailServices = emailServices;
+			_enviadorEmail = enviadorEmail;
 		}
 		
 		public ActionResult Index()
@@ -43,7 +49,12 @@ namespace SisConv.Mvc.Controllers
 			foreach (var t in selecionado)
 			{
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
-				_convocacaoAppService.Add(convocacaoViewModel);
+				var salvos = _convocacaoAppService.Add(convocacaoViewModel);
+				if (!salvos.Equals(null))
+				{
+					var dadosEmail = _emailServices.EnviarEmail(salvos,"");
+					_enviadorEmail.EnviarTokenPorEmail(dadosEmail);
+				}
 			}
 
 			return RedirectToAction("ListaConvocados","Processos", new{cargo = Cargo, id = convocacaoViewModel.ProcessoId});

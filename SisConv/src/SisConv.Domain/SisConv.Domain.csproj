@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
@@ -74,8 +75,12 @@
     <Compile Include="Interfaces\Services\IAdminService.cs" />
     <Compile Include="Interfaces\Services\ICargoService.cs" />
     <Compile Include="Interfaces\Services\IClienteService.cs" />
+    <Compile Include="Interfaces\Services\IConfiguration.cs" />
     <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
+    <Compile Include="Interfaces\Services\IEmailBuilder.cs" />
+    <Compile Include="Interfaces\Services\IEmailSender.cs" />
     <Compile Include="Interfaces\Services\IEmailServices.cs" />
+    <Compile Include="Interfaces\Services\IEnviadorEmail.cs" />
     <Compile Include="Interfaces\Services\IProcessoService.cs" />
     <Compile Include="Interfaces\Services\IConvocadoService.cs" />
     <Compile Include="Interfaces\Services\IDadosConvocadosService.cs" />
@@ -88,8 +93,13 @@
     <Compile Include="Services\Base\ServiceBase.cs" />
     <Compile Include="Services\CargoService.cs" />
     <Compile Include="Services\ClienteService.cs" />
+    <Compile Include="Services\Configuration.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
+    <Compile Include="Services\Email.cs" />
+    <Compile Include="Services\EmailBuilder.cs" />
     <Compile Include="Services\EmailServices.cs" />
+    <Compile Include="Services\EnviaEmailBuilder.cs" />
+    <Compile Include="Services\EnviardorDeEmail.cs" />
     <Compile Include="Services\ProcessoService.cs" />
     <Compile Include="Services\ConvocadoService.cs" />
     <Compile Include="Services\DadosConvocadosService.cs" />

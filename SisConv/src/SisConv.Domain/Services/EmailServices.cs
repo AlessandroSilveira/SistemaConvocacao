@@ -1,10 +1,11 @@
-﻿using SisConv.Domain.Interfaces.Services;
+﻿using SisConv.Domain.Entities;
+using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Domain.Services
 {
 	public class EmailServices : IEmailServices
 	{
-		public bool EnviarEmail()
+		public EnviaEmailBuilder EnviarEmail(Convocacao convocacao, string corpoEmail)
 		{
 			throw new System.NotImplementedException();
 		}
