@@ -12,13 +12,14 @@ namespace SisConv.Mvc.Controllers
 		private readonly IConvocacaoAppService _convocacaoAppService;
 		private readonly IEmailServices _emailServices;
 		private readonly IEnviadorEmail _enviadorEmail;
+		private readonly IConvocadoAppService _convocadoAppService;
 
-
-		public ConvocacaoController(IConvocacaoAppService convocacaoAppService, IEmailServices emailServices, IEnviadorEmail enviadorEmail)
+		public ConvocacaoController(IConvocacaoAppService convocacaoAppService, IEmailServices emailServices, IEnviadorEmail enviadorEmail, IConvocadoAppService convocadoAppService)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_emailServices = emailServices;
 			_enviadorEmail = enviadorEmail;
+			_convocadoAppService = convocadoAppService;
 		}
 		
 		public ActionResult Index()
@@ -50,11 +51,10 @@ namespace SisConv.Mvc.Controllers
 			{
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				var salvos = _convocacaoAppService.Add(convocacaoViewModel);
-				if (!salvos.Equals(null))
-				{
-					var dadosEmail = _emailServices.EnviarEmail(salvos,"");
-					_enviadorEmail.EnviarTokenPorEmail(dadosEmail);
-				}
+				if (salvos.Equals(null)) continue;
+				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
+				var dadosEmail = _emailServices.EnviarEmail(dadosConvocado, "");
+				_enviadorEmail.EnviarTokenPorEmail(dadosEmail);
 			}
 
 			return RedirectToAction("ListaConvocados","Processos", new{cargo = Cargo, id = convocacaoViewModel.ProcessoId});
