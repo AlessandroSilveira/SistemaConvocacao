@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Net;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Domain.Interfaces.Services;
+using SisConv.Infra.CrossCutting.Identity.Configuration;
+using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -13,13 +17,17 @@ namespace SisConv.Mvc.Controllers
 		private readonly IEmailServices _emailServices;
 		private readonly IEnviadorEmail _enviadorEmail;
 		private readonly IConvocadoAppService _convocadoAppService;
+		private readonly ApplicationUserManager _userManager;
+		private readonly ApplicationSignInManager _signInManager;
 
-		public ConvocacaoController(IConvocacaoAppService convocacaoAppService, IEmailServices emailServices, IEnviadorEmail enviadorEmail, IConvocadoAppService convocadoAppService)
+		public ConvocacaoController(ApplicationUserManager userManager ,IConvocacaoAppService convocacaoAppService, IEmailServices emailServices, IEnviadorEmail enviadorEmail, IConvocadoAppService convocadoAppService, ApplicationSignInManager signInManager)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_emailServices = emailServices;
 			_enviadorEmail = enviadorEmail;
 			_convocadoAppService = convocadoAppService;
+			_signInManager = signInManager;
+			_userManager = userManager;
 		}
 		
 		public ActionResult Index()
@@ -41,7 +49,7 @@ namespace SisConv.Mvc.Controllers
 		
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public ActionResult Create(ConvocacaoViewModel convocacaoViewModel, string Cargo)
+		public async Task<ActionResult> Create(ConvocacaoViewModel convocacaoViewModel, string Cargo)
 		{
 			if (!ModelState.IsValid) return View(convocacaoViewModel);
 
@@ -53,8 +61,13 @@ namespace SisConv.Mvc.Controllers
 				var salvos = _convocacaoAppService.Add(convocacaoViewModel);
 				if (salvos.Equals(null)) continue;
 				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
+
+				await RegistarCandidato(dadosConvocado);
+
 				var dadosEmail = _emailServices.EnviarEmail(dadosConvocado, "");
 				_enviadorEmail.EnviarTokenPorEmail(dadosEmail);
+				
+
 			}
 
 			return RedirectToAction("ListaConvocados","Processos", new{cargo = Cargo, id = convocacaoViewModel.ProcessoId});
@@ -98,6 +111,18 @@ namespace SisConv.Mvc.Controllers
 				_convocacaoAppService.Dispose();
 
 			base.Dispose(disposing);
+		}
+		public async Task<ActionResult> RegistarCandidato(ConvocadoViewModel model)
+		{
+			if (ModelState.IsValid)
+			{
+				var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+				await _userManager.CreateAsync(user, model.Password);
+				
+			}
+
+			// If we got this far, something failed, redisplay form
+			return View(model);
 		}
 	}
 }
