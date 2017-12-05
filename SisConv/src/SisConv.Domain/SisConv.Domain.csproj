@@ -60,6 +60,8 @@
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Helpers\Conversor.cs" />
     <Compile Include="Helpers\IConversor.cs" />
+    <Compile Include="Helpers\ISysConfig.cs" />
+    <Compile Include="Helpers\SysConfig.cs" />
     <Compile Include="Interfaces\Base\IServicesBase.cs" />
     <Compile Include="Interfaces\Repositories\IAdminRepository.cs" />
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
