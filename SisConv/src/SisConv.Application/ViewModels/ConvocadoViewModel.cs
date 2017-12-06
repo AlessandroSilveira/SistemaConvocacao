@@ -36,5 +36,7 @@ namespace SisConv.Application.ViewModels
         public int Pontuacao { get; set; }
         public int Posicao { get; set; }
         public string Resultado { get; set; }
+
+		public string Password { get; set; }
     }
 }

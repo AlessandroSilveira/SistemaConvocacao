@@ -17,11 +17,11 @@ namespace SisConv.Domain.Services
 			_sysConfig = sysConfig;
 		}
 
-		public EnviaEmailBuilder EnviarEmail(ConvocadoViewModel usuario, string token)
+		public EnviaEmailBuilder EnviarEmail(ConvocadoViewModel usuario)
 		{
 			Builder.BuildBody("");
 			Builder.BuildBcc("");
-			Builder.BuildBody(_sysConfig.GetHelpFile(@"email\EmailMestre")); //TODO: PUXAR O CORPO DO EMAIL DINAMICAMENTE //_sysUtility.GetHelpFile(@"email\EmailMestre");
+			Builder.BuildBody(_sysConfig.GetHelpFile(@"public\EmailDeConvocacao")); //TODO: PUXAR O CORPO DO EMAIL DINAMICAMENTE //_sysUtility.GetHelpFile(@"email\EmailMestre");
 			Builder.BuildCc("");
 			Builder.BuildSubject("");
 			Builder.BuildFrom(_configuration.ObterEmailFrom());
