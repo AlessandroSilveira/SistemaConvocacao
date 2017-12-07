@@ -1,20 +1,11 @@
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojResolveAssemblyReference.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CoreCompileInputs.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojResolveAssemblyReference.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\AutoMapper.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.dll.config
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\AutoMapper.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.pdb
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\Microsoft.AspNet.Identity.Core.dll
@@ -42,3 +33,12 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\System.Web.WebPages.Razor.xml
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\System.Web.WebPages.xml
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojResolveAssemblyReference.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\AutoMapper.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Application.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\AutoMapper.xml

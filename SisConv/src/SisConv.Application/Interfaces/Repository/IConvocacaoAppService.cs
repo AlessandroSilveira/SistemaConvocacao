@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         ConvocacaoViewModel Update(ConvocacaoViewModel obj);
         void Remove(Guid id);
         IEnumerable<ConvocacaoViewModel> Search(Expression<Func<Convocacao, bool>> predicate);
+	    string GerarSenhaUsuario();
     }
 }

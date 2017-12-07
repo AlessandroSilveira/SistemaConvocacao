@@ -63,5 +63,10 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Convocacao>, IEnumerable<ConvocacaoViewModel>>(
                 _convocacaoService.Search(predicate));
         }
+
+	    public string GerarSenhaUsuario()
+	    {
+		    return _convocacaoService.GerarSenha();
+	    }
     }
 }

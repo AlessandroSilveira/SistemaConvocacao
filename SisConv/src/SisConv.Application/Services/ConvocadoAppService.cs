@@ -63,7 +63,5 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Convocado>, IEnumerable<ConvocadoViewModel>>(_convocadoService.Search(predicate));
         }
-
-	   
     }
 }

@@ -35,10 +35,10 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IConvocadoAppService, ConvocadoAppService>(Lifestyle.Scoped);
             container.Register<IDadosConvocacaoAppService, DadosConvocadosAppService>(Lifestyle.Scoped);
             container.Register<IConvocacaoAppService, ConvocacaoAppService>(Lifestyle.Scoped);
-           
+	        //container.Register<IEmailAppService, EmailAppService>(Lifestyle.Scoped);
 
-            //Domain
-            container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
+			//Domain
+			container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
 			container.Register<IClienteService, ClienteService>(Lifestyle.Scoped);
             container.Register<IPessoaService, PessoaService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
@@ -50,14 +50,11 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IConvocadoService, ConvocadoService>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosService, DadosConvocadosService>(Lifestyle.Scoped);
             container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
-	        container.Register<IEmailBuilder, EmailBuilder>(Lifestyle.Scoped);
-	        container.Register<IEmailSender, EnviaEmailBuilder>(Lifestyle.Scoped);
-	        container.Register<IEnviadorEmail, EnviardorDeEmail>(Lifestyle.Scoped);
-	        container.Register<IConfiguration, Configuration>(Lifestyle.Scoped);
-	       
-	        container.Register(typeof(IEmailServices), typeof(EnviaEmailBuilder));
-
-
+	        //container.Register<IEmailBuilder, EmailBuilder>(Lifestyle.Scoped);
+	        //container.Register<IEmailSender, EnviaEmailBuilder>(Lifestyle.Scoped);
+	        //container.Register<IEnviadorEmail, EnviardorDeEmail>(Lifestyle.Scoped);
+	        //container.Register<IConfiguration, Configuration>(Lifestyle.Scoped);
+	        //container.Register<IEmailServices, EmailServices>(Lifestyle.Scoped);
 
 			//Infra Dados
 			container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
@@ -74,8 +71,7 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IConvocadoRepository, ConvocadoRepository>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosRepository, DadosConvocadosRepository>(Lifestyle.Scoped);
             container.Register<IConvocacaoRepository, ConvocacaoRepository>(Lifestyle.Scoped);
-	        
-
+	        container.Register<ISysConfig, SysConfig>(Lifestyle.Scoped);
 
 			//Context
 			container.Register<SisConvContext>(Lifestyle.Scoped);

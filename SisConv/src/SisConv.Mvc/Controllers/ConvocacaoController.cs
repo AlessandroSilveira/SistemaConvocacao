@@ -15,17 +15,18 @@ namespace SisConv.Mvc.Controllers
 	public class ConvocacaoController : Controller
 	{
 		private readonly IConvocacaoAppService _convocacaoAppService;
-		private readonly IEmailServices _emailServices;
+		
+		//private readonly IEmailAppService _emailAppService;
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly ApplicationUserManager _userManager;
 
-		public ConvocacaoController(IConvocacaoAppService convocacaoAppService, IEmailServices emailServices,
+		public ConvocacaoController(IConvocacaoAppService convocacaoAppService,
 			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager)
 		{
 			_convocacaoAppService = convocacaoAppService;
-			_emailServices = emailServices;
 			_convocadoAppService = convocadoAppService;
 			_userManager = userManager;
+			//_emailAppService = emailAppService;
 		}
 
 		public ActionResult Index()
@@ -58,13 +59,17 @@ namespace SisConv.Mvc.Controllers
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				_convocacaoAppService.Add(convocacaoViewModel);
 				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
-				_emailServices.EnviarEmail(dadosConvocado);
+				//_emailAppService.EnviarEmail(dadosConvocado);
 				RegistarCandidatoParaFazerLogin(dadosConvocado);
 			}
 
-			return RedirectToAction("ListaConvocados", "Processos", new {cargo = Cargo, id = convocacaoViewModel.ProcessoId});
+			return RedirectToAction("ListaConvocados", "Processos", new {cargo = Cargo.ToString(), id = convocacaoViewModel.ProcessoId.ToString()});
 		}
 
+		private string GerarSenha()
+		{
+			return _convocacaoAppService.GerarSenhaUsuario();
+		}
 
 		public ActionResult Edit(Guid? id)
 		{
@@ -106,9 +111,9 @@ namespace SisConv.Mvc.Controllers
 			base.Dispose(disposing);
 		}
 
-		private bool RegistarCandidatoParaFazerLogin(ConvocadoViewModel convocadoViewModel)
+		private void RegistarCandidatoParaFazerLogin(ConvocadoViewModel convocadoViewModel)
 		{
-			var dadosConvocado = _convocadoAppService.Search(a => a.Email.Equals(convocadoViewModel.ConvocadoId))
+			var dadosConvocado = _convocadoAppService.Search(a => a.ConvocadoId.Equals(convocadoViewModel.ConvocadoId))
 				.FirstOrDefault();
 			var user = new ApplicationUser
 			{
@@ -116,12 +121,11 @@ namespace SisConv.Mvc.Controllers
 				UserName = convocadoViewModel.Email,
 				Email = convocadoViewModel.Email
 			};
-			var result = _userManager.Create(user, dadosConvocado.Password);
+			var result = _userManager.Create(user, GerarSenha());
 
-			if (result.Succeeded) return false;
+			if (result.Succeeded) return;
 			var user2 = _userManager.FindByName(dadosConvocado.Email);
 			_userManager.AddToRole(user2.Id, RolesNames.ROLE_CLIENTE);
-			return true;
 		}
 	}
 }

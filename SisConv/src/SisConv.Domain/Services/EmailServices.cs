@@ -1,4 +1,4 @@
-﻿using SisConv.Application.ViewModels;
+﻿using SisConv.Domain.Entities;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Services;
 
@@ -17,7 +17,7 @@ namespace SisConv.Domain.Services
 			_sysConfig = sysConfig;
 		}
 
-		public EnviaEmailBuilder EnviarEmail(ConvocadoViewModel usuario)
+		public EnviaEmailBuilder EnviarEmail(Convocado usuario)
 		{
 			Builder.BuildBody("");
 			Builder.BuildBcc("");
