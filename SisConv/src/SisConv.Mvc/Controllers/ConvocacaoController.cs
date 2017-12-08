@@ -115,17 +115,19 @@ namespace SisConv.Mvc.Controllers
 		{
 			var dadosConvocado = _convocadoAppService.Search(a => a.ConvocadoId.Equals(convocadoViewModel.ConvocadoId))
 				.FirstOrDefault();
-			var user = new ApplicationUser
-			{
-				Id = dadosConvocado.ConvocadoId.ToString(),
-				UserName = convocadoViewModel.Email,
-				Email = convocadoViewModel.Email
-			};
-			var result = _userManager.Create(user, GerarSenha());
-
-			if (result.Succeeded) return;
-			var user2 = _userManager.FindByName(dadosConvocado.Email);
-			_userManager.AddToRole(user2.Id, RolesNames.ROLE_CLIENTE);
+		    if (dadosConvocado != null)
+		    {
+		        var user = new ApplicationUser
+		        {
+		            Id = dadosConvocado.ConvocadoId.ToString(),
+		            UserName = convocadoViewModel.Email,
+		            Email = convocadoViewModel.Email
+		        };
+		        var result = _userManager.Create(user, GerarSenha());
+		        var user2 = _userManager.FindByName(dadosConvocado.Email);
+		        _userManager.AddToRole(user2.Id, RolesNames.ROLE_CONVOCADO);
+                if (result.Succeeded) return;
+		    }
 		}
 	}
 }

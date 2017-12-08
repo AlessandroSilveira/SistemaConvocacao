@@ -6,6 +6,10 @@ namespace SisConv.Mvc.Controllers
     {
         public ActionResult Index()
         {
+            if (User.IsInRole("Convocado"))
+            {
+                
+            } 
             return View();
         }
 
