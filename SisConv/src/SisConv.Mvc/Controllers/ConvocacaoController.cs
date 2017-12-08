@@ -5,7 +5,6 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Interfaces.Services;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Roles;
@@ -15,7 +14,6 @@ namespace SisConv.Mvc.Controllers
 	public class ConvocacaoController : Controller
 	{
 		private readonly IConvocacaoAppService _convocacaoAppService;
-		
 		//private readonly IEmailAppService _emailAppService;
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly ApplicationUserManager _userManager;
