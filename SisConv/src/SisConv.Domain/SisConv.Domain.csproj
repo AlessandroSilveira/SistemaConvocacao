@@ -51,6 +51,7 @@
     <Compile Include="Entities\Cargo.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Convocacao.cs" />
+    <Compile Include="Entities\Documentacao.cs" />
     <Compile Include="Entities\Processo.cs" />
     <Compile Include="Entities\Convocado.cs" />
     <Compile Include="Entities\DadosConvocados.cs" />
@@ -67,6 +68,7 @@
     <Compile Include="Interfaces\Repositories\ICargoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IClienteRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocacaoRepository.cs" />
+    <Compile Include="Interfaces\Repositories\IDocumentacaoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IProcessoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IConvocadoRepository.cs" />
     <Compile Include="Interfaces\Repositories\IDadosConvocadosRepository.cs" />
@@ -82,6 +84,7 @@
     <Compile Include="Interfaces\Services\IClienteService.cs" />
     <Compile Include="Interfaces\Services\IConfiguration.cs" />
     <Compile Include="Interfaces\Services\IConvocacaoService.cs" />
+    <Compile Include="Interfaces\Services\IDocumentacaoService.cs" />
     <Compile Include="Interfaces\Services\IEmailBuilder.cs" />
     <Compile Include="Interfaces\Services\IEmailSender.cs" />
     <Compile Include="Interfaces\Services\IEmailServices.cs" />
@@ -100,6 +103,7 @@
     <Compile Include="Services\ClienteService.cs" />
     <Compile Include="Services\Configuration.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
+    <Compile Include="Services\DocumentacaoService.cs" />
     <Compile Include="Services\Email.cs" />
     <Compile Include="Services\EmailBuilder.cs" />
     <Compile Include="Services\EmailServices.cs" />
