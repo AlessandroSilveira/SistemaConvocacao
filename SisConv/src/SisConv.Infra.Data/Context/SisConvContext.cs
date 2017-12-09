@@ -22,6 +22,7 @@ namespace SisConv.Infra.Data.Context
         public virtual DbSet<Cargo> Cargos { get; set; }
         public virtual DbSet<Convocado> Convocados { get; set; }
         public virtual DbSet<Processo> Processos { get; set; }
+        public virtual DbSet<Documentacao> Documentacoes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -43,6 +44,7 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new CargoConfiguration());
             modelBuilder.Configurations.Add(new ConvocadoConfiguration());
             modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
+            modelBuilder.Configurations.Add(new DocumentacaoConfiguration());
 
             base.OnModelCreating(modelBuilder);
         }

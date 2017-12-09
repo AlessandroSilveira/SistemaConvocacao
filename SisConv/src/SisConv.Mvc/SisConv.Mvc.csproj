@@ -219,6 +219,7 @@
     <Compile Include="Controllers\ConvocacaoController.cs" />
     <Compile Include="Controllers\ConvocadoController.cs" />
     <Compile Include="Controllers\DadosConvocadosController.cs" />
+    <Compile Include="Controllers\DocumentacaoViewModelsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProcessosController.cs" />
@@ -375,6 +376,11 @@
     <Content Include="Views\Convocacao\Details.cshtml" />
     <Content Include="Views\Convocacao\Edit.cshtml" />
     <Content Include="Views\Convocacao\Index.cshtml" />
+    <Content Include="Views\DocumentacaoViewModels\Create.cshtml" />
+    <Content Include="Views\DocumentacaoViewModels\Delete.cshtml" />
+    <Content Include="Views\DocumentacaoViewModels\Details.cshtml" />
+    <Content Include="Views\DocumentacaoViewModels\Edit.cshtml" />
+    <Content Include="Views\DocumentacaoViewModels\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

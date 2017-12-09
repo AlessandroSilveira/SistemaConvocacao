@@ -8,6 +8,23 @@
 *.user
 *.userosscache
 *.sln.docstates
+SistemaConvocacao/SisConv/src/SisConv.Domain/bin/
+SistemaConvocacao/SisConv/src/SisConv.Domain/obj/
+
+SistemaConvocacao/SisConv/src/SisConv.Application/bin/
+SistemaConvocacao/SisConv/src/SisConv.Application/obj/
+
+SistemaConvocacao/SisConv/src/SisConv.Infra.CrossCutting.Identity/bin/
+SistemaConvocacao/SisConv/src/SisConv.Infra.CrossCutting.Identity/obj/
+
+SistemaConvocacao/SisConv/src/SisConv.Infra.CrossCutting.IoC/bin/
+SistemaConvocacao/SisConv/src/SisConv.Infra.CrossCutting.IoC/obj/
+
+SistemaConvocacao/SisConv/src/SisConv.Infra.Data/bin/
+SistemaConvocacao/SisConv/src/SisConv.Infra.Data/obj/
+
+SistemaConvocacao/SisConv/src/SisConv.Mvc/bin/
+SistemaConvocacao/SisConv/src/SisConv.Mvc/obj/
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs

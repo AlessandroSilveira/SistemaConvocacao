@@ -33,6 +33,8 @@ namespace SisConv.Application.AutoMapper
                     .ReverseMap();
                 cfg.CreateMap<Convocacao, ConvocacaoViewModel>()
                     .ReverseMap();
+                cfg.CreateMap<Documentacao, DocumentacaoViewModel>()
+                    .ReverseMap();
             });
         }
     }

@@ -61,13 +61,9 @@
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="Migrations\201711240114337_23112017_3.cs" />
-    <Compile Include="Migrations\201711240114337_23112017_3.Designer.cs">
-      <DependentUpon>201711240114337_23112017_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201711262323577_23112017_4.cs" />
-    <Compile Include="Migrations\201711262323577_23112017_4.Designer.cs">
-      <DependentUpon>201711262323577_23112017_4.cs</DependentUpon>
+    <Compile Include="Migrations\201712091416017_9122017.cs" />
+    <Compile Include="Migrations\201712091416017_9122017.Designer.cs">
+      <DependentUpon>201712091416017_9122017.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -76,6 +72,7 @@
     <Compile Include="Repository\CargoRepository.cs" />
     <Compile Include="Repository\ClienteRepository.cs" />
     <Compile Include="Repository\ConvocacaoRepository.cs" />
+    <Compile Include="Repository\DocumentacaoRepository.cs" />
     <Compile Include="Repository\ProcessoRepository.cs" />
     <Compile Include="Repository\ConvocadoRepository.cs" />
     <Compile Include="Repository\DadosConvocadosRepository.cs" />
@@ -100,11 +97,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201711240114337_23112017_3.resx">
-      <DependentUpon>201711240114337_23112017_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201711262323577_23112017_4.resx">
-      <DependentUpon>201711262323577_23112017_4.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712091416017_9122017.resx">
+      <DependentUpon>201712091416017_9122017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
