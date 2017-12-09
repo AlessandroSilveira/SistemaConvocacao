@@ -56,6 +56,7 @@
     <Compile Include="Interfaces\Repository\ICargoAppService.cs" />
     <Compile Include="Interfaces\Repository\IClienteAppService.cs" />
     <Compile Include="Interfaces\Repository\IConvocacaoAppService.cs" />
+    <Compile Include="Interfaces\Repository\IDocumentacaoAppService.cs" />
     <Compile Include="Interfaces\Repository\IEmailAppService.cs" />
     <Compile Include="Interfaces\Repository\IProcessoAppService.cs" />
     <Compile Include="Interfaces\Repository\IConvocadoAppService.cs" />
@@ -70,6 +71,7 @@
     <Compile Include="Services\CargoAppService.cs" />
     <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\ConvocacaoAppService.cs" />
+    <Compile Include="Services\DocumentacaoAppService.cs" />
     <Compile Include="Services\EmailAppService.cs" />
     <Compile Include="Services\ProcessoAppService.cs" />
     <Compile Include="Services\ConvocadoAppService.cs" />
@@ -83,6 +85,7 @@
     <Compile Include="ViewModels\CargoViewModel.cs" />
     <Compile Include="ViewModels\ClienteViewModel.cs" />
     <Compile Include="ViewModels\ConvocacaoViewModel.cs" />
+    <Compile Include="ViewModels\DocumentacaoViewModel.cs" />
     <Compile Include="ViewModels\ProcessoViewModel.cs" />
     <Compile Include="ViewModels\ConvocadoViewModel.cs" />
     <Compile Include="ViewModels\DadosConvocadosViewModel.cs" />

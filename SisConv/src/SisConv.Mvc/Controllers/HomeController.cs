@@ -1,14 +1,25 @@
-﻿using System.Web.Mvc;
+﻿using System;
+using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using SisConv.Application.Interfaces.Repository;
 
 namespace SisConv.Mvc.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+	    private readonly IConvocadoAppService _convocadoAppService;
+
+	    public HomeController(IConvocadoAppService convocadoAppService)
+	    {
+		    _convocadoAppService = convocadoAppService;
+	    }
+		
+	    public ActionResult Index()
         {
             if (User.IsInRole("Convocado"))
             {
-                
+	            ViewBag.dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
+
             } 
             return View();
         }
