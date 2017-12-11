@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
@@ -20,37 +21,48 @@ namespace SisConv.Application.Services
 
 		public void Dispose()
 		{
-			throw new NotImplementedException();
-		}
+		    _documentacaoService.Dispose();
+
+        }
 
 		public DocumentacaoViewModel Add(DocumentacaoViewModel obj)
 		{
-			throw new NotImplementedException();
+		    var documento = Mapper.Map<DocumentacaoViewModel, Documentacao>(obj);
+            BeginTransaction();
+		    _documentacaoService.Add(documento);
+            Commit();
+		    return obj;
 		}
 
 		public DocumentacaoViewModel GetById(Guid id)
 		{
-			throw new NotImplementedException();
+		    return Mapper.Map<Documentacao, DocumentacaoViewModel>(_documentacaoService.GetById(id));
 		}
 
 		public IEnumerable<DocumentacaoViewModel> GetAll()
 		{
-			throw new NotImplementedException();
+		    return Mapper.Map<IEnumerable<Documentacao>, IEnumerable<DocumentacaoViewModel>>(_documentacaoService.GetAll());
 		}
 
 		public DocumentacaoViewModel Update(DocumentacaoViewModel obj)
 		{
-			throw new NotImplementedException();
+			BeginTransaction();
+		    _documentacaoService.Update(Mapper.Map<DocumentacaoViewModel, Documentacao>(obj));
+            Commit();
+		    return obj;
 		}
 
 		public void Remove(Guid id)
 		{
-			throw new NotImplementedException();
+			BeginTransaction();
+            _documentacaoService.Remove(id);
+            Commit();
 		}
 
 		public IEnumerable<DocumentacaoViewModel> Search(Expression<Func<Documentacao, bool>> predicate)
 		{
-			throw new NotImplementedException();
+		    return Mapper.Map<IEnumerable<Documentacao>, IEnumerable<DocumentacaoViewModel>>(
+		        _documentacaoService.Search(predicate));
 		}
 	}
 }
