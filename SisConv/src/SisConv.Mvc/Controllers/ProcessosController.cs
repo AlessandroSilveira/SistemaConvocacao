@@ -23,13 +23,13 @@ namespace SisConv.Mvc.Controllers
 	        _convocacaoAppService = convocacaoAppService;
         }
 
-        // GET: Processos
+       
         public ActionResult Index()
         {
             return View(_processoAppService.GetAll());
         }
 
-        // GET: Processos/Details/5
+       
         public ActionResult Details(Guid? id)
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,47 +37,38 @@ namespace SisConv.Mvc.Controllers
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
-        // GET: Processos/Create
+        
         public ActionResult Create()
         {
             return View();
         }
-
-        // POST: Processos/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+		
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(
-            [Bind(Include = "ProcessoId,ClienteId,Nome,DataCriacao,Ativo")] ProcessoViewModel processoViewModel)
+        public ActionResult Create(ProcessoViewModel processoViewModel)
         {
             if (!ModelState.IsValid) return View(processoViewModel);
             _processoAppService.Add(processoViewModel);
             return RedirectToAction("Index");
         }
-
-        // GET: Processos/Edit/5
+        
         public ActionResult Edit(Guid? id)
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
-
-        // POST: Processos/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(
-            [Bind(Include = "ProcessoId,ClienteId,Nome,DataCriacao,Ativo")] ProcessoViewModel processoViewModel)
+        public ActionResult Edit(ProcessoViewModel processoViewModel)
         {
             if (!ModelState.IsValid) return View(processoViewModel);
             _processoAppService.Update(processoViewModel);
             return RedirectToAction("Index");
         }
 
-        // GET: Processos/Delete/5
+       
         public ActionResult Delete(Guid? id)
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -85,7 +76,7 @@ namespace SisConv.Mvc.Controllers
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
-        // POST: Processos/Delete/5
+        
         [HttpPost]
         [ActionName("Delete")]
         [ValidateAntiForgeryToken]

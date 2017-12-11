@@ -46,7 +46,8 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
             modelBuilder.Configurations.Add(new DocumentacaoConfiguration());
 
-            base.OnModelCreating(modelBuilder);
+	        Database.SetInitializer<SisConvContext>(null);
+			base.OnModelCreating(modelBuilder);
         }
     }
 }

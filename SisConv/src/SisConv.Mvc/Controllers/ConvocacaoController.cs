@@ -127,5 +127,11 @@ namespace SisConv.Mvc.Controllers
                 if (result.Succeeded) return;
 		    }
 		}
+
+		//[HttpPost]
+		//public ActionResult ConfirmaConvocacao()
+		//{
+			
+		//}
 	}
 }

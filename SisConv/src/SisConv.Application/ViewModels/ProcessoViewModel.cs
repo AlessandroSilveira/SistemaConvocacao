@@ -22,5 +22,13 @@ namespace SisConv.Application.ViewModels
         [Required]
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; }
-    }
+
+	    [Required]
+	    [Display(Name = "Texto de Aceitação da Convocação")]
+		public string TextoDeAceitacaoDaConvocacao { get; set; }
+
+	    [Required]
+	    [Display(Name = "Texto Inicial da tela de convocação")]
+		public string TextoInicialTelaConvocado { get; set; }
+	}
 }
