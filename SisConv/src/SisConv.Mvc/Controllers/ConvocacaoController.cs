@@ -17,13 +17,15 @@ namespace SisConv.Mvc.Controllers
 		//private readonly IEmailAppService _emailAppService;
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly ApplicationUserManager _userManager;
+		private readonly IDocumentacaoAppService _documentacaoAppService;
 
 		public ConvocacaoController(IConvocacaoAppService convocacaoAppService,
-			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager)
+			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager, IDocumentacaoAppService documentacaoAppService)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_convocadoAppService = convocadoAppService;
 			_userManager = userManager;
+			_documentacaoAppService = documentacaoAppService;
 			//_emailAppService = emailAppService;
 		}
 
@@ -124,14 +126,36 @@ namespace SisConv.Mvc.Controllers
 		        var result = _userManager.Create(user, GerarSenha());
 		        var user2 = _userManager.FindByName(dadosConvocado.Email);
 		        _userManager.AddToRole(user2.Id, RolesNames.ROLE_CONVOCADO);
-                if (result.Succeeded) return;
+			  
 		    }
 		}
 
-		//[HttpPost]
-		//public ActionResult ConfirmaConvocacao()
-		//{
-			
-		//}
+		[HttpPost]
+		public ActionResult ConfirmaConvocacao(Guid ProcessoId, Guid ConvocadoId,Guid ConvocacaoId, bool decisao )
+		{
+			var dadosConvocacao =
+				_convocacaoAppService.GetById(ConvocacaoId);
+
+			if (dadosConvocacao != null) dadosConvocacao.Desistente = decisao;
+
+			_convocacaoAppService.Update(dadosConvocacao);
+
+			return RedirectToAction(decisao.Equals(true) ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new {ProcessoId, ConvocadoId, ConvocacaoId});
+		}
+
+		public ActionResult DocumentacaoConvocado(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
+		{
+			var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
+			ViewBag.dadosConvocado = dadosConvocado;
+
+			ViewBag.listaDocumentacao = _documentacaoAppService.Search(a => a.ProcessoId.Equals(ProcessoId));
+			return View();
+		}
+
+		public ActionResult DesistenciaCandidato(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
+		{
+			ViewBag.dadosConvocacao = _convocacaoAppService.GetById(ConvocadoId);
+			return View();
+		}
 	}
 }

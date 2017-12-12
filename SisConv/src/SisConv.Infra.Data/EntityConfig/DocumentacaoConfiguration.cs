@@ -26,10 +26,10 @@ namespace SisConv.Infra.Data.EntityConfig
 				.IsRequired();
 
 			Property(c => c.Path)
-				.HasMaxLength(100)
+				.HasMaxLength(200)
 				.IsRequired();
 
-			ToTable("Documentos");
+			ToTable("Documentacao");
 		}
 	}
 }

@@ -381,6 +381,8 @@
     <Content Include="Views\DocumentacaoViewModels\Details.cshtml" />
     <Content Include="Views\DocumentacaoViewModels\Edit.cshtml" />
     <Content Include="Views\DocumentacaoViewModels\Index.cshtml" />
+    <Content Include="Views\Convocacao\DocumentacaoConvocado.cshtml" />
+    <Content Include="Views\Convocacao\DesistenciaCandidato.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

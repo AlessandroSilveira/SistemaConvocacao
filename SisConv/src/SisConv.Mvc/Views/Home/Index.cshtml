@@ -44,19 +44,25 @@
 						<h1>Bem Vindo @ViewBag.dadosConvocado.Nome</h1>
 						<p>@ViewBag.dadosProcesso.TextoInicialTelaConvocado</p>
 						<p>Prezado Candidato, você foi convocado para o @ViewBag.dadosProcesso.Nome </p>
-						@foreach (var item in ViewBag.dadosConvocacao)
-						{
-							<p>No dia: @item.DataEntregaDocumentos.ToString("dd/MM/yyyy"), às @item.HorarioEntregaDocumento</p>
-							<p>No endereço: @item.EnderecoEntregaDocumento</p>
-						}
+						@*@foreach (var item in ViewBag.dadosConvocacao)
+						{*@
+							<p>No dia: @ViewBag.dadosConvocacao.DataEntregaDocumentos.ToString("dd/MM/yyyy"), às @ViewBag.dadosConvocacao.HorarioEntregaDocumento</p>
+							<p>No endereço: @ViewBag.dadosConvocacao.EnderecoEntregaDocumento</p>
+						@*}*@
 						<p>
 							Você aceita participar dessa convocação?
 						</p>
 						<p>
 							<input type="hidden" name="ProcessoId" value="@ViewBag.dadosProcesso.ProcessoId" />
 							<input type="hidden" name="ConvocadoId" value="@ViewBag.dadosProcesso.ProcessoId" />
-							<input type="button" value="SIM, DESEJO PARTICIPAR" title="" />
-							<input type="button" value="NÃO DESEJO PARTICIPAR" title="" />
+							<input type="hidden" name="ConvocacaoId" value="@ViewBag.dadosConvocacao.ConvocacaoId"/>
+							@*<input type="button" value="SIM, DESEJO PARTICIPAR" title="" />
+		<input type="button" value="NÃO DESEJO PARTICIPAR" title="" />*@
+							<input type="radio" name="decisao" value="false" /> SIM, DESEJO PARTICIPAR    
+							<input type="radio" name="decisao" value="true" /> NÃO DESEJO PARTICIPAR
+						</p>
+						<p>
+							<input type="submit" value="Enviar"/>
 						</p>
 					</div>
 				</div>

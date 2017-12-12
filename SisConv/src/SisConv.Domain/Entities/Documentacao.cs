@@ -15,8 +15,6 @@ namespace SisConv.Domain.Entities
 		public DateTime DataCriacao { get; set; }
 		public string Path { get; set; }
 		public bool Ativo { get; set; }
-
 		public virtual Processo Processo{ get; set; }
-
 	}
 }

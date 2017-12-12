@@ -15,7 +15,7 @@ namespace SisConv.Application.ViewModels
         [Display(Name = "Nome")]
         public string Nome { get; set; }
 
-        [Required]
+        [Required(AllowEmptyStrings = false)]
         [Display(Name = "Data de Criação")]
         public DateTime DataCriacao { get; set; }
 
@@ -23,12 +23,16 @@ namespace SisConv.Application.ViewModels
         [Display(Name = "Ativo")]
         public bool Ativo { get; set; }
 
-	    [Required]
-	    [Display(Name = "Texto de Aceitação da Convocação")]
+	    [Required(AllowEmptyStrings = false)]
+	    [Display(Name = "Texto de Aceitação da Convocação"), MaxLength(200)]
 		public string TextoDeAceitacaoDaConvocacao { get; set; }
 
-	    [Required]
-	    [Display(Name = "Texto Inicial da tela de convocação")]
+	    [Required(AllowEmptyStrings = false)]
+	    [Display(Name = "Texto Inicial da tela de convocação"), MaxLength(200)]
 		public string TextoInicialTelaConvocado { get; set; }
+
+	    [Required(AllowEmptyStrings = false)]
+	    [Display(Name = "Texto para Convocados Desistentes"), MaxLength(200)]
+	    public string TextoParaDesistentes { get; set; }
 	}
 }
