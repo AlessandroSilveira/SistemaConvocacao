@@ -5,11 +5,11 @@ using SisConv.Application.ViewModels;
 
 namespace SisConv.Mvc.Controllers
 {
-    public class DocumentacaoViewModelsController : Controller
+    public class DocumentacaoController : Controller
     {
         private readonly IDocumentacaoAppService _documentacaoAppService;
 
-        public DocumentacaoViewModelsController(IDocumentacaoAppService documentacaoAppService)
+        public DocumentacaoController(IDocumentacaoAppService documentacaoAppService)
         {
             _documentacaoAppService = documentacaoAppService;
         }

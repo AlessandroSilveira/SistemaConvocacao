@@ -1,7 +1,21 @@
-﻿
-@{
-    ViewBag.Title = "DocumentacaoConvocado";
+﻿@{
+	ViewBag.Title = "DocumentacaoConvocado";
 }
 
-<h2>DocumentacaoConvocado</h2>
+<div class="container">
+	<div class="form-horizontal">
+		<h4></h4>
+		<h4></h4>
+		<div class="jumbotron">
+			<h1>@ViewBag.dadosConvocado.Nome</h1>
+			<p>@ViewBag.dadosProcesso.TextoDeAceitacaoDaConvocacao</p>
+			<p>Lista de Documentos para apresentação.</p>
+			@foreach (var itens in ViewBag.ListaDocumentacao)
+			{
+				<p>@itens.Descricao</p>
+			}
+		</div>
+	</div>
+</div>
+
 

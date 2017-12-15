@@ -34,8 +34,8 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.EnviouEmail)
                 .IsRequired();
 
-            Property(c => c.Desistente)
-                .IsRequired();
+	        Property(c => c.Desistente)
+		        .HasMaxLength(1);
 
             ToTable("Convocacoes");
         }

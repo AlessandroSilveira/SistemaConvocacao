@@ -16,7 +16,7 @@ namespace SisConv.Domain.Entities
         public string HorarioEntregaDocumento { get; set; }
         public string  EnderecoEntregaDocumento { get; set; }
         public bool EnviouEmail { get; set; }
-        public bool Desistente { get; set; }
+        public string Desistente { get; set; }
         public bool Ativo { get; set; }
     }
 }
