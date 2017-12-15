@@ -8,6 +8,7 @@
 *.user
 *.userosscache
 *.sln.docstates
+
 SistemaConvocacao/SisConv/src/SisConv.Domain/bin/
 SistemaConvocacao/SisConv/src/SisConv.Domain/obj/
 
@@ -26,8 +27,14 @@ SistemaConvocacao/SisConv/src/SisConv.Infra.Data/obj/
 SistemaConvocacao/SisConv/src/SisConv.Mvc/bin/
 SistemaConvocacao/SisConv/src/SisConv.Mvc/obj/
 
+.vs
+SistemaConvocacao/.vs
+SistemaConvocacao/SisConv/.vs
+
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
+
 
 # Build results
 [Dd]ebug/
