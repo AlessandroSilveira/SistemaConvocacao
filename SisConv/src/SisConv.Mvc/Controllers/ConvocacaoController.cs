@@ -155,6 +155,10 @@ namespace SisConv.Mvc.Controllers
 		public ActionResult DesistenciaCandidato(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
 		{
 			ViewBag.dadosConvocacao = _convocacaoAppService.GetById(ConvocadoId);
+
+			var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
+			ViewBag.dadosConvocado = dadosConvocado;
+
 			return View();
 		}
 	}
