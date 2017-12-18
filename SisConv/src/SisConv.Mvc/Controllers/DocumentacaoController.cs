@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
@@ -14,9 +16,10 @@ namespace SisConv.Mvc.Controllers
             _documentacaoAppService = documentacaoAppService;
         }
        
-        public ActionResult Index()
+        public ActionResult Index(Guid Id)
         {
-            return View(_documentacaoAppService.GetAll());
+	        ViewBag.ProcessoId = Id;
+			return View(_documentacaoAppService.GetAll());
         }
         
         public ActionResult Details(Guid id)
@@ -25,23 +28,46 @@ namespace SisConv.Mvc.Controllers
             return documentacaoViewModel == null ? (ActionResult) HttpNotFound() : View(documentacaoViewModel);
         }
        
-        public ActionResult Create()
+        public ActionResult Create(Guid Id)
         {
-            return View();
+	        ViewBag.ProcessoId = Id;
+			return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(
-            [Bind(Include = "DocumentoId,ProcessoId,Descricao,DataCriacao,Path,Ativo")]
-            DocumentacaoViewModel documentacaoViewModel)
+        public ActionResult Create(DocumentacaoViewModel documentacaoViewModel)
         {
-            if (!ModelState.IsValid) return View(documentacaoViewModel);
-            _documentacaoAppService.Add(documentacaoViewModel);
+	        documentacaoViewModel.DataCriacao = DateTime.Now;
+			if (!ModelState.IsValid) return View(documentacaoViewModel);
+
+			
+	        var salvouDoc = SalvarArquivoConvocados(documentacaoViewModel);
+
+			if(salvouDoc)
+			_documentacaoAppService.Add(documentacaoViewModel);
+
             return RedirectToAction("Index");
         }
 
-       public ActionResult Edit(Guid id)
+	    private bool SalvarArquivoConvocados(DocumentacaoViewModel documentacaoViewModel)
+	    {
+			var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+			var arquivo = Request.Files[0];
+			if (arquivo == null)
+				return false;
+			
+			var nomeArquivo = Path.GetFileName(arquivo.FileName);
+
+		    if (!Directory.Exists(pathArquivo))
+				Directory.CreateDirectory(pathArquivo);
+
+			arquivo.SaveAs(pathArquivo + nomeArquivo);
+			
+			return true;
+		}
+
+		public ActionResult Edit(Guid id)
         {
             var documentacaoViewModel = _documentacaoAppService.GetById(id);
             return documentacaoViewModel == null ? (ActionResult) HttpNotFound() : View(documentacaoViewModel);
@@ -79,5 +105,25 @@ namespace SisConv.Mvc.Controllers
                 _documentacaoAppService.Dispose();
             base.Dispose(disposing);
         }
-    }
+
+	    //private bool SalvarArquivoConvocados(out ActionResult view)
+	    //{
+		   // var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+		   // var arquivo = Request.Files[0];
+		   // if (arquivo == null)
+		   // {
+			  //  view = null;
+			  //  return false;
+		   // }
+		   // var nomeArquivo = Path.GetFileName(arquivo.FileName);
+		   // var strExtension = Path.GetExtension(arquivo.FileName)?.ToLower();
+		   
+		   // if (!Directory.Exists(pathArquivo))
+			  //  Directory.CreateDirectory(pathArquivo);
+
+		   // arquivo.SaveAs(pathArquivo + nomeArquivo);
+		   // view = null;
+		   // return true;
+	    //}
+	}
 }

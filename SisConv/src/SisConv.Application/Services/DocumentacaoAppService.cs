@@ -64,5 +64,7 @@ namespace SisConv.Application.Services
 		    return Mapper.Map<IEnumerable<Documentacao>, IEnumerable<DocumentacaoViewModel>>(
 		        _documentacaoService.Search(predicate));
 		}
+
+		
 	}
 }

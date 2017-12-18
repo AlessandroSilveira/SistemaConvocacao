@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
 
 namespace SisConv.Domain.Interfaces.Services
@@ -13,5 +14,6 @@ namespace SisConv.Domain.Interfaces.Services
 		Documentacao Update(Documentacao obj);
 		void Remove(Guid id);
 		IEnumerable<Documentacao> Search(Expression<Func<Documentacao, bool>> predicate);
+		
 	}
 }
