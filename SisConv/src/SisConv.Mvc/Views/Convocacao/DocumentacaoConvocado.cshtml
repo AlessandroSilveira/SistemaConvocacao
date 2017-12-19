@@ -14,6 +14,9 @@
 			{
 				<p>@itens.Descricao</p>
 			}
+			<p>
+				@Html.ActionLink("Atualizar Dados Cadastrais","Edit","Pessoa",new{@ConvocadoId = ViewBag.dadosConvocado.ConvocadoId },null)
+			</p>
 		</div>
 	</div>
 </div>

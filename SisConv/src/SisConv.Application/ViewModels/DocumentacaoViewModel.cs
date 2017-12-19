@@ -6,6 +6,12 @@ namespace SisConv.Application.ViewModels
 {
 	public class DocumentacaoViewModel
 	{
+
+		public DocumentacaoViewModel()
+		{
+			DocumentoId = Guid.NewGuid();
+		}
+		
 		[Key]
 		[Display(Name = "Id")]
 		public Guid DocumentoId { get; set; }

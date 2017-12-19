@@ -222,6 +222,7 @@
     <Compile Include="Controllers\DocumentacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ProcessosController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
@@ -383,6 +384,11 @@
     <Content Include="Views\Documentacao\Index.cshtml" />
     <Content Include="Views\Convocacao\DocumentacaoConvocado.cshtml" />
     <Content Include="Views\Convocacao\DesistenciaCandidato.cshtml" />
+    <Content Include="Views\Pessoa\Create.cshtml" />
+    <Content Include="Views\Pessoa\Delete.cshtml" />
+    <Content Include="Views\Pessoa\Details.cshtml" />
+    <Content Include="Views\Pessoa\Edit.cshtml" />
+    <Content Include="Views\Pessoa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

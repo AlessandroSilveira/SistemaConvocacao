@@ -151,6 +151,7 @@ namespace SisConv.Mvc.Controllers
 
 		public ActionResult DocumentacaoConvocado(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
 		{
+			ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
 			var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
 			ViewBag.dadosConvocado = dadosConvocado;
 
