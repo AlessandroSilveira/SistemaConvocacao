@@ -55,9 +55,9 @@
     <Compile Include="EntityConfig\ClienteConfiguration.cs" />
     <Compile Include="EntityConfig\ConvocacaoConfiguration.cs" />
     <Compile Include="EntityConfig\DocumentacaoConfiguration.cs" />
+    <Compile Include="EntityConfig\PessoaConfiguration.cs" />
     <Compile Include="EntityConfig\ProcessoConfiguration.cs" />
     <Compile Include="EntityConfig\ConvocadoConfiguration.cs" />
-    <Compile Include="EntityConfig\PessoaConfiguration.cs" />
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
@@ -68,6 +68,10 @@
     <Compile Include="Migrations\201712151719016_15122017.cs" />
     <Compile Include="Migrations\201712151719016_15122017.Designer.cs">
       <DependentUpon>201712151719016_15122017.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712201555122_20122017.cs" />
+    <Compile Include="Migrations\201712201555122_20122017.Designer.cs">
+      <DependentUpon>201712201555122_20122017.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -106,6 +110,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712151719016_15122017.resx">
       <DependentUpon>201712151719016_15122017.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712201555122_20122017.resx">
+      <DependentUpon>201712201555122_20122017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

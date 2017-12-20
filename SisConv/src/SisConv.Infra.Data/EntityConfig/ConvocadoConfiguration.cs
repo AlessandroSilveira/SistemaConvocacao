@@ -101,7 +101,42 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.Resultado)
                 .IsRequired();
 
-            ToTable("Convocados");
+	        Property(c => c.Naturalidade)
+		        .IsRequired()
+		        .HasMaxLength(100);
+
+	        Property(c => c.Pai)
+		        .IsRequired()
+		        .HasMaxLength(100);
+
+	        Property(c => c.OrgaoEmissor)
+		        .IsRequired()
+		        .HasMaxLength(100);
+
+	        Property(c => c.EstadoCivil)
+		        .IsRequired();
+
+	        Property(c => c.DataNascimento)
+		        .IsRequired();
+
+	        Property(c => c.Filhos)
+		        .IsRequired();
+
+	        Property(c => c.Deficiente)
+		        .IsRequired();
+
+	        Property(c => c.Deficiencia)
+		        .IsRequired()
+		        .HasMaxLength(100);
+
+	        Property(c => c.CondicaoEspecial)
+		        .IsRequired()
+		        .HasMaxLength(100);
+
+	        Property(c => c.Afro)
+		        .IsRequired();
+
+			ToTable("Convocados");
         }
     }
 }
