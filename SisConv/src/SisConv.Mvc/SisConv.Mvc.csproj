@@ -389,6 +389,7 @@
     <Content Include="Views\Convocado\Details.cshtml" />
     <Content Include="Views\Convocado\Edit.cshtml" />
     <Content Include="Views\Convocado\Index.cshtml" />
+    <Content Include="Views\Processos\Configuracoes.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

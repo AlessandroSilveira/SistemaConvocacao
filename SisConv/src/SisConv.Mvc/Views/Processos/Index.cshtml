@@ -35,14 +35,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new {id = item.ProcessoId }) |
-            @Html.ActionLink("Detalhes", "Details", new {id = item.ProcessoId }) |
-            @Html.ActionLink("Cargos", "Index","Cargo", new {id = item.ProcessoId },null) |
-	        @Html.ActionLink("Carregar Convocados desta Convocação","Create", "DadosConvocados", new {id = item.ProcessoId },null) |
-	        @Html.ActionLink("Documentação do Candidato","Index", "Documentacao", new {id = item.ProcessoId },null) |
-            @Html.ActionLink("Excluír", "Delete", new {id = item.ProcessoId })
-        </td>
+	    <td>
+		    @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId }) 
+		   
+	    </td>
     </tr>
 }
 

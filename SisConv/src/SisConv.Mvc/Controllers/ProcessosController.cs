@@ -22,13 +22,11 @@ namespace SisConv.Mvc.Controllers
             _convocadoAppService = convocadoAppService;
 	        _convocacaoAppService = convocacaoAppService;
         }
-
        
         public ActionResult Index()
         {
             return View(_processoAppService.GetAll());
         }
-
        
         public ActionResult Details(Guid? id)
         {
@@ -37,7 +35,6 @@ namespace SisConv.Mvc.Controllers
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
-        
         public ActionResult Create()
         {
             return View();
@@ -75,7 +72,6 @@ namespace SisConv.Mvc.Controllers
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
-
         
         [HttpPost]
         [ActionName("Delete")]
@@ -122,5 +118,11 @@ namespace SisConv.Mvc.Controllers
                 _processoAppService.Dispose();
             base.Dispose(disposing);
         }
+
+	    public ActionResult Configuracoes(Guid id)
+	    {
+		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
+		    return View();
+	    }
     }
 }
