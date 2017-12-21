@@ -14,9 +14,11 @@ namespace SisConv.Application.Services
 	{
 
 		private readonly IDocumentacaoService _documentacaoService;
+		
 		public DocumentacaoAppService(IUnitOfWork unitOfWork, IDocumentacaoService documentacaoService) : base(unitOfWork)
 		{
 			_documentacaoService = documentacaoService;
+			
 		}
 
 		public void Dispose()

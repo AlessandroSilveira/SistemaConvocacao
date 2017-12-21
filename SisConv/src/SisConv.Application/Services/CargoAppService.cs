@@ -13,11 +13,13 @@ namespace SisConv.Application.Services
     public class CargoAppService : ApplicationService, ICargoAppService
     {
         private readonly ICargoService _cargoService;
+	 
 
-        public CargoAppService(IUnitOfWork unitOfWork, ICargoService cargoService) : base(unitOfWork)
-        {
-            _cargoService = cargoService;
-        }
+		public CargoAppService(IUnitOfWork unitOfWork, ICargoService cargoService) : base(unitOfWork)
+		{
+			_cargoService = cargoService;
+			
+		}
 
         public void Dispose()
         {

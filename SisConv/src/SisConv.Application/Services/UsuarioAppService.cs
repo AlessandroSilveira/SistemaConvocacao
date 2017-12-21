@@ -13,10 +13,11 @@ namespace SisConv.Application.Services
     public class UsuarioAppService : ApplicationService, IUsuarioAppService
     {
         private readonly IUsuarioService _usuarioService;
-
+	   
         public UsuarioAppService(IUnitOfWork unitOfWork, IUsuarioService usuarioService) : base(unitOfWork)
         {
-            _usuarioService = usuarioService;
+	        _usuarioService = usuarioService;
+	      
         }
 
         public void Dispose()

@@ -13,7 +13,7 @@ namespace SisConv.Application.Services
 	public class DadosConvocadosAppService : ApplicationService, IDadosConvocacaoAppService
     {
         private readonly IDadosConvocadosService _dadosConvocadosService;
-
+	   
         public DadosConvocadosAppService(IUnitOfWork unitOfWork, IDadosConvocadosService dadosConvocadosService) : base(unitOfWork)
         {
             _dadosConvocadosService = dadosConvocadosService;

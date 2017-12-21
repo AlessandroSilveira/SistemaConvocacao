@@ -11,6 +11,7 @@ namespace SisConv.Mvc.Controllers
     {
         private readonly ICargoAppService _cargoAppService;
 
+
         public CargoController(ICargoAppService cargoAppService)
         {
             _cargoAppService = cargoAppService;

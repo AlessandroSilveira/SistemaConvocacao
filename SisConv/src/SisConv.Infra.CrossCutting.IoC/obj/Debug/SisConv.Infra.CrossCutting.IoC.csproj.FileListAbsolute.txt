@@ -94,3 +94,4 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.csproj.CoreCompileInputs.cache
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Domain.dll.config

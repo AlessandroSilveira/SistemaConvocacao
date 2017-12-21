@@ -124,5 +124,11 @@ namespace SisConv.Mvc.Controllers
 		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
 		    return View();
 	    }
+
+	    public ActionResult Painel(Guid id)
+	    {
+		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
+		    return View();
+	    }
     }
 }

@@ -14,10 +14,12 @@ namespace SisConv.Application.Services
     {
 
         private readonly IClienteService _clienteService;
+	   
 
-        public ClienteAppService(IUnitOfWork unitOfWork, IClienteService clienteService) : base(unitOfWork)
+		public ClienteAppService(IUnitOfWork unitOfWork, IClienteService clienteService) : base(unitOfWork)
         {
             _clienteService = clienteService;
+	      
         }
 
         public void Dispose()
