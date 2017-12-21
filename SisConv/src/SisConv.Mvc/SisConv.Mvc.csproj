@@ -404,6 +404,7 @@
     <Content Include="Views\Convocado\Index.cshtml" />
     <Content Include="Views\Processos\Configuracoes.cshtml" />
     <Content Include="Views\Processos\Painel.cshtml" />
+    <Content Include="Views\Processos\AtualizarCandidatosConfirmados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

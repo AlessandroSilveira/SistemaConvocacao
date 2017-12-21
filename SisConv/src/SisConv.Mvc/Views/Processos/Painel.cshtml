@@ -9,9 +9,11 @@
 		<h4></h4>
 		<div class="jumbotron">
 			<h1>@ViewBag.dadosProcesso.Nome</h1>
-			
-			<h2><button type="button" class="btn btn-primary btn-lg">Convocar Candidatos</button></h2>	
-			
+
+			<h2>@Html.ActionLink("Convocar Candidatos", "EscolherCargo", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h2>
+
+			<h2>@Html.ActionLink("Atualização dos candidatos que confirmaram participação", "AtualizarCandidatosConfirmados", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h2>
+
 		</div>
 	</div>
 </div>

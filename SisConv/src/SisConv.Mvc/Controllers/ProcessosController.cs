@@ -130,5 +130,18 @@ namespace SisConv.Mvc.Controllers
 		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
 		    return View();
 	    }
-    }
+
+	    public ActionResult AtualizarCandidatosConfirmados(Guid id)
+	    {
+		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
+
+		    var dadosConfirmados  = _convocacaoAppService.Search(a => a.Desistente.Equals("S") && a.ProcessoId.Equals(id));
+			var convocados = _convocadoAppService.Search(a=>a.ProcessoId.Equals(id));
+
+		    ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocados, conf=>conf.ConvocadoId, conv=>conv.ConvocadoId, (conf,conv)=> convocados);
+
+			return View();
+	    }
+
+	}
 }
