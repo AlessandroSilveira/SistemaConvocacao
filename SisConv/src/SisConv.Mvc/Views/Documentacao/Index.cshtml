@@ -1,19 +1,16 @@
 ﻿@model IEnumerable<SisConv.Application.ViewModels.DocumentacaoViewModel>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Documentação dos Canditatos";
 }
 
-<h2>Index</h2>
+<h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Inserir novo documento.", "Create",new{@Id = ViewBag.ProcessoId })
 </p>
 <table class="table">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.ProcessoId)
-        </th>
         <th>
             @Html.DisplayNameFor(model => model.Descricao)
         </th>
@@ -31,12 +28,11 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProcessoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descricao)
-        </td>
+        
+	    <td>
+		    @Html.HiddenFor(modelItem => item.ProcessoId, new{@Value = ViewBag.ProcessoId })
+		    @Html.DisplayFor(modelItem => item.Descricao)
+	    </td>
         <td>
             @Html.DisplayFor(modelItem => item.DataCriacao)
         </td>
@@ -47,8 +43,8 @@
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DocumentoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DocumentoId }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.DocumentoId }) |
+            @Html.ActionLink("Detalhes", "Details", new { id=item.DocumentoId }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.DocumentoId })
         </td>
     </tr>

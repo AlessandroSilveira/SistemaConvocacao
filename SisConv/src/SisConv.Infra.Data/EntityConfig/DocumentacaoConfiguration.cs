@@ -29,7 +29,7 @@ namespace SisConv.Infra.Data.EntityConfig
 				.HasMaxLength(200)
 				.IsRequired();
 
-			ToTable("Documentacao");
+			ToTable("Documentos");
 		}
 	}
 }

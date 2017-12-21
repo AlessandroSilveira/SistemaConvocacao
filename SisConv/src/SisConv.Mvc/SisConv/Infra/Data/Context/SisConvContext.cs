@@ -30,5 +30,7 @@ namespace SisConv.Infra.Data.Context
 		public System.Data.Entity.DbSet<SisConv.Application.ViewModels.DadosConvocadosViewModel> DadosConvocadosViewModels { get; set; }
 
         public System.Data.Entity.DbSet<SisConv.Application.ViewModels.DocumentacaoViewModel> DocumentacaoViewModels { get; set; }
-    }
+
+		public System.Data.Entity.DbSet<SisConv.Application.ViewModels.PessoaViewModel> PessoaViewModels { get; set; }
+	}
 }

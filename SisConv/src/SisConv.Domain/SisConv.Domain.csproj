@@ -52,11 +52,11 @@
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Convocacao.cs" />
     <Compile Include="Entities\Documentacao.cs" />
+    <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\Processo.cs" />
     <Compile Include="Entities\Convocado.cs" />
     <Compile Include="Entities\DadosConvocados.cs" />
     <Compile Include="Entities\PrimeiroAcesso.cs" />
-    <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Entities\Telefone.cs" />
     <Compile Include="Entities\Usuario.cs" />
     <Compile Include="Helpers\Conversor.cs" />

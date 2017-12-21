@@ -12,7 +12,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.ConvocacaoId)
+            @Html.DisplayNameFor(model => model.ProcessoId)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Inscricao)
@@ -80,13 +80,43 @@
         <th>
             @Html.DisplayNameFor(model => model.Resultado)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naturalidade)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrgaoEmissor)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoCivil)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Filhos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deficiente)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Deficiencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CondicaoEspecial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Afro)
+        </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.ConvocacaoId)
+            @Html.DisplayFor(modelItem => item.ProcessoId)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Inscricao)
@@ -153,6 +183,36 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Resultado)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Naturalidade)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrgaoEmissor)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoCivil)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Filhos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deficiente)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Deficiencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CondicaoEspecial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afro)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ConvocadoId }) |

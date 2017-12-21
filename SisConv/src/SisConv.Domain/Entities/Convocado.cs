@@ -33,5 +33,18 @@ namespace SisConv.Domain.Entities
         public int Pontuacao { get; set; }
         public int Posicao { get; set; }
         public string Resultado { get; set; }
-    }
+
+
+	    public string Naturalidade { get; set; }
+	    public string Pai { get; set; }
+	    public string OrgaoEmissor { get; set; }
+	    public int EstadoCivil { get; set; }
+
+	    public DateTime DataNascimento { get; set; }
+	    public int Filhos { get; set; }
+	    public bool Deficiente { get; set; }
+	    public string Deficiencia { get; set; }
+	    public string CondicaoEspecial { get; set; }
+	    public bool Afro { get; set; }
+	}
 }

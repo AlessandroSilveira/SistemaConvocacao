@@ -1,0 +1,29 @@
+﻿
+@{
+	ViewBag.Title = "Configuracoes";
+}
+
+<h2>@ViewBag.dadosProcesso.Nome  - Configurações</h2>
+
+<div class="form-horizontal">
+
+	<h3>
+		@Html.ActionLink("Editar", "Edit", new { id = ViewBag.dadosProcesso.ProcessoId })
+	</h3>
+	<h3>
+		@Html.ActionLink("Detalhes", "Details", new { id = ViewBag.dadosProcesso.ProcessoId })
+	</h3>
+	<h3>
+		@Html.ActionLink("Cargos", "Index", "Cargo", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+	</h3>
+	<h3>
+		@Html.ActionLink("Carregar Convocados desta Convocação", "Create", "DadosConvocados", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+	</h3>
+	<h3>
+		@Html.ActionLink("Documentação do Candidato", "Index", "Documentacao", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+	</h3>
+	<h3>
+		@Html.ActionLink("Excluír", "Delete", new { id = ViewBag.dadosProcesso.ProcessoId })
+	</h3>
+
+</div>
