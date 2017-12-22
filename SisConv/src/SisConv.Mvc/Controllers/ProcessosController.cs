@@ -134,19 +134,29 @@ namespace SisConv.Mvc.Controllers
 	    public ActionResult AtualizarCandidatosConfirmados(Guid id)
 	    {
 		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
+			ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+			    .OrderBy(a => a.CodigoCargo);
 
-		    var dadosConfirmados  = _convocacaoAppService.Search(a =>a.ProcessoId.Equals(id));
-			var convocados = _convocadoAppService.Search(a=>a.ProcessoId.Equals(id));
+			return View();
+	    }
+
+		[HttpPost]
+	    public ActionResult AtualizarCandidatosConfirmados(Guid id,Guid cargo)
+	    {
+			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id));
+			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id));
 
 			//var convocadoViewModels = dadosConfirmados.ToList();
 			//ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocadoViewModels, conf => conf.ConvocadoId,
 			// conv => conv.ConvocadoId, (conf, conv) => convocadoViewModels);
 
-		    ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId,
-			    conv => conv.ConvocadoId, (conf, conv) => new {Conf = conf, Conv = conv.DefaultIfEmpty()});
+			ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId,
+			 conv => conv.ConvocadoId, (conf, conv) => new { Conf = conf, Conv = conv.DefaultIfEmpty() });
 
-			return View();
+			ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+			    .OrderBy(a => a.CodigoCargo);
+
+		    return View();
 	    }
-
 	}
 }
