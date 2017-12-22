@@ -13,10 +13,12 @@ namespace SisConv.Application.Services
     public class ProcessoAppService : ApplicationService, IProcessoAppService
     {
         private readonly IProcessoService _processoService;
+	    
 
         public ProcessoAppService(IUnitOfWork unitOfWork, IProcessoService processoService) : base(unitOfWork)
         {
-            _processoService = processoService;
+	        _processoService = processoService;
+	        
         }
 
         public void Dispose()

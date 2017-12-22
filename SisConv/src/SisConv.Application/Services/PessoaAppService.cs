@@ -13,10 +13,12 @@ namespace SisConv.Application.Services
     public class PessoaAppService : ApplicationService , IPessoaAppService
     {
         private readonly IPessoaService _pessoaService;
+	   
 
         public PessoaAppService(IUnitOfWork unitOfWork, IPessoaService pessoaService) : base(unitOfWork)
         {
-            _pessoaService = pessoaService;
+	        _pessoaService = pessoaService;
+	       
         }
 
         public void Dispose()

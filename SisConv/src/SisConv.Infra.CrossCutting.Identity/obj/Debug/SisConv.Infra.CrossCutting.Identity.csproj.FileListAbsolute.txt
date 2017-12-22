@@ -76,3 +76,5 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.csproj.CoreCompileInputs.cache
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\obj\Debug\SisConv.Infra.CrossCutting.Identity.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.Identity\bin\Debug\EntityFramework.SqlServer.xml

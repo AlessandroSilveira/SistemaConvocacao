@@ -4,39 +4,22 @@ using SisConv.Domain.Entities;
 
 namespace SisConv.Application.AutoMapper
 {
-    public class DomaintoviewModelMappingProfile : Profile
-    {
-        public override string ProfileName => "ViewModelToDomainMappings";
-
-      
-        public DomaintoviewModelMappingProfile()
-        {
-            Mapper.Initialize(cfg => {
-                cfg.CreateMap<ClienteViewModel,Cliente>()
-                    .ReverseMap();
-                cfg.CreateMap<PessoaViewModel,Pessoa >()
-                    .ReverseMap();
-                cfg.CreateMap<TelefoneViewModel,Telefone >()
-                    .ReverseMap();
-                cfg.CreateMap<UsuarioViewModel,Usuario >()
-                    .ReverseMap();
-                cfg.CreateMap<Admin2ViewModel,Admin >()
-                    .ReverseMap();
-                cfg.CreateMap<PrimeiroAcessoViewModel, PrimeiroAcesso>()
-                    .ReverseMap();
-                cfg.CreateMap<ProcessoViewModel, Processo>()
-                    .ReverseMap();
-                cfg.CreateMap<CargoViewModel, Cargo>()
-                    .ReverseMap();
-                cfg.CreateMap<ConvocadoViewModel, Convocado>()
-                    .ReverseMap();
-                cfg.CreateMap<DadosConvocadosViewModel, Convocado>()
-                    .ReverseMap();
-                cfg.CreateMap<ConvocacaoViewModel, Convocacao>()
-                    .ReverseMap();
-                cfg.CreateMap<DocumentacaoViewModel, Documentacao>()
-                    .ReverseMap();
-            });
-        }
-    }
+	public class DomaintoviewModelMappingProfile : Profile
+	{
+		public DomaintoviewModelMappingProfile()
+		{
+			CreateMap<ClienteViewModel, Cliente>();
+			CreateMap<PessoaViewModel, Pessoa>();
+			CreateMap<TelefoneViewModel, Telefone>();
+			CreateMap<UsuarioViewModel, Usuario>();
+			CreateMap<Admin2ViewModel, Admin>();
+			CreateMap<PrimeiroAcessoViewModel, PrimeiroAcesso>();
+			CreateMap<ProcessoViewModel, Processo>();
+			CreateMap<CargoViewModel, Cargo>();
+			CreateMap<ConvocadoViewModel, Convocado>();
+			CreateMap<DadosConvocadosViewModel, Convocado>();
+			CreateMap<ConvocacaoViewModel, Convocacao>();
+			CreateMap<DocumentacaoViewModel, Documentacao>();
+		}
+	}
 }

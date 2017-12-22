@@ -13,10 +13,12 @@ namespace SisConv.Application.Services
     public class AdminAppService : ApplicationService , IAdminAppService
     {
         private readonly IAdminService _adminService;
+	   
 
         public AdminAppService(IUnitOfWork unitOfWork, IAdminService adminService) : base(unitOfWork)
         {
-            _adminService = adminService;
+	        _adminService = adminService;
+	        
         }
 
         public void Dispose()

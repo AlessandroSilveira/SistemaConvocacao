@@ -1,6 +1,11 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using System;
+using System.Linq;
+using System.Reflection;
+using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
+using SisConv.Application.AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
 using SisConv.Domain.Helpers;
@@ -86,6 +91,10 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
-        }
-    }
+
+			//Mapper
+	        
+	        //container.Register<IMapper<, >>(() => new Mapper<>(), Lifestyle.Scoped);
+		}
+	}
 }

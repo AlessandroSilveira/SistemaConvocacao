@@ -10,9 +10,11 @@ namespace SisConv.Application.Services
 	public class EmailAppService :  IEmailAppService
 	{
 		private readonly IEmailServices _emailServices;
+		
 		public EmailAppService(IEmailServices emailServices) 
 		{
 			_emailServices = emailServices;
+			
 		}
 
 		public EnviaEmailBuilder EnviarEmail(ConvocadoViewModel convocacao)

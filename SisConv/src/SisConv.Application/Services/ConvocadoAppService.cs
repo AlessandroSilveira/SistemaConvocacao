@@ -14,10 +14,11 @@ namespace SisConv.Application.Services
     public class ConvocadoAppService : ApplicationService ,IConvocadoAppService
     {
         private readonly IConvocadoService _convocadoService;
-
+	    
         public ConvocadoAppService(IUnitOfWork unitOfWork, IConvocadoService convocadoService) : base(unitOfWork)
         {
-            _convocadoService = convocadoService;
+	        _convocadoService = convocadoService;
+	       
         }
 
         public void Dispose()

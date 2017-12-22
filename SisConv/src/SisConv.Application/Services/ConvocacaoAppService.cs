@@ -13,10 +13,12 @@ namespace SisConv.Application.Services
     public class ConvocacaoAppService : ApplicationService, IConvocacaoAppService
     {
         private readonly IConvocacaoService _convocacaoService;
+	    
 
         public ConvocacaoAppService(IUnitOfWork unitOfWork, IConvocacaoService convocacaoService) : base(unitOfWork)
         {
             _convocacaoService = convocacaoService;
+	        
         }
 
         public void Dispose()

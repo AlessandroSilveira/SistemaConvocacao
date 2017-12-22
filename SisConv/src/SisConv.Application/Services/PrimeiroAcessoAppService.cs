@@ -13,10 +13,12 @@ namespace SisConv.Application.Services
 	public class PrimeiroAcessoAppService : ApplicationService , IPrimeiroAcessoAppService
 	{
 	    private readonly IPrimeiroAcessoService _primeiroAcessoService;
+		
 
 	    public PrimeiroAcessoAppService(IUnitOfWork unitOfWork, IPrimeiroAcessoService primeiroAcessoService) : base(unitOfWork)
 	    {
 	        _primeiroAcessoService = primeiroAcessoService;
+		    
 	    }
 
 	    public void Dispose()
