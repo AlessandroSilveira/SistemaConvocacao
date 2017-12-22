@@ -135,10 +135,15 @@ namespace SisConv.Mvc.Controllers
 	    {
 		    ViewBag.dadosProcesso = _processoAppService.GetById(id);
 
-		    var dadosConfirmados  = _convocacaoAppService.Search(a => a.Desistente.Equals("S") && a.ProcessoId.Equals(id));
+		    var dadosConfirmados  = _convocacaoAppService.Search(a =>a.ProcessoId.Equals(id));
 			var convocados = _convocadoAppService.Search(a=>a.ProcessoId.Equals(id));
 
-		    ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocados, conf=>conf.ConvocadoId, conv=>conv.ConvocadoId, (conf,conv)=> convocados);
+			//var convocadoViewModels = dadosConfirmados.ToList();
+			//ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocadoViewModels, conf => conf.ConvocadoId,
+			// conv => conv.ConvocadoId, (conf, conv) => convocadoViewModels);
+
+		    ViewBag.ListaCandidatos = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId,
+			    conv => conv.ConvocadoId, (conf, conv) => new {Conf = conf, Conv = conv.DefaultIfEmpty()});
 
 			return View();
 	    }

@@ -1,12 +1,13 @@
 ﻿
 @{
-    ViewBag.Title = "AtualizarCandidatosConfirmados";
+	ViewBag.Title = "AtualizarCandidatosConfirmados";
 }
 
 <h2>AtualizarCandidatosConfirmados</h2>
-
 @foreach (var itens in ViewBag.ListaCandidatos)
 {
-	<h2>@itens.Name</h2>
+	foreach (var result in itens)
+	{
+		@result.Conv.Nome
+	}
 }
-
