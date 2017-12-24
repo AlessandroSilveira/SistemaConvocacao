@@ -1,32 +1,54 @@
-﻿
-@{
-	ViewBag.Title = "AtualizarCandidatosConfirmados";
+﻿@{
+    ViewBag.Title = "AtualizarCandidatosConfirmados";
 }
+<h2>Atualização de Convocação</h2>
+<p>
 
+</p>
 <table class="table">
-	@using (Html.BeginForm("AtualizarCandidatosConfirmados", "Processos", FormMethod.Post, new { @id = "form" }))
-	{
-		<tr>
-			<th>
-				Escolha um Cargo:
-			</th>
-			<th>
-				<select name="cargo" class="form-control">
-					<option>Selecione</option>
-					@foreach (var itens in ViewBag.Cargos)
-					{
-						<option value="@itens.CargoId">@itens.Nome</option>
-					}
-				</select>
-				<input type="submit" value="Buscar" class="btn btn-default" />
-			</th>
-		</tr>
-		<tr>
-			<td colspan="2">
-				<input type="hidden" name="Id" value="@ViewBag.Id" />
-			</td>
-		</tr>
+    @using (Html.BeginForm("AtualizarCandidatosConfirmados", "Processos", FormMethod.Post, new {id = "form"}))
+    {
+        <tr>
+            <th>
+                Escolha um Cargo:
+            </th>
+            <th>
+                <select name="cargo" class="form-control" style="float: left">
+                    <option>Selecione</option>
+                    @foreach (var itens in ViewBag.Cargos)
+                    {
+                        <option value="@itens.CargoId">@itens.Nome</option>
+                    }
+                </select>
+                <input type="submit" value="Buscar" class="btn btn-default"/>
+                <input type="hidden" name="id" value="@ViewBag.dadosProcesso.ProcessoId"/>
+            </th>
 
-	}
+        </tr>
+    }
 </table>
-	
+@if (ViewBag.ListaDeCandidatos != null)
+{
+    <table class="table">
+        <tr>
+            <th>Inscrição</th>
+            <th>Nome</th>
+            <th>Classificação</th>
+            <th>Data de Comparecimento</th>
+            <th>Desistente</th>
+            <th>Status da convocação</th>
+            <th>Atualizar</th>
+        </tr>
+        @foreach (var itens in ViewBag.ListaDeCandidatos)
+        {
+            <tr>
+                <td>@itens.Inscricao</td>
+                <td>@itens.Nome</td>
+                <td>@itens.Posicao</td>
+                <td>@itens.DataEntregaDocumentos.ToString("dd/MM/yyyy")</td>
+                <td>@itens.Desistente</td>
+                <td></td>
+            </tr>
+        }
+    </table>
+}

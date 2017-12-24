@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Configuration;
+using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -67,5 +69,34 @@ namespace SisConv.Domain.Services
 			
 			return senha.ToString();
 		}
+
+	    public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados)
+	    {
+	       
+	            var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
+	                (conf, conv) => new
+	                {
+	                    Desistente = conf.Desistente,
+	                    DataEntregaDocumentos = conf.DataEntregaDocumentos,
+	                    convocados = conv
+	                });
+
+	            //Debug.WriteLine("Group-joined list of people speaking either English or Russian:");
+	            List<ConvocadoViewModel> listaDeconvocados = (from language in result
+	                let itemDesistente = language.Desistente
+	                let itemDataEntregaDocumentos = language.DataEntregaDocumentos
+	                from person in language.convocados
+	                select new ConvocadoViewModel()
+	                {
+	                    Nome = person.Nome,
+	                    Posicao = person.Posicao,
+	                    Inscricao = person.Inscricao,
+	                    Desistente = itemDesistente,
+	                    DataEntregaDocumentos = itemDataEntregaDocumentos
+	                }).ToList();
+	            return listaDeconvocados;
+	        
+
+        }
 	}
 }

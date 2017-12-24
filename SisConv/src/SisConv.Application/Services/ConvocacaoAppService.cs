@@ -70,5 +70,10 @@ namespace SisConv.Application.Services
 	    {
 		    return _convocacaoService.GerarSenha();
 	    }
+
+        public List<ConvocadoViewModel> MontaListaDeConvocados(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados)
+        {
+            return _convocacaoService.MontarListaConvocado(dadosConfirmados, convocados);
+        }
     }
 }
