@@ -1,12 +1,13 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using System.Web.UI.WebControls.WebParts;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -16,14 +17,17 @@ namespace SisConv.Mvc.Controllers
         private readonly ICargoAppService _cargoAppService;
         private readonly IConvocadoAppService _convocadoAppService;
         private readonly IConvocacaoAppService _convocacaoAppService;
+        private readonly IOpcoesComparecimento _opcoesComparecimento;
 
         public ProcessosController(IProcessoAppService processoAppService, ICargoAppService cargoAppService,
-            IConvocadoAppService convocadoAppService, IConvocacaoAppService convocacaoAppService)
+            IConvocadoAppService convocadoAppService, IConvocacaoAppService convocacaoAppService,
+            IOpcoesComparecimento opcoesComparecimento)
         {
             _processoAppService = processoAppService;
             _cargoAppService = cargoAppService;
             _convocadoAppService = convocadoAppService;
             _convocacaoAppService = convocacaoAppService;
+            _opcoesComparecimento = opcoesComparecimento;
         }
 
         public ActionResult Index()
@@ -35,7 +39,7 @@ namespace SisConv.Mvc.Controllers
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
-            return processoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(processoViewModel);
+            return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
         public ActionResult Create()
@@ -56,7 +60,7 @@ namespace SisConv.Mvc.Controllers
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
-            return processoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(processoViewModel);
+            return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
         [HttpPost]
@@ -73,7 +77,7 @@ namespace SisConv.Mvc.Controllers
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
-            return processoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(processoViewModel);
+            return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
         [HttpPost]
@@ -156,7 +160,18 @@ namespace SisConv.Mvc.Controllers
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
 
+            Dictionary<StatusComparecimento, string> opcoesComp;
+            opcoesComp = new Dictionary<StatusComparecimento, string>();
+
+            foreach (StatusComparecimento val in Enum.GetValues(typeof(StatusComparecimento)))
+                opcoesComp.Add(Domain.Core.Enums.StatusComparecimento.CompareceuEntregaDocumentacao,
+                    _opcoesComparecimento.EnumDescription(Domain.Core.Enums.StatusComparecimento.CompareceuEntregaDocumentacao));
+
+            ViewBag
+
             return View();
         }
+
+        public IEnumerable StatusComparecimento { get; set; }
     }
 }

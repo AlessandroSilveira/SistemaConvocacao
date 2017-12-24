@@ -8,6 +8,7 @@ using SimpleInjector;
 using SisConv.Application.AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
+using SisConv.Domain.Core.Services;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Base;
 using SisConv.Domain.Interfaces.Repositories;
@@ -92,9 +93,8 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
-			//Mapper
-	        
-	        //container.Register<IMapper<, >>(() => new Mapper<>(), Lifestyle.Scoped);
-		}
+            //Domain.Core
+            container.Register<IOpcoesComparecimento, OpcoesComparecimento>(Lifestyle.Scoped);
+        }
 	}
 }
