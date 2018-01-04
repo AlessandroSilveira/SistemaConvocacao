@@ -136,5 +136,8 @@ namespace SisConv.Application.ViewModels
 
         public DateTime DataEntregaDocumentos { get; set; }
 
+        public Guid ConvocacaoId { get; set; }
+
+        public string StatusConvocacao { get; set; }
     }
 }

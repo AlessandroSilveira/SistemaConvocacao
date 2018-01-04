@@ -11,92 +11,100 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Domain.Services
 {
-	public class ConvocacaoService : IConvocacaoService
-	{
+    public class ConvocacaoService : IConvocacaoService
+    {
+        private readonly IConvocacaoRepository _convocacaoRepository;
 
-		private readonly IConvocacaoRepository _convocacaoRepository;
+        private const string SenhaCaracteresValidos = "abcdefghijklmnopqrstuvwxyz1234567890@#!?";
 
-		private const string SenhaCaracteresValidos = "abcdefghijklmnopqrstuvwxyz1234567890@#!?";
-		public ConvocacaoService(IConvocacaoRepository convocacaoRepository)
-		{
-			_convocacaoRepository = convocacaoRepository;
-		}
-
-		public void Dispose()
-		{
-			_convocacaoRepository.Dispose();
-		}
-
-		public Convocacao Add(Convocacao obj)
-		{
-			return _convocacaoRepository.Add(obj);
-		}
-
-		public Convocacao GetById(Guid id)
-		{
-			return _convocacaoRepository.GetById(id);
-		}
-
-		public IEnumerable<Convocacao> GetAll()
-		{
-			return _convocacaoRepository.GetAll();
-		}
-
-		public Convocacao Update(Convocacao obj)
-		{
-			return _convocacaoRepository.Update(obj);
-		}
-
-		public void Remove(Guid id)
-		{
-			_convocacaoRepository.Remove(id);
-		}
-
-		public IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate)
-		{
-			return _convocacaoRepository.Search(predicate);
-		}
-
-		public string GerarSenha()
-		{
-			var tamanho = Convert.ToInt32(WebConfigurationManager.AppSettings["NumerosCaracteresSenha"]);
-			var valormaximo = SenhaCaracteresValidos.Length;
-			var random = new Random(DateTime.Now.Millisecond);
-			var senha = new StringBuilder(tamanho);
-
-			for (var i = 0; i < tamanho; i++)
-				senha.Append(SenhaCaracteresValidos[random.Next(0, valormaximo)]);
-			
-			return senha.ToString();
-		}
-
-	    public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados)
-	    {
-	       
-	            var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
-	                (conf, conv) => new
-	                {
-	                    Desistente = conf.Desistente,
-	                    DataEntregaDocumentos = conf.DataEntregaDocumentos,
-	                    convocados = conv
-	                });
-
-	            //Debug.WriteLine("Group-joined list of people speaking either English or Russian:");
-	            List<ConvocadoViewModel> listaDeconvocados = (from language in result
-	                let itemDesistente = language.Desistente
-	                let itemDataEntregaDocumentos = language.DataEntregaDocumentos
-	                from person in language.convocados
-	                select new ConvocadoViewModel()
-	                {
-	                    Nome = person.Nome,
-	                    Posicao = person.Posicao,
-	                    Inscricao = person.Inscricao,
-	                    Desistente = itemDesistente,
-	                    DataEntregaDocumentos = itemDataEntregaDocumentos
-	                }).ToList();
-	            return listaDeconvocados;
-	        
-
+        public ConvocacaoService(IConvocacaoRepository convocacaoRepository)
+        {
+            _convocacaoRepository = convocacaoRepository;
         }
-	}
+
+        public void Dispose()
+        {
+            _convocacaoRepository.Dispose();
+        }
+
+        public Convocacao Add(Convocacao obj)
+        {
+            return _convocacaoRepository.Add(obj);
+        }
+
+        public Convocacao GetById(Guid id)
+        {
+            return _convocacaoRepository.GetById(id);
+        }
+
+        public IEnumerable<Convocacao> GetAll()
+        {
+            return _convocacaoRepository.GetAll();
+        }
+
+        public Convocacao Update(Convocacao obj)
+        {
+            return _convocacaoRepository.Update(obj);
+        }
+
+        public void Remove(Guid id)
+        {
+            _convocacaoRepository.Remove(id);
+        }
+
+        public IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate)
+        {
+            return _convocacaoRepository.Search(predicate);
+        }
+
+        public string GerarSenha()
+        {
+            var tamanho = Convert.ToInt32(WebConfigurationManager.AppSettings["NumerosCaracteresSenha"]);
+            var valormaximo = SenhaCaracteresValidos.Length;
+            var random = new Random(DateTime.Now.Millisecond);
+            var senha = new StringBuilder(tamanho);
+
+            for (var i = 0; i < tamanho; i++)
+                senha.Append(SenhaCaracteresValidos[random.Next(0, valormaximo)]);
+
+            return senha.ToString();
+        }
+
+        public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados,
+            IEnumerable<ConvocadoViewModel> convocados)
+        {
+            var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
+                (conf, conv) => new
+                {
+                    conf.Desistente,
+                    conf.DataEntregaDocumentos,
+                    conf.ConvocacaoId,
+                    conf.StatusConvocacao,
+                    convocados = conv
+                });
+
+            var listaDeconvocados = new List<ConvocadoViewModel>();
+            foreach (var language in result)
+            {
+                string itemDesistente = language.Desistente;
+                DateTime itemDataEntregaDocumentos = language.DataEntregaDocumentos;
+                Guid convocacaoId = language.ConvocacaoId;
+                string statusConvocacao = language.StatusConvocacao;
+                foreach (var person in language.convocados)
+                    listaDeconvocados.Add(new ConvocadoViewModel
+                    {
+                        ConvocacaoId = convocacaoId,
+                        ConvocadoId = person.ConvocadoId,
+                        Nome = person.Nome,
+                        Posicao = person.Posicao,
+                        Inscricao = person.Inscricao,
+                        Desistente = itemDesistente,
+                        DataEntregaDocumentos = itemDataEntregaDocumentos,
+                        StatusConvocacao = statusConvocacao
+                    });
+            }
+
+            return listaDeconvocados;
+        }
+    }
 }

@@ -1,12 +1,9 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
 using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
@@ -145,33 +142,80 @@ namespace SisConv.Mvc.Controllers
                 .OrderBy(a => a.CodigoCargo);
             ViewBag.ListaCandidatos = null;
 
+            var opcoesComp = _opcoesComparecimento.MontarListaOpcoesComparecimento();
+
+            ViewBag.ListaOpcoesComparecimento = opcoesComp;
+
             return View();
         }
 
         [HttpPost]
-        public ActionResult AtualizarCandidatosConfirmados(Guid id, Guid cargo)
+        public ActionResult AtualizarCandidatosConfirmados(Guid? id, Guid? cargo)
         {
-            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id));
-            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id));
+
+            var novoid = Guid.Parse(id.ToString());
+          
+            if (VerificarIdECargoNulos(id, cargo, novoid, out var actionResult)) return actionResult;
+            var novocargo = Guid.Parse(cargo.ToString());
+
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(novoid));
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.CargoId.Equals(novocargo));
             var listaDeconvocados = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
 
             ViewBag.ListaDeCandidatos = listaDeconvocados;
-            ViewBag.dadosProcesso = _processoAppService.GetById(id);
-            ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+            ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
+            ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
 
-            Dictionary<StatusComparecimento, string> opcoesComp;
-            opcoesComp = new Dictionary<StatusComparecimento, string>();
+            var opcoesComp = _opcoesComparecimento.MontarListaOpcoesComparecimento();
 
-            foreach (StatusComparecimento val in Enum.GetValues(typeof(StatusComparecimento)))
-                opcoesComp.Add(Domain.Core.Enums.StatusComparecimento.CompareceuEntregaDocumentacao,
-                    _opcoesComparecimento.EnumDescription(Domain.Core.Enums.StatusComparecimento.CompareceuEntregaDocumentacao));
-
-            ViewBag
+            ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
             return View();
         }
 
-        public IEnumerable StatusComparecimento { get; set; }
+        private bool VerificarIdECargoNulos(Guid? id, Guid? cargo, Guid novoid, out ActionResult actionResult)
+        {
+            if (id.Equals(null))
+            {
+                ModelState.AddModelError(id.ToString(), $"Algo deu errado,por favor tente novamente");
+                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
+                    .OrderBy(a => a.CodigoCargo);
+                ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
+                {
+                    actionResult = View();
+                    return true;
+                }
+            }
+
+            if (cargo.Equals(null))
+            {
+                ModelState.AddModelError(cargo.ToString(), $"Escolha um cargo");
+                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
+                    .OrderBy(a => a.CodigoCargo);
+                ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
+                {
+                    actionResult = View();
+                    return true;
+                }
+            }
+
+            actionResult = null;
+            return false;
+        }
+
+        [HttpPost]
+        public ActionResult AtualizarConvocacao(string opcaoConvocacao,Guid ProcessoId, Guid ConvocacaoId)
+        {
+            var dadosConvocacao = _convocacaoAppService.GetById(ConvocacaoId);
+
+            dadosConvocacao.StatusConvocacao = opcaoConvocacao;
+
+            var dados = _convocacaoAppService.Update(dadosConvocacao);
+
+
+
+            return Json(dados, JsonRequestBehavior.AllowGet);
+        }
     }
 }
