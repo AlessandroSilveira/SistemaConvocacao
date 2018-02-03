@@ -118,6 +118,10 @@
     <Compile Include="Services\UsuarioService.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SisConv.Domain.Core\SisConv.Domain.Core.csproj">
+      <Project>{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}</Project>
+      <Name>SisConv.Domain.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.Identity\SisConv.Infra.CrossCutting.Identity.csproj">
       <Project>{90F803F7-D9DD-4D2E-B2D9-CD9280099418}</Project>
       <Name>SisConv.Infra.CrossCutting.Identity</Name>

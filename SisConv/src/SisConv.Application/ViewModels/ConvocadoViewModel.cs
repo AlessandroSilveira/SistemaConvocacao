@@ -133,11 +133,9 @@ namespace SisConv.Application.ViewModels
 		public bool Afro { get; set; }
 
         public string Desistente { get; set; }
-
         public DateTime DataEntregaDocumentos { get; set; }
-
         public Guid ConvocacaoId { get; set; }
-
         public string StatusConvocacao { get; set; }
+        public string StatusContratacao { get; set; }
     }
 }

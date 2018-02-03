@@ -1,11 +1,6 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using AutoMapper;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
-using SisConv.Application.AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
 using SisConv.Domain.Core.Services;
@@ -58,6 +53,9 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IDadosConvocadosService, DadosConvocadosService>(Lifestyle.Scoped);
             container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
             container.Register<IDocumentacaoService, DocumentacaoService>(Lifestyle.Scoped);
+            
+           
+
             //container.Register<IEmailBuilder, EmailBuilder>(Lifestyle.Scoped);
             //container.Register<IEmailSender, EnviaEmailBuilder>(Lifestyle.Scoped);
             //container.Register<IEnviadorEmail, EnviardorDeEmail>(Lifestyle.Scoped);
@@ -94,7 +92,9 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
             //Domain.Core
-            container.Register<IOpcoesComparecimento, OpcoesComparecimento>(Lifestyle.Scoped);
+            container.Register<IListaOpcoes, ListasOpcoes>(Lifestyle.Scoped);
+            container.Register<IEnumDescription, EnumDescription>(Lifestyle.Scoped);
+            container.Register<IMontaListaComEnum, MontaListaComEnum>(Lifestyle.Scoped);
         }
 	}
 }

@@ -5,6 +5,8 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Web.Configuration;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Core.Services;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -14,12 +16,14 @@ namespace SisConv.Domain.Services
     public class ConvocacaoService : IConvocacaoService
     {
         private readonly IConvocacaoRepository _convocacaoRepository;
+        private readonly IListaOpcoes _opcoesComparecimento;
 
         private const string SenhaCaracteresValidos = "abcdefghijklmnopqrstuvwxyz1234567890@#!?";
 
-        public ConvocacaoService(IConvocacaoRepository convocacaoRepository)
+        public ConvocacaoService(IConvocacaoRepository convocacaoRepository, IListaOpcoes opcoesComparecimento)
         {
             _convocacaoRepository = convocacaoRepository;
+            _opcoesComparecimento = opcoesComparecimento;
         }
 
         public void Dispose()
@@ -100,8 +104,8 @@ namespace SisConv.Domain.Services
                         Inscricao = person.Inscricao,
                         Desistente = itemDesistente,
                         DataEntregaDocumentos = itemDataEntregaDocumentos,
-                        StatusConvocacao = statusConvocacao
-                    });
+                        StatusConvocacao = _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
+            });
             }
 
             return listaDeconvocados;
