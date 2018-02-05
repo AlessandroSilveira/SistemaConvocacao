@@ -64,5 +64,7 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Processo>, IEnumerable<ProcessoViewModel>>(_processoService.Search(predicate));
         }
+
+
     }
 }

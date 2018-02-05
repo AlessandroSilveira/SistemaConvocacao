@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
 
 namespace SisConv.Domain.Interfaces.Services
@@ -14,5 +15,6 @@ namespace SisConv.Domain.Interfaces.Services
         void Remove(Guid id);
         IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate);
 	    string GerarSenha();
+        List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados);
     }
 }

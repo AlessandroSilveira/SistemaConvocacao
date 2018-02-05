@@ -307,6 +307,8 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\PrimeiroAcesso.js" />
+    <Content Include="Scripts\Processos\AtualizarStatusEstudante\AtualizarStatusEstudante.js" />
+    <Content Include="Scripts\Processos\Processos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
@@ -405,6 +407,7 @@
     <Content Include="Views\Processos\Configuracoes.cshtml" />
     <Content Include="Views\Processos\Painel.cshtml" />
     <Content Include="Views\Processos\AtualizarCandidatosConfirmados.cshtml" />
+    <Content Include="Views\Processos\AtualizarStatusEstudante.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -420,6 +423,10 @@
     <ProjectReference Include="..\SisConv.Application\SisConv.Application.csproj">
       <Project>{C270B938-648C-40D4-B8C0-B272F5E407C1}</Project>
       <Name>SisConv.Application</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SisConv.Domain.Core\SisConv.Domain.Core.csproj">
+      <Project>{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}</Project>
+      <Name>SisConv.Domain.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Domain\SisConv.Domain.csproj">
       <Project>{8CC31A0D-6B3E-45CC-8DFF-C552FF614329}</Project>

@@ -61,17 +61,13 @@
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="Migrations\201712131204575_initial.cs" />
-    <Compile Include="Migrations\201712131204575_initial.Designer.cs">
-      <DependentUpon>201712131204575_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712230124540_initial.cs" />
+    <Compile Include="Migrations\201712230124540_initial.Designer.cs">
+      <DependentUpon>201712230124540_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201712151719016_15122017.cs" />
-    <Compile Include="Migrations\201712151719016_15122017.Designer.cs">
-      <DependentUpon>201712151719016_15122017.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712201555122_20122017.cs" />
-    <Compile Include="Migrations\201712201555122_20122017.Designer.cs">
-      <DependentUpon>201712201555122_20122017.cs</DependentUpon>
+    <Compile Include="Migrations\201712270501489_27122017.cs" />
+    <Compile Include="Migrations\201712270501489_27122017.Designer.cs">
+      <DependentUpon>201712270501489_27122017.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -105,14 +101,11 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712131204575_initial.resx">
-      <DependentUpon>201712131204575_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712230124540_initial.resx">
+      <DependentUpon>201712230124540_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712151719016_15122017.resx">
-      <DependentUpon>201712151719016_15122017.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712201555122_20122017.resx">
-      <DependentUpon>201712201555122_20122017.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712270501489_27122017.resx">
+      <DependentUpon>201712270501489_27122017.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

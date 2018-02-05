@@ -18,5 +18,6 @@ namespace SisConv.Domain.Entities
         public bool EnviouEmail { get; set; }
         public string Desistente { get; set; }
         public bool Ativo { get; set; }
+        public string StatusConvocacao { get; set; }
     }
 }

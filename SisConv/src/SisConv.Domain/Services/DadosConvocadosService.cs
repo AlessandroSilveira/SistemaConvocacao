@@ -147,34 +147,48 @@ namespace SisConv.Domain.Services
 			adapter.Fill(ds);
 			using (command.ExecuteReader())
 			{
-				var listaCandidatos = ds.Tables[0].AsEnumerable()
-					.Select(row => new Convocado
-					{
-						Inscricao = row.Field<string>(0) == null ? "-" : row.Field<string>(0).ToString(),
-						Nome = row.Field<string>(1) == null ? "-" : row.Field<string>(1).ToString(),
-						Mae = row.Field<string>(2) == null ? "-" : row.Field<string>(2).ToString(),
-						Sexo = row.Field<string>(3).ToString(),
-						Nascimento = row.Field<string>(4).ToString(),
-						Documento = row.Field<string>(5) == null ? "-" : row.Field<string>(5).ToString(),
-						Cpf = row.Field<string>(6) == null ? "-" : row.Field<string>(6).ToString(),
-						Email = row.Field<string>(7) == null ? "-" : row.Field<string>(7).ToString(),
-						Telefone = row.Field<string>(8) == null ? "00000000000" : row.Field<string>(8).ToString(),
-						Celular = row.Field<string>(9) == null ? "-" : row.Field<string>(9).ToString(),
-						Endereco = row.Field<string>(10) == null ? "-" : row.Field<string>(10).ToString(),
-						Numero = row.Field<string>(11) == null ? "-" : row.Field<string>(11).ToString(),
-						Complemento = row.Field<string>(12) == null ? "-" : row.Field<string>(12).ToString(),
-						Bairro = row.Field<string>(13) == null ? "-" : row.Field<string>(13).ToString(),
-						Cidade = row.Field<string>(14) == null ? "-" : row.Field<string>(14).ToString(),
-						Uf = row.Field<string>(15) == null ? "-" : row.Field<string>(15).ToString(),
-						Cep = row.Field<string>(16) == null ? "-" : row.Field<string>(16).ToString(),
-						Cargo = row.Field<string>(17) == null ? "-" : row.Field<string>(17).ToString(),
-						CargoId = Guid.NewGuid(),
-						Pontuacao = Convert.ToInt32(row.Field<string>(18)) ,
-						Posicao = Convert.ToInt32(row.Field<string>(19)),
-						Resultado = row.Field<string>(20) == null ? "-" : row.Field<string>(20).ToString(),
-						ConvocadoId = Guid.NewGuid(),
-						ProcessoId = id
-					}).ToList();
+				
+
+
+
+                    var listaCandidatos = ds.Tables[0].AsEnumerable()
+                    .Select(row => new Convocado
+                    {
+                        Inscricao = row.Field<string>(0) == null ? "-" : row.Field<string>(0).ToString(),
+                        Nome = row.Field<string>(1) == null ? "-" : row.Field<string>(1).ToString(),
+                        Mae = row.Field<string>(2) == null ? "-" : row.Field<string>(2).ToString(),
+                        Sexo = row.Field<string>(3).ToString(),
+                        Nascimento = row.Field<string>(4).ToString(),
+                        Documento = row.Field<string>(5) == null ? "-" : row.Field<string>(5).ToString(),
+                        Cpf = row.Field<string>(6) == null ? "-" : row.Field<string>(6).ToString(),
+                        Email = row.Field<string>(7) == null ? "-" : row.Field<string>(7).ToString(),
+                        Telefone = row.Field<string>(8) == null ? "00000000000" : row.Field<string>(8).ToString(),
+                        Celular = row.Field<string>(9) == null ? "-" : row.Field<string>(9).ToString(),
+                        Endereco = row.Field<string>(10) == null ? "-" : row.Field<string>(10).ToString(),
+                        Numero = row.Field<string>(11) == null ? "-" : row.Field<string>(11).ToString(),
+                        Complemento = row.Field<string>(12) == null ? "-" : row.Field<string>(12).ToString(),
+                        Bairro = row.Field<string>(13) == null ? "-" : row.Field<string>(13).ToString(),
+                        Cidade = row.Field<string>(14) == null ? "-" : row.Field<string>(14).ToString(),
+                        Uf = row.Field<string>(15) == null ? "-" : row.Field<string>(15).ToString(),
+                        Cep = row.Field<string>(16) == null ? "-" : row.Field<string>(16).ToString(),
+                        Cargo = row.Field<string>(17) == null ? "-" : row.Field<string>(17).ToString(),
+                        CargoId = Guid.NewGuid(),
+                        Pontuacao = Convert.ToInt32(row.Field<string>(18)),
+                        Posicao = Convert.ToInt32(row.Field<string>(19)),
+                        Resultado = row.Field<string>(20) == null ? "-" : row.Field<string>(20).ToString(),
+                        ConvocadoId = Guid.NewGuid(),
+                        ProcessoId = id,
+                        Naturalidade = String.Empty,
+                        Pai = String.Empty,
+                        OrgaoEmissor = String.Empty,
+                        EstadoCivil = 1,
+                        DataNascimento = DateTime.Now,
+                        Filhos = 0,
+                        Deficiente = false,
+                        Deficiencia = String.Empty,
+                        CondicaoEspecial = String.Empty,
+                        Afro = false
+                    }).ToList();
 
 				InsereDadosExcelNoBanco(listaCandidatos);
 			}

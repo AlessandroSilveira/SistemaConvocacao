@@ -16,7 +16,8 @@ namespace SisConv.Application.ViewModels
         public string Desistente { get; set; }
         public bool Ativo { get; set; }
 		public string CandidatosSelecionados { get; set; }
-
 	    public string TextoParaDesistentes { get; set; }
-	}
+        public string StatusConvocacao { get; set; }
+        public string StatusContratacao { get; set; }
+    }
 }
