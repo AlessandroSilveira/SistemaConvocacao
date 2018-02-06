@@ -154,10 +154,14 @@ namespace SisConv.Mvc.Controllers
         {
 
             var novoid = Guid.Parse(id.ToString());
-          
-            if (VerificarIdNulos(id, cargo, novoid, out var actionResult)) return actionResult;
-            if (VerificarCargoNulos(cargo, novoid, out actionResult)) return actionResult;
+            
+            //if (VerificarIdNulos(id, cargo, novoid, out var actionResult)) return actionResult;
+            //if (VerificarSerCargoEstaNulo(cargo, novoid, out actionResult)) return actionResult;
             var novocargo = Guid.Parse(cargo.ToString());
+
+            if (VerificarSerCargoEstaNulo(cargo, novoid, out var actionResult)) return actionResult;
+            if (VerificarSeProcessoIdEstaNulo(id, novoid, out var view)) return view;
+
 
             var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(novoid));
             var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.CargoId.Equals(novocargo));
@@ -175,40 +179,41 @@ namespace SisConv.Mvc.Controllers
             return View();
         }
 
-        public bool VerificarIdNulos(Guid? id, Guid? cargo, Guid novoid, out ActionResult actionResult)
-        {
-            if (id.Equals(null))
-            {
-                ModelState.AddModelError(id.ToString(), $"Algo deu errado,por favor tente novamente");
-                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
-                    .OrderBy(a => a.CodigoCargo);
-                ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
-                {
-                    actionResult = View();
-                    return true;
-                }
-            }
-            actionResult = null;
-            return false;
-        }
+        //private bool VerificarSeProcessoIdEstaNulo2(Guid? id, Guid novoid, out ActionResult view)
+        //{
+        //    if (id.Equals(null))
+        //    {
+        //        ModelState.AddModelError(id.ToString(), $"Algo deu errado,por favor tente novamente");
+        //        ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
+        //            .OrderBy(a => a.CodigoCargo);
+        //        ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
+        //        {
+        //            view = View();
+        //            return true;
+        //        }
+        //    }
 
-        private bool VerificarCargoNulos(Guid? cargo, Guid novoid, out ActionResult actionResult)
-        {
-            if (cargo.Equals(null))
-            {
-                ModelState.AddModelError(cargo.ToString(), $"Escolha um cargo");
-                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
-                    .OrderBy(a => a.CodigoCargo);
-                ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
-                {
-                    actionResult = View();
-                    return true;
-                }
-            }
+        //    view = null;
+        //    return false;
+        //}
 
-            actionResult = null;
-            return false;
-        }
+        //private bool VerificarSeCargoEstaNulo2(Guid? cargo, Guid novoid, out ActionResult actionResult)
+        //{
+        //    if (cargo.Equals(null))
+        //    {
+        //        ModelState.AddModelError(cargo.ToString(), $"Escolha um cargo");
+        //        ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
+        //            .OrderBy(a => a.CodigoCargo);
+        //        ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
+        //        {
+        //            actionResult = View();
+        //            return true;
+        //        }
+        //    }
+
+        //    actionResult = null;
+        //    return false;
+        //}
 
         [HttpPost]
         public ActionResult AtualizarConvocacao(string opcaoConvocacao,Guid ProcessoId, Guid ConvocacaoId)
@@ -234,22 +239,22 @@ namespace SisConv.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult AtualizarStatusEstudante(Guid? id, Guid? cargo)
+        public ActionResult AtualizarStatusEstudante(Guid?  id, Guid? cargo)
         {
 
-            var novoid = Guid.Parse(id.ToString());
+            var guidId = Guid.Parse(id.ToString());
+            var guidCargo = Guid.Parse(cargo.ToString());
 
-            if (VerificarIdNulos(id, cargo, novoid, out var actionResult)) return actionResult;
-            if (VerificarCargoNulos(cargo, novoid, out actionResult)) return actionResult;
-            var novocargo = Guid.Parse(cargo.ToString());
+            if (VerificarSerCargoEstaNulo(cargo, guidId, out var actionResult)) return actionResult;
+            if (VerificarSeProcessoIdEstaNulo(id, guidId, out var view)) return view;
 
-            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(novoid) ).Where(b=>b.StatusConvocacao.Any());
-            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.CargoId.Equals(novocargo));
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(guidId) ).Where(b=>b.StatusConvocacao!=null);
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.CargoId.Equals(guidCargo));
             var listaDeconvocados = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
 
             ViewBag.ListaDeCandidatos = listaDeconvocados;
-            ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
-            ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
+            ViewBag.dadosProcesso = _processoAppService.GetById(guidId);
+            ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
             
             var opcoesContatacao = _listaOpcoes.MontarListaOpcoesContratacao();
@@ -257,6 +262,42 @@ namespace SisConv.Mvc.Controllers
             ViewBag.ListaOpcoesContratacao = opcoesContatacao;
 
             return View();
+        }
+
+        private bool VerificarSeProcessoIdEstaNulo(Guid? id, Guid guidId, out ActionResult view)
+        {
+            if (id.Equals(null))
+            {
+                ModelState.AddModelError(id.ToString(), $"Algo deu errado,por favor tente novamente");
+                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
+                    .OrderBy(a => a.CodigoCargo);
+                ViewBag.dadosProcesso = _processoAppService.GetById(guidId);
+                {
+                    view = View();
+                    return true;
+                }
+            }
+
+            view = null;
+            return false;
+        }
+
+        private bool VerificarSerCargoEstaNulo(Guid? cargo, Guid guidId, out ActionResult actionResult)
+        {
+            if (cargo.Equals(null))
+            {
+                ModelState.AddModelError(cargo.ToString(), $"Escolha um cargo");
+                ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
+                    .OrderBy(a => a.CodigoCargo);
+                ViewBag.dadosProcesso = _processoAppService.GetById(guidId);
+                {
+                    actionResult = View();
+                    return true;
+                }
+            }
+
+            actionResult = null;
+            return false;
         }
 
         [HttpPost]

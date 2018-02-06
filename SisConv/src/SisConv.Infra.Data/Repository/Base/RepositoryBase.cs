@@ -4,7 +4,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Linq.Expressions;
-using SisConv.Application.ViewModels;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Infra.Data.Context;
 

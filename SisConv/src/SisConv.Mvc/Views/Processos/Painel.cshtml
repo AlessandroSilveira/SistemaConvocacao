@@ -4,18 +4,18 @@
 }
 
 <div class="container">
-	<div class="form-horizontal">
-		<h4></h4>
-		<h4></h4>
-		<div class="jumbotron">
-			<h1>@ViewBag.dadosProcesso.Nome</h1>
+    <div class="form-horizontal">
+        <h4></h4>
+        <h4></h4>
+        <div class="jumbotron">
+            <h2>@ViewBag.dadosProcesso.Nome</h2>
 
-			<h2>@Html.ActionLink("Convocar Candidatos", "EscolherCargo", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h2>
+            <h4>@Html.ActionLink("Convocar Candidatos", "EscolherCargo", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
 
-			<h2>@Html.ActionLink("Atualização dos candidatos que confirmaram participação", "AtualizarCandidatosConfirmados", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h2>
-            
-		    <h2>@Html.ActionLink("Atualização de Status dos candidatos", "AtualizarStatusEstudante", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h2>
+            <h4>@Html.ActionLink("Atualização dos candidatos que confirmaram participação", "AtualizarCandidatosConfirmados", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
 
-		</div>
-	</div>
+            <h4>@Html.ActionLink("Atualização de Status dos candidatos", "AtualizarStatusEstudante", new { @id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
+
+        </div>
+    </div>
 </div>

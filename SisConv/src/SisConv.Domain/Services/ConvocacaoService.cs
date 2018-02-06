@@ -4,8 +4,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Web.Configuration;
-using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
 using SisConv.Domain.Core.Services;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
@@ -74,41 +72,41 @@ namespace SisConv.Domain.Services
             return senha.ToString();
         }
 
-        public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados,
-            IEnumerable<ConvocadoViewModel> convocados)
-        {
-            var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
-                (conf, conv) => new
-                {
-                    conf.Desistente,
-                    conf.DataEntregaDocumentos,
-                    conf.ConvocacaoId,
-                    conf.StatusConvocacao,
-                    convocados = conv
-                });
+        //public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados,
+        //    IEnumerable<ConvocadoViewModel> convocados)
+        //{
+        //    var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
+        //        (conf, conv) => new
+        //        {
+        //            conf.Desistente,
+        //            conf.DataEntregaDocumentos,
+        //            conf.ConvocacaoId,
+        //            conf.StatusConvocacao,
+        //            convocados = conv
+        //        });
 
-            var listaDeconvocados = new List<ConvocadoViewModel>();
-            foreach (var language in result)
-            {
-                string itemDesistente = language.Desistente;
-                DateTime itemDataEntregaDocumentos = language.DataEntregaDocumentos;
-                Guid convocacaoId = language.ConvocacaoId;
-                string statusConvocacao = language.StatusConvocacao;
-                foreach (var person in language.convocados)
-                    listaDeconvocados.Add(new ConvocadoViewModel
-                    {
-                        ConvocacaoId = convocacaoId,
-                        ConvocadoId = person.ConvocadoId,
-                        Nome = person.Nome,
-                        Posicao = person.Posicao,
-                        Inscricao = person.Inscricao,
-                        Desistente = itemDesistente,
-                        DataEntregaDocumentos = itemDataEntregaDocumentos,
-                        StatusConvocacao = _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
-            });
-            }
+        //    var listaDeconvocados = new List<ConvocadoViewModel>();
+        //    foreach (var language in result)
+        //    {
+        //        string itemDesistente = language.Desistente;
+        //        DateTime itemDataEntregaDocumentos = language.DataEntregaDocumentos;
+        //        Guid convocacaoId = language.ConvocacaoId;
+        //        string statusConvocacao = language.StatusConvocacao;
+        //        foreach (var person in language.convocados)
+        //            listaDeconvocados.Add(new ConvocadoViewModel
+        //            {
+        //                ConvocacaoId = convocacaoId,
+        //                ConvocadoId = person.ConvocadoId,
+        //                Nome = person.Nome,
+        //                Posicao = person.Posicao,
+        //                Inscricao = person.Inscricao,
+        //                Desistente = itemDesistente,
+        //                DataEntregaDocumentos = itemDataEntregaDocumentos,
+        //                StatusConvocacao = _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
+        //    });
+        //    }
 
-            return listaDeconvocados;
-        }
+        //    return listaDeconvocados;
+        //}
     }
 }

@@ -97,6 +97,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SisConv.Domain.Core\SisConv.Domain.Core.csproj">
+      <Project>{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}</Project>
+      <Name>SisConv.Domain.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SisConv.Domain\SisConv.Domain.csproj">
       <Project>{8CC31A0D-6B3E-45CC-8DFF-C552FF614329}</Project>
       <Name>SisConv.Domain</Name>
