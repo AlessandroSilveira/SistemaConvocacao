@@ -313,9 +313,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Web.config">
-      <SubType>Designer</SubType>
-    </Content>
+    <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -427,15 +425,15 @@
       <Name>SisConv.Application</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Domain.Core\SisConv.Domain.Core.csproj">
-      <Project>{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}</Project>
+      <Project>{aa43a6c4-9f35-47af-8ca7-8dce1a56238c}</Project>
       <Name>SisConv.Domain.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Domain\SisConv.Domain.csproj">
-      <Project>{8CC31A0D-6B3E-45CC-8DFF-C552FF614329}</Project>
+      <Project>{8cc31a0d-6b3e-45cc-8dff-c552ff614329}</Project>
       <Name>SisConv.Domain</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.Identity\SisConv.Infra.CrossCutting.Identity.csproj">
-      <Project>{90f803f7-d9dd-4d2e-b2d9-cd9280099418}</Project>
+      <Project>{90F803F7-D9DD-4D2E-B2D9-CD9280099418}</Project>
       <Name>SisConv.Infra.CrossCutting.Identity</Name>
     </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.IoC\SisConv.Infra.CrossCutting.IoC.csproj">
