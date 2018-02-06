@@ -4,6 +4,7 @@ using SimpleInjector;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
 using SisConv.Domain.Core.Services;
+using SisConv.Domain.Core.Services.PasswordGenerator;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Base;
 using SisConv.Domain.Interfaces.Repositories;
@@ -95,6 +96,7 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IListaOpcoes, ListasOpcoes>(Lifestyle.Scoped);
             container.Register<IEnumDescription, EnumDescription>(Lifestyle.Scoped);
             container.Register<IMontaListaComEnum, MontaListaComEnum>(Lifestyle.Scoped);
-        }
+	        container.Register<IPasswordGenerator, PasswordGenerator>(Lifestyle.Scoped);
+		}
 	}
 }

@@ -2,7 +2,7 @@
 
 @model SisConv.Infra.CrossCutting.Identity.Model.LoginViewModel
 @{
-    ViewBag.Title = "Log in";
+    ViewBag.Title = "Sistema de Convocações";
 }
 
 <h2>@ViewBag.Title.</h2>
@@ -43,12 +43,13 @@
                     </div>
                 </div>
                 <p>
-                    @Html.ActionLink("Registrar um novo usuário.", "Register")
+                    @*@Html.ActionLink("Registrar um novo usuário.", "Register")*@
                 </p>
                 @* Enable this once you have account confirmation enabled for password reset functionality
-                    <p>
-                        @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                    </p>*@
+                   *@
+	            <p>
+		            @Html.ActionLink("Esqueceu sua senha?", "ForgotPassword")
+	            </p>
             }
         </section>
     </div>

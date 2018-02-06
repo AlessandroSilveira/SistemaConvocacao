@@ -72,7 +72,7 @@ namespace SisConv.Application.Services
 
         public string GerarSenhaUsuario()
         {
-            return _convocacaoService.GerarSenha();
+	        return _convocacaoService.GeneratePassword();
         }
 
         public List<ConvocadoViewModel> MontaListaDeConvocados(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados)

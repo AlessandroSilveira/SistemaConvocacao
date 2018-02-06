@@ -1,17 +1,17 @@
 ﻿@model SisConv.Infra.CrossCutting.Identity.Model.EditUserViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Usuário";
 }
 
-<h2>Edit.</h2>
+<h2>@ViewBag.Title</h2>
 
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Edit User Form.</h4>
+        <h4>Editar Usuário.</h4>
         <hr />
         @Html.ValidationSummary(true)
         @Html.HiddenFor(model => model.Id)
@@ -24,14 +24,15 @@
             </div>
         </div>
         <div class="form-group">
-            @Html.Label("Roles", new { @class = "control-label col-md-2" })
-            <span class=" col-md-10">
-                @foreach (var item in Model.RolesList)
-                {
-                    <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline" />
-                    @Html.Label(item.Value, new { @class = "control-label" })
-                }
-            </span>
+         @*@Html.Label("Roles", new { @class = "control-label col-md-2" })*@
+	        <span class=" col-md-10">
+		        Regras de Acesso: 
+		        @foreach (var item in Model.RolesList)
+		        {
+			        <input type="checkbox" name="SelectedRole" value="@item.Value" checked="@item.Selected" class="checkbox-inline"/>
+			        @Html.Label(item.Value, new {@class = "control-label"})
+		        }
+	        </span>
         </div>
 
         <div class="form-group">
@@ -43,7 +44,7 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Voltar", "Index")
 </div>
 
 @section Scripts {
