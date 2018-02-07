@@ -104,7 +104,8 @@ namespace SisConv.Application.Services
                     Inscricao = person.Inscricao,
                     Desistente = itemDesistente,
                     DataEntregaDocumentos = itemDataEntregaDocumentos,
-                    StatusConvocacao =string.IsNullOrEmpty(statusConvocacao)?"": _opcoesComparecimento.EnumDescription((StatusComparecimento) Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
+					// StatusConvocacao =string.IsNullOrEmpty(statusConvocacao)?"": _opcoesComparecimento.EnumDescription((StatusComparecimento) Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
+	                StatusConvocacao = statusConvocacao
                 }));
             }
             return listaDeconvocados;

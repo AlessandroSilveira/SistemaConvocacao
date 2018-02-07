@@ -163,7 +163,6 @@ namespace SisConv.Mvc.Controllers
 			var dadosConvocado = _convocadoAppService.GetById(ConvocadoId);
 			ViewBag.dadosConvocado = dadosConvocado;
 			ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
-
 			return View();
 		}
 	}

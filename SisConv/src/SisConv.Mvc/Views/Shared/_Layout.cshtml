@@ -29,6 +29,7 @@
 				@if (Request.IsAuthenticated && User.IsInRole("Cliente"))
 				{
 					<li>@Html.ActionLink("Convocações", "Index", "Processos")</li>
+					<li>@Html.ActionLink("Relatorios", "Index", "Relatorio")</li>
 				}
 			</ul>
 			@Html.Partial("_LoginPartial")
