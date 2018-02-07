@@ -13,7 +13,9 @@ namespace SisConv.Domain.Interfaces.Services
         Convocacao Update(Convocacao obj);
         void Remove(Guid id);
         IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate);
-	    string GerarSenha();
-       // List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados);
+		
+
+		// List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados);
+	    string GeneratePassword();
     }
 }

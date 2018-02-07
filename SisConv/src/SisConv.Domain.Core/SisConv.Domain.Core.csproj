@@ -5,9 +5,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\..\..\..\..\..\..\..\WINDOWS\assembly\GAC_MSIL\System.Web.Mvc\2.0.0.0__31bf3856ad364e35\System.Web.Mvc.dll</HintPath>
-    </Reference>
+    <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}">
+      <Guid>bee4bfec-6683-3e67-9167-3c0cbc68f40a</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>4</VersionMinor>
+      <WrapperTool>tlbimp</WrapperTool>
+    </COMReference>
   </ItemGroup>
 
 </Project>

@@ -26,27 +26,15 @@ namespace SisConv.Mvc.Controllers
         private Infra.CrossCutting.Identity.Configuration.ApplicationUserManager _userManager;
         public Infra.CrossCutting.Identity.Configuration.ApplicationUserManager UserManager
         {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<Infra.CrossCutting.Identity.Configuration.ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<Infra.CrossCutting.Identity.Configuration.ApplicationUserManager>();
+	        private set => _userManager = value;
         }
 
         private ApplicationRoleManager _roleManager;
         public ApplicationRoleManager RoleManager
         {
-            get
-            {
-                return _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-            }
-            private set
-            {
-                _roleManager = value;
-            }
+            get => _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
+	        private set => _roleManager = value;
         }
 
         //
