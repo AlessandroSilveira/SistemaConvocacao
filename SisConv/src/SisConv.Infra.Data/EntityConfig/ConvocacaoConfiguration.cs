@@ -34,7 +34,10 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.StatusConvocacao)
                 .HasMaxLength(150);
 
-            Property(c => c.EnviouEmail)
+	        Property(c => c.StatusContratacao)
+		        .HasMaxLength(150);
+
+			Property(c => c.EnviouEmail)
                 .IsRequired();
 
 	        Property(c => c.Desistente)

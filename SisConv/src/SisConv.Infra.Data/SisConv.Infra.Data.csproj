@@ -61,13 +61,9 @@
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="Migrations\201712230124540_initial.cs" />
-    <Compile Include="Migrations\201712230124540_initial.Designer.cs">
-      <DependentUpon>201712230124540_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712270501489_27122017.cs" />
-    <Compile Include="Migrations\201712270501489_27122017.Designer.cs">
-      <DependentUpon>201712270501489_27122017.cs</DependentUpon>
+    <Compile Include="Migrations\201802071217102_07022018.cs" />
+    <Compile Include="Migrations\201802071217102_07022018.Designer.cs">
+      <DependentUpon>201802071217102_07022018.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -91,18 +87,15 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712230124540_initial.resx">
-      <DependentUpon>201712230124540_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712270501489_27122017.resx">
-      <DependentUpon>201712270501489_27122017.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\SisConv.Domain\SisConv.Domain.csproj">
       <Project>{8CC31A0D-6B3E-45CC-8DFF-C552FF614329}</Project>
       <Name>SisConv.Domain</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201802071217102_07022018.resx">
+      <DependentUpon>201802071217102_07022018.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

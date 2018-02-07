@@ -14,7 +14,6 @@ namespace SisConv.Mvc.Controllers
 	public class ConvocacaoController : Controller
 	{
 		private readonly IConvocacaoAppService _convocacaoAppService;
-		//private readonly IEmailAppService _emailAppService;
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly ApplicationUserManager _userManager;
 		private readonly IDocumentacaoAppService _documentacaoAppService;
@@ -28,7 +27,6 @@ namespace SisConv.Mvc.Controllers
 			_userManager = userManager;
 			_documentacaoAppService = documentacaoAppService;
 			_processoAppService = processoAppService;
-			//_emailAppService = emailAppService;
 		}
 
 		public ActionResult Index()
@@ -58,14 +56,14 @@ namespace SisConv.Mvc.Controllers
 
 			foreach (var t in selecionado)
 			{
+				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
+				RegistarCandidatoParaFazerLogin(dadosConvocado);
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				_convocacaoAppService.Add(convocacaoViewModel);
-				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
 				//_emailAppService.EnviarEmail(dadosConvocado);
-				RegistarCandidatoParaFazerLogin(dadosConvocado);
 			}
 
-			return RedirectToAction("ListaConvocados", "Processos", new {cargo = Cargo.ToString(), id = convocacaoViewModel.ProcessoId.ToString()});
+			return RedirectToAction("ListaConvocados", "Processos", new {cargo = Cargo, id = convocacaoViewModel.ProcessoId.ToString()});
 		}
 
 		private string GerarSenha()
@@ -115,21 +113,28 @@ namespace SisConv.Mvc.Controllers
 
 		private void RegistarCandidatoParaFazerLogin(ConvocadoViewModel convocadoViewModel)
 		{
-			var dadosConvocado = _convocadoAppService.Search(a => a.ConvocadoId.Equals(convocadoViewModel.ConvocadoId))
+			if (ObterDadosConvocado(convocadoViewModel, out var dadosConvocado)) return;
+
+			var user = new ApplicationUser
+			{
+				Id = dadosConvocado.ConvocadoId.ToString(),
+				UserName = convocadoViewModel.Email,
+				Email = convocadoViewModel.Email
+			};
+
+			var dados = _userManager.FindByEmail(user.Email);
+			if (dados != null) return;
+			_userManager.Create(user, GerarSenha());
+			var user2 = _userManager.FindByName(dadosConvocado.Email);
+			_userManager.AddToRole(user2.Id, RolesNames.ROLE_CONVOCADO);
+		}
+
+		private bool ObterDadosConvocado(ConvocadoViewModel convocadoViewModel, out ConvocadoViewModel dadosConvocado)
+		{
+			dadosConvocado = _convocadoAppService.Search(a => a.ConvocadoId.Equals(convocadoViewModel.ConvocadoId))
 				.FirstOrDefault();
-		    if (dadosConvocado != null)
-		    {
-		        var user = new ApplicationUser
-		        {
-		            Id = dadosConvocado.ConvocadoId.ToString(),
-		            UserName = convocadoViewModel.Email,
-		            Email = convocadoViewModel.Email
-		        };
-		        var result = _userManager.Create(user, GerarSenha());
-		        var user2 = _userManager.FindByName(dadosConvocado.Email);
-		        _userManager.AddToRole(user2.Id, RolesNames.ROLE_CONVOCADO);
-			  
-		    }
+			if (dadosConvocado == null) return true;
+			return false;
 		}
 
 		[HttpPost]
@@ -138,14 +143,8 @@ namespace SisConv.Mvc.Controllers
 			var dadosConvocacao =
 				_convocacaoAppService.GetById(ConvocacaoId);
 
-			//if (dadosConvocacao == null)
-			//	return RedirectToAction(decisao.Equals("N") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao",
-			//		new {ProcessoId, ConvocadoId, ConvocacaoId});
-
 			dadosConvocacao.Desistente = decisao;
-
 			_convocacaoAppService.Update(dadosConvocacao);
-
 			return RedirectToAction(decisao.Equals("N") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new {ProcessoId, ConvocadoId, ConvocacaoId});
 		}
 
@@ -154,7 +153,6 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
 			var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
 			ViewBag.dadosConvocado = dadosConvocado;
-
 			ViewBag.listaDocumentacao = _documentacaoAppService.Search(a => a.ProcessoId.Equals(ProcessoId));
 			return View();
 		}
@@ -162,10 +160,8 @@ namespace SisConv.Mvc.Controllers
 		public ActionResult DesistenciaCandidato(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
 		{
 			ViewBag.dadosConvocacao = _convocacaoAppService.GetById(ConvocacaoId);
-
 			var dadosConvocado = _convocadoAppService.GetById(ConvocadoId);
 			ViewBag.dadosConvocado = dadosConvocado;
-
 			ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
 
 			return View();

@@ -8,7 +8,8 @@ using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
 {
-    public class ProcessosController : Controller
+	[Authorize(Roles = "Cliente")]
+	public class ProcessosController : Controller
     {
         private readonly IProcessoAppService _processoAppService;
         private readonly ICargoAppService _cargoAppService;

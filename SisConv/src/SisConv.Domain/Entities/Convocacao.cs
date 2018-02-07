@@ -19,5 +19,6 @@ namespace SisConv.Domain.Entities
         public string Desistente { get; set; }
         public bool Ativo { get; set; }
         public string StatusConvocacao { get; set; }
+		public string StatusContratacao { get; set; } 
     }
 }
