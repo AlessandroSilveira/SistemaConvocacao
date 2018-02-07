@@ -8,6 +8,7 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Domain.Services
 {
+
 	public class ConvocacaoService : IConvocacaoService
     {
         private readonly IConvocacaoRepository _convocacaoRepository;
