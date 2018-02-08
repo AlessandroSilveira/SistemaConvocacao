@@ -63,7 +63,7 @@ namespace SisConv.Mvc.Controllers
 				//_emailAppService.EnviarEmail(dadosConvocado);
 			}
 
-			return RedirectToAction("ListaConvocados", "Processos", new {cargo = Cargo, id = convocacaoViewModel.ProcessoId.ToString()});
+			return RedirectToAction("ListaConvocados", "Processos", new {@cargo = Cargo, @id = convocacaoViewModel.ProcessoId.ToString()});
 		}
 
 		private string GerarSenha()
