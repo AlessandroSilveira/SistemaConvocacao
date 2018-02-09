@@ -3,6 +3,12 @@
     $("#DataEntregaDocumentos").mask("00/00/0000");
     $("#HorarioEntregaDocumento").mask("00:00");
 
+    var dados = $("#mostraConfirmacao").val();
+
+    if (dados==="value") {
+        $("#mensagem_sucesso").trigger("click");
+    }
+   
 
     $("#envia_selecionados").click(function () {
         var convocados = new Array;

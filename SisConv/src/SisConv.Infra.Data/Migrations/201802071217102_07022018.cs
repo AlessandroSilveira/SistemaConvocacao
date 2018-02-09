@@ -7,14 +7,14 @@ namespace SisConv.Infra.Data.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Convocacoes", "StatusConvocacao", c => c.String(maxLength: 150, unicode: false));
+           
             AddColumn("dbo.Convocacoes", "StatusContratacao", c => c.String(maxLength: 150, unicode: false));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Convocacoes", "StatusContratacao");
-            DropColumn("dbo.Convocacoes", "StatusConvocacao");
+           
+          
         }
     }
 }

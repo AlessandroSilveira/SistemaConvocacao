@@ -53,17 +53,27 @@ namespace SisConv.Mvc.Controllers
 			if (!ModelState.IsValid) return View(convocacaoViewModel);
 
 			var selecionado = convocacaoViewModel.CandidatosSelecionados.Split(',');
+		    var confirmacao = false;
 
-			foreach (var t in selecionado)
+            foreach (var t in selecionado)
 			{
 				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
 				RegistarCandidatoParaFazerLogin(dadosConvocado);
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
-				_convocacaoAppService.Add(convocacaoViewModel);
+				var gravaConvocacao = _convocacaoAppService.Add(convocacaoViewModel);
+			    if (gravaConvocacao == null)
+			    {
+			       
+                    break;
+			    }
+			    else
+			    {
+			         confirmacao = true;
+                }
 				//_emailAppService.EnviarEmail(dadosConvocado);
 			}
-
-			return RedirectToAction("ListaConvocados", "Processos", new {@cargo = Cargo, @id = convocacaoViewModel.ProcessoId.ToString()});
+		   
+			return RedirectToAction("ListaConvocados", "Processos", new { @ProcessoId = convocacaoViewModel.ProcessoId.ToString(), @cargo = Cargo,@confirmacao = confirmacao });
 		}
 
 		private string GerarSenha()

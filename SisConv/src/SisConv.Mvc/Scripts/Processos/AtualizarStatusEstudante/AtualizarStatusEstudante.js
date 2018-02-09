@@ -9,8 +9,9 @@
         dataType: "json",
         url: "../AtualizarStatusEstudanteParaContratacao",
         success: function (response) {
+            $("#opcao_" + id).val(opcaoStatus);
             if (response !== null) {
-                $("#opcao_" + id).val(opcaoStatus);
+               
                 $("#mensagem_sucesso").trigger("click");
             } else {
                 $("#mensagem_erro").trigger("click");
