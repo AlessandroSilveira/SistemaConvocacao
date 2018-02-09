@@ -8,7 +8,8 @@ using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
 {
-    public class ProcessosController : Controller
+	[Authorize(Roles = "Cliente")]
+	public class ProcessosController : Controller
     {
         private readonly IProcessoAppService _processoAppService;
         private readonly ICargoAppService _cargoAppService;
@@ -301,10 +302,10 @@ namespace SisConv.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult AtualizarStatusEstudanteParaContratacao(string opcaoConvocacao, Guid processoId, Guid convocacaoId)
+        public ActionResult AtualizarStatusEstudanteParaContratacao(string opcaoStatus, Guid processoId, Guid convocacaoId)
         {
             var dadosConvocacao = _convocacaoAppService.GetById(convocacaoId);
-            dadosConvocacao.StatusConvocacao = opcaoConvocacao;
+            dadosConvocacao.StatusContratacao = opcaoStatus;
             var dados = _convocacaoAppService.Update(dadosConvocacao);
             return Json(dados, JsonRequestBehavior.AllowGet);
         }

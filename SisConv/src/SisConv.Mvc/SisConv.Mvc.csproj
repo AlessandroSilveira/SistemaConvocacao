@@ -222,6 +222,7 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PessoaController.cs" />
     <Compile Include="Controllers\ProcessosController.cs" />
+    <Compile Include="Controllers\RelatorioController.cs" />
     <Compile Include="Controllers\RolesAdminController.cs" />
     <Compile Include="Controllers\UserAdminController.cs" />
     <Compile Include="Global.asax.cs">
@@ -408,6 +409,7 @@
     <Content Include="Views\Processos\Painel.cshtml" />
     <Content Include="Views\Processos\AtualizarCandidatosConfirmados.cshtml" />
     <Content Include="Views\Processos\AtualizarStatusEstudante.cshtml" />
+    <Content Include="Views\Relatorio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
