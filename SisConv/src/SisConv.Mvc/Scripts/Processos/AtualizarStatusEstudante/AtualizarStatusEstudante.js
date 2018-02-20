@@ -1,6 +1,6 @@
 ﻿function AtualizarStatus(id) {
     var opcaoStatus = $("#opcao_" + id).val(); //("#bkpLoja" + id).html(data);
-    var processoId = $("#id").val();
+    var processoId = $("#ProcessoId").val();
 
     $.ajax({
         async: true,

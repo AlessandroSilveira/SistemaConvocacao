@@ -250,11 +250,12 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult AtualizarStatusEstudante(Guid id)
         {
-
             ViewBag.dadosProcesso = _processoAppService.GetById(id);
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
             ViewBag.ListaCandidatos = null;
+
+            ViewBag.ProcessoId = id;
 
             var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
 
@@ -265,7 +266,6 @@ namespace SisConv.Mvc.Controllers
         [HttpPost]
         public ActionResult AtualizarStatusEstudante(Guid?  id, Guid? cargo)
         {
-
             var guidId = Guid.Parse(id.ToString());
             var guidCargo = Guid.Parse(cargo.ToString());
 
@@ -283,6 +283,7 @@ namespace SisConv.Mvc.Controllers
             
             var opcoesContatacao = _listaOpcoes.MontarListaOpcoesContratacao();
 
+            ViewBag.ProcessoId = id;
             ViewBag.ListaOpcoesContratacao = opcoesContatacao;
 
             return View();
