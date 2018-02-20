@@ -410,6 +410,7 @@
     <Content Include="Views\Processos\AtualizarCandidatosConfirmados.cshtml" />
     <Content Include="Views\Processos\AtualizarStatusEstudante.cshtml" />
     <Content Include="Views\Relatorio\Index.cshtml" />
+    <Content Include="Views\Relatorio\ClassificadosPorCargo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
