@@ -61,9 +61,9 @@
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
-    <Compile Include="Migrations\201802071217102_07022018.cs" />
-    <Compile Include="Migrations\201802071217102_07022018.Designer.cs">
-      <DependentUpon>201802071217102_07022018.cs</DependentUpon>
+    <Compile Include="Migrations\201803060118130_initial.cs" />
+    <Compile Include="Migrations\201803060118130_initial.Designer.cs">
+      <DependentUpon>201803060118130_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -93,8 +93,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201802071217102_07022018.resx">
-      <DependentUpon>201802071217102_07022018.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201803060118130_initial.resx">
+      <DependentUpon>201803060118130_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

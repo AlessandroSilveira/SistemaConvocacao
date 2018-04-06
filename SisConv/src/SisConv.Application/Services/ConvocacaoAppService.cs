@@ -84,6 +84,7 @@ namespace SisConv.Application.Services
                     conf.DataEntregaDocumentos,
                     conf.ConvocacaoId,
                     conf.StatusConvocacao,
+                    conf.StatusContratacao,
                     convocados = conv
                 });
 
@@ -95,6 +96,7 @@ namespace SisConv.Application.Services
                 var itemDataEntregaDocumentos = language.DataEntregaDocumentos;
                 var convocacaoId = language.ConvocacaoId;
                 var statusConvocacao = language.StatusConvocacao;
+                var statusContrataco = language.StatusContratacao;
                 listaDeconvocados.AddRange(language.convocados.Select(person => new ConvocadoViewModel
                 {
                     ConvocacaoId = convocacaoId,
@@ -104,8 +106,8 @@ namespace SisConv.Application.Services
                     Inscricao = person.Inscricao,
                     Desistente = itemDesistente,
                     DataEntregaDocumentos = itemDataEntregaDocumentos,
-					// StatusConvocacao =string.IsNullOrEmpty(statusConvocacao)?"": _opcoesComparecimento.EnumDescription((StatusComparecimento) Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
-	                StatusConvocacao = statusConvocacao
+					StatusConvocacao = string.IsNullOrEmpty(statusConvocacao)?"": _opcoesComparecimento.EnumDescription((StatusComparecimento) Enum.Parse(typeof(StatusComparecimento), statusConvocacao)),
+	                StatusContratacao =  string.IsNullOrEmpty(statusContrataco) ? "" : _opcoesComparecimento.EnumDescription((StatusContratacao)Enum.Parse(typeof(StatusContratacao), statusContrataco))
                 }));
             }
             return listaDeconvocados;

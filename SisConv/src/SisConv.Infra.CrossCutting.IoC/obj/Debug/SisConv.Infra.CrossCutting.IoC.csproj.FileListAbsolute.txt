@@ -293,3 +293,4 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.csproj.CopyComplete
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.pdb
+C:\Users\alesi\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\obj\Debug\SisConv.Infra.CrossCutting.IoC.csproj.CopyComplete

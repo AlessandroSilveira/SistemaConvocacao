@@ -1,6 +1,6 @@
 ﻿@model SisConv.Application.ViewModels.ConvocacaoViewModel
 @{
-	ViewBag.Title = "Lista de Candidatos";
+    ViewBag.Title = "Lista de Candidatos";
 }
 <script src="~/Scripts/jquery-3.2.1.min.js"></script>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -11,112 +11,164 @@
 
 <h2>@ViewBag.DadosConvocacao.Nome</h2>
 <h3>
-	@ViewBag.DadosCargo.Nome
+    @ViewBag.DadosCargo.Nome
 </h3>
-    <table class="table">
-        <tr>
-            <th>
-                Inscrição
-            </th>
-            <th>
-                Nome
-            </th>
-            <th>
-                CPF
-            </th>
-            <th>
-                Pontuação
-            </th>
-            <th>
-                Posição
-            </th>
-            <th>
-                Resultado
-            </th>
-            <th>Convocar?</th>
-        </tr>
+<table class="table">
+    <tr>
+        <th>
+            Inscrição
+        </th>
+        <th>
+            Nome
+        </th>
+        <th>
+            CPF
+        </th>
+        <th>
+            Pontuação
+        </th>
+        <th>
+            Posição
+        </th>
+        <th>
+            Resultado
+        </th>
+        <th>Convocar?</th>
+    </tr>
 
-        @foreach (var item in ViewBag.ListaCandidatos) {
-            <tr>
-                <td>
-                   @item.Inscricao
-                </td>
-                <td>
-                    @item.Nome.ToString().ToUpper()
-                </td>
-                <td>
-                    @item.Cpf
-                </td>
-                <td>
-                    @item.Pontuacao
-                </td>
-                <td>
-                    @item.Posicao
-                </td>
-                <td>
-                    @item.Resultado.ToString().ToUpper()
-                </td>
-                <td>@Html.CheckBox("Convocado",new{Value=item.ConvocadoId})</td>
-            </tr>
-        }
+    @foreach (var item in ViewBag.ListaCandidatos)
+    {
         <tr>
-            <td colspan="7" align="center">
-                <button type="button" class="btn btn-primary" id="envia_selecionados" data-toggle="modal" data-target="#myModal">Enviar Candidatos Selecionados</button>
-                <input type="button" value="Voltar" />
+            <td>
+                @item.Inscricao
             </td>
+            <td>
+                @item.Nome.ToString().ToUpper()
+            </td>
+            <td>
+                @item.Cpf
+            </td>
+            <td>
+                @item.Pontuacao
+            </td>
+            <td>
+                @item.Posicao
+            </td>
+            <td>
+                @item.Resultado.ToString().ToUpper()
+            </td>
+            <td>@Html.CheckBox("Convocado", new { Value = item.ConvocadoId })</td>
         </tr>
+    }
+    <tr>
+        <td colspan="7" align="center">
+            <button type="button" class="btn btn-primary" id="envia_selecionados" data-toggle="modal" data-target="#myModal">Enviar Candidatos Selecionados</button>
+            <input type="button"class="btn btn-primary" value="Voltar" onclick="history.back();" />
+            <input type="hidden" id="mostraConfirmacao" value="@ViewBag.Confirmacao" />
+        </td>
+    </tr>
 
-    </table>
-    <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
-            @using (Html.BeginForm("Create", "Convocacao", FormMethod.Post, new { form = "form" }))
-            {
-	            @Html.AntiForgeryToken()
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal">&times;</button>
-                        <h4 class="modal-title">Convocação</h4>
-                    </div>
-                    <div class="modal-body">
-                        <br />
-                        <span id="disc"></span>
-                        @Html.HiddenFor(model=>model.CandidatosSelecionados)
-	                    @Html.HiddenFor(model=>model.ProcessoId,new{Value=@ViewBag.ProcessoId})
-	                    @Html.HiddenFor(model=>model.Ativo, new {Value=true })
-                        @Html.Hidden("Cargo",new{Value=@ViewBag.DadosCargo.CargoId})
-                        <h5 class="modal-title">Preencha os dados abaixo para seguir com a convocação:</h5>
-                        <br />
-                        <form class="form-horizontal">
-                            <fieldset>
-                                
-                                <div class="form-group">
-                                    <label for="DataEntregaDocumentos" class="col-lg-10 control-label"><b>Data da entrega dos documentos.</b></label>
-                                    <div class="col-lg-10">
-                                        @Html.TextBoxFor(model=>model.DataEntregaDocumentos)<br/><br />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="HorarioEntregaDocumento" class="col-lg-10 control-label"><b>Horário de entrega dos documentos.</b></label>
-                                    <div class="col-lg-10">
-                                        @Html.TextBoxFor(model => model.HorarioEntregaDocumento)<br /><br />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="EnderecoEntregaDocumento" class="col-lg-10 control-label"><b>Endereço de Entrega dos documentos.</b> </label>
-                                    <div class="col-lg-10">
-                                        @Html.TextBoxFor(model => model.EnderecoEntregaDocumento)<br /><br />
-                                    </div>
-                                </div>
-                            </fieldset>
-                        </form>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="Submit" class="btn btn-primary">Salvar</button>
-                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-                    </div>
+</table>
+<div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+        @using (Html.BeginForm("Create", "Convocacao", FormMethod.Post, new { form = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Convocação</h4>
                 </div>
-            }
-        </div>
+                <div class="modal-body">
+                    <br />
+                    <span id="disc"></span>
+                    @Html.HiddenFor(model => model.CandidatosSelecionados)
+                    @Html.HiddenFor(model => model.ProcessoId, new { Value = @ViewBag.ProcessoId })
+                    @Html.HiddenFor(model => model.Ativo, new { Value = true })
+                    @Html.Hidden("Cargo", new { Value = @ViewBag.DadosCargo.CargoId })
+                    <h5 class="modal-title">Preencha os dados abaixo para seguir com a convocação:</h5>
+                    <br />
+                    <form class="form-horizontal">
+                        <fieldset>
+
+                            <div class="form-group">
+                                <label for="DataEntregaDocumentos" class="col-lg-10 control-label"><b>Data da entrega dos documentos.</b></label>
+                                <div class="col-lg-10">
+                                    @Html.TextBoxFor(model => model.DataEntregaDocumentos)<br /><br />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="HorarioEntregaDocumento" class="col-lg-10 control-label"><b>Horário de entrega dos documentos.</b></label>
+                                <div class="col-lg-10">
+                                    @Html.TextBoxFor(model => model.HorarioEntregaDocumento)<br /><br />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="EnderecoEntregaDocumento" class="col-lg-10 control-label"><b>Endereço de Entrega dos documentos.</b> </label>
+                                <div class="col-lg-10">
+                                    @Html.TextBoxFor(model => model.EnderecoEntregaDocumento)<br /><br />
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="Submit" class="btn btn-primary">Salvar</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+                </div>
+            </div>
+        }
     </div>
+</div>
+
+<button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#myModal3" style="display: none"></button>
+<button type="button" class="btn btn-primary" id="mensagem_erro" data-toggle="modal" data-target="#myModal2" style="display: none"></button>
+
+<div class="modal fade" id="myModal3" role="dialog">
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
+            </div>
+            <div class="modal-body">
+                <br />
+                <span id="disc"></span>
+                <h5 class="modal-title">Dados atualizados com Sucesso</h5>
+                <br />
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="modal fade" id="myModal2" role="dialog">
+    <div class="modal-dialog">
+
+
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
+            </div>
+            <div class="modal-body">
+                <br />
+                <span id="disc"></span>
+                <h5 class="modal-title">Erro ao atualizar dados.</h5>
+                <br />
+            </div>
+            <div class="modal-footer">
+
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 
 

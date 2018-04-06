@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Text.RegularExpressions;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
@@ -14,7 +15,7 @@ namespace SisConv.Domain.Services
 	{
 		private readonly IDadosConvocadosRepository _dadosConvocadosRepository;
 		private readonly ICargoRepository _cargoRepository;
-		
+
 
 		public DadosConvocadosService(IDadosConvocadosRepository dadosConvocadosRepository, ICargoRepository cargoRepository)
 		{
@@ -109,7 +110,7 @@ namespace SisConv.Domain.Services
 				_cargoRepository.Add(itens);
 		}
 
-		private static void PreencheAListaDeCargosParaSalvarNoBanco(Guid id, List<Cargo> listaCargos, List<Cargo> listaCargo)
+		private void PreencheAListaDeCargosParaSalvarNoBanco(Guid id, List<Cargo> listaCargos, List<Cargo> listaCargo)
 		{
 			foreach (var itens in listaCargos)
 			{
@@ -117,15 +118,20 @@ namespace SisConv.Domain.Services
 				var codigo = itemcargo[0].Trim();
 				var nome = itemcargo[1].Trim();
 
-				if (!listaCargo.Any(a => a.CodigoCargo.Equals(codigo)))
-					listaCargo.Add(new Cargo
-					{
-						Ativo = true,
-						CargoId = Guid.NewGuid(),
-						CodigoCargo = codigo,
-						ProcessoId = id,
-						Nome = nome
-					});
+				var dadosCargo = _cargoRepository.Search(a => a.ProcessoId.Equals(id) && a.CodigoCargo.Equals(codigo) && a.Nome.Equals(nome));
+
+				if (!dadosCargo.Any())
+				{
+					if (!listaCargo.Any(a => a.CodigoCargo.Equals(codigo)))
+						listaCargo.Add(new Cargo
+						{
+							Ativo = true,
+							CargoId = Guid.NewGuid(),
+							CodigoCargo = codigo,
+							ProcessoId = id,
+							Nome = nome
+						});
+				}
 			}
 		}
 
@@ -147,52 +153,64 @@ namespace SisConv.Domain.Services
 			adapter.Fill(ds);
 			using (command.ExecuteReader())
 			{
-				
+				try
+				{
+					var listaCandidatos = ds.Tables[0].AsEnumerable()
+				.Select(row => new Convocado
+				{
+					Inscricao = row.Field<string>(0) == null ? "" : row.Field<string>(0).ToString(),
+					Nome = row.Field<string>(1) == null ? "" : row.Field<string>(1).ToString(),
+					Mae = row.Field<string>(2) == null ? "" : row.Field<string>(2).ToString(),
+					Sexo = row.Field<string>(3).ToString(),
+					Nascimento = row.Field<DateTime>(4).ToString("dd/MM/yyyy"),				
+					
+					Documento =ApenasDigitos( row.Field<string>(5) == null ? "" : row.Field<string>(5).ToString()),
+					Cpf = row.Field<string>(6) == null ? "" : row.Field<string>(6).ToString(),
+					Email = row.Field<string>(7) == null ? "" : row.Field<string>(7).ToString(),
+					Telefone = row.Field<string>(8) == null ? "00000000000" : row.Field<string>(8).ToString(),
+					Celular = row.Field<string>(9) == null ? "" : row.Field<string>(9).ToString(),
+					Endereco = row.Field<string>(10) == null ? "" : row.Field<string>(10).ToString(),
+					Numero = row.Field<string>(11) == null ? "" : row.Field<string>(11).ToString(),
+					Complemento = row.Field<string>(12) == null ? "" : row.Field<string>(12).ToString(),
+					Bairro = row.Field<string>(13) == null ? "" : row.Field<string>(13).ToString(),
+					Cidade = row.Field<string>(14) == null ? "" : row.Field<string>(14).ToString(),
+					Uf = row.Field<string>(15) == null ? "" : row.Field<string>(15).ToString(),
+					Cep = row.Field<string>(16) == null ? "" : row.Field<string>(16).ToString(),
+					Cargo = row.Field<string>(17) == null ? "" : row.Field<string>(17).ToString(),
+					CargoId = Guid.NewGuid(),
+					Pontuacao = Convert.ToInt32(row.Field<string>(18)),
+					Posicao = Convert.ToInt32(row.Field<string>(19)),
+					Resultado = row.Field<string>(20) == null ? "" : row.Field<string>(20).ToString(),
+					ConvocadoId = Guid.NewGuid(),
+					ProcessoId = id,
+					Naturalidade = String.Empty,
+					Pai = String.Empty,
+					OrgaoEmissor = String.Empty,
+					EstadoCivil = 1,
+					DataNascimento = DateTime.Now,
+					Filhos = 0,
+					Deficiente = false,
+					Deficiencia = String.Empty,
+					CondicaoEspecial = String.Empty,
+					Afro = false
+				}).ToList();
 
-
-
-                    var listaCandidatos = ds.Tables[0].AsEnumerable()
-                    .Select(row => new Convocado
-                    {
-                        Inscricao = row.Field<string>(0) == null ? "-" : row.Field<string>(0).ToString(),
-                        Nome = row.Field<string>(1) == null ? "-" : row.Field<string>(1).ToString(),
-                        Mae = row.Field<string>(2) == null ? "-" : row.Field<string>(2).ToString(),
-                        Sexo = row.Field<string>(3).ToString(),
-                        Nascimento = row.Field<string>(4).ToString(),
-                        Documento = row.Field<string>(5) == null ? "-" : row.Field<string>(5).ToString(),
-                        Cpf = row.Field<string>(6) == null ? "-" : row.Field<string>(6).ToString(),
-                        Email = row.Field<string>(7) == null ? "-" : row.Field<string>(7).ToString(),
-                        Telefone = row.Field<string>(8) == null ? "00000000000" : row.Field<string>(8).ToString(),
-                        Celular = row.Field<string>(9) == null ? "-" : row.Field<string>(9).ToString(),
-                        Endereco = row.Field<string>(10) == null ? "-" : row.Field<string>(10).ToString(),
-                        Numero = row.Field<string>(11) == null ? "-" : row.Field<string>(11).ToString(),
-                        Complemento = row.Field<string>(12) == null ? "-" : row.Field<string>(12).ToString(),
-                        Bairro = row.Field<string>(13) == null ? "-" : row.Field<string>(13).ToString(),
-                        Cidade = row.Field<string>(14) == null ? "-" : row.Field<string>(14).ToString(),
-                        Uf = row.Field<string>(15) == null ? "-" : row.Field<string>(15).ToString(),
-                        Cep = row.Field<string>(16) == null ? "-" : row.Field<string>(16).ToString(),
-                        Cargo = row.Field<string>(17) == null ? "-" : row.Field<string>(17).ToString(),
-                        CargoId = Guid.NewGuid(),
-                        Pontuacao = Convert.ToInt32(row.Field<string>(18)),
-                        Posicao = Convert.ToInt32(row.Field<string>(19)),
-                        Resultado = row.Field<string>(20) == null ? "-" : row.Field<string>(20).ToString(),
-                        ConvocadoId = Guid.NewGuid(),
-                        ProcessoId = id,
-                        Naturalidade = String.Empty,
-                        Pai = String.Empty,
-                        OrgaoEmissor = String.Empty,
-                        EstadoCivil = 1,
-                        DataNascimento = DateTime.Now,
-                        Filhos = 0,
-                        Deficiente = false,
-                        Deficiencia = String.Empty,
-                        CondicaoEspecial = String.Empty,
-                        Afro = false
-                    }).ToList();
-
-				InsereDadosExcelNoBanco(listaCandidatos);
+					InsereDadosExcelNoBanco(listaCandidatos);
+				}
+				catch(Exception e)
+				{
+					Console.WriteLine(e);
+				}
 			}
 		}
+
+		public string ApenasDigitos(string dados)
+		{
+			var apenasDigitos = new Regex(@"[^\d]");
+			return apenasDigitos.Replace(dados, "");
+		}
+
+
 
 		private void InsereDadosExcelNoBanco(List<Convocado> listaCandidatos)
 		{
@@ -219,6 +237,9 @@ namespace SisConv.Domain.Services
 
 				try
 				{
+					var dadosConvocado = _dadosConvocadosRepository.Search(a => a.Nome.Equals(dados.Nome) && a.Inscricao.Equals(dados.Inscricao) && a.Cpf.Equals(dados.Cpf));
+
+					if(!dadosConvocado.Any())
 					Add(dados);
 				}
 				catch (Exception e)
@@ -226,7 +247,7 @@ namespace SisConv.Domain.Services
 					Console.WriteLine(e);
 					throw;
 				}
-				
+
 			}
 		}
 
@@ -234,7 +255,7 @@ namespace SisConv.Domain.Services
 			out OleDbDataAdapter adapter, out DataSet ds)
 		{
 			var conexao = new OleDbConnection(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + file +
-			                                  ";Extended Properties='Excel 12.0 Xml;HDR=YES';");
+											  ";Extended Properties='Excel 12.0 Xml;HDR=YES';");
 			command = new OleDbCommand("select * from [Dados-Classificados-Conc-6$]", conexao);
 			adapter = new OleDbDataAdapter(command);
 			ds = new DataSet();

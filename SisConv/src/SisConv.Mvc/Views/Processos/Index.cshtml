@@ -22,6 +22,7 @@
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
 @foreach (var item in Model) {
@@ -35,11 +36,17 @@
         <td>
             @Html.DisplayFor(modelItem => item.Ativo)
         </td>
-	    <td>
-		    @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId }) 
-		   
-	    </td>
+        <td>
+            @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId },null) 
+        </td>
+        <td>
+            @Html.ActionLink("Relatórios", "Index", "Relatorio", new { id = item.ProcessoId },null)
+        </td>
     </tr>
 }
-
+	<tr>
+		<td colspan="5">
+			<button type="button" class="btn btn-secondary" title=""  data-placement="left" onclick="history.back();">Voltar</button>
+		</td>
+	</tr>
 </table>

@@ -208,4 +208,4 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CopyComplete
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojResolveAssemblyReference.cache
+C:\Users\alesi\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CopyComplete

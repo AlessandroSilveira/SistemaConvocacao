@@ -1,17 +1,24 @@
 ﻿using System;
+using System.Collections;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
 {
 	public class ConvocadoController : Controller
 	{
 		private readonly IConvocadoAppService _convocadoAppService;
+		private readonly IListaOpcoes _listaOpcoes;
 
-		public ConvocadoController(IConvocadoAppService convocadoAppService)
+		
+
+		public ConvocadoController(IConvocadoAppService convocadoAppService, IListaOpcoes listaOpcoes)
 		{
 			_convocadoAppService = convocadoAppService;
+			_listaOpcoes = listaOpcoes;
 		}
 
 		public ActionResult Index()
@@ -41,8 +48,12 @@ namespace SisConv.Mvc.Controllers
 		}
 
 		public ActionResult Edit(Guid id)
-		{
+		{			
 			var convocadoViewModel = _convocadoAppService.GetById(id);
+
+			ViewBag.ListaEstados = new SelectList(_listaOpcoes.MontarListaOpcoes<Estados>(), "Key", "Value",convocadoViewModel.Uf);
+
+			ViewBag.ListaEstadoCivil = _listaOpcoes.MontarListaOpcoes<EstadoCivil>();
 			return convocadoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(convocadoViewModel);
 		}
 

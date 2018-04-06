@@ -22,15 +22,18 @@
                 </select>
                 <input type="submit" value="Buscar" class="btn btn-default" />
             </th>
+			<th></th>
         </tr>
         <tr>
             <td colspan="2">
-                <input type="hidden" name="Id" value="@ViewBag.Id" />
+                <input type="hidden" name="ProcessoId" value="@ViewBag.Id" />
                 
             </td>
         </tr>
     </table>
 
-	
+	<div>
+		<button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+	</div>
 
 }

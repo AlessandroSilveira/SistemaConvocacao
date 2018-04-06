@@ -1,6 +1,6 @@
 ﻿function AtualizarStatus(id) {
-    var opcaoStatus = $("#opcao_" + id).val(); //("#bkpLoja" + id).html(data);
-    var processoId = $("#id").val();
+    var opcaoStatus = $("#opcao_" + id).val(); 
+    var processoId = $("#ProcessoId").val();
 
     $.ajax({
         async: true,
@@ -9,8 +9,9 @@
         dataType: "json",
         url: "../AtualizarStatusEstudanteParaContratacao",
         success: function (response) {
+            $("#opcao_" + id).val(opcaoStatus);
             if (response !== null) {
-                $("#opcao_" + id).val(opcaoStatus);
+               
                 $("#mensagem_sucesso").trigger("click");
             } else {
                 $("#mensagem_erro").trigger("click");

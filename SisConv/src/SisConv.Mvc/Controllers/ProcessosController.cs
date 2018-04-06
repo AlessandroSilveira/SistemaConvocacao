@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
 using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
@@ -97,12 +98,12 @@ namespace SisConv.Mvc.Controllers
         }
 
         [HttpPost]
-        public ActionResult ListaConvocados(string cargo, string id)
+        public ActionResult ListaConvocados(string ProcessoId, string cargo)
         {
             var dadosConvocadoViewModel = new ConvocadoViewModel
             {
                 CargoId = Guid.Parse(cargo),
-                ProcessoId = Guid.Parse(id)
+                ProcessoId = Guid.Parse(ProcessoId)
             };
 
             var convocados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(dadosConvocadoViewModel.ProcessoId));
@@ -113,7 +114,30 @@ namespace SisConv.Mvc.Controllers
                 .Where(a => convocados.All(p2 => p2.ConvocadoId != a.ConvocadoId));
 
             ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
-            ViewBag.ProcessoId = id;
+            ViewBag.ProcessoId = ProcessoId;
+            
+            return View();
+        }
+
+        public ActionResult ListaConvocados(Guid ProcessoId, string cargo, bool confirmacao)
+        {
+            var dadosConvocadoViewModel = new ConvocadoViewModel
+            {
+                CargoId = Guid.Parse(cargo),
+                ProcessoId = ProcessoId
+            };
+
+            ViewBag.Confirmacao = confirmacao;
+
+            var convocados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(dadosConvocadoViewModel.ProcessoId));
+
+            ViewBag.DadosConvocacao = _processoAppService.GetById(dadosConvocadoViewModel.ProcessoId);
+            ViewBag.ListaCandidatos = _convocadoAppService
+                .Search(a => a.CargoId.Equals(dadosConvocadoViewModel.CargoId)).OrderBy(a => a.Posicao)
+                .Where(a => convocados.All(p2 => p2.ConvocadoId != a.ConvocadoId));
+
+            ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
+            ViewBag.ProcessoId = ProcessoId;
             return View();
         }
 
@@ -143,7 +167,9 @@ namespace SisConv.Mvc.Controllers
                 .OrderBy(a => a.CodigoCargo);
             ViewBag.ListaCandidatos = null;
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+            //var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -173,7 +199,7 @@ namespace SisConv.Mvc.Controllers
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -227,13 +253,14 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult AtualizarStatusEstudante(Guid id)
         {
-
             ViewBag.dadosProcesso = _processoAppService.GetById(id);
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
             ViewBag.ListaCandidatos = null;
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+            ViewBag.ProcessoId = id;
+
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
             return View();
@@ -242,7 +269,6 @@ namespace SisConv.Mvc.Controllers
         [HttpPost]
         public ActionResult AtualizarStatusEstudante(Guid?  id, Guid? cargo)
         {
-
             var guidId = Guid.Parse(id.ToString());
             var guidCargo = Guid.Parse(cargo.ToString());
 
@@ -257,9 +283,10 @@ namespace SisConv.Mvc.Controllers
             ViewBag.dadosProcesso = _processoAppService.GetById(guidId);
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
-            
-            var opcoesContatacao = _listaOpcoes.MontarListaOpcoesContratacao();
 
+	        var opcoesContatacao = _listaOpcoes.MontarListaOpcoes<StatusContratacao>();
+
+            ViewBag.ProcessoId = id;
             ViewBag.ListaOpcoesContratacao = opcoesContatacao;
 
             return View();

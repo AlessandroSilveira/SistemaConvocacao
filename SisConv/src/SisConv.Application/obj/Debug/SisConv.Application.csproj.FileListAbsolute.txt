@@ -219,3 +219,4 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csproj.CopyComplete
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.pdb
+C:\Users\alesi\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csproj.CopyComplete
