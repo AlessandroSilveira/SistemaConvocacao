@@ -34,6 +34,7 @@ namespace SisConv.Mvc.Controllers
 			var nomeArquivo = Path.GetFileName(arquivo.FileName);
 
 			if (SalvarArquivoConvocados(out _))
+
 				_dadosConvocacaoAppService.SalvarCargos(dadosConvocadosViewModel.Id,
 					string.Format("{0}{1}", pathArquivo, nomeArquivo));
 			_dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id,

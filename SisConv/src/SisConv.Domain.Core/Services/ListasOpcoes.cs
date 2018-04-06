@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using SisConv.Domain.Core.Enums;
 
@@ -20,14 +21,29 @@ namespace SisConv.Domain.Core.Services
             return _enumDescription.GetEnumDescription(e);
         }
 
-        public Dictionary<StatusComparecimento, string> MontarListaOpcoesComparecimento()
-        {
-            return _montaListaComEnum.MontarListaOpcoesComparecimento();
-        }
+	    public Dictionary<TEnum, string> MontarListaOpcoes<TEnum>()
+	    {
+		    return _montaListaComEnum.MontarListaOpoes<TEnum>();
+	    }
 
-        public Dictionary<StatusContratacao, string> MontarListaOpcoesContratacao()
-        {
-            return _montaListaComEnum.MontarListaOpcoesContratacao();
-        }
-    }
+	    //      public Dictionary<StatusComparecimento, string> MontarListaOpcoesComparecimento()
+  //      {
+  //          return _montaListaComEnum.MontarListaOpcoesComparecimento();
+  //      }
+
+  //      public Dictionary<StatusContratacao, string> MontarListaOpcoesContratacao()
+  //      {
+  //          return _montaListaComEnum.MontarListaOpcoesContratacao();
+  //      }	
+
+		//public Dictionary<Estados, string> MontarListaEstado()
+		//{
+		//	return _montaListaComEnum.MontarListaEstado();
+		//}
+
+		//public Dictionary<int, string> MontarListaEstadoCivil()
+		//{
+		//	return _montaListaComEnum.MontarListaEstadoCivil();
+		//}
+	}
 }

@@ -4,6 +4,7 @@ using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
 using SisConv.Domain.Core.Services;
 
 namespace SisConv.Mvc.Controllers
@@ -166,7 +167,9 @@ namespace SisConv.Mvc.Controllers
                 .OrderBy(a => a.CodigoCargo);
             ViewBag.ListaCandidatos = null;
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+            //var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -196,7 +199,7 @@ namespace SisConv.Mvc.Controllers
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -257,7 +260,7 @@ namespace SisConv.Mvc.Controllers
 
             ViewBag.ProcessoId = id;
 
-            var opcoesComp = _listaOpcoes.MontarListaOpcoesComparecimento();
+	        var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
 
             ViewBag.ListaOpcoesComparecimento = opcoesComp;
             return View();
@@ -280,8 +283,8 @@ namespace SisConv.Mvc.Controllers
             ViewBag.dadosProcesso = _processoAppService.GetById(guidId);
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
-            
-            var opcoesContatacao = _listaOpcoes.MontarListaOpcoesContratacao();
+
+	        var opcoesContatacao = _listaOpcoes.MontarListaOpcoes<StatusContratacao>();
 
             ViewBag.ProcessoId = id;
             ViewBag.ListaOpcoesContratacao = opcoesContatacao;

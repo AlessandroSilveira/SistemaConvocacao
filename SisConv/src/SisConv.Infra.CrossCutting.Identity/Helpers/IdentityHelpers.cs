@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
@@ -8,7 +7,7 @@ using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Infra.CrossCutting.Identity.Helpers
 {
-    public class IdentityHelper
+	public class IdentityHelper
     {
         private static ApplicationSignInManager _signInManager;
 
