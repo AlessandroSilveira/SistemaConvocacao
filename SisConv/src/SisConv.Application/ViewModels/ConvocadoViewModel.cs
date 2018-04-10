@@ -3,140 +3,188 @@ using System.ComponentModel.DataAnnotations;
 
 namespace SisConv.Application.ViewModels
 {
-    public class ConvocadoViewModel
-    {
-        public ConvocadoViewModel()
-        {
-            ConvocadoId = Guid.NewGuid();
-        }
+	public class ConvocadoViewModel
+	{
+		public ConvocadoViewModel()
+		{
+			ConvocadoId = Guid.NewGuid();
+		}
 
-        [Key]
-        public Guid ConvocadoId { get; set; }
-        public Guid ProcessoId { get; set; }
-        public string Inscricao { get; set; }
+		[Key]
+		public Guid ConvocadoId { get; set; }
+		public Guid ProcessoId { get; set; }
+		public string Inscricao { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Nome:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Nome:*")]
 		public string Nome { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Nome da Mãe:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Nome da Mãe:*")]
 		public string Mae { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(10)]
-	    [Display(Name = "Sexo:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(10)]
+		[Display(Name = "Sexo:*")]
 		public string Sexo { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Data de Nascimento:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Data de Nascimento:*")]
 		public string Nascimento { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Documento de Identidade:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Documento de Identidade:*")]
 		public string Documento { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(11)]
-	    [Display(Name = "CPF:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "CPF:*")]
 		public string Cpf { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "E-mail:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "E-mail:*")]
 		public string Email { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(11)]
-	    [Display(Name = "Número de Telefone:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Número de Telefone:*")]
 		public string Telefone { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(11)]
-	    [Display(Name = "Celular:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Celular:*")]
 		public string Celular { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(200)]
-	    [Display(Name = "Endereço:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(200)]
+		[Display(Name = "Endereço:*")]
 		public string Endereco { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(10)]
-	    [Display(Name = "Número:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(10)]
+		[Display(Name = "Número:*")]
 		public string Numero { get; set; }
 
-	    
-	    [Display(Name = "Complemento")]
+		[Display(Name = "Complemento")]
 		public string Complemento { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Bairro:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Bairro:*")]
 		public string Bairro { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Cidade:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Cidade:*")]
 		public string Cidade { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(2)]
-	    [Display(Name = "Estado:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(2)]
+		[Display(Name = "Estado:*")]
 		public string Uf { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(10)]
-	    [Display(Name = "CEP:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(10)]
+		[Display(Name = "CEP:*")]
 		public string Cep { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Cargo:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Cargo:*")]
 		public string Cargo { get; set; }
 
-	    [Required(AllowEmptyStrings = false)]
-	    [Display(Name = "CargoId:*")]
+		[Required(AllowEmptyStrings = false)]
+		[Display(Name = "CargoId:*")]
 		public Guid CargoId { get; set; }
-	    
-	    [Display(Name = "Pontuação")]
+
+		[Display(Name = "Pontuação")]
 		public int Pontuacao { get; set; }
-	   
-	    [Display(Name = "Posição")]
+
+		[Display(Name = "Posição")]
 		public int Posicao { get; set; }
-	   
-	    [Display(Name = "Resultado")]
+
+		[Display(Name = "Resultado")]
 		public string Resultado { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
 		[Display(Name = "Naturalidade:*")]
 		public string Naturalidade { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(100)]
-	    [Display(Name = "Nome do Pai:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Nome do Pai:*")]
 		public string Pai { get; set; }
 
-	    [Required(AllowEmptyStrings = false), MaxLength(50)]
-	    [Display(Name = "Orgão Emissor:*")]
+		[Required(AllowEmptyStrings = false), MaxLength(50)]
+		[Display(Name = "Orgão Emissor:*")]
 		public string OrgaoEmissor { get; set; }
 
-	    [Required(AllowEmptyStrings = false)]
-	    [Display(Name = "Estado Civil:*")]
+		[Required(AllowEmptyStrings = false)]
+		[Display(Name = "Estado Civil:*")]
 		public int EstadoCivil { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
-		[Range(1, int.MaxValue, ErrorMessage = "Somente números inteiros.")]
-		[Display(Name = "Filhos:*")]
-		public int Filhos { get; set; }
+		
+		
+		
+		public string Desistente { get; set; }
+		public DateTime DataEntregaDocumentos { get; set; }
+		public Guid ConvocacaoId { get; set; }
+		public string StatusConvocacao { get; set; }
+		public string StatusContratacao { get; set; }
 
-	    [Required(AllowEmptyStrings = false)]
-	    [Display(Name = "Deficiente:*")]
-		public bool Deficiente { get; set; }
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Data de Nascimento:*")]
+		public string DataNascimento { get; set; }
 
-	   
-	    [Display(Name = "Deficiencia:*")]
-		public string Deficiencia { get; set; }
+		[Required(AllowEmptyStrings = false), MaxLength(2)]
+		[Display(Name = "Fator Sanguíneo:*")]
+		public string FatorSanguineo { get; set; }
 
-	    
-	    [Display(Name = "Condição Especial:*")]
-		public string CondicaoEspecial { get; set; }
+		[Required(AllowEmptyStrings = false), MaxLength(1)]
+		[Display(Name = "Doador:*")]
+		public string Doador { get; set; }
 
-	    [Required(AllowEmptyStrings = false)]
-	    [Display(Name = "Afrodescendente:*")]
-		public bool Afro { get; set; }
+		[Required(AllowEmptyStrings = false), MaxLength(2)]
+		[Display(Name = "Estado:*")]
+		public string Estado { get; set; }
 
-        public string Desistente { get; set; }
-        public DateTime DataEntregaDocumentos { get; set; }
-        public Guid ConvocacaoId { get; set; }
-        public string StatusConvocacao { get; set; }
-        public string StatusContratacao { get; set; }
-    }
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Telefone Recados:*")]
+		public string Recados { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Nacionalidade:*")]
+		public string Nacionalidade { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Grau de Instrução:*")]
+		public string GrauInstrucao { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Instituição de Ensino:*")]
+		public string InstituicaoEnsino { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Telefone do IES:*")]
+		public string TelefoneIES { get; set; }
+
+		public string Curso { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Horário de Aula no IES:*")]
+		public string HorarioAulaIes { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Período / Ano Atual:*")]
+		public string PeriodoAtual { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Display(Name = "Provável Mês/Ano da Colação de Grau:*")]
+		public string ColacaoGrau { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Agência:*")]
+		public string Agencia { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Nome da Agência:*")]
+		public string NomeAgencia { get; set; }
+
+		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		[Display(Name = "Conta Corrente:*")]
+		public string ContaCorrente { get; set; }
+
+	}
 }
+
+
+
+
