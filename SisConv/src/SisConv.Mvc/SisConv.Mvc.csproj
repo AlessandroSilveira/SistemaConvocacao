@@ -211,7 +211,6 @@
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ConvocacaoController.cs" />
-    <Compile Include="Controllers\ConvocadoController.cs" />
     <Compile Include="Controllers\DadosConvocadosController.cs" />
     <Compile Include="Controllers\DocumentacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -405,11 +404,6 @@
     <Content Include="Views\Pessoa\Details.cshtml" />
     <Content Include="Views\Pessoa\Edit.cshtml" />
     <Content Include="Views\Pessoa\Index.cshtml" />
-    <Content Include="Views\Convocado\Create.cshtml" />
-    <Content Include="Views\Convocado\Delete.cshtml" />
-    <Content Include="Views\Convocado\Details.cshtml" />
-    <Content Include="Views\Convocado\Edit.cshtml" />
-    <Content Include="Views\Convocado\Index.cshtml" />
     <Content Include="Views\Processos\Configuracoes.cshtml" />
     <Content Include="Views\Processos\Painel.cshtml" />
     <Content Include="Views\Processos\AtualizarCandidatosConfirmados.cshtml" />
