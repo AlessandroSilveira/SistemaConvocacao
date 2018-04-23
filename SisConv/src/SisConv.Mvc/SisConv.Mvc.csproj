@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CargoController.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
     <Compile Include="Controllers\ConvocacaoController.cs" />
+    <Compile Include="Controllers\ConvocadoController.cs" />
     <Compile Include="Controllers\DadosConvocadosController.cs" />
     <Compile Include="Controllers\DocumentacaoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -254,6 +255,7 @@
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\Convocacao.js" />
+    <Content Include="Scripts\Convocado\Convocado.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -419,6 +421,11 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Convocado\Create.cshtml" />
+    <Content Include="Views\Convocado\Delete.cshtml" />
+    <Content Include="Views\Convocado\Details.cshtml" />
+    <Content Include="Views\Convocado\Edit.cshtml" />
+    <Content Include="Views\Convocado\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

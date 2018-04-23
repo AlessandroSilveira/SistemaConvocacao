@@ -97,6 +97,7 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IEnumDescription, EnumDescription>(Lifestyle.Scoped);
             container.Register<IMontaListaComEnum, MontaListaComEnum>(Lifestyle.Scoped);
 	        container.Register<IPasswordGenerator, PasswordGenerator>(Lifestyle.Scoped);
+			
 		}
 	}
 }

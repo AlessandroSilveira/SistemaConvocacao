@@ -77,7 +77,7 @@ namespace SisConv.Infra.Data.EntityConfig
 		        .IsRequired()
 		        .HasMaxLength(50);
 
-	        Property(c => c.Estado)
+	        Property(c => c.Uf)
 		        .IsRequired()
 		        .HasMaxLength(2);
 

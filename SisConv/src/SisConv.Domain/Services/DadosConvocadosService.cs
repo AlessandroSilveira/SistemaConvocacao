@@ -162,8 +162,7 @@ namespace SisConv.Domain.Services
 					Nome = row.Field<string>(1) == null ? "" : row.Field<string>(1).ToString(),
 					Mae = row.Field<string>(2) == null ? "" : row.Field<string>(2).ToString(),
 					Sexo = row.Field<string>(3).ToString(),
-					DataNascimento = row.Field<DateTime>(4).ToString("dd/MM/yyyy"),				
-					
+					DataNascimento = row.Field<DateTime>(4).ToString("dd/MM/yyyy"),
 					Documento =ApenasDigitos( row.Field<string>(5) == null ? "" : row.Field<string>(5).ToString()),
 					Cpf = row.Field<string>(6) == null ? "" : row.Field<string>(6).ToString(),
 					Email = row.Field<string>(7) == null ? "" : row.Field<string>(7).ToString(),
@@ -174,7 +173,7 @@ namespace SisConv.Domain.Services
 					Complemento = row.Field<string>(12) == null ? "" : row.Field<string>(12).ToString(),
 					Bairro = row.Field<string>(13) == null ? "" : row.Field<string>(13).ToString(),
 					Cidade = row.Field<string>(14) == null ? "" : row.Field<string>(14).ToString(),
-					Estado = row.Field<string>(15) == null ? "" : row.Field<string>(15).ToString(),
+					Uf = row.Field<string>(15) == null ? "" : row.Field<string>(15).ToString(),
 					Cep = row.Field<string>(16) == null ? "" : row.Field<string>(16).ToString(),
 					Cargo = row.Field<string>(17) == null ? "" : row.Field<string>(17).ToString(),
 					CargoId = Guid.NewGuid(),

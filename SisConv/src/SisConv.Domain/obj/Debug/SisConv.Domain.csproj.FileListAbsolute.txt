@@ -207,3 +207,5 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Deb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CopyComplete
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.Core.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojAssemblyReference.cache

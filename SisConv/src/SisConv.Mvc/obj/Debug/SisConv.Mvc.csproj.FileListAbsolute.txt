@@ -483,8 +483,8 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Micros
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.Data.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.Data.dll.config
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csprojResolveAssemblyReference.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csproj.CopyComplete
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csprojAssemblyReference.cache

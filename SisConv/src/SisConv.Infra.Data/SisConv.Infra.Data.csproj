@@ -69,6 +69,10 @@
     <Compile Include="Migrations\201804100435501_alteracao_convocado.Designer.cs">
       <DependentUpon>201804100435501_alteracao_convocado.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201804221945209_adicionarUF.cs" />
+    <Compile Include="Migrations\201804221945209_adicionarUF.Designer.cs">
+      <DependentUpon>201804221945209_adicionarUF.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepository.cs" />
@@ -102,6 +106,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804100435501_alteracao_convocado.resx">
       <DependentUpon>201804100435501_alteracao_convocado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201804221945209_adicionarUF.resx">
+      <DependentUpon>201804221945209_adicionarUF.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

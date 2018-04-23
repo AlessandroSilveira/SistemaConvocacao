@@ -55,6 +55,9 @@ namespace SisConv.Domain.Services
             return _convocadoRepository.Search(predicate);
         }
 
-	  
+	    public bool VerificaSeHaSobrenome(string nome)
+	    {
+		    return nome.Split(' ').Length > 0;
+	    }
     }
 }
