@@ -57,7 +57,7 @@ namespace SisConv.Domain.Services
 
 	    public bool VerificaSeHaSobrenome(string nome)
 	    {
-		    return nome.Split(' ').Length > 0;
+		   return nome.Trim().Split(' ').Length > 1;
 	    }
     }
 }

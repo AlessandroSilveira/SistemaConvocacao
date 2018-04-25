@@ -1,7 +1,7 @@
 ﻿$(function () {
-    $("#Telefone").mask("(00)00000-0000");
-    $("#Recados").mask("(00)00000-0000");
-    $("#Celular").mask("(00)00000-0000");
+   // $("#Telefone").mask("(00)00000-0000");
+    //$("#Recados").mask("(00)00000-0000");
+   // $("#Celular").mask("(00)00000-0000");
 
     $("#DataNascimento").datepicker({
         dateFormat: 'dd/mm/yy',
