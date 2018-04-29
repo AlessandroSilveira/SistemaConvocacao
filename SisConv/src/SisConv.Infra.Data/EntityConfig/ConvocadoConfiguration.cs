@@ -85,8 +85,12 @@ namespace SisConv.Infra.Data.EntityConfig
 		        .IsRequired()
 		        .HasMaxLength(8);
 
+	        Property(c => c.OrgaoEmissor)
+		        .IsRequired()
+		        .HasMaxLength(10);
 
-	        Property(c => c.Telefone)
+
+			Property(c => c.Telefone)
 		        .IsRequired()
 		        .HasMaxLength(20);
 
@@ -121,7 +125,7 @@ namespace SisConv.Infra.Data.EntityConfig
 
 	        Property(c => c.TelefoneIES)
 		        .IsRequired()
-		        .HasMaxLength(100);
+		        .HasMaxLength(20);
 
 	       Property(c => c.Cargo)
                 .IsRequired()

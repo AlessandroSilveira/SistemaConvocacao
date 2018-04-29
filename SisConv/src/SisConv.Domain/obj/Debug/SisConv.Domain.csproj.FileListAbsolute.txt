@@ -203,9 +203,9 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Deb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\System.Xml.XPath.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\System.Xml.XPath.XDocument.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.Core.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.Core.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojAssemblyReference.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csproj.CopyComplete
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\bin\Debug\SisConv.Domain.Core.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Domain\obj\Debug\SisConv.Domain.csprojAssemblyReference.cache

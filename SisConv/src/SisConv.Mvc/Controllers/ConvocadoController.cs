@@ -54,11 +54,7 @@ namespace SisConv.Mvc.Controllers
 		public ActionResult Edit(Guid id)
 		{
 			var pessoaViewModel = _convocadoAppService.GetById(id);
-			ViewBag.ListaSexo = _listaOpcoes.MontarListaOpcoes<Sexo>();
-			ViewBag.ListaEstados = _listaOpcoes.MontarListaOpcoes<Estados>();
-			ViewBag.ListaEstadoCivil = _listaOpcoes.MontarListaOpcoes<EstadoCivil>();
-			ViewBag.ListaSimNao = _listaOpcoes.MontarListaOpcoes<SimNao>();
-			ViewBag.ListaFatorSanguineo = _listaOpcoes.MontarListaOpcoes<FatorSanguineo>();
+			RetornaViewBagsDasSelectList();
 			return pessoaViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(pessoaViewModel);
 		}
 
@@ -69,7 +65,11 @@ namespace SisConv.Mvc.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult Edit(ConvocadoViewModel convocadoViewModel)
 		{
-			//if (!ModelState.IsValid) return View(convocadoViewModel);
+			if (!ModelState.IsValid)
+			{
+				RetornaViewBagsDasSelectList();
+				return View(convocadoViewModel);
+			}
 
 			if (!_convocadoAppService.VerificaSeHaSobrenome(convocadoViewModel.Nome))
 			{
@@ -101,6 +101,8 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.ListaEstadoCivil = _listaOpcoes.MontarListaOpcoes<EstadoCivil>();
 			ViewBag.ListaSimNao = _listaOpcoes.MontarListaOpcoes<SimNao>();
 			ViewBag.ListaFatorSanguineo = _listaOpcoes.MontarListaOpcoes<FatorSanguineo>();
+			ViewBag.ListaGrauInstrucao = _listaOpcoes.MontarListaOpcoes<GrauInstrucao>();
+			ViewBag.ListaNacionalidade = _listaOpcoes.MontarListaOpcoes<Nacionalidade>();
 		}
 
 

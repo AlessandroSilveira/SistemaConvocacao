@@ -207,7 +207,16 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.Nacionalidade, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.Nacionalidade, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="Nacionalidade" id="Nacionalidade" class="form-control">
+					<option value=" ">Selecione</option>
+					@foreach (var itens in ViewBag.ListaNacionalidade)
+					{
+						<option value="@itens.Key.GetHashCode()"
+						        @if (@Model.EstadoCivil.ToString().Equals(@itens.Key.GetHashCode().ToString())) { var selected = "selected"; @selected ; }>
+							@itens.Value
+						</option>
+					}
+				</select>
 				@Html.ValidationMessageFor(model => model.Nacionalidade, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -243,8 +252,8 @@
 					<option value=" ">Selecione</option>
 					@foreach (var itens in ViewBag.ListaFatorSanguineo)
 					{
-						<option value="@itens.Key"
-								@if (@Model.FatorSanguineo.ToString().Equals(@itens.Key.ToString())) { var selected = "selected"; @selected ; }>
+						<option value="@itens.Value"
+								@if (@Model.FatorSanguineo.ToString().Equals(@itens.Value.ToString())) { var selected = "selected"; @selected ; }>
 							@itens.Value
 						</option>
 					}
@@ -276,7 +285,16 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.GrauInstrucao, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.GrauInstrucao, new { htmlAttributes = new { @class = "form-control" } })
+				<select name="GrauInstrucao" id="GrauInstrucao" class="form-control">
+					<option value=" ">Selecione</option>
+					@foreach (var itens in ViewBag.ListaGrauInstrucao)
+					{
+						<option value="@itens.Value"
+						        @if (@Model.GrauInstrucao.ToString().Equals(@itens.Value.ToString())) { var selected = "selected"; @selected ; }>
+							@itens.Value
+						</option>
+					}
+				</select>
 				@Html.ValidationMessageFor(model => model.GrauInstrucao, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -297,13 +315,7 @@
 			</div>
 		</div>
 
-		<div class="form-group">
-			@Html.LabelFor(model => model.Curso, htmlAttributes: new { @class = "control-label col-md-2" })
-			<div class="col-md-10">
-				@Html.EditorFor(model => model.Curso, new { htmlAttributes = new { @class = "form-control" } })
-				@Html.ValidationMessageFor(model => model.Curso, "", new { @class = "text-danger" })
-			</div>
-		</div>
+		
 
 		<div class="form-group">
 			@Html.LabelFor(model => model.HorarioAulaIes, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -324,7 +336,7 @@
 		<div class="form-group">
 			@Html.LabelFor(model => model.ColacaoGrau, htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.EditorFor(model => model.ColacaoGrau, new { htmlAttributes = new { @class = "form-control" } })
+				@Html.EditorFor(model => model.ColacaoGrau, new { htmlAttributes = new { @class = "form-control MesEAno" } })
 				@Html.ValidationMessageFor(model => model.ColacaoGrau, "", new { @class = "text-danger" })
 			</div>
 		</div>
@@ -350,6 +362,13 @@
 			<div class="col-md-10">
 				@Html.EditorFor(model => model.ContaCorrente, new { htmlAttributes = new { @class = "form-control" } })
 				@Html.ValidationMessageFor(model => model.ContaCorrente, "", new { @class = "text-danger" })
+				@Html.HiddenFor(model => model.CargoId)
+				@Html.HiddenFor(model => model.Posicao)
+				@Html.HiddenFor(model => model.Resultado)
+				@Html.HiddenFor(model => model.ProcessoId)
+				@Html.HiddenFor(model => model.Inscricao)
+				@Html.HiddenFor(model => model.Cargo)
+
 			</div>
 		</div>
 

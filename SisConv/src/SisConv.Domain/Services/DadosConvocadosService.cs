@@ -184,7 +184,7 @@ namespace SisConv.Domain.Services
 					ProcessoId = id,
 					Naturalidade = String.Empty,
 					Pai = String.Empty,
-					EstadoCivil = "1"
+					
 				}).ToList();
 
 					InsereDadosExcelNoBanco(listaCandidatos);

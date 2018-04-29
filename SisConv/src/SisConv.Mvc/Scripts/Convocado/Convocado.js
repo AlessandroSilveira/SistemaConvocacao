@@ -1,7 +1,12 @@
 ﻿$(function () {
-   // $("#Telefone").mask("(00)00000-0000");
-    //$("#Recados").mask("(00)00000-0000");
-   // $("#Celular").mask("(00)00000-0000");
+    $("#Telefone").mask("(00)00000-0000");
+    $("#Recados").mask("(00)00000-0000");
+    $("#Celular").mask("(00)00000-0000");
+    $("#TelefoneIES").mask("(00)00000-0000");
+    $("#DataNascimento").mask("00/00/0000");
+    $("#PeriodoAtual").mask("00/0000");
+    $("#ColacaoGrau").mask("00/0000"); 
+    $("#HorarioAulaIes").mask("00:00");
 
     $("#DataNascimento").datepicker({
         dateFormat: 'dd/mm/yy',
@@ -13,4 +18,5 @@
         nextText: 'Próximo',
         prevText: 'Anterior'
     });
+    
 });
