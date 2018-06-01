@@ -76,5 +76,10 @@ namespace SisConv.Application.Services
 			_dadosConvocadosService.SalvarCargos(id,file);
 		    Commit();
 		}
-    }
+
+		public DadosConvocadosViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
+		{
+			return Mapper.Map<Convocado, DadosConvocadosViewModel>(_dadosConvocadosService.GetOne(predicate));
+		}
+	}
 }

@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         TelefoneViewModel Update(TelefoneViewModel obj);
         void Remove(Guid id);
         IEnumerable<TelefoneViewModel> Search(Expression<Func<Telefone, bool>> predicate);
-    }
+		TelefoneViewModel GetOne(Expression<Func<Telefone, bool>> predicate);
+	}
 }

@@ -311,6 +311,7 @@
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\PrimeiroAcesso.js" />
     <Content Include="Scripts\Processos\AtualizarStatusEstudante\AtualizarStatusEstudante.js" />
+    <Content Include="Scripts\Processos\EscolherCargo.js" />
     <Content Include="Scripts\Processos\Processos.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.js" />

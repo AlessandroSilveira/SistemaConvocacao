@@ -281,5 +281,10 @@ namespace SisConv.Domain.Services
 		{
 			_dadosConvocadosRepository.Dispose();
 		}
+
+		public Convocado GetOne(Expression<Func<Convocado, bool>> predicate)
+		{
+			return _dadosConvocadosRepository.GetOne(predicate);
+		}
 	}
 }

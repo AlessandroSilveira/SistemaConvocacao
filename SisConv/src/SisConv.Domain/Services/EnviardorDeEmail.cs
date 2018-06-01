@@ -21,14 +21,16 @@ namespace SisConv.Domain.Services
 					dadosEmail.Subject, dadosEmail.Body)
 					)
 			{
-				var client = new SmtpClient(dadosEmail.SmtpServer)
+				using (var client = new SmtpClient(dadosEmail.SmtpServer)
 				{
 					UseDefaultCredentials = false,
-                    Credentials = new NetworkCredential(_configuration.ObterEmailFrom(), _configuration.ObterPasswordEmail()),
-                    //Credentials = new NetworkCredential("alesilver.si@gmail.com","Alesilver224482"),
-                    EnableSsl = true
-				};
-				client.Send(message);
+					Credentials = new NetworkCredential(_configuration.ObterEmailFrom(), _configuration.ObterPasswordEmail()),
+					// Credentials = new NetworkCredential("alesilver.si@gmail.com","Alesilver224482"),
+					EnableSsl = true
+				})
+				{
+					client.Send(message);
+				}
 			}
 		}
 	}

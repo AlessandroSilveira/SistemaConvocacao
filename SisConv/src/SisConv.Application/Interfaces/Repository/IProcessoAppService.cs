@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         ProcessoViewModel Update(ProcessoViewModel obj);
         void Remove(Guid id);
         IEnumerable<ProcessoViewModel> Search(Expression<Func<Processo, bool>> predicate);
-    }
+		ProcessoViewModel GetOne(Expression<Func<Processo, bool>> predicate);
+	}
 }

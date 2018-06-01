@@ -64,5 +64,10 @@ namespace SisConv.Application.Services
 	    {
 	        return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService.Search(predicate));
         }
+
+		public PrimeiroAcessoViewModel GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate)
+		{
+			return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetOne(predicate));
+		}
 	}
 }

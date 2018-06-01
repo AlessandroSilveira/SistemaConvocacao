@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
 		PrimeiroAcessoViewModel Update(PrimeiroAcessoViewModel obj);
 		void Remove(Guid id);
 	    IEnumerable<PrimeiroAcessoViewModel> Search(Expression<Func<PrimeiroAcesso, bool>> predicate);
-    }
+		PrimeiroAcessoViewModel GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate);
+	}
 }

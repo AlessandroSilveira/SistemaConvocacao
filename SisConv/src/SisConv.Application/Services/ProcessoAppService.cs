@@ -65,6 +65,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Processo>, IEnumerable<ProcessoViewModel>>(_processoService.Search(predicate));
         }
 
-
-    }
+		public ProcessoViewModel GetOne(Expression<Func<Processo, bool>> predicate)
+		{
+			return Mapper.Map<Processo, ProcessoViewModel>(_processoService.GetOne(predicate));
+		}
+	}
 }

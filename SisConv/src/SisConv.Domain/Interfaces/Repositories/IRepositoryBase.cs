@@ -15,5 +15,6 @@ namespace SisConv.Domain.Interfaces.Repositories
             IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
             int SaveChanges();
             void Dispose();
-    }
+			TEntity GetOne(Expression<Func<TEntity, bool>> predicate);
+	}
 }

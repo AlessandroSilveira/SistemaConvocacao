@@ -50,5 +50,9 @@ namespace SisConv.Domain.Services
         {
             return _adminRepository.Search(predicate);
         }
-    }
+		public Admin GetOne(Expression<Func<Admin, bool>> predicate)
+		{
+			return _adminRepository.GetOne(predicate);
+		}
+	}
 }

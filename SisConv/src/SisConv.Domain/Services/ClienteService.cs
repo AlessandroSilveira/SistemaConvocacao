@@ -51,5 +51,10 @@ namespace SisConv.Domain.Services
         {
            return _clienteRepository.Search(predicate);
         }
-    }
+
+		public Cliente GetOne(Expression<Func<Cliente, bool>> predicate)
+		{
+			return _clienteRepository.GetOne(predicate);
+		}
+	}
 }

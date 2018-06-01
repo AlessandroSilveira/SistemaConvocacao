@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         PessoaViewModel Update(PessoaViewModel obj);
         void Remove(Guid id);
         IEnumerable<PessoaViewModel> Search(Expression<Func<Pessoa, bool>> predicate);
-    }
+		PessoaViewModel GetOne(Expression<Func<Pessoa, bool>> predicate);
+	}
 }

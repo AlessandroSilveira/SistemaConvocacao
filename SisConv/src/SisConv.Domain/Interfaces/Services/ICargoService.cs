@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Cargo Update(Cargo obj);
         void Remove(Guid id);
         IEnumerable<Cargo> Search(Expression<Func<Cargo, bool>> predicate);
-    }
+		Cargo GetOne(Expression<Func<Cargo, bool>> predicate);
+	}
 }

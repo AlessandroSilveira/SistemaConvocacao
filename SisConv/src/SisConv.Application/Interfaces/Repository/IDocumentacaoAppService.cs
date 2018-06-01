@@ -14,6 +14,7 @@ namespace SisConv.Application.Interfaces.Repository
 		DocumentacaoViewModel Update(DocumentacaoViewModel obj);
 		void Remove(Guid id);
 		IEnumerable<DocumentacaoViewModel> Search(Expression<Func<Documentacao, bool>> predicate);
-		
+		DocumentacaoViewModel GetOne(Expression<Func<Documentacao, bool>> predicate);
+
 	}
 }

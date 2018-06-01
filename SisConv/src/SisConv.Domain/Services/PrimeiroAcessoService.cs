@@ -51,5 +51,10 @@ namespace SisConv.Domain.Services
 	    {
 	        return _primeiroAcessoRepository.Search(predicate);
 	    }
+
+		public PrimeiroAcesso GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate)
+		{
+			return _primeiroAcessoRepository.GetOne(predicate);
+		}
 	}
 }

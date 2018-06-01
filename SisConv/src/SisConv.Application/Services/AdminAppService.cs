@@ -64,5 +64,10 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Admin>, IEnumerable<Admin2ViewModel>>(_adminService.Search(predicate));
         }
-    }
+
+		public Admin2ViewModel GetOne(Expression<Func<Admin, bool>> predicate)
+		{
+			return Mapper.Map<Admin, Admin2ViewModel>(_adminService.GetOne(predicate));
+		}
+	}
 }

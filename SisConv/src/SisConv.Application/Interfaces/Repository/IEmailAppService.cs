@@ -5,6 +5,6 @@ namespace SisConv.Application.Interfaces.Repository
 {
 	public interface IEmailAppService
 	{
-		EnviaEmailBuilder EnviarEmail(ConvocadoViewModel convocacao);
+		void EnviarEmail(ConvocadoViewModel convocacao);
 	}
 }

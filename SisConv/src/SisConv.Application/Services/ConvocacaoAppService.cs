@@ -112,5 +112,10 @@ namespace SisConv.Application.Services
             }
             return listaDeconvocados;
         }
-    }
+
+		public ConvocacaoViewModel GetOne(Expression<Func<Convocacao, bool>> predicate)
+		{
+			return Mapper.Map<Convocacao, ConvocacaoViewModel>(_convocacaoService.GetOne(predicate));
+		}
+	}
 }

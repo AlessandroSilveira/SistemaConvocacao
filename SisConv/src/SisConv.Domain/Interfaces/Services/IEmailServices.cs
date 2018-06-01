@@ -5,6 +5,6 @@ namespace SisConv.Domain.Interfaces.Services
 {
 	public interface IEmailServices
 	{
-		EnviaEmailBuilder EnviarEmail(Convocado convocacao);
+		void EnviarEmail(Convocado convocacao);
 	}
 }

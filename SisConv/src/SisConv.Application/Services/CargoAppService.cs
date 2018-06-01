@@ -64,5 +64,10 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoViewModel>>(_cargoService.Search(predicate));
         }
-    }
+
+		public CargoViewModel GetOne(Expression<Func<Cargo, bool>> predicate)
+		{
+			return Mapper.Map<Cargo, CargoViewModel>(_cargoService.GetOne(predicate));
+		}
+	}
 }

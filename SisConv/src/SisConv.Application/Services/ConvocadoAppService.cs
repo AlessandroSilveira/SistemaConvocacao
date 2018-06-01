@@ -70,5 +70,10 @@ namespace SisConv.Application.Services
 		    return _convocadoService.VerificaSeHaSobrenome(nome);
 
 	    }
-    }
+
+		public ConvocadoViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
+		{
+			return Mapper.Map<Convocado, ConvocadoViewModel>(_convocadoService.GetOne(predicate));
+		}
+	}
 }

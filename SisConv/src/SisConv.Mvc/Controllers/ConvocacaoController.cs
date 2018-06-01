@@ -18,15 +18,19 @@ namespace SisConv.Mvc.Controllers
 		private readonly ApplicationUserManager _userManager;
 		private readonly IDocumentacaoAppService _documentacaoAppService;
 		private readonly IProcessoAppService _processoAppService;
+		private readonly IEmailAppService _emailAppService;
 
 		public ConvocacaoController(IConvocacaoAppService convocacaoAppService,
-			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager, IDocumentacaoAppService documentacaoAppService, IProcessoAppService processoAppService)
+			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager, 
+			IDocumentacaoAppService documentacaoAppService, IProcessoAppService processoAppService, 
+			IEmailAppService emailAppService)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_convocadoAppService = convocadoAppService;
 			_userManager = userManager;
 			_documentacaoAppService = documentacaoAppService;
 			_processoAppService = processoAppService;
+			_emailAppService = emailAppService;
 		}
 
 		public ActionResult Index()
@@ -38,7 +42,7 @@ namespace SisConv.Mvc.Controllers
 		{
 			if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			var convocacaoViewModel = _convocacaoAppService.GetById(Guid.Parse(id.ToString()));
-			return convocacaoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(convocacaoViewModel);
+			return convocacaoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(convocacaoViewModel);
 		}
 
 		public ActionResult Create()
@@ -53,27 +57,27 @@ namespace SisConv.Mvc.Controllers
 			if (!ModelState.IsValid) return View(convocacaoViewModel);
 
 			var selecionado = convocacaoViewModel.CandidatosSelecionados.Split(',');
-		    var confirmacao = false;
+			var confirmacao = false;
 
-            foreach (var t in selecionado)
+			foreach (var t in selecionado)
 			{
 				var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(t));
 				RegistarCandidatoParaFazerLogin(dadosConvocado);
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				var gravaConvocacao = _convocacaoAppService.Add(convocacaoViewModel);
-			    if (gravaConvocacao == null)
-			    {
-			       
-                    break;
-			    }
-			    else
-			    {
-			         confirmacao = true;
-                }
-				//_emailAppService.EnviarEmail(dadosConvocado);
+				if (gravaConvocacao == null)
+				{
+					break;
+				}
+				else
+				{
+					confirmacao = true;
+				}
+
+				_emailAppService.EnviarEmail(dadosConvocado);
 			}
-		   
-			return RedirectToAction("ListaConvocados", "Processos", new { @ProcessoId = convocacaoViewModel.ProcessoId.ToString(), @cargo = Cargo,@confirmacao = confirmacao });
+
+			return RedirectToAction("ListaConvocados", "Processos", new { @ProcessoId = convocacaoViewModel.ProcessoId.ToString(), @cargo = Cargo, @confirmacao = confirmacao });
 		}
 
 		private string GerarSenha()
@@ -85,7 +89,7 @@ namespace SisConv.Mvc.Controllers
 		{
 			if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			var convocacaoViewModel = _convocacaoAppService.GetById(Guid.Parse(id.ToString()));
-			return convocacaoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(convocacaoViewModel);
+			return convocacaoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(convocacaoViewModel);
 		}
 
 		[HttpPost]
@@ -101,7 +105,7 @@ namespace SisConv.Mvc.Controllers
 		{
 			if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 			var convocacaoViewModel = _convocacaoAppService.GetById(Guid.Parse(id.ToString()));
-			return convocacaoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(convocacaoViewModel);
+			return convocacaoViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(convocacaoViewModel);
 		}
 
 		[HttpPost]
@@ -148,14 +152,14 @@ namespace SisConv.Mvc.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult ConfirmaConvocacao(Guid ProcessoId, Guid ConvocadoId,Guid ConvocacaoId, string decisao )
+		public ActionResult ConfirmaConvocacao(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId, string decisao)
 		{
 			var dadosConvocacao =
 				_convocacaoAppService.GetById(ConvocacaoId);
 
 			dadosConvocacao.Desistente = decisao;
 			_convocacaoAppService.Update(dadosConvocacao);
-			return RedirectToAction(decisao.Equals("N") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new {ProcessoId, ConvocadoId, ConvocacaoId});
+			return RedirectToAction(decisao.Equals("N") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new { ProcessoId, ConvocadoId, ConvocacaoId });
 		}
 
 		public ActionResult DocumentacaoConvocado(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)
