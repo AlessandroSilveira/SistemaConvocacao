@@ -65,14 +65,10 @@ namespace SisConv.Mvc.Controllers
 				RegistarCandidatoParaFazerLogin(dadosConvocado);
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				var gravaConvocacao = _convocacaoAppService.Add(convocacaoViewModel);
-				if (gravaConvocacao == null)
-				{
-					break;
-				}
-				else
-				{
-					confirmacao = true;
-				}
+				if (gravaConvocacao == null)				
+					break;				
+				else				
+					confirmacao = true;				
 
 				_emailAppService.EnviarEmail(dadosConvocado);
 			}

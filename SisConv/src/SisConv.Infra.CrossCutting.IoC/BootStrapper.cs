@@ -54,8 +54,7 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IConvocadoService, ConvocadoService>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosService, DadosConvocadosService>(Lifestyle.Scoped);
             container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
-            container.Register<IDocumentacaoService, DocumentacaoService>(Lifestyle.Scoped);
-
+            container.Register<IDocumentacaoService, DocumentacaoService>(Lifestyle.Scoped);	
 			
 			container.Register<IConfiguration, Configuration>(Lifestyle.Scoped);
 			container.Register<IEmailServices, EmailServices>(Lifestyle.Scoped);
