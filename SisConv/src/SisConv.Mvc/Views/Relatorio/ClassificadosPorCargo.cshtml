@@ -11,7 +11,7 @@
                 Escolha um Cargo:
             </th>
             <th>
-                <select name="cargo" class="form-control">
+                <select name="cargo" class="form-control" style="float:left">
                     <option>Selecione</option>
                     @foreach (var itens in ViewBag.ListaCargos)
                     {
@@ -32,26 +32,29 @@
 @if (ViewBag.ListaConvocadosPorCargo!=null)
 {
     <table class="table">
-        <tr>
-            <th>Classificação</th>
-            <th>Nome</th>
-            <th>Inscrição</th>
-            <th>Desistência</th>
-            <th>Entrou no Sistema</th>
-            <th>Compareceu na Entrega da Documentação</th>
-            <th>Status da Convocação</th>
-        </tr>
+		<tr>
+
+			<th>Nome</th>
+			<th>Inscrição</th>
+			<th>Classificação</th>
+			<th>Desistência</th>
+			<th>Entrou no Sistema</th>
+			<th>Compareceu na Entrega da Documentação</th>
+			<th>Status da Convocação</th>
+		</tr>
         @foreach (var itens in ViewBag.ListaConvocadosPorCargo)
         {
-            <tr>
-                <td>@itens.Posicao</td>
-                <td>@itens.Nome</td>
-                <td>@itens.Inscricao</td>
-                <td>@itens.Desistente</td>
-                <td></td>
-                <td>@itens.StatusConvocacao</td>
-                <td>@itens.StatusContratacao</td>
-            </tr>
+		<tr>
+			<td>@itens.Inscricao</td>
+			<td>@itens.Nome</td>
+			<td>@itens.Posicao</td>
+
+
+			<td>@(itens.Desistente == "S" ? "Não" : "Sim")</td>
+			<td>@itens.EntrouNoSistema</td>
+			<td>@itens.StatusConvocacao</td>
+			<td>@itens.StatusContratacao</td>
+		</tr>
         }
     </table>
 }

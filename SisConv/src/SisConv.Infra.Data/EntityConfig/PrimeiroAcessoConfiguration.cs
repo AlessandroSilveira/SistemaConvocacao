@@ -12,7 +12,14 @@ namespace SisConv.Infra.Data.EntityConfig
 			Property(c => c.PrimeiroAcessoId)
 				.HasColumnName("PrimeiroAcessoId");
 
-			Property(c => c.primeiroAcesso)
+			Property(c => c.Email)
+				.HasMaxLength(200)
+				.IsRequired();
+
+			Property(c => c.Data)
+				.IsRequired();
+
+			Property(c => c.ConvocadoId)
 				.IsRequired();
 
 			ToTable("PrimeiroAcesso");

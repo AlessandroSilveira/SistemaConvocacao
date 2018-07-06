@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Core.Services;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Roles;
@@ -19,11 +21,15 @@ namespace SisConv.Mvc.Controllers
 		private readonly IDocumentacaoAppService _documentacaoAppService;
 		private readonly IProcessoAppService _processoAppService;
 		private readonly IEmailAppService _emailAppService;
+		private readonly IEnumDescription _enumDescription;
 
 		public ConvocacaoController(IConvocacaoAppService convocacaoAppService,
-			IConvocadoAppService convocadoAppService, ApplicationUserManager userManager, 
-			IDocumentacaoAppService documentacaoAppService, IProcessoAppService processoAppService, 
-			IEmailAppService emailAppService)
+			IConvocadoAppService convocadoAppService, 
+			ApplicationUserManager userManager, 
+			IDocumentacaoAppService documentacaoAppService, 
+			IProcessoAppService processoAppService, 
+			IEmailAppService emailAppService,
+			IEnumDescription enumDescription)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_convocadoAppService = convocadoAppService;
@@ -31,6 +37,7 @@ namespace SisConv.Mvc.Controllers
 			_documentacaoAppService = documentacaoAppService;
 			_processoAppService = processoAppService;
 			_emailAppService = emailAppService;
+			_enumDescription = enumDescription;
 		}
 
 		public ActionResult Index()
@@ -154,8 +161,10 @@ namespace SisConv.Mvc.Controllers
 				_convocacaoAppService.GetById(ConvocacaoId);
 
 			dadosConvocacao.Desistente = decisao;
+			dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusComparecimento.Desistente);
+			dadosConvocacao.StatusContratacao = _enumDescription.GetEnumDescription( StatusContratacao.Desistente);
 			_convocacaoAppService.Update(dadosConvocacao);
-			return RedirectToAction(decisao.Equals("N") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new { ProcessoId, ConvocadoId, ConvocacaoId });
+			return RedirectToAction(decisao.Equals("S") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new { ProcessoId, ConvocadoId, ConvocacaoId });
 		}
 
 		public ActionResult DocumentacaoConvocado(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)

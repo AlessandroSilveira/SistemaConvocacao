@@ -17,5 +17,7 @@ namespace SisConv.Application.Interfaces.Repository
 	    string GerarSenhaUsuario();
         List<ConvocadoViewModel> MontaListaDeConvocados(IEnumerable<ConvocacaoViewModel> dadosConfirmados, IEnumerable<ConvocadoViewModel> convocados);
 		ConvocacaoViewModel GetOne(Expression<Func<Convocacao, bool>> predicate);
+		List<ConvocadoViewModel> MontarListaDeConvocadosQueIngressaram(IEnumerable<PrimeiroAcessoViewModel> candidadosQueFizeramPrimeiroAcesso, IEnumerable<ConvocadoViewModel> convocados,IEnumerable<ConvocacaoViewModel> dadosConfirmados);
+		List<ConvocadoViewModel> MontarListaDeConvocadosNaoQueIngressaram(IEnumerable<ConvocadoViewModel> convocados, IEnumerable<ConvocacaoViewModel> dadosConfirmados);
 	}
 }

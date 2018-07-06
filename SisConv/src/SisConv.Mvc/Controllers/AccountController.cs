@@ -10,6 +10,7 @@ using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
+using System;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -21,26 +22,26 @@ namespace SisConv.Mvc.Controllers
 
         private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
 	    private readonly IAdminAppService _adminAppService;
-
-		//public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
-		public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IPrimeiroAcessoAppService primeiroAcessoAppService, IAdminAppService adminAppService)
+		private readonly IConvocadoAppService _convocadoAppService;
+		
+		public AccountController(
+			ApplicationUserManager userManager, 
+			ApplicationSignInManager signInManager, 
+			IPrimeiroAcessoAppService primeiroAcessoAppService, 
+			IAdminAppService adminAppService,
+			IConvocadoAppService convocadoAppService
+			)
 		{
 			_userManager = userManager;
 			_signInManager = signInManager;
 		    _primeiroAcessoAppService = primeiroAcessoAppService;
 			_adminAppService = adminAppService;
-		}
-	
-        //
-        // GET: /Account/Login
+			_convocadoAppService = convocadoAppService;
+		}	
+       
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            //var primeiroAcesso = _primeiroAcessoAppService.Search(a=>a.primeiroAcesso==true);
-
-            //if (!primeiroAcesso.Any())
-            //    return RedirectToAction("PrimeiroAcesso", "Account");
-
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -52,40 +53,58 @@ namespace SisConv.Mvc.Controllers
 		}
 		// POST: /Account/Login
 		[HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-        {
-			
-
+		[AllowAnonymous]
+		[ValidateAntiForgeryToken]
+		public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+		{
 			if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+				return View(model);
 
 			
 
+			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
+			switch (result)
+			{
+				case SignInStatus.Success:
+					var user = _userManager.FindByEmail(model.Email);
+					var roles = _userManager.GetRoles(user.Id);
+					if (roles[0].ToString() == "Convocado")
+					{
+						VerificaPrimeiroAcesso(model);
+					}
+					
+					return RedirectToLocal(returnUrl);
+				case SignInStatus.LockedOut:
+					return View("Lockout");
+				case SignInStatus.RequiresVerification:
+					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+				case SignInStatus.Failure:
+				default:
+					ModelState.AddModelError("", "Login ou Senha incorretos.");
+					return View(model);
+			}
+		}
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Login ou Senha incorretos.");
-                    return View(model);
-            }
-        }
-        
-        // GET: /Account/VerifyCode
-        [AllowAnonymous]
+		private void VerificaPrimeiroAcesso(LoginViewModel model)
+		{
+			var primeiroAcesso = _primeiroAcessoAppService.Search(a => a.Email.Equals(model.Email));
+
+			var dadosConvocado = _convocadoAppService.Search(a => a.Email.Equals(model.Email)).FirstOrDefault();
+
+			var primeiroAcessoViewModel = new PrimeiroAcessoViewModel()
+			{
+				PrimeiroAcessoId = Guid.NewGuid(),
+				Email = model.Email,
+				ConvocadoId = dadosConvocado.ConvocadoId,
+				Data = DateTime.Now
+			};
+
+			if (!primeiroAcesso.Any())
+				_primeiroAcessoAppService.Add(primeiroAcessoViewModel);
+		}
+
+		// GET: /Account/VerifyCode
+		[AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
@@ -435,7 +454,7 @@ namespace SisConv.Mvc.Controllers
 				    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta", "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
 				    ViewBag.Link = callbackUrl;
 				    AdicionarAdministrador(model);
-				    RegistraPrimeiroAcesso();
+				    
 					return View("DisplayEmail");
 			    }
 				AddErrors(result);
@@ -461,15 +480,7 @@ namespace SisConv.Mvc.Controllers
 
 		    _adminAppService.Add(admin);
 	    }
-
-	    private void RegistraPrimeiroAcesso()
-	    {
-		    var paModel = new PrimeiroAcessoViewModel()
-		    {
-			    primeiroAcesso = true
-		    };
-		    _primeiroAcessoAppService.Update(paModel);
-	    }
+		   
 
 	    #region Helpers
 		// Used for XSRF protection when adding external logins

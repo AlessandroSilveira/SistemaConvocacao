@@ -16,12 +16,10 @@ namespace SisConv.Application.ViewModels
 		public string Inscricao { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
-		//[RegularExpression(@"/^[A-ZÀ-Ÿ][A-zÀ-ÿ']+\s([A-zÀ-ÿ']\s?)*[A-ZÀ-Ÿ][A-zÀ-ÿ']+$/", ErrorMessage = "O Nome deve conter um Sobrenome")]
 		[Display(Name = "Nome:*")]
 		public string Nome { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
-		//[RegularExpression("[A-Z0-9]\\s[A-Z0-9]", ErrorMessage = "O Nome da Mãe deve conter um Sobrenome")]
 		[Display(Name = "Nome da Mãe:*")]
 		public string Mae { get; set; }
 
@@ -113,8 +111,7 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Estado Civil:*")]
 		public int EstadoCivil { get; set; }
 
-
-
+		public string EntrouNoSistema { get; set; }
 
 		public string Desistente { get; set; }
 		public DateTime DataEntregaDocumentos { get; set; }
@@ -136,7 +133,6 @@ namespace SisConv.Application.ViewModels
 
 		[ MaxLength(15)]
 		[Display(Name = "Telefone Recados:*")]
-		//[RegularExpression(@"^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$", ErrorMessage = "Telefone inválido.")]
 		public string Recados { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]

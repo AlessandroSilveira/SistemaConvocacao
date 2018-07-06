@@ -77,6 +77,18 @@
     <Compile Include="Migrations\201804291640474_addOrgaoEmissor.Designer.cs">
       <DependentUpon>201804291640474_addOrgaoEmissor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201806260414276_atualizandoPrimeiroAcesso.cs" />
+    <Compile Include="Migrations\201806260414276_atualizandoPrimeiroAcesso.Designer.cs">
+      <DependentUpon>201806260414276_atualizandoPrimeiroAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807020119181_ajustePrimeiroAcesso.cs" />
+    <Compile Include="Migrations\201807020119181_ajustePrimeiroAcesso.Designer.cs">
+      <DependentUpon>201807020119181_ajustePrimeiroAcesso.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201807040347484_addConvocadoId.cs" />
+    <Compile Include="Migrations\201807040347484_addConvocadoId.Designer.cs">
+      <DependentUpon>201807040347484_addConvocadoId.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepository.cs" />
@@ -116,6 +128,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201804291640474_addOrgaoEmissor.resx">
       <DependentUpon>201804291640474_addOrgaoEmissor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201806260414276_atualizandoPrimeiroAcesso.resx">
+      <DependentUpon>201806260414276_atualizandoPrimeiroAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807020119181_ajustePrimeiroAcesso.resx">
+      <DependentUpon>201807020119181_ajustePrimeiroAcesso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201807040347484_addConvocadoId.resx">
+      <DependentUpon>201807040347484_addConvocadoId.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
