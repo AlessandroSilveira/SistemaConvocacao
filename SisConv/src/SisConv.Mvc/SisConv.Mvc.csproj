@@ -304,6 +304,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\ModalErroSemCargo\ModalErroSemCargo.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
@@ -431,6 +432,8 @@
     <Content Include="Views\Relatorio\ConvocadosQueIngressaram.cshtml" />
     <Content Include="Views\Relatorio\ConvocadosQueNaoIngressaram.cshtml" />
     <Content Include="Views\Relatorio\ConvocadosPorInstituicaoEnsinoSuperior.cshtml" />
+    <Content Include="Views\Relatorio\PendentesDadosBancarios.cshtml" />
+    <Content Include="Views\Account\EmailNaoCadastrado.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

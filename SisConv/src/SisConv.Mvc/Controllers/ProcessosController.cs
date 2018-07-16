@@ -169,7 +169,7 @@ namespace SisConv.Mvc.Controllers
 				.OrderBy(a => a.CodigoCargo);
 			ViewBag.ListaCandidatos = null;
 
-			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
+			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusConvocacao>();
 
 			ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -195,7 +195,7 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
 				.OrderBy(a => a.CodigoCargo);
 
-			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
+			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusConvocacao>();
 
 			ViewBag.ListaOpcoesComparecimento = opcoesComp;
 
@@ -220,7 +220,7 @@ namespace SisConv.Mvc.Controllers
 
 			ViewBag.ProcessoId = id;
 
-			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusComparecimento>();
+			var opcoesComp = _listaOpcoes.MontarListaOpcoes<StatusConvocacao>();
 
 			ViewBag.ListaOpcoesComparecimento = opcoesComp;
 			return View();
@@ -244,7 +244,7 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.Ativo.Equals(true))
 				.OrderBy(a => a.CodigoCargo);
 
-			var opcoesContatacao = _listaOpcoes.MontarListaOpcoes<StatusContratacao>();
+			var opcoesContatacao = _listaOpcoes.MontarListaOpcoes<StatusConvocacao>();
 
 			ViewBag.ProcessoId = id;
 			ViewBag.ListaOpcoesContratacao = opcoesContatacao;

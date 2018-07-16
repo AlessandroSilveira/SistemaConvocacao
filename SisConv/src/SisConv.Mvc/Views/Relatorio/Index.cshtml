@@ -15,9 +15,7 @@
 			<h3>@Html.ActionLink("Convocados que ingressaram no sistema.", "ConvocadosQueIngressaram", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
 			<h3>@Html.ActionLink("Convocados que não ingressaram no sistema.", "ConvocadosQueNaoIngressaram", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
 			<h3>@Html.ActionLink("Convocados por Instituição de Ensino Superior (IES).", "ConvocadosPorInstituicaoEnsinoSuperior", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-
-			<h3></h3>
-			<h3>Relatório de Pendentes de Dados Bancários.</h3>
+			<h3>@Html.ActionLink("Relatório de Pendentes de Dados Bancários.", "PendentesDadosBancarios", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>			
 			<h3>Estatística Geral da Convocação/Contratação.</h3>
 		</div>
     </div>

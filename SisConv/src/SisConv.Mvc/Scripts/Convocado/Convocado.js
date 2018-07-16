@@ -18,5 +18,10 @@
         nextText: 'Próximo',
         prevText: 'Anterior'
     });
-    
+
+    if ($("#modal").val() === "True") {
+        $("#mensagem_sucesso").trigger("click");
+    }
+
 });
+

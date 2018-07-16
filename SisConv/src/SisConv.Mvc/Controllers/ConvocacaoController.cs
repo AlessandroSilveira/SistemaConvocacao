@@ -1,6 +1,8 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Web.Configuration;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using SisConv.Application.Interfaces.Repository;
@@ -65,6 +67,8 @@ namespace SisConv.Mvc.Controllers
 
 			var selecionado = convocacaoViewModel.CandidatosSelecionados.Split(',');
 			var confirmacao = false;
+
+			convocacaoViewModel.StatusConvocacao =_enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
 
 			foreach (var t in selecionado)
 			{
@@ -161,8 +165,12 @@ namespace SisConv.Mvc.Controllers
 				_convocacaoAppService.GetById(ConvocacaoId);
 
 			dadosConvocacao.Desistente = decisao;
-			dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusComparecimento.Desistente);
-			dadosConvocacao.StatusContratacao = _enumDescription.GetEnumDescription( StatusContratacao.Desistente);
+
+			if(decisao.Equals("S"))
+				dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.Desistente);
+			else
+				dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
+
 			_convocacaoAppService.Update(dadosConvocacao);
 			return RedirectToAction(decisao.Equals("S") ? "DesistenciaCandidato" : "DocumentacaoConvocado", "Convocacao", new { ProcessoId, ConvocadoId, ConvocacaoId });
 		}
@@ -174,6 +182,22 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.dadosConvocado = dadosConvocado;
 			ViewBag.listaDocumentacao = _documentacaoAppService.Search(a => a.ProcessoId.Equals(ProcessoId));
 			return View();
+		}
+
+
+		public  void Download(string arquivo)
+		{
+			
+			var pathArquivo = WebConfigurationManager.AppSettings[@"SisConvDocs"];
+			var caminhoArquivo = Path.Combine(pathArquivo, arquivo);
+			var fInfo = new FileInfo(caminhoArquivo);
+			HttpContext.Response.Clear();
+			HttpContext.Response.ContentType = "application/octet-stream";
+			HttpContext.Response.AddHeader("Content-Disposition", "attachment; filename=\"" + fInfo.Name + "\"");
+			HttpContext.Response.AddHeader("Content-Length", fInfo.Length.ToString());
+			HttpContext.Response.Flush();
+			HttpContext.Response.WriteFile(fInfo.FullName);
+			fInfo = null;
 		}
 
 		public ActionResult DesistenciaCandidato(Guid ProcessoId, Guid ConvocadoId, Guid ConvocacaoId)

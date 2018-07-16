@@ -10,14 +10,14 @@
 				Escolha um Cargo:
 			</th>
 			<th>
-				<select name="cargo" class="form-control" style="float:left">
-					<option>Selecione</option>
+				<select name="cargo" id="cargo" class="form-control" style="float:left">
+					<option value="">Selecione</option>
 					@foreach (var itens in ViewBag.ListaCargos)
 					{
 						<option value="@itens.CargoId">@itens.Nome</option>
 					}
 				</select>
-				<input type="submit" value="Buscar" class="btn btn-default" />
+				<input type="button" id="enviar" value="Buscar" class="btn btn-default" />
 			</th>
 		</tr>
 		<tr>
@@ -56,3 +56,24 @@
 <div>
 	<button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
 </div>
+
+<button type="button" class="btn btn-primary" id="mensagem_erro" data-toggle="modal" data-target="#erro_sem_cargo" style="display: none"></button>
+
+
+<div class="modal" id="erro_sem_cargo" role="dialog">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Sistema de Convocação</h4>
+			</div>
+			<div class="modal-body">
+				<p>Escolha um cargo.</p>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script src="~/Scripts/ModalErroSemCargo/ModalErroSemCargo.js"></script>

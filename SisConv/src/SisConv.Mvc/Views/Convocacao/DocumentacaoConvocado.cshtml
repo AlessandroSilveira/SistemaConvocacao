@@ -19,10 +19,10 @@
 			</p>
 			<hr class="my-4">
 			<p class="lead">2 - Leia e imprima a documentação necessária para a sua apresentação.</p>
-			<p class="lead">Lista de Documentos para apresentação.</p>
+			<p class="lead">Lista de Documentos para apresentação:</p>
 			@foreach (var itens in ViewBag.ListaDocumentacao)
 			{
-				<p>@itens.Descricao</p>
+				<p><a href="@Url.Content("~/Convocacao/Download?arquivo="+itens.Path)">@itens.Descricao</a></p>
 			}
 			<p>
 				<hr class="my-4">

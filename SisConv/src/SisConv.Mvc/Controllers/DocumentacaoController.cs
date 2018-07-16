@@ -54,16 +54,18 @@ namespace SisConv.Mvc.Controllers
 		private string SalvarArquivoConvocados(DocumentacaoViewModel documentacaoViewModel)
 		{
 			var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+			pathArquivo = pathArquivo.Replace(@"\\", @"\");
 			var arquivo = Request.Files[0];
 			if (arquivo == null)
 				return String.Empty;
 
 			var nomeArquivo = Path.GetFileName(arquivo.FileName);
 
-			if (!Directory.Exists(pathArquivo))
-				Directory.CreateDirectory(pathArquivo);
+			if (Directory.Exists(pathArquivo) == false)				
+				System.IO.Directory.CreateDirectory(pathArquivo);
 
-			if (nomeArquivo != null) arquivo.SaveAs(Path.Combine(pathArquivo, nomeArquivo));
+			if (nomeArquivo != null)
+				arquivo.SaveAs(Path.Combine(pathArquivo, nomeArquivo));
 
 			return nomeArquivo;
 		}
@@ -96,8 +98,9 @@ namespace SisConv.Mvc.Controllers
 		[ValidateAntiForgeryToken]
 		public ActionResult DeleteConfirmed(Guid id)
 		{
+			var documento = _documentacaoAppService.GetById(id);
 			_documentacaoAppService.Remove(id);
-			return RedirectToAction("Index");
+			return RedirectToAction("Index",new { @id=documento.ProcessoId});
 		}
 
 		protected override void Dispose(bool disposing)

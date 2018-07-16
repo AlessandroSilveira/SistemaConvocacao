@@ -37,20 +37,20 @@ namespace SisConv.Domain.Core.Services
 		    return opcoes;
 		}
 
-	    public Dictionary<StatusComparecimento, string> MontarListaOpcoesComparecimento()
+	    public Dictionary<StatusConvocacao, string> MontarListaOpcoesComparecimento()
 		{
-			var opcoesComp = new Dictionary<StatusComparecimento, string>();
+			var opcoesComp = new Dictionary<StatusConvocacao, string>();
 
-			foreach (StatusComparecimento val in Enum.GetValues(typeof(StatusComparecimento)))
+			foreach (StatusConvocacao val in Enum.GetValues(typeof(StatusConvocacao)))
 				opcoesComp.Add(val, _enumDescription.GetEnumDescription(val));
 			return opcoesComp;
 		}
 
-		public Dictionary<StatusContratacao, string> MontarListaOpcoesContratacao()
+		public Dictionary<StatusConvocacao, string> MontarListaOpcoesContratacao()
 		{
-			var opcoesContratacao = new Dictionary<StatusContratacao, string>();
+			var opcoesContratacao = new Dictionary<StatusConvocacao, string>();
 
-			foreach (StatusContratacao val in Enum.GetValues(typeof(StatusContratacao)))
+			foreach (StatusConvocacao val in Enum.GetValues(typeof(StatusConvocacao)))
 				opcoesContratacao.Add(val, _enumDescription.GetEnumDescription(val));
 			return opcoesContratacao;
 		}

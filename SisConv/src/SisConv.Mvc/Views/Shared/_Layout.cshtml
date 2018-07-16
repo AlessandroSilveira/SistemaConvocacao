@@ -20,27 +20,7 @@
 
 		<div class="collapse navbar-collapse" id="navbarColor01">
 			<ul class="navbar-nav mr-auto">
-				@if (Request.IsAuthenticated && User.IsInRole("Administrator"))
-				{
-					<li class="nav-item" style="color:white !important; margin : 5px">@Html.ActionLink("Home", "Index", "Home", new { @class = "nav-link", @style = "color:white !important" }, null)</li>
-					<li class="nav-item" style="color:white !important; margin : 5px">@Html.ActionLink("Clientes", "Index", "Cliente", new { @class = "nav-link", @style = "color:white !important" }, null)</li>
-					<li class="nav-item" style="color:white !important; margin : 5px">@Html.ActionLink("Usuários", "Index", "UserAdmin", new { @class = "nav-link", @style = "color:white !important" }, null)</li>
-				}
-				@if (Request.IsAuthenticated && User.IsInRole("Cliente"))
-				{
-					<li class="nav-item" style="color:white !important ; margin : 5px">@Html.ActionLink("Convocações", "Index", "Processos", new { @class = "nav-link", @style = "color:white !important" }, null)</li>
-
-				}
-				@if (Request.IsAuthenticated && User.IsInRole("Convocado"))
-				{
-					
-						@*<li class="nav-item" style="color:white !important; margin : 5px">@Html.ActionLink("Atualizar Dados Cadastrais", "Edit", "Convocado", new { @id = ViewBag.dadosConvocado.ConvocadoId }, null)</li>
-						<li class="nav-item" style="color:white !important; margin : 5px">@Html.ActionLink("Lista de Documentos", "Edit", "Convocado", new { @id = ViewBag.dadosConvocado.ConvocadoId }, null)</li>*@
-					
-
-
-				}
-			</ul>
+							</ul>
 			@Html.Partial("_LoginPartial")
 		</div>
 	</nav>

@@ -98,24 +98,20 @@ namespace SisConv.Application.Services
 
 			foreach (var itens in result)
 			{
-				var itemDesistente = itens.Desistente;
-				var itemDataEntregaDocumentos = itens.DataEntregaDocumentos;
-				var convocacaoId = itens.ConvocacaoId;
-				var statusConvocacao = itens.StatusConvocacao;
-				var statusContrataco = itens.StatusContratacao;
-				var entrouNoSistema = itens.EntrouNoSistema;
-				listaDeconvocados.AddRange(itens.convocados.Select(person => new ConvocadoViewModel
+
+				listaDeconvocados.AddRange(itens.convocados.Select(lista => new ConvocadoViewModel
 				{
-					ConvocacaoId = convocacaoId,
-					ConvocadoId = person.ConvocadoId,
-					Nome = person.Nome,
-					Posicao = person.Posicao,
-					Inscricao = person.Inscricao,
-					Desistente = itemDesistente,
-					EntrouNoSistema = _primeiroAcessoService.Search(a => a.Email.Equals(person.Email)) == null ? @"Não" : "Sim",
-					DataEntregaDocumentos = itemDataEntregaDocumentos,
-					StatusConvocacao = string.IsNullOrEmpty(statusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), statusConvocacao)),
-					StatusContratacao = string.IsNullOrEmpty(statusContrataco) ? "" : _opcoesComparecimento.EnumDescription((StatusContratacao)Enum.Parse(typeof(StatusContratacao), statusContrataco))
+					ConvocacaoId =lista.ConvocacaoId,
+					ConvocadoId = lista.ConvocadoId,
+					Nome = lista.Nome,
+					Posicao = lista.Posicao,
+					Inscricao = lista.Inscricao,
+					Desistente = lista.Desistente,
+					EntrouNoSistema = _primeiroAcessoService.Search(a => a.Email.Equals(lista.Email)) == null ? @"Não" : "Sim",
+					DataEntregaDocumentos = lista.DataEntregaDocumentos,
+					InstituicaoEnsino = lista.InstituicaoEnsino,
+					StatusConvocacao = string.IsNullOrEmpty(lista.StatusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), lista.StatusConvocacao)),
+					StatusContratacao = string.IsNullOrEmpty(lista.StatusContratacao) ? "" : _opcoesComparecimento.EnumDescription((StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), lista.StatusContratacao))
 				}));
 			}
 			return listaDeconvocados;
@@ -126,75 +122,7 @@ namespace SisConv.Application.Services
 			return Mapper.Map<Convocacao, ConvocacaoViewModel>(_convocacaoService.GetOne(predicate));
 		}
 
-		public List<ConvocadoViewModel> MontarListaDeConvocadosQueIngressaram(IEnumerable<PrimeiroAcessoViewModel> candidadosQueFizeramPrimeiroAcesso, IEnumerable<ConvocadoViewModel> convocados, IEnumerable<ConvocacaoViewModel> dadosConfirmados)
-		{
-			var result = candidadosQueFizeramPrimeiroAcesso.GroupJoin(convocados, conf => conf.Email, conv => conv.Email,
-				(conf, conv) => new
-				{
-					conf.Data,
-					conf.Email,
-					convocados = conv
-				});
 
-			var listaDeCandidatosQueIngressaram = new List<ConvocadoViewModel>();
-
-			foreach (var itens in result)
-			{
-				listaDeCandidatosQueIngressaram.AddRange(itens.convocados.Select(person => new ConvocadoViewModel
-				{
-					ConvocacaoId = person.ConvocacaoId,
-					ConvocadoId = person.ConvocadoId,
-					Nome = person.Nome,
-					Posicao = person.Posicao,
-					Inscricao = person.Inscricao,
-					Desistente = person.Desistente,
-					EntrouNoSistema = _primeiroAcessoService.Search(a => a.Email.Equals(person.Email)) == null ? @"Não" : "Sim",
-					DataEntregaDocumentos = person.DataEntregaDocumentos,
-					StatusConvocacao = string.IsNullOrEmpty(person.StatusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), person.StatusConvocacao)),
-					StatusContratacao = string.IsNullOrEmpty(person.StatusContratacao) ? "" : _opcoesComparecimento.EnumDescription((StatusContratacao)Enum.Parse(typeof(StatusContratacao), person.StatusContratacao)),
-					InstituicaoEnsino = person.InstituicaoEnsino
-				}));
-			}
-			
-
-			return listaDeCandidatosQueIngressaram;
-		}
-
-		public List<ConvocadoViewModel> MontarListaDeConvocadosNaoQueIngressaram(IEnumerable<ConvocadoViewModel> convocados, IEnumerable<ConvocacaoViewModel> dadosConfirmados)
-		{
-			var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
-				(conf, conv) => new
-				{
-					conf.Desistente,
-					conf.DataEntregaDocumentos,
-					conf.ConvocacaoId,
-					conf.StatusConvocacao,
-					conf.StatusContratacao,
-					conf.EntrouNoSistema,
-					convocados = conv
-				});
-
-			var listaDeCandidatosQueIngressaram = new List<ConvocadoViewModel>();
-
-			foreach (var itens in result)
-			{
-				listaDeCandidatosQueIngressaram.AddRange(itens.convocados.Select(person => new ConvocadoViewModel
-				{
-					ConvocacaoId = person.ConvocacaoId,
-					ConvocadoId = person.ConvocadoId,
-					Nome = person.Nome,
-					Posicao = person.Posicao,
-					Inscricao = person.Inscricao,
-					Desistente = person.Desistente,
-					EntrouNoSistema = _primeiroAcessoService.Search(a => a.Email.Equals(person.Email)) == null ? @"Não" : "Sim",
-					DataEntregaDocumentos = person.DataEntregaDocumentos,
-					StatusConvocacao = string.IsNullOrEmpty(person.StatusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), person.StatusConvocacao)),
-					StatusContratacao = string.IsNullOrEmpty(person.StatusContratacao) ? "" : _opcoesComparecimento.EnumDescription((StatusContratacao)Enum.Parse(typeof(StatusContratacao), person.StatusContratacao))
-				}));
-			}
-
-
-			return listaDeCandidatosQueIngressaram;
-		}
+		
 	}
 }

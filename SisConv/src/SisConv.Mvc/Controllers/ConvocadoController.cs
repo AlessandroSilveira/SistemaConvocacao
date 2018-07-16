@@ -51,10 +51,11 @@ namespace SisConv.Mvc.Controllers
 		}
 
 		// GET: Convocado/Edit/5
-		public ActionResult Edit(Guid id)
+		public ActionResult Edit(Guid id, bool modal=false)
 		{
 			var pessoaViewModel = _convocadoAppService.GetById(id);
 			RetornaViewBagsDasSelectList();
+			ViewBag.modal = modal.ToString();
 			return pessoaViewModel.Equals(null) ? (ActionResult)HttpNotFound() : View(pessoaViewModel);
 		}
 
@@ -91,7 +92,9 @@ namespace SisConv.Mvc.Controllers
 			}
 
 			_convocadoAppService.Update(convocadoViewModel);
-			return RedirectToAction("Index");
+
+
+			return RedirectToAction("Edit",new { @id = convocadoViewModel.ConvocadoId,@modal = true});
 		}
 
 		private void RetornaViewBagsDasSelectList()
