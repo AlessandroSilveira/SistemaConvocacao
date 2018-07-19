@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         UsuarioViewModel Update(UsuarioViewModel obj);
         void Remove(Guid id);
         IEnumerable<UsuarioViewModel> Search(Expression<Func<Usuario, bool>> predicate);
-    }
+		UsuarioViewModel GetOne(Expression<Func<Usuario, bool>> predicate);
+	}
 }

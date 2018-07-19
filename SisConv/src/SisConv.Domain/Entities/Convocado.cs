@@ -28,7 +28,7 @@ namespace SisConv.Domain.Entities
 		public string Bairro { get; set; }
 		public string Cep { get; set; }
 		public string Cidade { get; set; }
-		public string Estado { get; set; }
+		public string Uf { get; set; }
 		public string Telefone { get; set; }
 		public string Celular { get; set; }
 		public string Recados { get; set; }
@@ -50,7 +50,6 @@ namespace SisConv.Domain.Entities
 		public int Pontuacao { get; set; }
 		public int Posicao { get; set; }
 		public string Resultado { get; set; }
-
-       
+		public string OrgaoEmissor { get; set; }
 	}
 }

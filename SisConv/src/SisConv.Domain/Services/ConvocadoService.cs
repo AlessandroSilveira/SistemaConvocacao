@@ -55,6 +55,14 @@ namespace SisConv.Domain.Services
             return _convocadoRepository.Search(predicate);
         }
 
-	  
-    }
+	    public bool VerificaSeHaSobrenome(string nome)
+	    {
+		   return nome.Trim().Split(' ').Length > 1;
+	    }
+
+		public Convocado GetOne(Expression<Func<Convocado, bool>> predicate)
+		{
+			return _convocadoRepository.GetOne(predicate);
+		}
+	}
 }

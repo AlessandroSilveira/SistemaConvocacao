@@ -27,10 +27,7 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Sexo:*")]
 		public string Sexo { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(100)]
-		[Display(Name = "Data de Nascimento:*")]
-		public string Nascimento { get; set; }
-
+		
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
 		[Display(Name = "Documento de Identidade:*")]
 		public string Documento { get; set; }
@@ -41,14 +38,16 @@ namespace SisConv.Application.ViewModels
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
 		[Display(Name = "E-mail:*")]
+		[EmailAddress(ErrorMessage = "E-mail inválido.")]
 		public string Email { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Required(AllowEmptyStrings = false), MaxLength(15)]
 		[Display(Name = "Número de Telefone:*")]
 		public string Telefone { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Required(AllowEmptyStrings = false), MaxLength(15)]
 		[Display(Name = "Celular:*")]
+		//[RegularExpression(@"^(\([0-9]{2}\))\s([9]{1})?([0-9]{4})-([0-9]{4})$", ErrorMessage = "Telefone inválido.")]
 		public string Celular { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(200)]
@@ -78,11 +77,11 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "CEP:*")]
 		public string Cep { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(100)]
+
 		[Display(Name = "Cargo:*")]
 		public string Cargo { get; set; }
 
-		[Required(AllowEmptyStrings = false)]
+
 		[Display(Name = "CargoId:*")]
 		public Guid CargoId { get; set; }
 
@@ -100,6 +99,7 @@ namespace SisConv.Application.ViewModels
 		public string Naturalidade { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
+		//[RegularExpression("[A-Z0-9]\\s[A-Z0-9]", ErrorMessage = "O Nome do Pai deve conter um Sobrenome")]
 		[Display(Name = "Nome do Pai:*")]
 		public string Pai { get; set; }
 
@@ -111,9 +111,8 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Estado Civil:*")]
 		public int EstadoCivil { get; set; }
 
-		
-		
-		
+		public string EntrouNoSistema { get; set; }
+
 		public string Desistente { get; set; }
 		public DateTime DataEntregaDocumentos { get; set; }
 		public Guid ConvocacaoId { get; set; }
@@ -124,7 +123,7 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Data de Nascimento:*")]
 		public string DataNascimento { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(2)]
+		[Required(AllowEmptyStrings = false), MaxLength(3)]
 		[Display(Name = "Fator Sanguíneo:*")]
 		public string FatorSanguineo { get; set; }
 
@@ -132,11 +131,7 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Doador:*")]
 		public string Doador { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(2)]
-		[Display(Name = "Estado:*")]
-		public string Estado { get; set; }
-
-		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[ MaxLength(15)]
 		[Display(Name = "Telefone Recados:*")]
 		public string Recados { get; set; }
 
@@ -152,7 +147,7 @@ namespace SisConv.Application.ViewModels
 		[Display(Name = "Instituição de Ensino:*")]
 		public string InstituicaoEnsino { get; set; }
 
-		[Required(AllowEmptyStrings = false), MaxLength(11)]
+		[Required(AllowEmptyStrings = false), MaxLength(15)]
 		[Display(Name = "Telefone do IES:*")]
 		public string TelefoneIES { get; set; }
 

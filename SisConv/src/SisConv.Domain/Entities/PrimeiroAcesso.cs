@@ -10,6 +10,8 @@ namespace SisConv.Domain.Entities
 		}
 
 		public Guid PrimeiroAcessoId { get; set; }
-		public bool primeiroAcesso { get; set; }
+		public Guid ConvocadoId { get; set; }
+		public string Email { get; set; }
+		public DateTime Data { get; set; }
 	}
 }

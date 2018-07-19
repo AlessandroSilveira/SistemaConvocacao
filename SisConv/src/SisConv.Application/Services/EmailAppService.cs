@@ -17,10 +17,10 @@ namespace SisConv.Application.Services
 			
 		}
 
-		public EnviaEmailBuilder EnviarEmail(ConvocadoViewModel convocacao)
+		public void EnviarEmail(ConvocadoViewModel convocacao)
 		{
 			var admin = Mapper.Map<ConvocadoViewModel, Convocado>(convocacao);
-			return	_emailServices.EnviarEmail(admin);
+			_emailServices.EnviarEmail(admin);
 		}
 	}
 }

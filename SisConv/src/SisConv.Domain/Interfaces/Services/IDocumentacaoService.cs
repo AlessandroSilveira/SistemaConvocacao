@@ -13,6 +13,7 @@ namespace SisConv.Domain.Interfaces.Services
 		Documentacao Update(Documentacao obj);
 		void Remove(Guid id);
 		IEnumerable<Documentacao> Search(Expression<Func<Documentacao, bool>> predicate);
-		
+		Documentacao GetOne(Expression<Func<Documentacao, bool>> predicate);
+
 	}
 }

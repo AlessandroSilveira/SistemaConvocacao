@@ -8,14 +8,12 @@ namespace SisConv.Domain.Helpers
 	{
 		public string GetHelpFile(string page)
 		{
-			var ret = "";
-			var caminho = WebConfigurationManager.AppSettings["email_path"]; 
-			var language = WebConfigurationManager.AppSettings["language"];
+			var ret = "";			
 
 			if (page.Equals("")) return ret;
-			var helpfile = HttpContext.Current.Request.PhysicalApplicationPath + @"\public\" + page + "." + language + ".htm";
+			var helpfile = HttpContext.Current.Request.PhysicalApplicationPath + @"public\" + page + ".pt.htm";
 			if (!System.IO.File.Exists(helpfile)) return ret;
-			System.IO.StreamReader sr = new System.IO.StreamReader(helpfile, Encoding.Default);
+			var sr = new System.IO.StreamReader(helpfile, Encoding.Default);
 			ret = sr.ReadToEnd();
 			sr.Close();
 			sr.Dispose();

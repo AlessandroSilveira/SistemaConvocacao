@@ -67,6 +67,9 @@ namespace SisConv.Application.Services
 		        _documentacaoService.Search(predicate));
 		}
 
-		
+		public DocumentacaoViewModel GetOne(Expression<Func<Documentacao, bool>> predicate)
+		{
+			return Mapper.Map<Documentacao, DocumentacaoViewModel>(_documentacaoService.GetOne(predicate));
+		}
 	}
 }

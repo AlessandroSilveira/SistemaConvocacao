@@ -29,7 +29,7 @@ namespace SisConv.Application.ViewModels
 		public DateTime DataCriacao { get; set; }
 
 		[Required(AllowEmptyStrings = false), MaxLength(100)]
-		[Display(Name = "Path")]
+		[Display(Name = "Arquivo")]
 		public string Path { get; set; }
 
 		[Required(AllowEmptyStrings = false)]

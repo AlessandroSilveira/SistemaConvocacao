@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
 		PrimeiroAcesso Update(PrimeiroAcesso obj);
 		void Remove(Guid id);
 	    IEnumerable<PrimeiroAcesso> Search(Expression<Func<PrimeiroAcesso, bool>> predicate);
-    }
+		PrimeiroAcesso GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate);
+	}
 }

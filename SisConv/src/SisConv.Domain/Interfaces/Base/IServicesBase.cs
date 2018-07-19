@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Base
 		void Remove(Guid obj);
 		void Dispose();
 	    IEnumerable<TEntity> Search(Expression<Func<TEntity, bool>> predicate);
-    }
+		TEntity GetOne(Expression<Func<TEntity, bool>> predicate);
+	}
 }

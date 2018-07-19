@@ -1,7 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\SisConv"
+    "\\SisConv",
+    "\\SisConv\\src"
   ],
   "SelectedNode": "\\SisConv\\SisConv.sln",
   "PreviewInSolutionExplorer": false

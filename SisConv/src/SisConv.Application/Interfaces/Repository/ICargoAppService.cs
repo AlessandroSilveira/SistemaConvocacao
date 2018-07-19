@@ -15,5 +15,6 @@ namespace SisConv.Application.Interfaces.Repository
         CargoViewModel Update(CargoViewModel obj);
         void Remove(Guid id);
         IEnumerable<CargoViewModel> Search(Expression<Func<Cargo, bool>> predicate);
-    }
+		CargoViewModel GetOne(Expression<Func<Cargo, bool>> predicate);
+	}
 }

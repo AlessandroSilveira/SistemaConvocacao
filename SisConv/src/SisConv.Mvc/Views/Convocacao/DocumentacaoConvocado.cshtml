@@ -7,16 +7,30 @@
 		<h4></h4>
 		<h4></h4>
 		<div class="jumbotron">
-			<h1>@ViewBag.dadosConvocado.Nome</h1>
-			<p>@ViewBag.dadosProcesso.TextoDeAceitacaoDaConvocacao</p>
-			<p>Lista de Documentos para apresentação.</p>
+			<h1 class="display-3">@ViewBag.dadosConvocado.Nome</h1>
+			<p class="lead">Parabéns você foi Convocado.</p>
+			<p class="lead">@ViewBag.dadosProcesso.TextoDeAceitacaoDaConvocacao</p>
+
+			<p class="lead">Para dar prosseguimento com a sua convocação é de muita importância que você realize as seguintes etapas: </p>
+			<hr class="my-4">
+			<p class="lead">1 - Atualize seus dados cadastrais</p>
+			<p class="lead">
+				@Html.ActionLink("Atualizar Dados Cadastrais", "Edit", "Convocado", new { @id = ViewBag.dadosConvocado.ConvocadoId }, null)
+			</p>
+			<hr class="my-4">
+			<p class="lead">2 - Leia e imprima a documentação necessária para a sua apresentação.</p>
+			<p class="lead">Lista de Documentos para apresentação:</p>
 			@foreach (var itens in ViewBag.ListaDocumentacao)
 			{
-				<p>@itens.Descricao</p>
+				<p><a href="@Url.Content("~/Convocacao/Download?arquivo="+itens.Path)">@itens.Descricao</a></p>
 			}
 			<p>
-				@Html.ActionLink("Atualizar Dados Cadastrais","Edit","Convocado",new{@id=ViewBag.dadosConvocado.ConvocadoId },null)
-			</p>
+				<hr class="my-4">
+
+			<p class="lead">3 - Aguarde as próximas etapas de sua convocação.</p>
+
+
+
 		</div>
 	</div>
 </div>

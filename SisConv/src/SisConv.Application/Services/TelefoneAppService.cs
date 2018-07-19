@@ -63,5 +63,10 @@ namespace SisConv.Application.Services
         {
             return Mapper.Map<IEnumerable<Telefone>, IEnumerable<TelefoneViewModel>>(_telefoneService.Search(predicate));
         }
-    }
+
+		public TelefoneViewModel GetOne(Expression<Func<Telefone, bool>> predicate)
+		{
+			return Mapper.Map<Telefone, TelefoneViewModel>(_telefoneService.GetOne(predicate));
+		}
+	}
 }

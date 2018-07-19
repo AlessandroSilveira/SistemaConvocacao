@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Telefone Update(Telefone obj);
         void Remove(Guid id);
         IEnumerable<Telefone> Search(Expression<Func<Telefone, bool>> predicate);
-    }
+		Telefone GetOne(Expression<Func<Telefone, bool>> predicate);
+	}
 }

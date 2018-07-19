@@ -5,12 +5,21 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Services\DecriptarSenha\DecriptarSenha.cs" />
+    <Compile Remove="Services\DecriptarSenha\IDecriptarSenha.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <COMReference Include="{bee4bfec-6683-3e67-9167-3c0cbc68f40a}">
       <Guid>bee4bfec-6683-3e67-9167-3c0cbc68f40a</Guid>
       <VersionMajor>2</VersionMajor>
       <VersionMinor>4</VersionMinor>
       <WrapperTool>tlbimp</WrapperTool>
     </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Services\DecriptarSenha\" />
   </ItemGroup>
 
 </Project>

@@ -60,42 +60,9 @@ namespace SisConv.Domain.Services
 		    return _passwordGenerator.GetPassword();
 	    }
 
-
-	    //public List<ConvocadoViewModel> MontarListaConvocado(IEnumerable<ConvocacaoViewModel> dadosConfirmados,
-        //    IEnumerable<ConvocadoViewModel> convocados)
-        //{
-        //    var result = dadosConfirmados.GroupJoin(convocados, conf => conf.ConvocadoId, conv => conv.ConvocadoId,
-        //        (conf, conv) => new
-        //        {
-        //            conf.Desistente,
-        //            conf.DataEntregaDocumentos,
-        //            conf.ConvocacaoId,
-        //            conf.StatusConvocacao,
-        //            convocados = conv
-        //        });
-
-        //    var listaDeconvocados = new List<ConvocadoViewModel>();
-        //    foreach (var language in result)
-        //    {
-        //        string itemDesistente = language.Desistente;
-        //        DateTime itemDataEntregaDocumentos = language.DataEntregaDocumentos;
-        //        Guid convocacaoId = language.ConvocacaoId;
-        //        string statusConvocacao = language.StatusConvocacao;
-        //        foreach (var person in language.convocados)
-        //            listaDeconvocados.Add(new ConvocadoViewModel
-        //            {
-        //                ConvocacaoId = convocacaoId,
-        //                ConvocadoId = person.ConvocadoId,
-        //                Nome = person.Nome,
-        //                Posicao = person.Posicao,
-        //                Inscricao = person.Inscricao,
-        //                Desistente = itemDesistente,
-        //                DataEntregaDocumentos = itemDataEntregaDocumentos,
-        //                StatusConvocacao = _opcoesComparecimento.EnumDescription((StatusComparecimento)Enum.Parse(typeof(StatusComparecimento), statusConvocacao))
-        //    });
-        //    }
-
-        //    return listaDeconvocados;
-        //}
-    }
+		public Convocacao GetOne(Expression<Func<Convocacao, bool>> predicate)
+		{
+			return _convocacaoRepository.GetOne(predicate);
+		}
+	}
 }

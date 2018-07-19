@@ -1,10 +1,13 @@
-﻿using SisConv.Domain.Entities;
-using SisConv.Domain.Services;
+﻿using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Entities;
+using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Domain.Interfaces.Services
 {
 	public interface IEmailServices
 	{
-		EnviaEmailBuilder EnviarEmail(Convocado convocacao);
+		void EnviarEmail(Convocado convocacao);
+		void EnviarEmail(string novaSenha, ApplicationUser user);
+		void EnviarEmail(string novaSenha, ApplicationUser user, AssuntosEmail assuntoEmail);
 	}
 }

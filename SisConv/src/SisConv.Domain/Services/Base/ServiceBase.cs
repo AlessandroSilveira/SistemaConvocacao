@@ -49,10 +49,16 @@ namespace SisConv.Domain.Services.Base
 	    {
 	        return _repositoryBase.Search(predicate);
 	    }
+			
 
-	    void IDisposable.Dispose()
+		void IDisposable.Dispose()
 		{
 			_repositoryBase.Dispose();
+		}
+
+		public TEntity GetOne(Expression<Func<TEntity, bool>> predicate)
+		{
+			return _repositoryBase.GetOne(predicate);
 		}
 	}
 }

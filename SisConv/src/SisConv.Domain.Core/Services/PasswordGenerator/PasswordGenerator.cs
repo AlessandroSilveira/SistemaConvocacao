@@ -10,7 +10,8 @@ namespace SisConv.Domain.Core.Services.PasswordGenerator
 
 		public string GetPassword()
 		{
-			var size = 8; //Convert.ToInt32(WebConfigurationManager.AppSettings["NumerosCaracteresSenha"]); TODO: ALterar essa linha para pegar esse valor no webconfig
+			const int size = 8; //Convert.ToInt32(WebConfigurationManager.AppSettings["NumerosCaracteresSenha"]); TODO: ALterar essa linha para pegar esse valor no webconfig
+
 			var maxValue = ValidCharacters.Length;
 			var random = new Random(DateTime.Now.Millisecond);
 			var password = new StringBuilder(size);

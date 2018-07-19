@@ -13,5 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Usuario Update(Usuario obj);
         void Remove(Guid id);
         IEnumerable<Usuario> Search(Expression<Func<Usuario, bool>> predicate);
-    }
+		Usuario GetOne(Expression<Func<Usuario, bool>> predicate);
+	}
 }

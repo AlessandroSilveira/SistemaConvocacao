@@ -77,10 +77,10 @@
                             <option value="">Selecione</option>
                             @foreach (KeyValuePair<StatusComparecimento, string> row in ViewBag.ListaOpcoesComparecimento)
                             {
-                                <option value="@row.Key"
+                                <option value="@row.Key.ToString()"
                                         @if (!string.IsNullOrEmpty(itens.StatusConvocacao))
                                         {
-                                            if (itens.StatusConvocacao == row.Key.ToString())
+                                            if (itens.StatusConvocacao == row.Value.ToString())
                                             {
                                                 @selected
                                             }
@@ -108,7 +108,7 @@
             @Html.AntiForgeryToken()
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                   
                     <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
                 </div>
                 <div class="modal-body">
@@ -132,7 +132,7 @@
             @Html.AntiForgeryToken()
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    
                     <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
                 </div>
                 <div class="modal-body">

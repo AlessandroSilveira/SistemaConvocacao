@@ -14,5 +14,6 @@ namespace SisConv.Application.Interfaces.Repository
         ClienteViewModel Update(ClienteViewModel obj);
         void Remove(Guid id);
         IEnumerable<ClienteViewModel> Search(Expression<Func<Cliente, bool>> predicate);
-    }
+		ClienteViewModel GetOne(Expression<Func<Cliente, bool>> predicate);
+	}
 }

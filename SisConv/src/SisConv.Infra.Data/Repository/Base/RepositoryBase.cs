@@ -67,5 +67,10 @@ namespace SisConv.Infra.Data.Repository.Base
             SisConvContext.Dispose();
             GC.SuppressFinalize(this);
         }
-    }
+
+		public TEntity GetOne(Expression<Func<TEntity, bool>> predicate)
+		{
+			return DbSet.Where(predicate).FirstOrDefault();
+		}
+	}
 }

@@ -50,5 +50,10 @@ namespace SisConv.Domain.Services
 		{
 			return _documentacaoRepository.Search(predicate);
 		}
+
+		public Documentacao GetOne(Expression<Func<Documentacao, bool>> predicate)
+		{
+			return _documentacaoRepository.GetOne(predicate);
+		}
 	}
 }

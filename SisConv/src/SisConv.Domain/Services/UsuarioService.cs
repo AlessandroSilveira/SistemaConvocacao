@@ -51,5 +51,10 @@ namespace SisConv.Domain.Services
         {
             return _usuarioRepository.Search(predicate);
         }
-    }
+
+		public Usuario GetOne(Expression<Func<Usuario, bool>> predicate)
+		{
+			return _usuarioRepository.GetOne(predicate);
+		}
+	}
 }

@@ -24,7 +24,11 @@ namespace SisConv.Mvc.Controllers
 
 		public ActionResult Index()
 		{
+
+			if (User.IsInRole("Cliente")) return RedirectToAction("Index", "Processos");
+
 			if (!User.IsInRole("Convocado")) return View();
+			
 
 			var dadosConvocado = _convocadoAppService.GetById(Guid.Parse(User.Identity.GetUserId()));
 			ViewBag.dadosConvocado = dadosConvocado;
@@ -42,10 +46,10 @@ namespace SisConv.Mvc.Controllers
 
 			if (string.IsNullOrEmpty(dadosConvocacao.Desistente)) return View();
 
-			if (dadosConvocacao.Desistente.Equals("S"))
+			if (dadosConvocacao.Desistente.Equals("N"))
 				return RedirectToAction("DocumentacaoConvocado", "Convocacao",
 					new {dadosProcesso.ProcessoId, dadosConvocacao.ConvocadoId, dadosConvocacao.ConvocacaoId});
-			if (dadosConvocacao.Desistente.Equals("N"))
+			if (dadosConvocacao.Desistente.Equals("S"))
 				return RedirectToAction("DesistenciaCandidato", "Convocacao",
 					new {dadosProcesso.ProcessoId, dadosConvocacao.ConvocadoId, dadosConvocacao.ConvocacaoId});
 			return View();
