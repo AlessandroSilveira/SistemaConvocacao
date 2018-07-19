@@ -39,7 +39,7 @@ namespace SisConv.Infra.CrossCutting.Identity.Helpers
             }
 
             const string email = "admin@admin.com.br";
-            const string password = "123456";
+            const string password = "admin";
 
             var user = new ApplicationUser { UserName = email, Email = email };
             var result = userManager.Create(user, password);
@@ -47,9 +47,7 @@ namespace SisConv.Infra.CrossCutting.Identity.Helpers
             if (result.Succeeded)
             {
                 var user2 = userManager.FindByName(email);
-                userManager.AddToRole(user2.Id, RolesNames.ROLE_ADMIN);
-               // _signInManager.SignIn(user, isPersistent: false, rememberBrowser: false);
-               // userManager.GenerateEmailConfirmationToken(user.Id);
+                userManager.AddToRole(user2.Id, RolesNames.ROLE_ADMIN);              
             }
         }
     }
