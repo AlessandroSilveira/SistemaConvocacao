@@ -227,31 +227,24 @@ namespace SisConv.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 var user = await _userManager.FindByNameAsync(model.Email);
-                if (user == null )
-                {
-                    // Não revelar se o usuario nao existe ou nao esta confirmado
+
+                if (user == null)                                    
                     return View("EmailNaoCadastrado");
-                }
+                
+                //var novaSenha = _passwordGenerator.GetPassword();
+                //_userManager.RemovePassword(user.Id);
+                //_userManager.AddPassword(user.Id, novaSenha);
+                //var contentEmail = _sysConfig.GetHelpFile("EsqueciSenha");
+                //_emailServices.EnviarEmail(novaSenha,user,AssuntosEmail.EsqueciSenha);
 
-				var novaSenha = _passwordGenerator.GetPassword();
-				
-				_userManager.RemovePassword(user.Id);
-				_userManager.AddPassword(user.Id, novaSenha);
-
-				var contentEmail = _sysConfig.GetHelpFile("EsqueciSenha");
-
-				_emailServices.EnviarEmail(novaSenha,user,AssuntosEmail.EsqueciSenha);
-
-
-
-				//var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
-				//var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-				//await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
-				//ViewBag.Link = callbackUrl;
-				//ViewBag.Status = "DEMO: Caso o link não chegue: ";
-				//ViewBag.LinkAcesso = callbackUrl;
-				//return View("ForgotPasswordConfirmation");
-			}
+                var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
+                ViewBag.Link = callbackUrl;
+                ViewBag.Status = "DEMO: Caso o link não chegue: ";
+                ViewBag.LinkAcesso = callbackUrl;
+                return View("ForgotPasswordConfirmation");
+            }
 
             // No caso de falha, reexibir a view. 
             return View(model);

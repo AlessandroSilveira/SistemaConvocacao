@@ -76,18 +76,31 @@ namespace SisConv.Mvc.Controllers
 				RegistarCandidatoParaFazerLogin(dadosConvocado);
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				var gravaConvocacao = _convocacaoAppService.Add(convocacaoViewModel);
+
 				if (gravaConvocacao == null)				
 					break;				
 				else				
 					confirmacao = true;				
 
-				_emailAppService.EnviarEmail(dadosConvocado);
+				EnviarEmailAsync(dadosConvocado);
 			}
 
 			return RedirectToAction("ListaConvocados", "Processos", new { @ProcessoId = convocacaoViewModel.ProcessoId.ToString(), @cargo = Cargo, @confirmacao = confirmacao });
 		}
 
-		private string GerarSenha()
+        private async void EnviarEmailAsync(ConvocadoViewModel dadosConvocado)
+        {
+            var user = await _userManager.FindByNameAsync(dadosConvocado.Email);
+
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
+            var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+            await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
+            ViewBag.Link = callbackUrl;
+            ViewBag.Status = "DEMO: Caso o link não chegue: ";
+            ViewBag.LinkAcesso = callbackUrl;            
+        }
+
+        private string GerarSenha()
 		{
 			return _convocacaoAppService.GerarSenhaUsuario();
 		}
@@ -183,7 +196,6 @@ namespace SisConv.Mvc.Controllers
 			ViewBag.listaDocumentacao = _documentacaoAppService.Search(a => a.ProcessoId.Equals(ProcessoId));
 			return View();
 		}
-
 
 		public  void Download(string arquivo)
 		{

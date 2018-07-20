@@ -3,11 +3,10 @@ using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Services;
-using SisConv.Domain.Services;
 
 namespace SisConv.Application.Services
 {
-	public class EmailAppService :  IEmailAppService
+    public class EmailAppService :  IEmailAppService
 	{
 		private readonly IEmailServices _emailServices;
 		

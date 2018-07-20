@@ -41,17 +41,17 @@ namespace SisConv.Domain.Services
 		}
 		public void EnviarEmail(Convocado convocacao)
 		{
-			EmailSettings(convocacao);
+			//EmailSettings(convocacao);
 		}
 
-		private void EmailSettings(Convocado convocacao, string senha=null, AssuntosEmail assuntosEmail)
+		private void EmailSettings(Convocado convocacao, string senha=null)
 		{
 			var mail = new MailMessage();
 
 			mail.From = new MailAddress(_configuration.ObterEmailFrom());
 			mail.To.Add("alesilver.si@gmail.com");
-			mail.Subject = ObterAssuntoEmail(convocacao, assuntosEmail, senha);
-			mail.Body = ObterBodyParaEnvioEmail(convocacao, assuntosEmail);
+			mail.Subject = ObterAssuntoEmail(convocacao, AssuntosEmail.Convocacao, senha);
+            mail.Body = "";//ObterBodyParaEnvioEmail(convocacao, assuntosEmail);
 			mail.IsBodyHtml = true;
 
 			using (var smtp = new SmtpClient("smtp.gmail.com"))
@@ -93,51 +93,50 @@ namespace SisConv.Domain.Services
 		}
 
 
-		public string ObterBodyParaEnvioEmail(Convocado convocacao, AssuntosEmail assuntosEmail)
-		{
-			var context = new ApplicationDbContext();
-			var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+		//public string ObterBodyParaEnvioEmail(Convocado convocacao, AssuntosEmail assuntosEmail)
+		//{
+		//	var context = new ApplicationDbContext();
+		//	var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
 
-			var dadosCandidato = userManager.FindByEmail(convocacao.Email);
+		//	var dadosCandidato = userManager.FindByEmail(convocacao.Email);
 
-			var dadosConvocacao = _convocacaoService.GetOne(a => a.ProcessoId.Equals(convocacao.ProcessoId) && a.ConvocadoId.Equals(convocacao.ConvocadoId));
-			var dadosProcesso = _processoService.GetById(convocacao.ProcessoId);
+		//	var dadosConvocacao = _convocacaoService.GetOne(a => a.ProcessoId.Equals(convocacao.ProcessoId) && a.ConvocadoId.Equals(convocacao.ConvocadoId));
+		//	var dadosProcesso = _processoService.GetById(convocacao.ProcessoId);
 
-			switch (assuntosEmail)
-			{
-				case AssuntosEmail.Convocacao:
-					{
-						var contentEmail = _sysConfig.GetHelpFile("EmailDeConvocacao");
-						var body = GetTagContent(contentEmail, "body");
-						if (body == string.Empty)
-							return string.Empty;
+		//	switch (assuntosEmail)
+		//	{
+		//		case AssuntosEmail.Convocacao:
+		//			{
+		//				var contentEmail = _sysConfig.GetHelpFile("EmailDeConvocacao");
+		//				var body = GetTagContent(contentEmail, "body");
+		//				if (body == string.Empty)
+		//					return string.Empty;
 
 
-						var senhaCandidato = _passwordGenerator.GetPassword();
+		//				var senhaCandidato = _passwordGenerator.GetPassword();
 
-						userManager.RemovePassword(dadosCandidato.Id);
-						userManager.AddPassword(dadosCandidato.Id, senhaCandidato);
+		//				userManager.RemovePassword(dadosCandidato.Id);
+		//				userManager.AddPassword(dadosCandidato.Id, senhaCandidato);
 
-						body = body.Replace("{DATA}", dadosConvocacao.DataEntregaDocumentos.ToString());
-						body = body.Replace("{HORA}", dadosConvocacao.HorarioEntregaDocumento.ToString());
-						body = body.Replace("{ENDERECO}", dadosConvocacao.EnderecoEntregaDocumento.ToString());
-						body = body.Replace("{NOMECONVOCACAO}", dadosProcesso.Nome);
-						body = body.Replace("{USUARIO}", convocacao.Nome);
-						body = body.Replace("{SENHA}", senhaCandidato);
+		//				body = body.Replace("{DATA}", dadosConvocacao.DataEntregaDocumentos.ToString());
+		//				body = body.Replace("{HORA}", dadosConvocacao.HorarioEntregaDocumento.ToString());
+		//				body = body.Replace("{ENDERECO}", dadosConvocacao.EnderecoEntregaDocumento.ToString());
+		//				body = body.Replace("{NOMECONVOCACAO}", dadosProcesso.Nome);
+		//				body = body.Replace("{USUARIO}", convocacao.Nome);
+		//				body = body.Replace("{SENHA}", senhaCandidato);
 
-						return body;
-					}
+		//				return body;
+		//			}
+		//		case AssuntosEmail.EsqueciSenha:
+		//			{
+  //                      return body;
+  //                      break;
+		//			}
 
-					break;
-				case AssuntosEmail.EsqueciSenha:
-					{
-						break;
-					}
-
-				default:
-					throw new Exception("Unexpected Case");
-			}
-		}
+		//		default:
+		//			throw new Exception("Unexpected Case");
+		//	}
+		//}
 
 			
 
@@ -157,7 +156,12 @@ namespace SisConv.Domain.Services
 		{
 			var convocado = _convocadoService.Search(a => a.Email.Equals(user.Email)).FirstOrDefault();			
 
-			EmailSettings(convocado, novaSenha);
+			//EmailSettings(convocado, novaSenha);
 		}
-	}
+
+        public void EnviarEmail(string novaSenha, ApplicationUser user, AssuntosEmail assuntoEmail)
+        {
+            throw new NotImplementedException();
+        }
+    }
 }

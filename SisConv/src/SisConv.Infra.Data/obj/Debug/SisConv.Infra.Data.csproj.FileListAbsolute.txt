@@ -1,23 +1,3 @@
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.Core.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\netstandard.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll.config
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.xml
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.Core.pdb
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojResolveAssemblyReference.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations._07022018.resources
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CopyComplete
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
-C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
@@ -69,3 +49,54 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.atualizandoPrimeiroAcesso.resources
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.ajustePrimeiroAcesso.resources
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.addConvocadoId.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.Data.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.Core.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\netstandard.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.Mvc.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.Owin.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.Owin.Security.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.Razor.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.Razor.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.Web.Infrastructure.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Owin.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.Deployment.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Domain.Core.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.CrossCutting.Identity.pdb
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll.config
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.Mvc.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.Owin.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\Microsoft.Owin.Security.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.Razor.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.Razor.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\bin\Debug\System.Web.WebPages.Deployment.xml
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csprojAssemblyReference.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.initial.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.alteracao_convocado.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.adicionarUF.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.addOrgaoEmissor.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.atualizandoPrimeiroAcesso.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.ajustePrimeiroAcesso.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.addConvocadoId.resources
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CopyComplete
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.dll
+C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.pdb
