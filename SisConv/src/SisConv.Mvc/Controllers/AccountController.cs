@@ -29,7 +29,7 @@ namespace SisConv.Mvc.Controllers
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly IPasswordGenerator _passwordGenerator;
 		private readonly ISysConfig _sysConfig;
-		private readonly IEmailServices _emailServices;
+		
 
 		public AccountController(
 			ApplicationUserManager userManager, 
@@ -38,8 +38,8 @@ namespace SisConv.Mvc.Controllers
 			IAdminAppService adminAppService,
 			IConvocadoAppService convocadoAppService,
 			IPasswordGenerator passwordGenerator,
-			ISysConfig sysConfig,
-			IEmailServices emailServices
+			ISysConfig sysConfig
+			
 			)
 		{
 			_userManager = userManager;
@@ -49,7 +49,7 @@ namespace SisConv.Mvc.Controllers
 			_convocadoAppService = convocadoAppService;
 			_passwordGenerator = passwordGenerator;
 			_sysConfig = sysConfig;
-			_emailServices = emailServices;
+			
 		}	
        
         [AllowAnonymous]
@@ -230,13 +230,7 @@ namespace SisConv.Mvc.Controllers
 
                 if (user == null)                                    
                     return View("EmailNaoCadastrado");
-                
-                //var novaSenha = _passwordGenerator.GetPassword();
-                //_userManager.RemovePassword(user.Id);
-                //_userManager.AddPassword(user.Id, novaSenha);
-                //var contentEmail = _sysConfig.GetHelpFile("EsqueciSenha");
-                //_emailServices.EnviarEmail(novaSenha,user,AssuntosEmail.EsqueciSenha);
-
+              
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
                 var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                 await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");

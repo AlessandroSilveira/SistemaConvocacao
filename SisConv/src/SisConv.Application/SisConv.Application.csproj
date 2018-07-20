@@ -70,7 +70,6 @@
     <Compile Include="Services\ClienteAppService.cs" />
     <Compile Include="Services\ConvocacaoAppService.cs" />
     <Compile Include="Services\DocumentacaoAppService.cs" />
-    <Compile Include="Services\EmailAppService.cs" />
     <Compile Include="Services\ProcessoAppService.cs" />
     <Compile Include="Services\ConvocadoAppService.cs" />
     <Compile Include="Services\DadosConvocadosAppService.cs" />

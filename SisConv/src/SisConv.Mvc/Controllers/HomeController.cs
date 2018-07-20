@@ -13,8 +13,12 @@ namespace SisConv.Mvc.Controllers
 		private readonly IConvocacaoAppService _convocacaoAppService;
 		private readonly IDocumentacaoAppService _documentacaoAppService;
 
-		public HomeController(IConvocadoAppService convocadoAppService, IProcessoAppService processoAppService,
-			IConvocacaoAppService convocacaoAppService, IDocumentacaoAppService documentacaoAppService)
+		public HomeController(
+			IConvocadoAppService convocadoAppService, 
+			IProcessoAppService processoAppService,
+			IConvocacaoAppService convocacaoAppService, 
+			IDocumentacaoAppService documentacaoAppService
+			)
 		{
 			_convocadoAppService = convocadoAppService;
 			_processoAppService = processoAppService;

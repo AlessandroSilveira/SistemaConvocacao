@@ -6,7 +6,7 @@ namespace SisConv.Infra.CrossCutting.Identity.Model
     {
         [Required]
         [EmailAddress]
-        [Display(Name = "Email")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
     }
 }

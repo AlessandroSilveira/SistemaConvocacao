@@ -18,21 +18,25 @@ namespace SisConv.Infra.CrossCutting.Identity.Configuration
             {
                 var text = HttpUtility.HtmlEncode(message.Body);
 
-                var msg = new MailMessage {From = new MailAddress("alesilver.si@gmail.com", "Admin do Portal")};
+				var msg = new MailMessage();
 
-                //msg.To.Add(new MailAddress(message.Destination));
-                msg.To.Add(new MailAddress("alesilver.si@gmail.com"));
+				msg.From = new MailAddress("alesilver.si@gmail.com", "Admin do Portal");				
+				//msg.To.Add(new MailAddress(message.Destination));
+				msg.To.Add(new MailAddress("alesilver.si@gmail.com"));
                 msg.Subject = message.Subject;
-                msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Plain));
-                msg.AlternateViews.Add(AlternateView.CreateAlternateViewFromString(text, null, MediaTypeNames.Text.Html));
+				msg.Body = text;
+				msg.IsBodyHtml = true;
 
-                var smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587));
-                var credentials = new NetworkCredential(ConfigurationManager.AppSettings["EmailFrom"],
-                    ConfigurationManager.AppSettings["PasswordEmail"]);
-                smtpClient.Credentials = credentials;
-                smtpClient.EnableSsl = true;
-                smtpClient.Send(msg);
-            }
+
+				using (var smtpClient = new SmtpClient("smtp.gmail.com", Convert.ToInt32(587)))
+				{
+					var credentials = new NetworkCredential(ConfigurationManager.AppSettings["EmailFrom"],
+					ConfigurationManager.AppSettings["PasswordEmail"]);
+					smtpClient.Credentials = credentials;
+					smtpClient.EnableSsl = true;
+					smtpClient.Send(msg);
+				}
+			}
 
             return Task.FromResult(0);
         }

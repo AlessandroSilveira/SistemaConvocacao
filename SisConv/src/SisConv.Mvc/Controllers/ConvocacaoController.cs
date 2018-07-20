@@ -5,11 +5,16 @@ using System.Net;
 using System.Web.Configuration;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Domain.Core.Enums;
 using SisConv.Domain.Core.Services;
+using SisConv.Domain.Core.Services.PasswordGenerator;
+using SisConv.Domain.Helpers;
+using SisConv.Domain.Interfaces.Services;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
+using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Roles;
 
@@ -21,25 +26,33 @@ namespace SisConv.Mvc.Controllers
 		private readonly IConvocadoAppService _convocadoAppService;
 		private readonly ApplicationUserManager _userManager;
 		private readonly IDocumentacaoAppService _documentacaoAppService;
-		private readonly IProcessoAppService _processoAppService;
-		private readonly IEmailAppService _emailAppService;
+		private readonly IProcessoAppService _processoAppService;		
 		private readonly IEnumDescription _enumDescription;
+		private readonly ISysConfig _sysConfig;
+		private readonly IConvocacaoService _convocacaoService;		
+		private readonly IPasswordGenerator _passwordGenerator;
 
 		public ConvocacaoController(IConvocacaoAppService convocacaoAppService,
-			IConvocadoAppService convocadoAppService, 
-			ApplicationUserManager userManager, 
-			IDocumentacaoAppService documentacaoAppService, 
-			IProcessoAppService processoAppService, 
-			IEmailAppService emailAppService,
-			IEnumDescription enumDescription)
+			IConvocadoAppService convocadoAppService,
+			ApplicationUserManager userManager,
+			IDocumentacaoAppService documentacaoAppService,
+			IProcessoAppService processoAppService,			
+			IEnumDescription enumDescription,
+			ISysConfig sysConfig,
+			IConvocacaoService convocacaoService,			
+			IPasswordGenerator passwordGenerator
+			)
 		{
 			_convocacaoAppService = convocacaoAppService;
 			_convocadoAppService = convocadoAppService;
 			_userManager = userManager;
 			_documentacaoAppService = documentacaoAppService;
-			_processoAppService = processoAppService;
-			_emailAppService = emailAppService;
+			_processoAppService = processoAppService;			
 			_enumDescription = enumDescription;
+			_sysConfig = sysConfig;
+			_convocacaoService = convocacaoService;			
+			_passwordGenerator = passwordGenerator;
+
 		}
 
 		public ActionResult Index()
@@ -68,7 +81,7 @@ namespace SisConv.Mvc.Controllers
 			var selecionado = convocacaoViewModel.CandidatosSelecionados.Split(',');
 			var confirmacao = false;
 
-			convocacaoViewModel.StatusConvocacao =_enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
+			convocacaoViewModel.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
 
 			foreach (var t in selecionado)
 			{
@@ -77,10 +90,11 @@ namespace SisConv.Mvc.Controllers
 				convocacaoViewModel.ConvocadoId = Guid.Parse(t);
 				var gravaConvocacao = _convocacaoAppService.Add(convocacaoViewModel);
 
-				if (gravaConvocacao == null)				
-					break;				
-				else				
-					confirmacao = true;				
+				if (gravaConvocacao == null)
+					break;
+				else
+					confirmacao = true;
+
 
 				EnviarEmailAsync(dadosConvocado);
 			}
@@ -88,19 +102,62 @@ namespace SisConv.Mvc.Controllers
 			return RedirectToAction("ListaConvocados", "Processos", new { @ProcessoId = convocacaoViewModel.ProcessoId.ToString(), @cargo = Cargo, @confirmacao = confirmacao });
 		}
 
-        private async void EnviarEmailAsync(ConvocadoViewModel dadosConvocado)
-        {
-            var user = await _userManager.FindByNameAsync(dadosConvocado.Email);
+		private  void EnviarEmailAsync(ConvocadoViewModel dadosConvocado)
+		{
+			var user =  _userManager.FindByName(dadosConvocado.Email);
+			 _userManager.SendEmail(user.Id, ObterAssuntoEmail(dadosConvocado), ObterBodyParaEnvioEmail(dadosConvocado));
+		}
 
-            var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
-            var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-            await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
-            ViewBag.Link = callbackUrl;
-            ViewBag.Status = "DEMO: Caso o link não chegue: ";
-            ViewBag.LinkAcesso = callbackUrl;            
-        }
+		private  string ObterAssuntoEmail(ConvocadoViewModel convocacao)
+		{
+			var dadosProcesso = _processoAppService.GetById(convocacao.ProcessoId);
+			return String.Format("Prezado candidato {0} você está convocado para o {1}", convocacao.Nome, dadosProcesso.Nome);
+		}
 
-        private string GerarSenha()
+		public string ObterBodyParaEnvioEmail(ConvocadoViewModel convocacao)
+		{
+			var context = new ApplicationDbContext();
+			var userManager = new UserManager<ApplicationUser>(new UserStore<ApplicationUser>(context));
+
+			var dadosCandidato = userManager.FindByEmail(convocacao.Email);
+
+			var dadosConvocacao = _convocacaoService.GetOne(a => a.ProcessoId.Equals(convocacao.ProcessoId) && a.ConvocadoId.Equals(convocacao.ConvocadoId));
+			var dadosProcesso = _processoAppService.GetById(convocacao.ProcessoId);
+
+			var contentEmail = _sysConfig.GetHelpFile("EmailDeConvocacao");
+			var body = GetTagContent(contentEmail, "body");
+			if (body == string.Empty)
+				return string.Empty;
+
+			var senhaCandidato = _passwordGenerator.GetPassword();
+
+			userManager.RemovePassword(dadosCandidato.Id);
+			userManager.AddPassword(dadosCandidato.Id, senhaCandidato);
+
+			body = body.Replace("{DATA}", dadosConvocacao.DataEntregaDocumentos.ToString());
+			body = body.Replace("{HORA}", dadosConvocacao.HorarioEntregaDocumento.ToString());
+			body = body.Replace("{ENDERECO}", dadosConvocacao.EnderecoEntregaDocumento.ToString());
+			body = body.Replace("{NOMECONVOCACAO}", dadosProcesso.Nome);
+			body = body.Replace("{USUARIO}", convocacao.Nome);
+			body = body.Replace("{SENHA}", senhaCandidato);
+
+			return body;
+
+		}
+
+		private static string GetTagContent(string fullcontent, string tag)
+		{
+			var tagStart = "<" + tag.ToUpper() + ">";
+			var tagEnd = "</" + tag.ToUpper() + ">";
+			var posStart = fullcontent.ToUpper().IndexOf(tagStart);
+			var posEnd = fullcontent.ToUpper().IndexOf(tagEnd);
+
+			if (posStart >= 0) posStart += tagStart.Length;
+
+			return posStart >= 0 && posEnd > posStart ? fullcontent.Substring(posStart, posEnd - posStart) : "";
+		}
+
+		private string GerarSenha()
 		{
 			return _convocacaoAppService.GerarSenhaUsuario();
 		}
@@ -179,7 +236,7 @@ namespace SisConv.Mvc.Controllers
 
 			dadosConvocacao.Desistente = decisao;
 
-			if(decisao.Equals("S"))
+			if (decisao.Equals("S"))
 				dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.Desistente);
 			else
 				dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
@@ -197,9 +254,8 @@ namespace SisConv.Mvc.Controllers
 			return View();
 		}
 
-		public  void Download(string arquivo)
+		public void Download(string arquivo)
 		{
-			
 			var pathArquivo = WebConfigurationManager.AppSettings[@"SisConvDocs"];
 			var caminhoArquivo = Path.Combine(pathArquivo, arquivo);
 			var fInfo = new FileInfo(caminhoArquivo);
