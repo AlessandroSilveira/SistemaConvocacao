@@ -75,18 +75,21 @@
                     <td>
                         <select name="opcao_@itens.ConvocacaoId" id="opcao_@itens.ConvocacaoId">
                             <option value="">Selecione</option>
-                            @foreach (KeyValuePair<StatusComparecimento, string> row in ViewBag.ListaOpcoesComparecimento)
-                            {
-                                <option value="@row.Key.ToString()"
-                                        @if (!string.IsNullOrEmpty(itens.StatusConvocacao))
-                                        {
-                                            if (itens.StatusConvocacao == row.Value.ToString())
-                                            {
-                                                @selected
-                                            }
-                                        }      >
-                                    @row.Value
-                                </option>
+                            @foreach (KeyValuePair<StatusConvocacao, string> row in ViewBag.ListaOpcoesComparecimento)
+							{
+								if (row.Key != StatusConvocacao.Contratado && row.Key != StatusConvocacao.Desistente)
+								{
+									<option value="@row.Key.ToString()"
+											@if (!string.IsNullOrEmpty(itens.StatusConvocacao))
+											{
+												if (itens.StatusConvocacao == row.Key.ToString())
+												{
+													@selected
+												}
+											}      >
+										@row.Value
+									</option>
+								}
                             }
                         </select>
                     </td>

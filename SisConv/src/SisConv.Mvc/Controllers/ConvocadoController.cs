@@ -2,8 +2,8 @@
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
-using SisConv.Domain.Core.Services;
+using SisConv.Domain.Enums;
+using SisConv.Domain.Services;
 
 namespace SisConv.Mvc.Controllers
 {

@@ -4,8 +4,8 @@ using System.Net;
 using System.Web.Mvc;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
-using SisConv.Domain.Core.Services;
+using SisConv.Domain.Enums;
+using SisConv.Domain.Services;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -188,9 +188,8 @@ namespace SisConv.Mvc.Controllers
 
 			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(novoid));
 			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.CargoId.Equals(novocargo));
-			var listaDeconvocados = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
 
-			ViewBag.ListaDeCandidatos = listaDeconvocados;
+			ViewBag.ListaDeCandidatos = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);			
 			ViewBag.dadosProcesso = _processoAppService.GetById(novoid);
 			ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(novoid) && a.Ativo.Equals(true))
 				.OrderBy(a => a.CodigoCargo);
@@ -203,7 +202,7 @@ namespace SisConv.Mvc.Controllers
 		}
 
 		[HttpPost]
-		public ActionResult AtualizarConvocacao(string opcaoConvocacao, Guid ProcessoId, Guid ConvocacaoId)
+		public ActionResult AtualizarConvocacao(string opcaoConvocacao, Guid ConvocacaoId)
 		{
 			var dadosConvocacao = _convocacaoAppService.GetById(ConvocacaoId);
 			dadosConvocacao.StatusConvocacao = opcaoConvocacao;
@@ -237,7 +236,7 @@ namespace SisConv.Mvc.Controllers
 
 			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(guidId)).Where(b => b.StatusConvocacao != null);
 			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(guidId) && a.CargoId.Equals(guidCargo));
-			var listaDeconvocados = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
+			var listaDeconvocados = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);			
 
 			ViewBag.ListaDeCandidatos = listaDeconvocados;
 			ViewBag.dadosProcesso = _processoAppService.GetById(guidId);

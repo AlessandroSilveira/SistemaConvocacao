@@ -11,14 +11,12 @@ using SisConv.Application.ViewModels;
 using SisConv.Infra.CrossCutting.Identity.Model;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using System;
-using SisConv.Domain.Core.Services.PasswordGenerator;
 using SisConv.Domain.Helpers;
-using SisConv.Domain.Interfaces.Services;
-using SisConv.Domain.Core.Enums;
+using SisConv.Domain.Services.PasswordGenerator;
 
 namespace SisConv.Mvc.Controllers
 {
-    [Authorize]
+	[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;

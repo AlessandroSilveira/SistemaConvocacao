@@ -29,10 +29,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Infra.CrossCutting.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Infra.CrossCutting.IoC", "src\SisConv.Infra.CrossCutting.IoC\SisConv.Infra.CrossCutting.IoC.csproj", "{AA01386D-9CEC-409E-905A-2189219FB242}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5-Domain.Core", "5-Domain.Core", "{4B5C0700-EA42-4355-A06A-847199381B11}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SisConv.Domain.Core", "src\SisConv.Domain.Core\SisConv.Domain.Core.csproj", "{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,10 +59,6 @@ Global
 		{AA01386D-9CEC-409E-905A-2189219FB242}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA01386D-9CEC-409E-905A-2189219FB242}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA01386D-9CEC-409E-905A-2189219FB242}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,7 +72,6 @@ Global
 		{FD43D1C0-D6E4-440B-A592-16BD17CF6966} = {CDB1AEAA-8BBC-4536-BC62-E1E861B1EDBA}
 		{90F803F7-D9DD-4D2E-B2D9-CD9280099418} = {AA2B125E-269F-47BF-8FFB-1890343DE63E}
 		{AA01386D-9CEC-409E-905A-2189219FB242} = {AA2B125E-269F-47BF-8FFB-1890343DE63E}
-		{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C} = {4B5C0700-EA42-4355-A06A-847199381B11}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BDE20837-9AF7-4C10-9F2E-6088954C6A61}

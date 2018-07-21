@@ -10,23 +10,19 @@ using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
-    //[Authorize(Roles = "Admin")]
-    public class UserAdminController : Controller
-    {
-        //public UsersAdminController()
-        //{
-        //}
-
-        public UserAdminController(Infra.CrossCutting.Identity.Configuration.ApplicationUserManager userManager, ApplicationRoleManager roleManager)
+	[Authorize(Roles = "Administrator")]
+	public class UserAdminController : Controller
+    {       
+        public UserAdminController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             RoleManager = roleManager;
         }
 
-        private Infra.CrossCutting.Identity.Configuration.ApplicationUserManager _userManager;
-        public Infra.CrossCutting.Identity.Configuration.ApplicationUserManager UserManager
+        private ApplicationUserManager _userManager;
+        public ApplicationUserManager UserManager
         {
-            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<Infra.CrossCutting.Identity.Configuration.ApplicationUserManager>();
+            get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
 	        private set => _userManager = value;
         }
 

@@ -5,11 +5,11 @@ using System.Linq.Expressions;
 using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
-using SisConv.Domain.Core.Services;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
+using SisConv.Domain.Services;
+using SisConv.Domain.Enums;
 
 namespace SisConv.Application.Services
 {
@@ -98,20 +98,25 @@ namespace SisConv.Application.Services
 
 			foreach (var itens in result)
 			{
-
+				var itemDesistente = itens.Desistente;
+				var itemDataEntregaDocumentos = itens.DataEntregaDocumentos;
+				var convocacaoId = itens.ConvocacaoId;
+				var statusConvocacao = itens.StatusConvocacao;				
+				
 				listaDeconvocados.AddRange(itens.convocados.Select(lista => new ConvocadoViewModel
 				{
-					ConvocacaoId =lista.ConvocacaoId,
+					ConvocacaoId = convocacaoId,
 					ConvocadoId = lista.ConvocadoId,
 					Nome = lista.Nome,
 					Posicao = lista.Posicao,
 					Inscricao = lista.Inscricao,
-					Desistente = lista.Desistente,
+					Desistente = itemDesistente,
 					EntrouNoSistema = _primeiroAcessoService.Search(a => a.Email.Equals(lista.Email)) == null ? @"Não" : "Sim",
-					DataEntregaDocumentos = lista.DataEntregaDocumentos,
+					DataEntregaDocumentos = itemDataEntregaDocumentos,
 					InstituicaoEnsino = lista.InstituicaoEnsino,
-					StatusConvocacao = string.IsNullOrEmpty(lista.StatusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), lista.StatusConvocacao)),
-					StatusContratacao = string.IsNullOrEmpty(lista.StatusContratacao) ? "" : _opcoesComparecimento.EnumDescription((StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), lista.StatusContratacao))
+					StatusConvocacao = string.IsNullOrEmpty(statusConvocacao) ? "" : _opcoesComparecimento.EnumDescription((StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), statusConvocacao)),
+
+					//StatusConvocacao = string.IsNullOrEmpty(statusConvocacao) ? "" :  statusConvocacao
 				}));
 			}
 			return listaDeconvocados;
@@ -121,8 +126,5 @@ namespace SisConv.Application.Services
 		{
 			return Mapper.Map<Convocacao, ConvocacaoViewModel>(_convocacaoService.GetOne(predicate));
 		}
-
-
-		
 	}
 }

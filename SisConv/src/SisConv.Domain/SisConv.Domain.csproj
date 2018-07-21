@@ -89,6 +89,15 @@
     <Compile Include="Entities\PrimeiroAcesso.cs" />
     <Compile Include="Entities\Telefone.cs" />
     <Compile Include="Entities\Usuario.cs" />
+    <Compile Include="Enums\AssuntosEmail.cs" />
+    <Compile Include="Enums\EstadoCivil.cs" />
+    <Compile Include="Enums\Estados.cs" />
+    <Compile Include="Enums\FatorSanguineo.cs" />
+    <Compile Include="Enums\GrauInstrucao.cs" />
+    <Compile Include="Enums\Nacionalidade.cs" />
+    <Compile Include="Enums\Sexo.cs" />
+    <Compile Include="Enums\SimNao.cs" />
+    <Compile Include="Enums\StatusConvocacao.cs" />
     <Compile Include="Helpers\Conversor.cs" />
     <Compile Include="Helpers\IConversor.cs" />
     <Compile Include="Helpers\ISysConfig.cs" />
@@ -130,6 +139,14 @@
     <Compile Include="Services\Configuration.cs" />
     <Compile Include="Services\ConvocacaoService.cs" />
     <Compile Include="Services\DocumentacaoService.cs" />
+    <Compile Include="Services\EnumDescription\EnumDescription.cs" />
+    <Compile Include="Services\EnumDescription\IEnumDescription.cs" />
+    <Compile Include="Services\ListaOpcoes\IListaOpcoes.cs" />
+    <Compile Include="Services\ListaOpcoes\ListasOpcoes.cs" />
+    <Compile Include="Services\MontarListaComEnum\IMontaListaComEnum.cs" />
+    <Compile Include="Services\MontarListaComEnum\MontaListaComEnum.cs" />
+    <Compile Include="Services\PasswordGenerator\IPasswordGenerator.cs" />
+    <Compile Include="Services\PasswordGenerator\PasswordGenerator.cs" />
     <Compile Include="Services\ProcessoService.cs" />
     <Compile Include="Services\ConvocadoService.cs" />
     <Compile Include="Services\DadosConvocadosService.cs" />
@@ -143,10 +160,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SisConv.Domain.Core\SisConv.Domain.Core.csproj">
-      <Project>{AA43A6C4-9F35-47AF-8CA7-8DCE1A56238C}</Project>
-      <Name>SisConv.Domain.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SisConv.Infra.CrossCutting.Identity\SisConv.Infra.CrossCutting.Identity.csproj">
       <Project>{90F803F7-D9DD-4D2E-B2D9-CD9280099418}</Project>
       <Name>SisConv.Infra.CrossCutting.Identity</Name>

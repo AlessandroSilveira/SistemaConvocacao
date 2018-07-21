@@ -21,6 +21,13 @@
             }
             $("#CandidatosSelecionados").val(convocados);
         });
+
+        if (convocados.length === 0) {
+            $("#mensagemNenhumCandidato").trigger("click");
+        }
+        else {
+            $("#mensagemDadosConvocados").trigger("click");
+        }
     });
 
     $("#DataEntregaDocumentos").datepicker({

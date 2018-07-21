@@ -8,11 +8,11 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Domain.Core.Enums;
-using SisConv.Domain.Core.Services;
-using SisConv.Domain.Core.Services.PasswordGenerator;
+using SisConv.Domain.Enums;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Services;
+using SisConv.Domain.Services;
+using SisConv.Domain.Services.PasswordGenerator;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
@@ -20,6 +20,7 @@ using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Mvc.Controllers
 {
+	[Authorize(Roles = "Cliente")]
 	public class ConvocacaoController : Controller
 	{
 		private readonly IConvocacaoAppService _convocacaoAppService;

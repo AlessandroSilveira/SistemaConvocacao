@@ -62,8 +62,8 @@
     }
     <tr>
         <td colspan="7" align="center">
-            <button type="button" class="btn btn-primary" id="envia_selecionados" data-toggle="modal" data-target="#myModal">Enviar Candidatos Selecionados</button>
-            <input type="button"class="btn btn-primary" value="Voltar" onclick="history.back();" />
+            <button type="button" class="btn btn-primary" id="envia_selecionados">Enviar Candidatos Selecionados</button>            
+			<input type="button"class="btn btn-primary" value="Voltar" onclick="history.back();" />
             <input type="hidden" id="mostraConfirmacao" value="@ViewBag.Confirmacao" />
         </td>
     </tr>
@@ -121,8 +121,10 @@
     </div>
 </div>
 
-<button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#myModal3" style="display: none"></button>
+<button type="button" class="btn btn-primary" id="mensagemDadosConvocados" data-toggle="modal" data-target="#myModal" style="display: none"></button>
 <button type="button" class="btn btn-primary" id="mensagem_erro" data-toggle="modal" data-target="#myModal2" style="display: none"></button>
+<button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#myModal3" style="display: none"></button>
+<button type="button" class="btn btn-primary" id="mensagemNenhumCandidato" data-toggle="modal" data-target="#myModal4" style="display: none"></button>
 
 <div class="modal fade" id="myModal3" role="dialog">
     <div class="modal-dialog">
@@ -169,6 +171,29 @@
         </div>
 
     </div>
+</div>
+<div class="modal fade" id="myModal4" role="dialog">
+	<div class="modal-dialog">
+
+
+		<div class="modal-content">
+			<div class="modal-header">
+				
+				<h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
+			</div>
+			<div class="modal-body">
+				<br />
+				<span id="disc"></span>
+				<h5 class="modal-title">Escolha ao menos um candidato para prosseguir com a convocação.</h5>
+				<br />
+			</div>
+			<div class="modal-footer">
+
+				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+			</div>
+		</div>
+
+	</div>
 </div>
 
 

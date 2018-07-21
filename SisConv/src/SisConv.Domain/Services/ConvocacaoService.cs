@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using SisConv.Domain.Core.Services.PasswordGenerator;
 using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
+using SisConv.Domain.Services.PasswordGenerator;
 
 namespace SisConv.Domain.Services
 {

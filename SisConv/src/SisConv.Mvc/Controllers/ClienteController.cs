@@ -12,7 +12,8 @@ using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Mvc.Controllers
 {
-    public class ClienteController : Controller
+	[Authorize(Roles = "Administrator")]
+	public class ClienteController : Controller
     {
         private readonly IClienteAppService _clienteAppService;
         private readonly ApplicationUserManager _userManager;

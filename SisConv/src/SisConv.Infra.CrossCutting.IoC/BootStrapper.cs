@@ -3,14 +3,13 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using SimpleInjector;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.Services;
-using SisConv.Domain.Core.Services;
-using SisConv.Domain.Core.Services.PasswordGenerator;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Interfaces.Base;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
 using SisConv.Domain.Services;
 using SisConv.Domain.Services.Base;
+using SisConv.Domain.Services.PasswordGenerator;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Context;
 using SisConv.Infra.CrossCutting.Identity.Model;
@@ -21,7 +20,7 @@ using SisConv.Infra.Data.UoW;
 
 namespace SisConv.Infra.CrossCutting.IoC
 {
-    public class BootStrapper
+	public class BootStrapper
     {
         public static void RegisterServices(Container container)
         {
