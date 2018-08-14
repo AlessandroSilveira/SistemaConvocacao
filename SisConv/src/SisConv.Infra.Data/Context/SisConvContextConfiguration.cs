@@ -2,9 +2,9 @@
 
 namespace SisConv.Infra.Data.Context
 {
-    public class SisConvContextConfigutation : DbMigrationsConfiguration<SisConvContext>
+    public class SisConvContextConfiguration : DbMigrationsConfiguration<SisConvContext>
     {
-        public SisConvContextConfigutation()
+        public SisConvContextConfiguration()
         {
             AutomaticMigrationsEnabled = true;
             AutomaticMigrationDataLossAllowed = true;

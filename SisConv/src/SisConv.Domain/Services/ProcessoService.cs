@@ -51,9 +51,9 @@ namespace SisConv.Domain.Services
             return _processoRepository.Search(predicate);
         }
 
-		public Processo GetOne(Expression<Func<Processo, bool>> predicate)
-		{
-			return _processoRepository.GetOne(predicate);
-		}
-	}
+        public Processo GetOne(Expression<Func<Processo, bool>> predicate)
+        {
+            return _processoRepository.GetOne(predicate);
+        }
+    }
 }

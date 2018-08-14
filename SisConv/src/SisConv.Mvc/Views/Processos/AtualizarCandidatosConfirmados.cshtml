@@ -1,5 +1,4 @@
-﻿@using SisConv.Domain.Core.Enums
-@{
+﻿@{
     ViewBag.Title = "AtualizarCandidatosConfirmados";
 }
 <h2>Atualização de Convocação</h2>
@@ -28,7 +27,6 @@
                 <input type="hidden" name="id" id="id" value="@ViewBag.dadosProcesso.ProcessoId"/>
                 <br>
             </th>
-
         </tr>
     }
 </table>
@@ -76,20 +74,20 @@
                         <select name="opcao_@itens.ConvocacaoId" id="opcao_@itens.ConvocacaoId">
                             <option value="">Selecione</option>
                             @foreach (KeyValuePair<StatusConvocacao, string> row in ViewBag.ListaOpcoesComparecimento)
-							{
-								if (row.Key != StatusConvocacao.Contratado && row.Key != StatusConvocacao.Desistente)
-								{
-									<option value="@row.Key.ToString()"
-											@if (!string.IsNullOrEmpty(itens.StatusConvocacao))
-											{
-												if (itens.StatusConvocacao == row.Key.ToString())
-												{
-													@selected
-												}
-											}      >
-										@row.Value
-									</option>
-								}
+                            {
+                                if (row.Key != StatusConvocacao.Contratado && row.Key != StatusConvocacao.Desistente)
+                                {
+                                    <option value="@row.Key.ToString()"
+                                            @if (!string.IsNullOrEmpty(itens.StatusConvocacao))
+                                            {
+                                                if (itens.StatusConvocacao == row.Key.ToString())
+                                                {
+                                                    @selected
+                                                }
+                                            }>
+                                        @row.Value
+                                    </option>
+                                }
                             }
                         </select>
                     </td>
@@ -111,7 +109,7 @@
             @Html.AntiForgeryToken()
             <div class="modal-content">
                 <div class="modal-header">
-                   
+
                     <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
                 </div>
                 <div class="modal-body">
@@ -135,7 +133,7 @@
             @Html.AntiForgeryToken()
             <div class="modal-content">
                 <div class="modal-header">
-                    
+
                     <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
                 </div>
                 <div class="modal-body">
@@ -153,6 +151,6 @@
     </div>
 </div>
 <div>
-	<button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
 </div>
 <script src="~/Scripts/Processos/Processos.js"></script>

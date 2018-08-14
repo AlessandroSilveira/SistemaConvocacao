@@ -5,7 +5,7 @@
     $("#TelefoneIES").mask("(00)00000-0000");
     $("#DataNascimento").mask("00/00/0000");
     $("#PeriodoAtual").mask("00/0000");
-    $("#ColacaoGrau").mask("00/0000"); 
+    $("#ColacaoGrau").mask("00/0000");
     $("#HorarioAulaIes").mask("00:00");
 
     $("#DataNascimento").datepicker({
@@ -22,6 +22,4 @@
     if ($("#modal").val() === "True") {
         $("#mensagem_sucesso").trigger("click");
     }
-
 });
-

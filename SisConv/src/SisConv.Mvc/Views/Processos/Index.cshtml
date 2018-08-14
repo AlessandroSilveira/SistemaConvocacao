@@ -1,5 +1,4 @@
-﻿@using System.Web.Mvc.Html
-@model IEnumerable<SisConv.Application.ViewModels.ProcessoViewModel>
+﻿@model IEnumerable<SisConv.Application.ViewModels.ProcessoViewModel>
 
 @{
     ViewBag.Title = "Convocações";
@@ -25,28 +24,29 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Nome, "Painel", "Processos", new {id = item.ProcessoId}, null)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId}, null)
+            </td>
+            <td>
+                @Html.ActionLink("Relatórios", "Index", "Relatorio", new {id = item.ProcessoId}, null)
+            </td>
+        </tr>
+    }
     <tr>
-		<td>
-			 @Html.ActionLink(item.Nome,"Painel", "Processos", new { id = item.ProcessoId },null) 
-		</td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCriacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId },null) 
-        </td>
-        <td>
-            @Html.ActionLink("Relatórios", "Index", "Relatorio", new { id = item.ProcessoId },null)
+        <td colspan="5">
+            <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
         </td>
     </tr>
-}
-	<tr>
-		<td colspan="5">
-			<button type="button" class="btn btn-secondary" title=""  data-placement="left" onclick="history.back();">Voltar</button>
-		</td>
-	</tr>
 </table>

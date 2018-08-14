@@ -1,22 +1,18 @@
 ﻿$(document).ready(function ($) {
-
     $("#DataEntregaDocumentos").mask("00/00/0000");
     $("#HorarioEntregaDocumento").mask("00:00");
 
     var dados = $("#mostraConfirmacao").val();
 
-    if (dados==="value") {
+    if (dados === "value") {
         $("#mensagem_sucesso").trigger("click");
     }
-   
 
     $("#envia_selecionados").click(function () {
-        var convocados = new Array;
-       
-        $("input[name=Convocado]").each(function () {
+        var convocados = [];
 
+        $("input[name=Convocado]").each(function () {
             if (this.checked === true) {
-                
                 convocados.push($(this).val());
             }
             $("#CandidatosSelecionados").val(convocados);

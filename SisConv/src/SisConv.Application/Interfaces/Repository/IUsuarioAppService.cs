@@ -9,11 +9,17 @@ namespace SisConv.Application.Interfaces.Repository
     public interface IUsuarioAppService : IDisposable
     {
         UsuarioViewModel Add(UsuarioViewModel obj);
+
         UsuarioViewModel GetById(Guid id);
+
         IEnumerable<UsuarioViewModel> GetAll();
+
         UsuarioViewModel Update(UsuarioViewModel obj);
+
         void Remove(Guid id);
+
         IEnumerable<UsuarioViewModel> Search(Expression<Func<Usuario, bool>> predicate);
-		UsuarioViewModel GetOne(Expression<Func<Usuario, bool>> predicate);
-	}
+
+        UsuarioViewModel GetOne(Expression<Func<Usuario, bool>> predicate);
+    }
 }

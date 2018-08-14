@@ -23,6 +23,8 @@ namespace SisConv.Infra.Data.Context
         public virtual DbSet<Convocado> Convocados { get; set; }
         public virtual DbSet<Processo> Processos { get; set; }
         public virtual DbSet<Documentacao> Documentacoes { get; set; }
+        public virtual DbSet<DocumentoCandidato> DocumentoCandidato { get; set; }
+        public virtual DbSet<TipoDocumento> TipoDocumento { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -45,9 +47,11 @@ namespace SisConv.Infra.Data.Context
             modelBuilder.Configurations.Add(new ConvocadoConfiguration());
             modelBuilder.Configurations.Add(new ConvocacaoConfiguration());
             modelBuilder.Configurations.Add(new DocumentacaoConfiguration());
+            modelBuilder.Configurations.Add(new DocumentoCandidatoConfiguration());
+            modelBuilder.Configurations.Add(new TipoDocumentoConfiguracao());
 
-	        Database.SetInitializer<SisConvContext>(null);
-			base.OnModelCreating(modelBuilder);
+            Database.SetInitializer<SisConvContext>(null);
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

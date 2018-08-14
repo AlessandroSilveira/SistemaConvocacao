@@ -49,17 +49,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Context\SisConvContext.cs" />
-    <Compile Include="Context\SisConvContextConfigutation.cs" />
+    <Compile Include="Context\SisConvContextConfiguration.cs" />
     <Compile Include="EntityConfig\AdminConfiguracao.cs" />
     <Compile Include="EntityConfig\CargoConfiguration.cs" />
     <Compile Include="EntityConfig\ClienteConfiguration.cs" />
     <Compile Include="EntityConfig\ConvocacaoConfiguration.cs" />
     <Compile Include="EntityConfig\DocumentacaoConfiguration.cs" />
+    <Compile Include="EntityConfig\DocumentoCandidatoConfiguration.cs" />
     <Compile Include="EntityConfig\PessoaConfiguration.cs" />
     <Compile Include="EntityConfig\ProcessoConfiguration.cs" />
     <Compile Include="EntityConfig\ConvocadoConfiguration.cs" />
     <Compile Include="EntityConfig\PrimeiroAcessoConfiguration.cs" />
     <Compile Include="EntityConfig\TelefoneConfiguration.cs" />
+    <Compile Include="EntityConfig\TipoDocumentoConfiguracao.cs" />
     <Compile Include="EntityConfig\UsuarioConfiguration.cs" />
     <Compile Include="Migrations\201803060118130_initial.cs" />
     <Compile Include="Migrations\201803060118130_initial.Designer.cs">

@@ -5,8 +5,8 @@ namespace SisConv.Application.ViewModels
 {
     public class CargoViewModel
     {
-        [Key]
-        public Guid CargoId { get; set; }
+        [Key] public Guid CargoId { get; set; }
+
         public Guid ProcessoId { get; set; }
 
         [Required(AllowEmptyStrings = false, ErrorMessage = "Preencher o campo Nome")]
@@ -19,9 +19,6 @@ namespace SisConv.Application.ViewModels
         [MaxLength(4)]
         public string CodigoCargo { get; set; }
 
-        [Required]
-        [Display(Name = "Ativo")]
-        public bool Ativo { get; set; }
-        
+        [Required] [Display(Name = "Ativo")] public bool Ativo { get; set; }
     }
 }

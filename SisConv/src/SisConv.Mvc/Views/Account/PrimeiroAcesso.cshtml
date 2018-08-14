@@ -13,31 +13,32 @@
     })
 </script>
 
-@using (Html.BeginForm("PrimeiroAcesso","Account",FormMethod.Post,new{@id="form"}))
+@using (Html.BeginForm("PrimeiroAcesso", "Account", FormMethod.Post, new {id = "form"}))
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="jumbotron" id="painel1" style="display:none">
+        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+        <div class="jumbotron" id="painel1" style="display: none">
             <h1>Bem-Vindo ao Sistema de Convocações</h1>
             <p>Esta é a primeira vez que o Sistema de Convocações está sendo executado e precisamos coletar algumas informações antes de prosseguir, Está pronto?</p>
-            <p><a class="btn btn-primary btn-lg" id="seguir_painel2">Prosseguir</a></p>
+            <p>
+                <a class="btn btn-primary btn-lg" id="seguir_painel2">Prosseguir</a>
+            </p>
         </div>
-
 
         <div class="jumbotron" id="painel2" style="display: none">
             <p>Sistema de Convocações</p>
             <p>Primeiro vamos coletar alguns dados pessoais.</p>
             <h3 id="mensagem_painel2" style="color: red"></h3>
             <p>
-                @Html.LabelFor(model => model.Nome, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })
+                @Html.LabelFor(model => model.Nome, new {@class = "control-label", style = "font-size: 23px; !important"})
             </p>
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Nome, "", new {@class = "text-danger"})
                 </div>
             </div>
             <p>
@@ -48,12 +49,12 @@
         <div class="jumbotron" id="painel3" style="display: none">
             <p>Sistema de Convocações</p>
             <h3 id="mensagem_painel3" style="color: red"></h3>
-            <p>@Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
-           
+            <p>@Html.LabelFor(model => model.Email, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
+
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
                 </div>
             </div>
             <p>
@@ -64,12 +65,12 @@
         <div class="jumbotron" id="painel4" style="display: none">
             <p>Sistema de Convocações</p>
             <h3 id="mensagem_painel4" style="color: red"></h3>
-            <p>@Html.LabelFor(model => model.Empresa, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
-            
+            <p>@Html.LabelFor(model => model.Empresa, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
+
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Empresa, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Empresa, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Empresa, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Empresa, "", new {@class = "text-danger"})
                 </div>
             </div>
             <p>
@@ -79,13 +80,13 @@
 
         <div class="jumbotron" id="painel5" style="display: none">
             <p>Sistema de Convocações</p>
-           
-            <p>@Html.LabelFor(model => model.Cnpj, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+
+            <p>@Html.LabelFor(model => model.Cnpj, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
             <h3 id="mensagem_painel5" style="color: red"></h3>
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Cnpj, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Cnpj, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Cnpj, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Cnpj, "", new {@class = "text-danger"})
                 </div>
             </div>
             <p>
@@ -96,11 +97,11 @@
         <div class="jumbotron" id="painel6" style="display: none">
             <p>Sistema de Convocações</p>
             <h3 id="mensagem_painel6" style="color: red"></h3>
-            <p>@Html.LabelFor(model => model.Telefone, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <p>@Html.LabelFor(model => model.Telefone, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.Telefone, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Telefone, "", new {@class = "text-danger"})
                 </div>
             </div>
             <p>
@@ -111,13 +112,13 @@
         <div class="jumbotron" id="painel7" style="display: none">
             <p>Sistema de Convocações</p>
             <h3 id="mensagem_painel7" style="color: red"></h3>
-            <p>@Html.LabelFor(model => model.Imagem, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <p>@Html.LabelFor(model => model.Imagem, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
             <div class="form-group">
                 <div class="col-md-10">
-                   
-                    <input type="file" name="Imagem" id="Imagem" class="form-control" />
-                    @Html.ValidationMessageFor(model => model.Imagem, "", new { @class = "text-danger" })
-                    @Html.HiddenFor(model => model.Ativo, new { Value = true })
+
+                    <input type="file" name="Imagem" id="Imagem" class="form-control"/>
+                    @Html.ValidationMessageFor(model => model.Imagem, "", new {@class = "text-danger"})
+                    @Html.HiddenFor(model => model.Ativo, new {Value = true})
                 </div>
             </div>
             <p>
@@ -128,12 +129,12 @@
         <div class="jumbotron" id="painel8" style="display: none">
             <p>Sistema de Convocações</p>
             <h3 id="mensagem_painel8" style="color: red"></h3>
-            <p>@Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label", @style = "font-size: 23px; !important" })</p>
+            <p>@Html.LabelFor(model => model.Password, new {@class = "control-label", style = "font-size: 23px; !important"})</p>
             <div class="form-group">
                 <div class="col-md-10">
-                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
-	                @Html.HiddenFor(model => model.ConfirmPassword, new { Value = "" })
+                    @Html.PasswordFor(model => model.Password, new {htmlAttributes = new {@class = "form-control"}})
+                    @Html.ValidationMessageFor(model => model.Password, "", new {@class = "text-danger"})
+                    @Html.HiddenFor(model => model.ConfirmPassword, new {Value = ""})
                 </div>
             </div>
             <p>
@@ -151,5 +152,3 @@
         </div>
     </div>
 }
-
-

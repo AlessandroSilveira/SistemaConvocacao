@@ -5,11 +5,10 @@ using SisConv.Application.ViewModels;
 
 namespace SisConv.Mvc.Controllers
 {
-	public class AdminController : Controller
+    [Authorize(Roles = "Administrador")]
+    public class AdminController : Controller
     {
-
         private readonly IAdminAppService _adminAppService;
-       
 
         public AdminController(IAdminAppService adminAppService)
         {
@@ -25,8 +24,8 @@ namespace SisConv.Mvc.Controllers
         // GET: Admin2ViewModel/Details/5
         public ActionResult Details(Guid id)
         {
-	        Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
-	        return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
+            var admin2ViewModel = _adminAppService.GetById(id);
+            return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
         }
 
         // GET: Admin2ViewModel/Create
@@ -36,7 +35,7 @@ namespace SisConv.Mvc.Controllers
         }
 
         // POST: Admin2ViewModel/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -55,12 +54,12 @@ namespace SisConv.Mvc.Controllers
         // GET: Admin2ViewModel/Edit/5
         public ActionResult Edit(Guid id)
         {
-	        Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
-	        return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
+            var admin2ViewModel = _adminAppService.GetById(id);
+            return admin2ViewModel == null ? (ActionResult) HttpNotFound() : View(admin2ViewModel);
         }
 
         // POST: Admin2ViewModel/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,23 +70,21 @@ namespace SisConv.Mvc.Controllers
                 _adminAppService.Update(admin2ViewModel);
                 return RedirectToAction("Index");
             }
+
             return View(admin2ViewModel);
         }
 
         // GET: Admin2ViewModel/Delete/5
         public ActionResult Delete(Guid id)
         {
-
-            Admin2ViewModel admin2ViewModel = _adminAppService.GetById(id);
-            if (admin2ViewModel == null)
-            {
-                return HttpNotFound();
-            }
+            var admin2ViewModel = _adminAppService.GetById(id);
+            if (admin2ViewModel == null) return HttpNotFound();
             return View(admin2ViewModel);
         }
 
         // POST: Admin2ViewModel/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
@@ -97,12 +94,8 @@ namespace SisConv.Mvc.Controllers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing)
-            {
-                _adminAppService.Dispose();
-            }
+            if (disposing) _adminAppService.Dispose();
             base.Dispose(disposing);
         }
-		
     }
 }

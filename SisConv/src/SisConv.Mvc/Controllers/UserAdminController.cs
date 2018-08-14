@@ -10,27 +10,29 @@ using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
-	[Authorize(Roles = "Administrator")]
-	public class UserAdminController : Controller
-    {       
+    [Authorize(Roles = "Administrator")]
+    public class UserAdminController : Controller
+    {
+        private ApplicationRoleManager _roleManager;
+
+        private ApplicationUserManager _userManager;
+
         public UserAdminController(ApplicationUserManager userManager, ApplicationRoleManager roleManager)
         {
             UserManager = userManager;
             RoleManager = roleManager;
         }
 
-        private ApplicationUserManager _userManager;
         public ApplicationUserManager UserManager
         {
             get => _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-	        private set => _userManager = value;
+            private set => _userManager = value;
         }
 
-        private ApplicationRoleManager _roleManager;
         public ApplicationRoleManager RoleManager
         {
             get => _roleManager ?? HttpContext.GetOwinContext().Get<ApplicationRoleManager>();
-	        private set => _roleManager = value;
+            private set => _roleManager = value;
         }
 
         //
@@ -44,10 +46,7 @@ namespace SisConv.Mvc.Controllers
         // GET: /Users/Details/5
         public async Task<ActionResult> Details(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var user = await UserManager.FindByIdAsync(id);
 
             ViewBag.RoleNames = await UserManager.GetRolesAsync(user.Id);
@@ -71,10 +70,10 @@ namespace SisConv.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = userViewModel.Email, Email = userViewModel.Email };
+                var user = new ApplicationUser {UserName = userViewModel.Email, Email = userViewModel.Email};
                 var adminresult = await UserManager.CreateAsync(user, userViewModel.Password);
 
-                //Add User to the selected Roles 
+                //Add User to the selected Roles
                 if (adminresult.Succeeded)
                 {
                     if (selectedRoles != null)
@@ -93,10 +92,11 @@ namespace SisConv.Mvc.Controllers
                     ModelState.AddModelError("", adminresult.Errors.First());
                     ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
                     return View();
-
                 }
+
                 return RedirectToAction("Index");
             }
+
             ViewBag.RoleId = new SelectList(RoleManager.Roles, "Name", "Name");
             return View();
         }
@@ -105,23 +105,17 @@ namespace SisConv.Mvc.Controllers
         // GET: /Users/Edit/1
         public async Task<ActionResult> Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var user = await UserManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
+            if (user == null) return HttpNotFound();
 
             var userRoles = await UserManager.GetRolesAsync(user.Id);
 
-            return View(new EditUserViewModel()
+            return View(new EditUserViewModel
             {
                 Id = user.Id,
                 Email = user.Email,
-                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem()
+                RolesList = RoleManager.Roles.ToList().Select(x => new SelectListItem
                 {
                     Selected = userRoles.Contains(x.Name),
                     Text = x.Name,
@@ -134,15 +128,13 @@ namespace SisConv.Mvc.Controllers
         // POST: /Users/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser, params string[] selectedRole)
+        public async Task<ActionResult> Edit([Bind(Include = "Email,Id")] EditUserViewModel editUser,
+            params string[] selectedRole)
         {
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByIdAsync(editUser.Id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
+                if (user == null) return HttpNotFound();
 
                 user.UserName = editUser.Email;
                 user.Email = editUser.Email;
@@ -151,22 +143,25 @@ namespace SisConv.Mvc.Controllers
 
                 selectedRole = selectedRole ?? new string[] { };
 
-                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray<string>());
+                var result = await UserManager.AddToRolesAsync(user.Id, selectedRole.Except(userRoles).ToArray());
 
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
-                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray<string>());
+
+                result = await UserManager.RemoveFromRolesAsync(user.Id, userRoles.Except(selectedRole).ToArray());
 
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
+
                 return RedirectToAction("Index");
             }
+
             ModelState.AddModelError("", "Something failed.");
             return View();
         }
@@ -175,44 +170,35 @@ namespace SisConv.Mvc.Controllers
         // GET: /Users/Delete/5
         public async Task<ActionResult> Delete(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
+            if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var user = await UserManager.FindByIdAsync(id);
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
+            if (user == null) return HttpNotFound();
             return View(user);
         }
 
         //
         // POST: /Users/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> DeleteConfirmed(string id)
         {
             if (ModelState.IsValid)
             {
-                if (id == null)
-                {
-                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-                }
+                if (id == null) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
                 var user = await UserManager.FindByIdAsync(id);
-                if (user == null)
-                {
-                    return HttpNotFound();
-                }
+                if (user == null) return HttpNotFound();
                 var result = await UserManager.DeleteAsync(user);
                 if (!result.Succeeded)
                 {
                     ModelState.AddModelError("", result.Errors.First());
                     return View();
                 }
+
                 return RedirectToAction("Index");
             }
+
             return View();
         }
     }

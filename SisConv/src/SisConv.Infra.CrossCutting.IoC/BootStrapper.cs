@@ -20,7 +20,7 @@ using SisConv.Infra.Data.UoW;
 
 namespace SisConv.Infra.CrossCutting.IoC
 {
-	public class BootStrapper
+    public class BootStrapper
     {
         public static void RegisterServices(Container container)
         {
@@ -37,12 +37,11 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IDadosConvocacaoAppService, DadosConvocadosAppService>(Lifestyle.Scoped);
             container.Register<IConvocacaoAppService, ConvocacaoAppService>(Lifestyle.Scoped);
             container.Register<IDocumentacaoAppService, DocumentacaoAppService>(Lifestyle.Scoped);
-            
-			
 
-			//Domain
-			container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
-			container.Register<IClienteService, ClienteService>(Lifestyle.Scoped);
+
+            //Domain
+            container.Register(typeof(IServiceBase<>), typeof(ServiceBase<>));
+            container.Register<IClienteService, ClienteService>(Lifestyle.Scoped);
             container.Register<IPessoaService, PessoaService>(Lifestyle.Scoped);
             container.Register<IUsuarioService, UsuarioService>(Lifestyle.Scoped);
             container.Register<ITelefoneService, TelefoneService>(Lifestyle.Scoped);
@@ -54,11 +53,11 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IDadosConvocadosService, DadosConvocadosService>(Lifestyle.Scoped);
             container.Register<IConvocacaoService, ConvocacaoService>(Lifestyle.Scoped);
             container.Register<IDocumentacaoService, DocumentacaoService>(Lifestyle.Scoped);
-			
-			container.Register<IConfiguration, Configuration>(Lifestyle.Scoped);		
 
-			//Infra Dados
-			container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
+            container.Register<IConfiguration, Configuration>(Lifestyle.Scoped);
+
+            //Infra Dados
+            container.Register(typeof(IRepositoryBase<>), typeof(RepositoryBase<>));
             container.Register<IClienteRepository, ClienteRepository>(Lifestyle.Scoped);
             container.Register<IPessoaRepository, PessoaRepository>(Lifestyle.Scoped);
             container.Register<ITelefoneRepository, TelefoneRepository>(Lifestyle.Scoped);
@@ -66,32 +65,32 @@ namespace SisConv.Infra.CrossCutting.IoC
             container.Register<IUnitOfWork, UnitOfWork>(Lifestyle.Scoped);
             container.Register<IPrimeiroAcessoRepository, PrimeiroAcessoRepository>(Lifestyle.Scoped);
             container.Register<IAdminRepository, AdminRepository>(Lifestyle.Scoped);
-	        container.Register<IConversor, Conversor>(Lifestyle.Scoped);
+            container.Register<IConversor, Conversor>(Lifestyle.Scoped);
             container.Register<IProcessoRepository, ProcessoRepository>(Lifestyle.Scoped);
             container.Register<ICargoRepository, CargoRepository>(Lifestyle.Scoped);
             container.Register<IConvocadoRepository, ConvocadoRepository>(Lifestyle.Scoped);
             container.Register<IDadosConvocadosRepository, DadosConvocadosRepository>(Lifestyle.Scoped);
             container.Register<IConvocacaoRepository, ConvocacaoRepository>(Lifestyle.Scoped);
-	        container.Register<ISysConfig, SysConfig>(Lifestyle.Scoped);
+            container.Register<ISysConfig, SysConfig>(Lifestyle.Scoped);
             container.Register<IDocumentacaoRepository, DocumentacaoRepository>(Lifestyle.Scoped);
+            container.Register<IListaOpcoes, ListasOpcoes>(Lifestyle.Scoped);
+            container.Register<IEnumDescription, EnumDescription>(Lifestyle.Scoped);
+            container.Register<IMontaListaComEnum, MontaListaComEnum>(Lifestyle.Scoped);
+            container.Register<IPasswordGenerator, PasswordGenerator>(Lifestyle.Scoped);
 
             //Context
             container.Register<SisConvContext>(Lifestyle.Scoped);
             container.Register<ApplicationDbContext>(Lifestyle.Scoped);
 
             //Identity
-            container.Register<IUserStore<ApplicationUser>>(() => new UserStore<ApplicationUser>(new ApplicationDbContext()), Lifestyle.Scoped);
+            container.Register<IUserStore<ApplicationUser>>(
+                () => new UserStore<ApplicationUser>(new ApplicationDbContext()), Lifestyle.Scoped);
             container.Register<IRoleStore<IdentityRole, string>>(() => new RoleStore<IdentityRole>(), Lifestyle.Scoped);
             container.Register<ApplicationRoleManager>(Lifestyle.Scoped);
             container.Register<ApplicationUserManager>(Lifestyle.Scoped);
             container.Register<ApplicationSignInManager>(Lifestyle.Scoped);
 
             //Domain.Core
-            container.Register<IListaOpcoes, ListasOpcoes>(Lifestyle.Scoped);
-            container.Register<IEnumDescription, EnumDescription>(Lifestyle.Scoped);
-            container.Register<IMontaListaComEnum, MontaListaComEnum>(Lifestyle.Scoped);
-	        container.Register<IPasswordGenerator, PasswordGenerator>(Lifestyle.Scoped);
-			
-		}
-	}
+        }
+    }
 }

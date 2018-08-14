@@ -7,7 +7,7 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Inserir novo documento.", "Create",new{@Id = ViewBag.ProcessoId })
+    @Html.ActionLink("Inserir novo documento.", "Create", new {Id = ViewBag.ProcessoId})
 </p>
 <table class="table">
     <tr>
@@ -26,28 +26,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        
-	    <td>
-		    @Html.HiddenFor(modelItem => item.ProcessoId, new{@Value = ViewBag.ProcessoId })
-		    @Html.DisplayFor(modelItem => item.Descricao)
-	    </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataCriacao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Path)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.DocumentoId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.DocumentoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DocumentoId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
 
+            <td>
+                @Html.HiddenFor(modelItem => item.ProcessoId, new {Value = ViewBag.ProcessoId})
+                @Html.DisplayFor(modelItem => item.Descricao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataCriacao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Path)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {id = item.DocumentoId}) |
+                @Html.ActionLink("Detalhes", "Details", new {id = item.DocumentoId}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.DocumentoId})
+            </td>
+        </tr>
+    }
 </table>

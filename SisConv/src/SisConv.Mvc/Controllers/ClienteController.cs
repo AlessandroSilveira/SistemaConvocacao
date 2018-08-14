@@ -12,12 +12,11 @@ using SisConv.Infra.CrossCutting.Identity.Roles;
 
 namespace SisConv.Mvc.Controllers
 {
-	[Authorize(Roles = "Administrator")]
-	public class ClienteController : Controller
+    [Authorize(Roles = "Administrator")]
+    public class ClienteController : Controller
     {
         private readonly IClienteAppService _clienteAppService;
         private readonly ApplicationUserManager _userManager;
-       
 
         public ClienteController(IClienteAppService clienteAppService, ApplicationUserManager userManager)
         {
@@ -58,13 +57,20 @@ namespace SisConv.Mvc.Controllers
 
             SalvarImagemCliente(Imagem, cliente);
 
-            return RegistarClienteParaFazerLogin(cliente, out var actionResult) ? actionResult : RedirectToAction("Index");
+            return RegistarClienteParaFazerLogin(cliente, out var actionResult)
+                ? actionResult
+                : RedirectToAction("Index");
         }
 
         private bool RegistarClienteParaFazerLogin(ClienteViewModel clienteViewModel, out ActionResult actionResult)
         {
             var cliente2 = _clienteAppService.Search(a => a.Email.Equals(clienteViewModel.Email)).FirstOrDefault();
-            var user = new ApplicationUser {Id=cliente2.ClienteId.ToString(),   UserName = clienteViewModel.Email, Email = clienteViewModel.Email};
+            var user = new ApplicationUser
+            {
+                Id = cliente2.ClienteId.ToString(),
+                UserName = clienteViewModel.Email,
+                Email = clienteViewModel.Email
+            };
             var result = _userManager.Create(user, clienteViewModel.Password);
 
             if (!result.Succeeded)
@@ -72,6 +78,7 @@ namespace SisConv.Mvc.Controllers
                 actionResult = RedirectToAction("Index");
                 return true;
             }
+
             var user2 = _userManager.FindByName(clienteViewModel.Email);
             _userManager.AddToRole(user2.Id, RolesNames.ROLE_CLIENTE);
             actionResult = null;

@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     ViewBag.Title = "Painel";
 }
 
@@ -7,19 +6,19 @@
     <div class="form-horizontal">
         <h4></h4>
         <h4></h4>
-		<div class="jumbotron">
-			<h1>Relatórios</h1>
-			<br /><br />
-			<h3>@Html.ActionLink("Classificados Por Cargo.", "ClassificadosPorCargo", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-			<h3>@Html.ActionLink("Convocados que Desistiram.", "ConvocadosQueDesistiram", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-			<h3>@Html.ActionLink("Convocados que ingressaram no sistema.", "ConvocadosQueIngressaram", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-			<h3>@Html.ActionLink("Convocados que não ingressaram no sistema.", "ConvocadosQueNaoIngressaram", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-			<h3>@Html.ActionLink("Convocados por Instituição de Ensino Superior (IES).", "ConvocadosPorInstituicaoEnsinoSuperior", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>
-			<h3>@Html.ActionLink("Relatório de Pendentes de Dados Bancários.", "PendentesDadosBancarios", "Relatorio", new { Id = ViewBag.ProcessoId }, null) </h3>			
-			<h3>Estatística Geral da Convocação/Contratação.</h3>
-		</div>
+        <div class="jumbotron">
+            <h1>Relatórios</h1>
+            <br/><br/>
+            <h3>@Html.ActionLink("Classificados Por Cargo.", "ClassificadosPorCargo", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>@Html.ActionLink("Convocados que Desistiram.", "ConvocadosQueDesistiram", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>@Html.ActionLink("Convocados que ingressaram no sistema.", "ConvocadosQueIngressaram", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>@Html.ActionLink("Convocados que não ingressaram no sistema.", "ConvocadosQueNaoIngressaram", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>@Html.ActionLink("Convocados por Instituição de Ensino Superior (IES).", "ConvocadosPorInstituicaoEnsinoSuperior", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>@Html.ActionLink("Relatório de Pendentes de Dados Bancários.", "PendentesDadosBancarios", "Relatorio", new {Id = ViewBag.ProcessoId}, null) </h3>
+            <h3>Estatística Geral da Convocação/Contratação.</h3>
+        </div>
     </div>
 </div>
 <div>
-	<button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
 </div>

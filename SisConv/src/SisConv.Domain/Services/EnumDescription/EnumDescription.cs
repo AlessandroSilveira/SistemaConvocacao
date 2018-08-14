@@ -3,7 +3,7 @@ using System.ComponentModel;
 
 namespace SisConv.Domain.Services
 {
-    public class EnumDescription: IEnumDescription
+    public class EnumDescription : IEnumDescription
     {
         public string GetEnumDescription(Enum e)
         {

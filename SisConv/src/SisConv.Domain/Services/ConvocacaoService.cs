@@ -8,16 +8,15 @@ using SisConv.Domain.Services.PasswordGenerator;
 
 namespace SisConv.Domain.Services
 {
-
-	public class ConvocacaoService : IConvocacaoService
+    public class ConvocacaoService : IConvocacaoService
     {
         private readonly IConvocacaoRepository _convocacaoRepository;
-	    private readonly IPasswordGenerator _passwordGenerator;
+        private readonly IPasswordGenerator _passwordGenerator;
 
         public ConvocacaoService(IConvocacaoRepository convocacaoRepository, IPasswordGenerator passwordGenerator)
         {
-	        _convocacaoRepository = convocacaoRepository;
-	        _passwordGenerator = passwordGenerator;
+            _convocacaoRepository = convocacaoRepository;
+            _passwordGenerator = passwordGenerator;
         }
 
         public void Dispose()
@@ -55,14 +54,14 @@ namespace SisConv.Domain.Services
             return _convocacaoRepository.Search(predicate);
         }
 
-	    public string GeneratePassword()
-	    {
-		    return _passwordGenerator.GetPassword();
-	    }
+        public string GeneratePassword()
+        {
+            return _passwordGenerator.GetPassword();
+        }
 
-		public Convocacao GetOne(Expression<Func<Convocacao, bool>> predicate)
-		{
-			return _convocacaoRepository.GetOne(predicate);
-		}
-	}
+        public Convocacao GetOne(Expression<Func<Convocacao, bool>> predicate)
+        {
+            return _convocacaoRepository.GetOne(predicate);
+        }
+    }
 }

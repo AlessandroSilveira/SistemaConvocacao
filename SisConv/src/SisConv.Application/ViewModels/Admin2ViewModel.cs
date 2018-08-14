@@ -5,8 +5,7 @@ namespace SisConv.Application.ViewModels
 {
     public class Admin2ViewModel
     {
-        [Key]
-        public Guid AdminId { get; set; }
+        [Key] public Guid AdminId { get; set; }
 
         [Required]
         [Display(Name = "Qual o seu Nome?")]
@@ -38,9 +37,7 @@ namespace SisConv.Application.ViewModels
         [MaxLength(100, ErrorMessage = "O Imagem deve ter no máximo 100 caracteres.")]
         public string Imagem { get; set; }
 
-        [Required]
-        [Display(Name = "Ativo.")]
-        public bool Ativo { get; set; }
+        [Required] [Display(Name = "Ativo.")] public bool Ativo { get; set; }
 
         [Required]
         [Display(Name = "Preencha uma senha.")]

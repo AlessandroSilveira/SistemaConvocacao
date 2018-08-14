@@ -52,9 +52,9 @@ namespace SisConv.Domain.Services
             return _telefoneRepository.Search(predicate);
         }
 
-		public Telefone GetOne(Expression<Func<Telefone, bool>> predicate)
-		{
-			return _telefoneRepository.GetOne(predicate);
-		}
-	}
+        public Telefone GetOne(Expression<Func<Telefone, bool>> predicate)
+        {
+            return _telefoneRepository.GetOne(predicate);
+        }
+    }
 }

@@ -1,23 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
+using SisConv.Domain.Entities;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
-using AutoMapper;
-using SisConv.Domain.Entities;
 
 namespace SisConv.Application.Services
 {
     public class TelefoneAppService : ApplicationService, ITelefoneAppService
     {
         private readonly ITelefoneService _telefoneService;
-	    
 
         public TelefoneAppService(IUnitOfWork unitOfWork, ITelefoneService telefoneService) : base(unitOfWork)
         {
-	        _telefoneService = telefoneService;
+            _telefoneService = telefoneService;
         }
 
         public void Dispose()
@@ -61,12 +60,13 @@ namespace SisConv.Application.Services
 
         public IEnumerable<TelefoneViewModel> Search(Expression<Func<Telefone, bool>> predicate)
         {
-            return Mapper.Map<IEnumerable<Telefone>, IEnumerable<TelefoneViewModel>>(_telefoneService.Search(predicate));
+            return Mapper.Map<IEnumerable<Telefone>, IEnumerable<TelefoneViewModel>>(
+                _telefoneService.Search(predicate));
         }
 
-		public TelefoneViewModel GetOne(Expression<Func<Telefone, bool>> predicate)
-		{
-			return Mapper.Map<Telefone, TelefoneViewModel>(_telefoneService.GetOne(predicate));
-		}
-	}
+        public TelefoneViewModel GetOne(Expression<Func<Telefone, bool>> predicate)
+        {
+            return Mapper.Map<Telefone, TelefoneViewModel>(_telefoneService.GetOne(predicate));
+        }
+    }
 }

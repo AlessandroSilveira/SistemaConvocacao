@@ -25,19 +25,19 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.DataCriacao)
                 .IsRequired();
 
-	        Property(c => c.TextoInicialTelaConvocado)
-		        .IsRequired()
-		        .HasMaxLength(200);
+            Property(c => c.TextoInicialTelaConvocado)
+                .IsRequired()
+                .HasMaxLength(200);
 
-	        Property(c => c.TextoDeAceitacaoDaConvocacao)
-		        .IsRequired()
-		        .HasMaxLength(200);
+            Property(c => c.TextoDeAceitacaoDaConvocacao)
+                .IsRequired()
+                .HasMaxLength(200);
 
-	        Property(c => c.TextoParaDesistentes)
-		        .IsRequired()
-		        .HasMaxLength(200);
+            Property(c => c.TextoParaDesistentes)
+                .IsRequired()
+                .HasMaxLength(200);
 
-			ToTable("Processos");
+            ToTable("Processos");
         }
     }
 }

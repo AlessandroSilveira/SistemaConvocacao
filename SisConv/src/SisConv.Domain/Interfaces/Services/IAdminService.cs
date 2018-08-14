@@ -13,6 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Admin Update(Admin obj);
         void Remove(Guid id);
         IEnumerable<Admin> Search(Expression<Func<Admin, bool>> predicate);
-		Admin GetOne(Expression<Func<Admin, bool>> predicate);
-	}
+        Admin GetOne(Expression<Func<Admin, bool>> predicate);
+    }
 }

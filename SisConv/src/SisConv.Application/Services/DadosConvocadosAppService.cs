@@ -10,11 +10,12 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-	public class DadosConvocadosAppService : ApplicationService, IDadosConvocacaoAppService
+    public class DadosConvocadosAppService : ApplicationService, IDadosConvocacaoAppService
     {
         private readonly IDadosConvocadosService _dadosConvocadosService;
-	   
-        public DadosConvocadosAppService(IUnitOfWork unitOfWork, IDadosConvocadosService dadosConvocadosService) : base(unitOfWork)
+
+        public DadosConvocadosAppService(IUnitOfWork unitOfWork, IDadosConvocadosService dadosConvocadosService) :
+            base(unitOfWork)
         {
             _dadosConvocadosService = dadosConvocadosService;
         }
@@ -40,7 +41,8 @@ namespace SisConv.Application.Services
 
         public IEnumerable<DadosConvocadosViewModel> GetAll()
         {
-            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<DadosConvocadosViewModel>>(_dadosConvocadosService.GetAll());
+            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<DadosConvocadosViewModel>>(_dadosConvocadosService
+                .GetAll());
         }
 
         public DadosConvocadosViewModel Update(DadosConvocadosViewModel obj)
@@ -60,26 +62,27 @@ namespace SisConv.Application.Services
 
         public IEnumerable<DadosConvocadosViewModel> Search(Expression<Func<Convocado, bool>> predicate)
         {
-            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<DadosConvocadosViewModel>>(_dadosConvocadosService.Search(predicate));
+            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<DadosConvocadosViewModel>>(
+                _dadosConvocadosService.Search(predicate));
         }
-      
+
         public void SalvarCandidatos(Guid id, string file)
         {
-			BeginTransaction();
-			_dadosConvocadosService.SalvarCandidatos(id,file);
-			Commit();
+            BeginTransaction();
+            _dadosConvocadosService.SalvarCandidatos(id, file);
+            Commit();
         }
 
-	    public void SalvarCargos(Guid id, string file)
-	    {
-		    BeginTransaction();
-			_dadosConvocadosService.SalvarCargos(id,file);
-		    Commit();
-		}
+        public void SalvarCargos(Guid id, string file)
+        {
+            BeginTransaction();
+            _dadosConvocadosService.SalvarCargos(id, file);
+            Commit();
+        }
 
-		public DadosConvocadosViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
-		{
-			return Mapper.Map<Convocado, DadosConvocadosViewModel>(_dadosConvocadosService.GetOne(predicate));
-		}
-	}
+        public DadosConvocadosViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
+        {
+            return Mapper.Map<Convocado, DadosConvocadosViewModel>(_dadosConvocadosService.GetOne(predicate));
+        }
+    }
 }

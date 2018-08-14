@@ -5,7 +5,7 @@ using SisConv.Infra.Data.Repository.Base;
 
 namespace SisConv.Infra.Data.Repository
 {
-    public class ConvocacaoRepository : RepositoryBase<Convocacao> , IConvocacaoRepository
+    public class ConvocacaoRepository : RepositoryBase<Convocacao>, IConvocacaoRepository
     {
         public ConvocacaoRepository(SisConvContext sisConvContext) : base(sisConvContext)
         {

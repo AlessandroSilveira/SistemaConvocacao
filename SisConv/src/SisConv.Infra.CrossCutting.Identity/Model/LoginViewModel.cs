@@ -14,7 +14,6 @@ namespace SisConv.Infra.CrossCutting.Identity.Model
         [Display(Name = "Senha")]
         public string Password { get; set; }
 
-        [Display(Name = "Lembre-me?")]
-        public bool RememberMe { get; set; }
+        [Display(Name = "Lembre-me?")] public bool RememberMe { get; set; }
     }
 }

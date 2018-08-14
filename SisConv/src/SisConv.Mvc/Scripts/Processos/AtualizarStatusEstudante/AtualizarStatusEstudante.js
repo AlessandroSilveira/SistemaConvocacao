@@ -1,5 +1,5 @@
 ﻿function AtualizarStatus(id) {
-    var opcaoStatus = $("#opcao_" + id).val(); 
+    var opcaoStatus = $("#opcao_" + id).val();
     var processoId = $("#ProcessoId").val();
 
     $.ajax({
@@ -11,7 +11,6 @@
         success: function (response) {
             $("#opcao_" + id).val(opcaoStatus);
             if (response !== null) {
-               
                 $("#mensagem_sucesso").trigger("click");
             } else {
                 $("#mensagem_erro").trigger("click");

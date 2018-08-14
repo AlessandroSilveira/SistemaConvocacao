@@ -10,15 +10,13 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-    public class PessoaAppService : ApplicationService , IPessoaAppService
+    public class PessoaAppService : ApplicationService, IPessoaAppService
     {
         private readonly IPessoaService _pessoaService;
-	   
 
         public PessoaAppService(IUnitOfWork unitOfWork, IPessoaService pessoaService) : base(unitOfWork)
         {
-	        _pessoaService = pessoaService;
-	       
+            _pessoaService = pessoaService;
         }
 
         public void Dispose()
@@ -65,9 +63,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Pessoa>, IEnumerable<PessoaViewModel>>(_pessoaService.Search(predicate));
         }
 
-		public PessoaViewModel GetOne(Expression<Func<Pessoa, bool>> predicate)
-		{
-			return Mapper.Map<Pessoa, PessoaViewModel>(_pessoaService.GetOne(predicate));
-		}
-	}
+        public PessoaViewModel GetOne(Expression<Func<Pessoa, bool>> predicate)
+        {
+            return Mapper.Map<Pessoa, PessoaViewModel>(_pessoaService.GetOne(predicate));
+        }
+    }
 }

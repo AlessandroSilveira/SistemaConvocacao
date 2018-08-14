@@ -7,9 +7,9 @@ namespace SisConv.Infra.Data.EntityConfig
     {
         public UsuarioConfiguration()
         {
-           HasKey(c => c.UsuarioId);
+            HasKey(c => c.UsuarioId);
 
-           Property(c => c.UsuarioId)
+            Property(c => c.UsuarioId)
                 .HasColumnName("UsuarioId");
 
             Property(c => c.Nome)

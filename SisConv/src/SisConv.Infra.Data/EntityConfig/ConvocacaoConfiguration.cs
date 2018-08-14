@@ -11,7 +11,7 @@ namespace SisConv.Infra.Data.EntityConfig
 
             Property(c => c.ConvocacaoId)
                 .HasColumnName("ConvocacaoId");
-            
+
             Property(c => c.ProcessoId)
                 .IsRequired();
 
@@ -34,14 +34,14 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.StatusConvocacao)
                 .HasMaxLength(150);
 
-	        Property(c => c.StatusContratacao)
-		        .HasMaxLength(150);
+            Property(c => c.StatusContratacao)
+                .HasMaxLength(150);
 
-			Property(c => c.EnviouEmail)
+            Property(c => c.EnviouEmail)
                 .IsRequired();
 
-	        Property(c => c.Desistente)
-		        .HasMaxLength(1);
+            Property(c => c.Desistente)
+                .HasMaxLength(1);
 
             ToTable("Convocacoes");
         }

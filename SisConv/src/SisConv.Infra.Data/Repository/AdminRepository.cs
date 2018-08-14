@@ -5,7 +5,7 @@ using SisConv.Infra.Data.Repository.Base;
 
 namespace SisConv.Infra.Data.Repository
 {
-    public class AdminRepository : RepositoryBase<Admin> ,  IAdminRepository
+    public class AdminRepository : RepositoryBase<Admin>, IAdminRepository
     {
         public AdminRepository(SisConvContext sisConvContext) : base(sisConvContext)
         {

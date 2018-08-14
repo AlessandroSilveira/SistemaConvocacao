@@ -10,10 +10,9 @@ namespace SisConv.Application.ViewModels
             ClienteId = Guid.NewGuid();
         }
 
-        [Key]
-        public Guid ClienteId { get; set; }
+        [Key] public Guid ClienteId { get; set; }
 
-        [Required(AllowEmptyStrings = false),]
+        [Required(AllowEmptyStrings = false)]
         [Display(Name = "Nome")]
         public string Nome { get; set; }
 
@@ -23,7 +22,7 @@ namespace SisConv.Application.ViewModels
 
         [Required(AllowEmptyStrings = false)]
         [EmailAddress]
-		[Display(Name = "E-mail")]
+        [Display(Name = "E-mail")]
         public string Email { get; set; }
 
         [Required(AllowEmptyStrings = false)]
@@ -41,12 +40,8 @@ namespace SisConv.Application.ViewModels
         [Compare("Password", ErrorMessage = "A senha e a confirmação de senha não conferem")]
         public string ConfirmPassword { get; set; }
 
-	    [Required]
-	    [Display(Name = "Ativo")]
-	    public bool Ativo { get; set; }
+        [Required] [Display(Name = "Ativo")] public bool Ativo { get; set; }
 
-	    [Required]
-	    [Display(Name = "Imagem")]
-	    public string Imagem { get; set; }
-	}
+        [Required] [Display(Name = "Imagem")] public string Imagem { get; set; }
+    }
 }

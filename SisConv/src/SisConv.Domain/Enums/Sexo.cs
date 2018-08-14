@@ -2,11 +2,9 @@
 
 namespace SisConv.Domain.Enums
 {
-	public enum Sexo
+    public enum Sexo
     {
-	    [Description("Feminino")]
-	    F,
-	    [Description("Masculino")]
-	    M
-	}
+        [Description("Feminino")] F,
+        [Description("Masculino")] M
+    }
 }

@@ -2,8 +2,7 @@
 
 namespace SisConv.Domain.Interfaces.Repositories
 {
-	public interface IPrimeiroAcessoRepository : IRepositoryBase<PrimeiroAcesso>
-	{
-		
-	}
+    public interface IPrimeiroAcessoRepository : IRepositoryBase<PrimeiroAcesso>
+    {
+    }
 }

@@ -1,154 +1,151 @@
-﻿@using SisConv.Domain.Core.Enums
-@using SisConv.Mvc.Models
-
-
-
+﻿@using SisConv.Domain.Enums
 <h2>Atualização de Status De Candidatos</h2>
 @{
-	var selected = "selected=selected";
+    var selected = "selected=selected";
 }
 
 <p>
-	@Html.ValidationSummary(false, "", new { @class = "text-danger" })
+    @Html.ValidationSummary(false, "", new {@class = "text-danger"})
 </p>
 <table class="table">
-	@using (Html.BeginForm("AtualizarStatusEstudante", "Processos", FormMethod.Post, new { id = "form" }))
-	{
-		<tr>
-			<th>
-				Escolha um Cargo:
-			</th>
-			<th>
-				<select name="cargo" class="form-control" style="float: left">
-					<option>Selecione</option>
-					@foreach (var itens in ViewBag.Cargos)
-					{
-						<option value="@itens.CargoId">@itens.Nome</option>
-					}
-				</select>
-				<input type="submit" value="Buscar" class="btn btn-default" />
-				<input type="hidden" name="ProcessoId" id="ProcessoId" value="@ViewBag.ProcessoId" />
-				<br>
-			</th>
-
-		</tr>
-	}
+    @using (Html.BeginForm("AtualizarStatusEstudante", "Processos", FormMethod.Post, new {id = "form"}))
+    {
+        <tr>
+            <th>
+                Escolha um Cargo:
+            </th>
+            <th>
+                <select name="cargo" class="form-control" style="float: left">
+                    <option>Selecione</option>
+                    @foreach (var itens in ViewBag.Cargos)
+                    {
+                        <option value="@itens.CargoId">@itens.Nome</option>
+                    }
+                </select>
+                <input type="submit" value="Buscar" class="btn btn-default"/>
+                <input type="hidden" name="ProcessoId" id="ProcessoId" value="@ViewBag.ProcessoId"/>
+                <br>
+            </th>
+        </tr>
+    }
 </table>
 @if (ViewBag.ListaDeCandidatos != null)
 {
-	<table class="table">
+    <table class="table">
 
-		@if (ViewBag.ListaDeCandidatos.Count == 0)
-		{
-			<tr>
-				<td>A Busca não gerou resultados.</td>
-			</tr>
-		}
-		else
-		{
-			<tr>
-				<th>Inscrição</th>
-				<th>Nome</th>
-				<th>Classificação</th>
-				<th>Data de Comparecimento</th>
-				<th>Desistente</th>
-				<th>Status da convocação</th>
-				<th>Opções Contratação</th>
-				<th>Atualizar</th>
-			</tr>
-			foreach (var itens in ViewBag.ListaDeCandidatos)
-			{
-				<tr>
-					<td>@itens.Inscricao</td>
-					<td>@itens.Nome</td>
-					<td>@itens.Posicao</td>
-					<td>@itens.DataEntregaDocumentos.ToString("dd/MM/yyyy")</td>
-					<td>
-						@if (itens.Desistente == null || itens.Desistente == "N")
-						{
-							var nao = "Não";
-							@nao
-						}
-						@if (itens.Desistente == "S")
-						{
-							var sim = "Sim";
-							@sim
-						}
-					</td>
+        @if (ViewBag.ListaDeCandidatos.Count == 0)
+        {
+            <tr>
+                <td>A Busca não gerou resultados.</td>
+            </tr>
+        }
+        else
+        {
+            <tr>
+                <th>Inscrição</th>
+                <th>Nome</th>
+                <th>Classificação</th>
+                <th>Data de Comparecimento</th>
+                <th>Desistente</th>
+                <th>Status da convocação</th>
+                <th>Opções Contratação</th>
+                <th>Atualizar</th>
+            </tr>
+            foreach (var itens in ViewBag.ListaDeCandidatos)
+            {
+                <tr>
+                    <td>@itens.Inscricao</td>
+                    <td>@itens.Nome</td>
+                    <td>@itens.Posicao</td>
+                    <td>@itens.DataEntregaDocumentos.ToString("dd/MM/yyyy")</td>
+                    <td>
+                        @if (itens.Desistente == null || itens.Desistente == "N")
+                        {
+                            var nao = "Não";
+                            @nao
+                        }
+                        @if (itens.Desistente == "S")
+                        {
+                            var sim = "Sim";
+                            @sim
+                        }
+                    </td>
 
-					<td>
-						@itens.StatusConvocacao
-					</td>
-					<td>
-						<select name="opcao_@itens.ConvocacaoId" id="opcao_@itens.ConvocacaoId">
-							<option value="">Selecione</option>
-							@foreach (KeyValuePair<StatusConvocacao, string> row in ViewBag.ListaOpcoesContratacao)
-							{
-								<option value="@row.Key"
-										@if (!string.IsNullOrEmpty(itens.StatusContratacao)) { if (itens.StatusContratacao == row.Value.ToString()) { @selected } }>
-									@row.Value
-								</option>
-							}
-						</select>
-					</td>
-					<td>
-						<button class="btn btn-default" id="@itens.ConvocacaoId" onclick="AtualizarStatus(this.id)">Atualizar</button>
-					</td>
-				</tr>
-			}
-		}
-	</table>
+                    <td>
+                        @itens.StatusConvocacao
+                    </td>
+                    <td>
+                        <select name="opcao_@itens.ConvocacaoId" id="opcao_@itens.ConvocacaoId">
+                            <option value="">Selecione</option>
+                            @foreach (KeyValuePair<StatusConvocacao, string> row in ViewBag.ListaOpcoesContratacao)
+                            {
+                                <option value="@row.Key"
+                                        @if (!string.IsNullOrEmpty(itens.StatusContratacao))
+                                        {
+                                            if (itens.StatusContratacao == row.Value)
+                                            {
+                                                @selected
+                                            }
+                                        }>
+                                    @row.Value
+                                </option>
+                            }
+                        </select>
+                    </td>
+                    <td>
+                        <button class="btn btn-default" id="@itens.ConvocacaoId" onclick="AtualizarStatus(this.id)">Atualizar</button>
+                    </td>
+                </tr>
+            }
+        }
+    </table>
 }
 <button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#myModal" style="display: none"></button>
 <button type="button" class="btn btn-primary" id="mensagem_erro" data-toggle="modal" data-target="#myModal2" style="display: none"></button>
 
 <div class="modal fade" id="myModal" role="dialog">
-	<div class="modal-dialog">
+    <div class="modal-dialog">
 
+        <div class="modal-content">
+            <div class="modal-header">
 
-		<div class="modal-content">
-			<div class="modal-header">
+                <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
+            </div>
+            <div class="modal-body">
+                <br/>
+                <span id="disc"></span>
+                <h5 class="modal-title">Dados atualizados com Sucesso</h5>
+                <br/>
+            </div>
+            <div class="modal-footer">
 
-				<h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
-			</div>
-			<div class="modal-body">
-				<br />
-				<span id="disc"></span>
-				<h5 class="modal-title">Dados atualizados com Sucesso</h5>
-				<br />
-			</div>
-			<div class="modal-footer">
-
-				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			</div>
-		</div>
-
-	</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
 </div>
 <div class="modal fade" id="myModal2" role="dialog">
-	<div class="modal-dialog">
+    <div class="modal-dialog">
 
+        <div class="modal-content">
+            <div class="modal-header">
 
-		<div class="modal-content">
-			<div class="modal-header">
+                <h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
+            </div>
+            <div class="modal-body">
+                <br/>
+                <span id="disc"></span>
+                <h5 class="modal-title">Erro ao atualizar dados.</h5>
+                <br/>
+            </div>
+            <div class="modal-footer">
 
-				<h4 class="modal-title">Atualizar Convocação de Candidato.</h4>
-			</div>
-			<div class="modal-body">
-				<br />
-				<span id="disc"></span>
-				<h5 class="modal-title">Erro ao atualizar dados.</h5>
-				<br />
-			</div>
-			<div class="modal-footer">
-
-				<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-			</div>
-		</div>
-
-	</div>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
 </div>
 <div>
-	<button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
 </div>
 <script src="~/Scripts/Processos/AtualizarStatusEstudante/AtualizarStatusEstudante.js"></script>

@@ -1,8 +1,8 @@
 ﻿namespace SisConv.Domain.Enums
 {
-	public enum AssuntosEmail
+    public enum AssuntosEmail
     {
-		Convocacao,
-		EsqueciSenha	
+        Convocacao,
+        EsqueciSenha
     }
 }

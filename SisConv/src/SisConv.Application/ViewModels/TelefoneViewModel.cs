@@ -11,8 +11,7 @@ namespace SisConv.Application.ViewModels
             TelefoneId = Guid.NewGuid();
         }
 
-        [Key]
-        public Guid TelefoneId { get; set; }
+        [Key] public Guid TelefoneId { get; set; }
 
         public Pessoa PessoaId { get; set; }
 

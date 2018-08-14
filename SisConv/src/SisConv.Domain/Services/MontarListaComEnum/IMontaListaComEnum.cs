@@ -2,8 +2,8 @@
 
 namespace SisConv.Domain.Services
 {
-	public interface IMontaListaComEnum
+    public interface IMontaListaComEnum
     {
-	    Dictionary<TEnum, string> MontarListaOpoes<TEnum>();
+        Dictionary<TEnum, string> MontarListaOpoes<TEnum>();
     }
 }

@@ -41,41 +41,41 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.ProcessoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConvocadoId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DataEntregaDocumentos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.HorarioEntregaDocumento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnderecoEntregaDocumento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.EnviouEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Desistente)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CandidatosSelecionados)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ConvocacaoId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ConvocacaoId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ConvocacaoId })
-        </td>
-    </tr>
-}
-
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProcessoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConvocadoId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataEntregaDocumentos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HorarioEntregaDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnderecoEntregaDocumento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EnviouEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Desistente)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CandidatosSelecionados)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.ConvocacaoId}) |
+                @Html.ActionLink("Details", "Details", new {id = item.ConvocacaoId}) |
+                @Html.ActionLink("Delete", "Delete", new {id = item.ConvocacaoId})
+            </td>
+        </tr>
+    }
 </table>

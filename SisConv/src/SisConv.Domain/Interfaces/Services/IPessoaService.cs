@@ -13,6 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Pessoa Update(Pessoa obj);
         void Remove(Guid id);
         IEnumerable<Pessoa> Search(Expression<Func<Pessoa, bool>> predicate);
-		Pessoa GetOne(Expression<Func<Pessoa, bool>> predicate);
-	}
+        Pessoa GetOne(Expression<Func<Pessoa, bool>> predicate);
+    }
 }

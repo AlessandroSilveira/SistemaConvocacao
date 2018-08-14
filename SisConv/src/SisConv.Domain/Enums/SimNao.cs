@@ -2,11 +2,9 @@
 
 namespace SisConv.Domain.Enums
 {
-	public enum SimNao
+    public enum SimNao
     {
-	    [Description("Sim")]
-	    S,
-	    [Description("Não")]
-	    N
-	}
+        [Description("Sim")] S,
+        [Description("Não")] N
+    }
 }

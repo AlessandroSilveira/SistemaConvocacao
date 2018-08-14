@@ -10,15 +10,13 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-    public class AdminAppService : ApplicationService , IAdminAppService
+    public class AdminAppService : ApplicationService, IAdminAppService
     {
         private readonly IAdminService _adminService;
-	   
 
         public AdminAppService(IUnitOfWork unitOfWork, IAdminService adminService) : base(unitOfWork)
         {
-	        _adminService = adminService;
-	        
+            _adminService = adminService;
         }
 
         public void Dispose()
@@ -65,9 +63,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Admin>, IEnumerable<Admin2ViewModel>>(_adminService.Search(predicate));
         }
 
-		public Admin2ViewModel GetOne(Expression<Func<Admin, bool>> predicate)
-		{
-			return Mapper.Map<Admin, Admin2ViewModel>(_adminService.GetOne(predicate));
-		}
-	}
+        public Admin2ViewModel GetOne(Expression<Func<Admin, bool>> predicate)
+        {
+            return Mapper.Map<Admin, Admin2ViewModel>(_adminService.GetOne(predicate));
+        }
+    }
 }

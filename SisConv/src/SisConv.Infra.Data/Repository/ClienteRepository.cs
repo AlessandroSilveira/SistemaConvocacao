@@ -5,11 +5,10 @@ using SisConv.Infra.Data.Repository.Base;
 
 namespace SisConv.Infra.Data.Repository
 {
-    public class ClienteRepository : RepositoryBase<Cliente> , IClienteRepository
+    public class ClienteRepository : RepositoryBase<Cliente>, IClienteRepository
     {
         public ClienteRepository(SisConvContext context) : base(context)
         {
-            
         }
     }
 }

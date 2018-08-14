@@ -1,7 +1,7 @@
 ﻿namespace SisConv.Domain.Services.PasswordGenerator
 {
-	public interface IPasswordGenerator
-	{
-		string GetPassword();
-	}
+    public interface IPasswordGenerator
+    {
+        string GetPassword();
+    }
 }

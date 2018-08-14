@@ -8,8 +8,8 @@
 
 <h3>Tem certeza que deseja excluir essa convocação?</h3>
 <div>
-   
-    <hr />
+
+    <hr/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Nome)
@@ -23,49 +23,49 @@
             @Html.DisplayNameFor(model => model.DataCriacao)
         </dt>
 
-	    <dd>
-		    @Html.DisplayFor(model => model.DataCriacao)
-	    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.DataCriacao)
+        </dd>
 
-	    <dt>
-		    @Html.DisplayNameFor(model => model.TextoDeAceitacaoDaConvocacao)
-	    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.TextoDeAceitacaoDaConvocacao)
+        </dt>
 
-	    <dd>
-		    @Html.DisplayFor(model => model.TextoDeAceitacaoDaConvocacao)
-	    </dd>
-		
-	    <dt>
-		    @Html.DisplayNameFor(model => model.TextoInicialTelaConvocado)
-	    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.TextoDeAceitacaoDaConvocacao)
+        </dd>
 
-	    <dd>
-		    @Html.DisplayFor(model => model.TextoInicialTelaConvocado)
-	    </dd>
-		
-	    <dt>
-		    @Html.DisplayNameFor(model => model.TextoParaDesistentes)
-	    </dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.TextoInicialTelaConvocado)
+        </dt>
 
-	    <dd>
-		    @Html.DisplayFor(model => model.TextoParaDesistentes)
-	    </dd>
+        <dd>
+            @Html.DisplayFor(model => model.TextoInicialTelaConvocado)
+        </dd>
 
-	    <dt>
+        <dt>
+            @Html.DisplayNameFor(model => model.TextoParaDesistentes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TextoParaDesistentes)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Ativo)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Ativo)
         </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default"/> |
             @Html.ActionLink("Voltar", "Index")
         </div>
     }

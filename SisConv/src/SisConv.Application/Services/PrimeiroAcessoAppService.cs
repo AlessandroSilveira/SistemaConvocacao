@@ -10,64 +10,65 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-	public class PrimeiroAcessoAppService : ApplicationService , IPrimeiroAcessoAppService
-	{
-	    private readonly IPrimeiroAcessoService _primeiroAcessoService;
-		
+    public class PrimeiroAcessoAppService : ApplicationService, IPrimeiroAcessoAppService
+    {
+        private readonly IPrimeiroAcessoService _primeiroAcessoService;
 
-	    public PrimeiroAcessoAppService(IUnitOfWork unitOfWork, IPrimeiroAcessoService primeiroAcessoService) : base(unitOfWork)
-	    {
-	        _primeiroAcessoService = primeiroAcessoService;
-		    
-	    }
-
-	    public void Dispose()
-	    {
-	        _primeiroAcessoService.Dispose();
-	    }
-
-	    public PrimeiroAcessoViewModel Add(PrimeiroAcessoViewModel obj)
-	    {
-	        var primeiroAcesso = Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj);
-	        BeginTransaction();
-	        _primeiroAcessoService.Add(primeiroAcesso);
-	        Commit();
-	        return obj;
+        public PrimeiroAcessoAppService(IUnitOfWork unitOfWork, IPrimeiroAcessoService primeiroAcessoService) :
+            base(unitOfWork)
+        {
+            _primeiroAcessoService = primeiroAcessoService;
         }
 
-	    public PrimeiroAcessoViewModel GetById(Guid id)
-	    {
-	        return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetById(id));
+        public void Dispose()
+        {
+            _primeiroAcessoService.Dispose();
         }
 
-	    public IEnumerable<PrimeiroAcessoViewModel> GetAll()
-	    {
-	        return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService.GetAll());
+        public PrimeiroAcessoViewModel Add(PrimeiroAcessoViewModel obj)
+        {
+            var primeiroAcesso = Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj);
+            BeginTransaction();
+            _primeiroAcessoService.Add(primeiroAcesso);
+            Commit();
+            return obj;
         }
 
-	    public PrimeiroAcessoViewModel Update(PrimeiroAcessoViewModel obj)
-	    {
-	        BeginTransaction();
-	        _primeiroAcessoService.Update(Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj));
-	        Commit();
-	        return obj;
+        public PrimeiroAcessoViewModel GetById(Guid id)
+        {
+            return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetById(id));
         }
 
-	    public void Remove(Guid id)
-	    {
-	        BeginTransaction();
-	        _primeiroAcessoService.Remove(id);
-	        Commit();
+        public IEnumerable<PrimeiroAcessoViewModel> GetAll()
+        {
+            return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService
+                .GetAll());
         }
 
-	    public IEnumerable<PrimeiroAcessoViewModel> Search(Expression<Func<PrimeiroAcesso, bool>> predicate)
-	    {
-	        return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(_primeiroAcessoService.Search(predicate));
+        public PrimeiroAcessoViewModel Update(PrimeiroAcessoViewModel obj)
+        {
+            BeginTransaction();
+            _primeiroAcessoService.Update(Mapper.Map<PrimeiroAcessoViewModel, PrimeiroAcesso>(obj));
+            Commit();
+            return obj;
         }
 
-		public PrimeiroAcessoViewModel GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate)
-		{
-			return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetOne(predicate));
-		}
-	}
+        public void Remove(Guid id)
+        {
+            BeginTransaction();
+            _primeiroAcessoService.Remove(id);
+            Commit();
+        }
+
+        public IEnumerable<PrimeiroAcessoViewModel> Search(Expression<Func<PrimeiroAcesso, bool>> predicate)
+        {
+            return Mapper.Map<IEnumerable<PrimeiroAcesso>, IEnumerable<PrimeiroAcessoViewModel>>(
+                _primeiroAcessoService.Search(predicate));
+        }
+
+        public PrimeiroAcessoViewModel GetOne(Expression<Func<PrimeiroAcesso, bool>> predicate)
+        {
+            return Mapper.Map<PrimeiroAcesso, PrimeiroAcessoViewModel>(_primeiroAcessoService.GetOne(predicate));
+        }
+    }
 }

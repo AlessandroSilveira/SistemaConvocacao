@@ -1,6 +1,5 @@
 ﻿$(document).ready(function () {
     $("#painel1").fadeIn(2000);
-    
 
     $("#seguir_painel2").click(function () {
         $("#painel1").fadeOut(1000,
@@ -56,7 +55,7 @@
     $("#seguir_painel5").click(function () {
         $("#mensagem_painel4").html("");
         var empresa = $("#Empresa").val();
-        
+
         if (empresa === null || empresa === "") {
             $("#mensagem_painel4").html("*O campo Empresa não pode estar vazio.");
             return false;
@@ -120,7 +119,6 @@
             $("#Telefone").val(telefone4);
         }
 
-
         $("#painel6").fadeOut(1000,
             function () {
                 $("#painel7").fadeIn(1000);
@@ -161,7 +159,7 @@
                 $("#painel9").fadeIn(1000);
             });
     });
-    $("#seguir_painel10").click(function() {
+    $("#seguir_painel10").click(function () {
         $("#form").submit();
     });
 });
@@ -175,9 +173,7 @@ function validacaoEmail(field) {
     }
 }
 
-
 function validarCNPJ(cnpj) {
-
     cnpj = cnpj.replace(/[^\d]+/g, "");
 
     if (cnpj === "") return false;
@@ -228,5 +224,4 @@ function validarCNPJ(cnpj) {
         return false;
 
     return true;
-
 }

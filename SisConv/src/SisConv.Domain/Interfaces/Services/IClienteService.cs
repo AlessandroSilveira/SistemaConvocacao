@@ -13,6 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Cliente Update(Cliente obj);
         void Remove(Guid id);
         IEnumerable<Cliente> Search(Expression<Func<Cliente, bool>> predicate);
-		Cliente GetOne(Expression<Func<Cliente, bool>> predicate);
-	}
+        Cliente GetOne(Expression<Func<Cliente, bool>> predicate);
+    }
 }

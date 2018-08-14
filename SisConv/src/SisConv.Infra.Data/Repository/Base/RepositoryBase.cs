@@ -11,8 +11,8 @@ namespace SisConv.Infra.Data.Repository.Base
 {
     public class RepositoryBase<TEntity> : IRepositoryBase<TEntity> where TEntity : class
     {
-        protected SisConvContext SisConvContext;
         protected DbSet<TEntity> DbSet;
+        protected SisConvContext SisConvContext;
 
         public RepositoryBase(SisConvContext sisConvContext)
         {
@@ -68,9 +68,9 @@ namespace SisConv.Infra.Data.Repository.Base
             GC.SuppressFinalize(this);
         }
 
-		public TEntity GetOne(Expression<Func<TEntity, bool>> predicate)
-		{
-			return DbSet.Where(predicate).FirstOrDefault();
-		}
-	}
+        public TEntity GetOne(Expression<Func<TEntity, bool>> predicate)
+        {
+            return DbSet.Where(predicate).FirstOrDefault();
+        }
+    }
 }

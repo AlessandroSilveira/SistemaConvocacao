@@ -7,38 +7,39 @@
 <h2>@ViewBag.Title</h2>
 
 <p>
-    @Html.ActionLink("Novo Cargo", "Create", new{@Id=@ViewBag.id},null)
+    @Html.ActionLink("Novo Cargo", "Create", new {Id = ViewBag.id}, null)
 </p>
 <table class="table">
     <tr>
-	    <th>
-		    @Html.DisplayNameFor(model => model.CodigoCargo)
-	    </th>
-	    <th>
-		    @Html.DisplayNameFor(model => model.Nome)
-	    </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CodigoCargo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Ativo)
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-	    <td>
-		    @Html.DisplayFor(modelItem => item.CodigoCargo)
-	    </td>
-	    <td>
-		    @Html.DisplayFor(modelItem => item.Nome)
-	    </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Ativo)
-        </td>
-        <td>
-            @Html.ActionLink("Editar", "Edit", new { id=item.CargoId }) |
-            @Html.ActionLink("Detalhes", "Details", new { id=item.CargoId, ConvocacaoId = @ViewBag.id }) |
-            @Html.ActionLink("Excluír", "Delete", new { id=item.CargoId, ConvocacaoId = @ViewBag.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CodigoCargo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ativo)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new {id = item.CargoId}) |
+                @Html.ActionLink("Detalhes", "Details", new {id = item.CargoId, ConvocacaoId = ViewBag.id}) |
+                @Html.ActionLink("Excluír", "Delete", new {id = item.CargoId, ConvocacaoId = ViewBag.id})
+            </td>
+        </tr>
+    }
 </table>

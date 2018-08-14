@@ -10,8 +10,7 @@ namespace SisConv.Application.ViewModels
             PessoaId = Guid.NewGuid();
         }
 
-        [Key]
-        public Guid PessoaId { get; set; }
+        [Key] public Guid PessoaId { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Nome Do Candidato")]

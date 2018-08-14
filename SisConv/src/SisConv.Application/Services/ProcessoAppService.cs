@@ -13,12 +13,10 @@ namespace SisConv.Application.Services
     public class ProcessoAppService : ApplicationService, IProcessoAppService
     {
         private readonly IProcessoService _processoService;
-	    
 
         public ProcessoAppService(IUnitOfWork unitOfWork, IProcessoService processoService) : base(unitOfWork)
         {
-	        _processoService = processoService;
-	        
+            _processoService = processoService;
         }
 
         public void Dispose()
@@ -42,7 +40,7 @@ namespace SisConv.Application.Services
 
         public IEnumerable<ProcessoViewModel> GetAll()
         {
-            return Mapper.Map<IEnumerable<Processo>,IEnumerable<ProcessoViewModel> >(_processoService.GetAll());
+            return Mapper.Map<IEnumerable<Processo>, IEnumerable<ProcessoViewModel>>(_processoService.GetAll());
         }
 
         public ProcessoViewModel Update(ProcessoViewModel obj)
@@ -62,12 +60,13 @@ namespace SisConv.Application.Services
 
         public IEnumerable<ProcessoViewModel> Search(Expression<Func<Processo, bool>> predicate)
         {
-            return Mapper.Map<IEnumerable<Processo>, IEnumerable<ProcessoViewModel>>(_processoService.Search(predicate));
+            return Mapper.Map<IEnumerable<Processo>, IEnumerable<ProcessoViewModel>>(
+                _processoService.Search(predicate));
         }
 
-		public ProcessoViewModel GetOne(Expression<Func<Processo, bool>> predicate)
-		{
-			return Mapper.Map<Processo, ProcessoViewModel>(_processoService.GetOne(predicate));
-		}
-	}
+        public ProcessoViewModel GetOne(Expression<Func<Processo, bool>> predicate)
+        {
+            return Mapper.Map<Processo, ProcessoViewModel>(_processoService.GetOne(predicate));
+        }
+    }
 }

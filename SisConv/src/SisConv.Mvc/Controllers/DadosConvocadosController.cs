@@ -7,83 +7,86 @@ using SisConv.Application.ViewModels;
 
 namespace SisConv.Mvc.Controllers
 {
-	public class DadosConvocadosController : Controller
-	{
-		private readonly IDadosConvocacaoAppService _dadosConvocacaoAppService;
+    [Authorize(Roles = "Cliente")]
+    public class DadosConvocadosController : Controller
+    {
+        private readonly IDadosConvocacaoAppService _dadosConvocacaoAppService;
 
-		public DadosConvocadosController(IDadosConvocacaoAppService dadosConvocacaoAppService)
-		{
-			_dadosConvocacaoAppService = dadosConvocacaoAppService;
-		}
-		
-		public ActionResult Create(Guid id)
-		{
-			ViewBag.id = id;
-			return View();
-		}
-		
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public ActionResult Create( DadosConvocadosViewModel dadosConvocadosViewModel)
-		{
-			if (!ModelState.IsValid) return View(dadosConvocadosViewModel);
+        public DadosConvocadosController(IDadosConvocacaoAppService dadosConvocacaoAppService)
+        {
+            _dadosConvocacaoAppService = dadosConvocacaoAppService;
+        }
 
-			var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
-			var arquivo = Request.Files[0];
-			if (arquivo == null) return View(dadosConvocadosViewModel);
-			var nomeArquivo = Path.GetFileName(arquivo.FileName);
+        public ActionResult Create(Guid id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
 
-			if (SalvarArquivoConvocados(out _))
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(DadosConvocadosViewModel dadosConvocadosViewModel)
+        {
+            if (!ModelState.IsValid) return View(dadosConvocadosViewModel);
 
-				_dadosConvocacaoAppService.SalvarCargos(dadosConvocadosViewModel.Id,
-					string.Format("{0}{1}", pathArquivo, nomeArquivo));
-			_dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id,
-				string.Format("{0}{1}", pathArquivo, nomeArquivo));
+            var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+            var arquivo = Request.Files[0];
+            if (arquivo == null) return View(dadosConvocadosViewModel);
+            var nomeArquivo = Path.GetFileName(arquivo.FileName);
 
-			return RedirectToAction("Index", "Processos");
-		}
+            if (SalvarArquivoConvocados(out _))
 
-		private bool SalvarArquivoConvocados(out ActionResult view)
-		{
-			var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
-			var arquivo = Request.Files[0];
-			if (arquivo == null)
-			{
-				view = null;
-				return false;
-			}
-			var nomeArquivo = Path.GetFileName(arquivo.FileName);
-			var strExtension = Path.GetExtension(arquivo.FileName)?.ToLower();
+                _dadosConvocacaoAppService.SalvarCargos(dadosConvocadosViewModel.Id,
+                    string.Format("{0}{1}", pathArquivo, nomeArquivo));
+            _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id,
+                string.Format("{0}{1}", pathArquivo, nomeArquivo));
 
-			if (VerificaArquivoExcel(out view, strExtension)) return true;
+            return RedirectToAction("Index", "Processos");
+        }
 
-			if (!Directory.Exists(pathArquivo))
-				Directory.CreateDirectory(pathArquivo);
+        private bool SalvarArquivoConvocados(out ActionResult view)
+        {
+            var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
+            var arquivo = Request.Files[0];
+            if (arquivo == null)
+            {
+                view = null;
+                return false;
+            }
 
-			arquivo.SaveAs(pathArquivo + nomeArquivo);
-			return true;
-		}
+            var nomeArquivo = Path.GetFileName(arquivo.FileName);
+            var strExtension = Path.GetExtension(arquivo.FileName)?.ToLower();
 
-		private bool VerificaArquivoExcel(out ActionResult view, string strExtension)
-		{
-			if (!strExtension.Equals(".xls") && !strExtension.Equals(".xlsx"))
-			{
-				ModelState.AddModelError("Erro", "Arquivo Inválido");
-				{
-					view = View();
-					return true;
-				}
-			}
-			view = null;
-			return false;
-		}
+            if (VerificaArquivoExcel(out view, strExtension)) return true;
 
-		protected override void Dispose(bool disposing)
-		{
-			if (disposing)
-				_dadosConvocacaoAppService.Dispose();
+            if (!Directory.Exists(pathArquivo))
+                Directory.CreateDirectory(pathArquivo);
 
-			base.Dispose(disposing);
-		}
-	}
+            arquivo.SaveAs(pathArquivo + nomeArquivo);
+            return true;
+        }
+
+        private bool VerificaArquivoExcel(out ActionResult view, string strExtension)
+        {
+            if (!strExtension.Equals(".xls") && !strExtension.Equals(".xlsx"))
+            {
+                ModelState.AddModelError("Erro", "Arquivo Inválido");
+                {
+                    view = View();
+                    return true;
+                }
+            }
+
+            view = null;
+            return false;
+        }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+                _dadosConvocacaoAppService.Dispose();
+
+            base.Dispose(disposing);
+        }
+    }
 }

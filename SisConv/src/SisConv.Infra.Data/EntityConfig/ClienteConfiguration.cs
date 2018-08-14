@@ -32,13 +32,13 @@ namespace SisConv.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(10);
 
-	        Property(c => c.Imagem)
-		        .IsRequired();
+            Property(c => c.Imagem)
+                .IsRequired();
 
-	        Property(c => c.Ativo)
-		        .IsRequired();
+            Property(c => c.Ativo)
+                .IsRequired();
 
-			ToTable("Clientes");
+            ToTable("Clientes");
         }
     }
 }

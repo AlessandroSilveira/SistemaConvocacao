@@ -3,7 +3,7 @@ using SisConv.Domain.Entities;
 
 namespace SisConv.Infra.Data.EntityConfig
 {
-    public class TelefoneConfiguration :  EntityTypeConfiguration<Telefone>
+    public class TelefoneConfiguration : EntityTypeConfiguration<Telefone>
     {
         public TelefoneConfiguration()
         {

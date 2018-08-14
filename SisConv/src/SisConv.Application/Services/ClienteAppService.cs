@@ -10,21 +10,18 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-    public class ClienteAppService : ApplicationService , IClienteAppService
+    public class ClienteAppService : ApplicationService, IClienteAppService
     {
-
         private readonly IClienteService _clienteService;
-	   
 
-		public ClienteAppService(IUnitOfWork unitOfWork, IClienteService clienteService) : base(unitOfWork)
+        public ClienteAppService(IUnitOfWork unitOfWork, IClienteService clienteService) : base(unitOfWork)
         {
             _clienteService = clienteService;
-	      
         }
 
         public void Dispose()
         {
-           _clienteService.Dispose();
+            _clienteService.Dispose();
         }
 
         public ClienteViewModel Add(ClienteViewModel obj)
@@ -66,9 +63,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Cliente>, IEnumerable<ClienteViewModel>>(_clienteService.Search(predicate));
         }
 
-		public ClienteViewModel GetOne(Expression<Func<Cliente, bool>> predicate)
-		{
-			return Mapper.Map<Cliente, ClienteViewModel>(_clienteService.GetOne(predicate));
-		}
-	}
+        public ClienteViewModel GetOne(Expression<Func<Cliente, bool>> predicate)
+        {
+            return Mapper.Map<Cliente, ClienteViewModel>(_clienteService.GetOne(predicate));
+        }
+    }
 }

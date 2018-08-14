@@ -34,6 +34,5 @@ namespace SisConv.Domain.Entities
         public string Cpf { get; set; }
         public string Email { get; set; }
         public bool Afro { get; set; }
-
     }
 }

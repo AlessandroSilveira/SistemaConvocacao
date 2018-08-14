@@ -13,11 +13,10 @@ namespace SisConv.Application.Services
     public class UsuarioAppService : ApplicationService, IUsuarioAppService
     {
         private readonly IUsuarioService _usuarioService;
-	   
+
         public UsuarioAppService(IUnitOfWork unitOfWork, IUsuarioService usuarioService) : base(unitOfWork)
         {
-	        _usuarioService = usuarioService;
-	      
+            _usuarioService = usuarioService;
         }
 
         public void Dispose()
@@ -64,9 +63,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Usuario>, IEnumerable<UsuarioViewModel>>(_usuarioService.Search(predicate));
         }
 
-		public UsuarioViewModel GetOne(Expression<Func<Usuario, bool>> predicate)
-		{
-			return Mapper.Map<Usuario, UsuarioViewModel>(_usuarioService.GetOne(predicate));
-		}
-	}
+        public UsuarioViewModel GetOne(Expression<Func<Usuario, bool>> predicate)
+        {
+            return Mapper.Map<Usuario, UsuarioViewModel>(_usuarioService.GetOne(predicate));
+        }
+    }
 }

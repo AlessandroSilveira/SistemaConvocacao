@@ -13,13 +13,11 @@ namespace SisConv.Application.Services
     public class CargoAppService : ApplicationService, ICargoAppService
     {
         private readonly ICargoService _cargoService;
-	 
 
-		public CargoAppService(IUnitOfWork unitOfWork, ICargoService cargoService) : base(unitOfWork)
-		{
-			_cargoService = cargoService;
-			
-		}
+        public CargoAppService(IUnitOfWork unitOfWork, ICargoService cargoService) : base(unitOfWork)
+        {
+            _cargoService = cargoService;
+        }
 
         public void Dispose()
         {
@@ -42,7 +40,7 @@ namespace SisConv.Application.Services
 
         public IEnumerable<CargoViewModel> GetAll()
         {
-            return Mapper.Map<IEnumerable<Cargo>,IEnumerable<CargoViewModel>>(_cargoService.GetAll());
+            return Mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoViewModel>>(_cargoService.GetAll());
         }
 
         public CargoViewModel Update(CargoViewModel obj)
@@ -65,9 +63,9 @@ namespace SisConv.Application.Services
             return Mapper.Map<IEnumerable<Cargo>, IEnumerable<CargoViewModel>>(_cargoService.Search(predicate));
         }
 
-		public CargoViewModel GetOne(Expression<Func<Cargo, bool>> predicate)
-		{
-			return Mapper.Map<Cargo, CargoViewModel>(_cargoService.GetOne(predicate));
-		}
-	}
+        public CargoViewModel GetOne(Expression<Func<Cargo, bool>> predicate)
+        {
+            return Mapper.Map<Cargo, CargoViewModel>(_cargoService.GetOne(predicate));
+        }
+    }
 }

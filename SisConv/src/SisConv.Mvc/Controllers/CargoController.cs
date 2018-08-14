@@ -11,7 +11,6 @@ namespace SisConv.Mvc.Controllers
     {
         private readonly ICargoAppService _cargoAppService;
 
-
         public CargoController(ICargoAppService cargoAppService)
         {
             _cargoAppService = cargoAppService;
@@ -21,13 +20,13 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Index(Guid id)
         {
             ViewBag.id = id;
-            return View(_cargoAppService.GetAll().OrderBy(a=>a.CodigoCargo));
+            return View(_cargoAppService.GetAll().OrderBy(a => a.CodigoCargo));
         }
 
         // GET: Cargo/Details/5
         public ActionResult Details(Guid? id, Guid ProcessoId)
         {
-	        ViewBag.Id = ProcessoId;
+            ViewBag.Id = ProcessoId;
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cargoViewModel = _cargoAppService.GetById(Guid.Parse(id.ToString()));
             return cargoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(cargoViewModel);
@@ -41,7 +40,7 @@ namespace SisConv.Mvc.Controllers
         }
 
         // POST: Cargo/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -50,7 +49,7 @@ namespace SisConv.Mvc.Controllers
             if (!ModelState.IsValid) return View(cargoViewModel);
             cargoViewModel.CargoId = Guid.NewGuid();
             _cargoAppService.Add(cargoViewModel);
-            return RedirectToAction("Index",new{@Id= cargoViewModel.ProcessoId });
+            return RedirectToAction("Index", new {Id = cargoViewModel.ProcessoId});
         }
 
         // GET: Cargo/Edit/5
@@ -62,33 +61,34 @@ namespace SisConv.Mvc.Controllers
         }
 
         // POST: Cargo/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit( CargoViewModel cargoViewModel)
+        public ActionResult Edit(CargoViewModel cargoViewModel)
         {
             if (!ModelState.IsValid) return View(cargoViewModel);
             _cargoAppService.Update(cargoViewModel);
-            return RedirectToAction("Index",new{@Id= cargoViewModel.ProcessoId });
+            return RedirectToAction("Index", new {Id = cargoViewModel.ProcessoId});
         }
 
         // GET: Cargo/Delete/5
         public ActionResult Delete(Guid? id, Guid ProcessoId)
         {
-	        ViewBag.Id = ProcessoId;
+            ViewBag.Id = ProcessoId;
 
-			if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var cargoViewModel = _cargoAppService.GetById(Guid.Parse(id.ToString()));
             return cargoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(cargoViewModel);
         }
 
         // POST: Cargo/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost]
+        [ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
-          _cargoAppService.Remove(id);
+            _cargoAppService.Remove(id);
             return RedirectToAction("Index");
         }
 
@@ -96,7 +96,7 @@ namespace SisConv.Mvc.Controllers
         {
             if (disposing)
                 _cargoAppService.Dispose();
-            
+
             base.Dispose(disposing);
         }
     }

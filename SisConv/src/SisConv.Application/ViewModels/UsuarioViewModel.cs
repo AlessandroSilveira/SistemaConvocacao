@@ -10,8 +10,7 @@ namespace SisConv.Application.ViewModels
             UsuarioId = Guid.NewGuid();
         }
 
-        [Key]
-        public Guid UsuarioId { get; set; }
+        [Key] public Guid UsuarioId { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Nome")]

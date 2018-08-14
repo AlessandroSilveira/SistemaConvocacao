@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace SisConv.Domain.Services
 {
-	public class ListasOpcoes : IListaOpcoes
+    public class ListasOpcoes : IListaOpcoes
     {
         private readonly IEnumDescription _enumDescription;
         private readonly IMontaListaComEnum _montaListaComEnum;
@@ -19,9 +19,9 @@ namespace SisConv.Domain.Services
             return _enumDescription.GetEnumDescription(e);
         }
 
-	    public Dictionary<TEnum, string> MontarListaOpcoes<TEnum>()
-	    {
-		    return _montaListaComEnum.MontarListaOpoes<TEnum>();
-	    }	   
-	}
+        public Dictionary<TEnum, string> MontarListaOpcoes<TEnum>()
+        {
+            return _montaListaComEnum.MontarListaOpoes<TEnum>();
+        }
+    }
 }

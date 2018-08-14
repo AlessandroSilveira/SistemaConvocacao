@@ -9,14 +9,21 @@ namespace SisConv.Application.Interfaces.Repository
     public interface IDadosConvocacaoAppService : IDisposable
     {
         DadosConvocadosViewModel Add(DadosConvocadosViewModel obj);
-        DadosConvocadosViewModel GetById(Guid id);
-        IEnumerable<DadosConvocadosViewModel> GetAll();
-        DadosConvocadosViewModel Update(DadosConvocadosViewModel obj);
-        void Remove(Guid id);
-        IEnumerable<DadosConvocadosViewModel> Search(Expression<Func<Convocado, bool>> predicate);
-        void SalvarCandidatos(Guid id, string file);
-	    void SalvarCargos(Guid id, string format);
 
-		DadosConvocadosViewModel GetOne(Expression<Func<Convocado, bool>> predicate);
-	}
+        DadosConvocadosViewModel GetById(Guid id);
+
+        IEnumerable<DadosConvocadosViewModel> GetAll();
+
+        DadosConvocadosViewModel Update(DadosConvocadosViewModel obj);
+
+        void Remove(Guid id);
+
+        IEnumerable<DadosConvocadosViewModel> Search(Expression<Func<Convocado, bool>> predicate);
+
+        void SalvarCandidatos(Guid id, string file);
+
+        void SalvarCargos(Guid id, string format);
+
+        DadosConvocadosViewModel GetOne(Expression<Func<Convocado, bool>> predicate);
+    }
 }

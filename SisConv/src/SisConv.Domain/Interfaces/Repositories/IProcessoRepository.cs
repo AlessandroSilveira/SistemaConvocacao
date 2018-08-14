@@ -2,8 +2,7 @@
 
 namespace SisConv.Domain.Interfaces.Repositories
 {
-    public interface IProcessoRepository: IRepositoryBase<Processo>
+    public interface IProcessoRepository : IRepositoryBase<Processo>
     {
-        
     }
 }

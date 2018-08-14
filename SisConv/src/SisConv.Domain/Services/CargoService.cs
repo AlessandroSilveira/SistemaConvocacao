@@ -51,9 +51,9 @@ namespace SisConv.Domain.Services
             return _cargoRepository.Search(predicate);
         }
 
-		public Cargo GetOne(Expression<Func<Cargo, bool>> predicate)
-		{
-			return _cargoRepository.GetOne(predicate);
-		}
-	}
+        public Cargo GetOne(Expression<Func<Cargo, bool>> predicate)
+        {
+            return _cargoRepository.GetOne(predicate);
+        }
+    }
 }

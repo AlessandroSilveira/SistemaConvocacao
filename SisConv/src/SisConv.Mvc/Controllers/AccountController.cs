@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Web;
@@ -8,48 +9,44 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
-using SisConv.Infra.CrossCutting.Identity.Model;
-using SisConv.Infra.CrossCutting.Identity.Configuration;
-using System;
 using SisConv.Domain.Helpers;
 using SisConv.Domain.Services.PasswordGenerator;
+using SisConv.Infra.CrossCutting.Identity.Configuration;
+using SisConv.Infra.CrossCutting.Identity.Model;
 
 namespace SisConv.Mvc.Controllers
 {
-	[Authorize]
+    [Authorize(Roles = "Administrador")]
     public class AccountController : Controller
     {
+        private readonly IAdminAppService _adminAppService;
+        private readonly IConvocadoAppService _convocadoAppService;
+        private readonly IPasswordGenerator _passwordGenerator;
+
+        private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
+        private readonly ISysConfig _sysConfig;
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
-        private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
-	    private readonly IAdminAppService _adminAppService;
-		private readonly IConvocadoAppService _convocadoAppService;
-		private readonly IPasswordGenerator _passwordGenerator;
-		private readonly ISysConfig _sysConfig;
-		
+        public AccountController(
+            ApplicationUserManager userManager,
+            ApplicationSignInManager signInManager,
+            IPrimeiroAcessoAppService primeiroAcessoAppService,
+            IAdminAppService adminAppService,
+            IConvocadoAppService convocadoAppService,
+            IPasswordGenerator passwordGenerator,
+            ISysConfig sysConfig
+        )
+        {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _primeiroAcessoAppService = primeiroAcessoAppService;
+            _adminAppService = adminAppService;
+            _convocadoAppService = convocadoAppService;
+            _passwordGenerator = passwordGenerator;
+            _sysConfig = sysConfig;
+        }
 
-		public AccountController(
-			ApplicationUserManager userManager, 
-			ApplicationSignInManager signInManager, 
-			IPrimeiroAcessoAppService primeiroAcessoAppService, 
-			IAdminAppService adminAppService,
-			IConvocadoAppService convocadoAppService,
-			IPasswordGenerator passwordGenerator,
-			ISysConfig sysConfig
-			
-			)
-		{
-			_userManager = userManager;
-			_signInManager = signInManager;
-		    _primeiroAcessoAppService = primeiroAcessoAppService;
-			_adminAppService = adminAppService;
-			_convocadoAppService = convocadoAppService;
-			_passwordGenerator = passwordGenerator;
-			_sysConfig = sysConfig;
-			
-		}	
-       
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -57,79 +54,76 @@ namespace SisConv.Mvc.Controllers
             return View();
         }
 
-	    [AllowAnonymous]
-		public ActionResult PrimeiroAcesso()
-		{
-			return View();
-		}
-		// POST: /Account/Login
-		[HttpPost]
-		[AllowAnonymous]
-		[ValidateAntiForgeryToken]
-		public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
-		{
-			if (!ModelState.IsValid)
-				return View(model);
+        [AllowAnonymous]
+        public ActionResult PrimeiroAcesso()
+        {
+            return View();
+        }
 
-			
+        // POST: /Account/Login
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
+        {
+            if (!ModelState.IsValid)
+                return View(model);
 
-			var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: true);
-			switch (result)
-			{
-				case SignInStatus.Success:
-					var user = _userManager.FindByEmail(model.Email);
-					var roles = _userManager.GetRoles(user.Id);
-					if (roles[0].ToString() == "Convocado")
-					{
-						VerificaPrimeiroAcesso(model);
-					}
-					
-					return RedirectToLocal(returnUrl);
-				case SignInStatus.LockedOut:
-					return View("Lockout");
-				case SignInStatus.RequiresVerification:
-					return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-				case SignInStatus.Failure:
-				default:
-					ModelState.AddModelError("", "Login ou Senha incorretos.");
-					return View(model);
-			}
-		}
+            var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, true);
+            switch (result)
+            {
+                case SignInStatus.Success:
+                    var user = _userManager.FindByEmail(model.Email);
+                    var roles = _userManager.GetRoles(user.Id);
+                    if (roles[0] == "Convocado") VerificaPrimeiroAcesso(model);
 
-		private void VerificaPrimeiroAcesso(LoginViewModel model)
-		{
-			var primeiroAcesso = _primeiroAcessoAppService.Search(a => a.Email.Equals(model.Email));
+                    return RedirectToLocal(returnUrl);
 
-			var dadosConvocado = _convocadoAppService.Search(a => a.Email.Equals(model.Email)).FirstOrDefault();
+                case SignInStatus.LockedOut:
+                    return View("Lockout");
 
-			var primeiroAcessoViewModel = new PrimeiroAcessoViewModel()
-			{
-				PrimeiroAcessoId = Guid.NewGuid(),
-				Email = model.Email,
-				ConvocadoId = dadosConvocado.ConvocadoId,
-				Data = DateTime.Now
-			};
+                case SignInStatus.RequiresVerification:
+                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, model.RememberMe});
 
-			if (!primeiroAcesso.Any())
-				_primeiroAcessoAppService.Add(primeiroAcessoViewModel);
-		}
+                case SignInStatus.Failure:
+                default:
+                    ModelState.AddModelError("", "Login ou Senha incorretos.");
+                    return View(model);
+            }
+        }
 
-		// GET: /Account/VerifyCode
-		[AllowAnonymous]
+        private void VerificaPrimeiroAcesso(LoginViewModel model)
+        {
+            var primeiroAcesso = _primeiroAcessoAppService.Search(a => a.Email.Equals(model.Email));
+
+            var dadosConvocado = _convocadoAppService.Search(a => a.Email.Equals(model.Email)).FirstOrDefault();
+
+            var primeiroAcessoViewModel = new PrimeiroAcessoViewModel
+            {
+                PrimeiroAcessoId = Guid.NewGuid(),
+                Email = model.Email,
+                ConvocadoId = dadosConvocado.ConvocadoId,
+                Data = DateTime.Now
+            };
+
+            if (!primeiroAcesso.Any())
+                _primeiroAcessoAppService.Add(primeiroAcessoViewModel);
+        }
+
+        // GET: /Account/VerifyCode
+        [AllowAnonymous]
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
-            if (!await _signInManager.HasBeenVerifiedAsync())
-            {
-                return View("Error");
-            }
+            if (!await _signInManager.HasBeenVerifiedAsync()) return View("Error");
             var user = await _userManager.FindByIdAsync(await _signInManager.GetVerifiedUserIdAsync());
             if (user != null)
             {
                 ViewBag.Status = "DEMO: Caso o código não chegue via " + provider + " o código é: ";
                 ViewBag.CodigoAcesso = await _userManager.GenerateTwoFactorTokenAsync(user.Id, provider);
             }
-            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
+
+            return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
         }
 
         //
@@ -139,18 +133,18 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> VerifyCode(VerifyCodeViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
 
-            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await _signInManager.TwoFactorSignInAsync(model.Provider, model.Code, model.RememberMe,
+                model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(model.ReturnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Código Inválido.");
@@ -175,18 +169,21 @@ namespace SisConv.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                    await _signInManager.SignInAsync(user, false, false);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta", "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new {userId = user.Id, code},
+                        Request.Url.Scheme);
+                    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta",
+                        "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
                     ViewBag.Link = callbackUrl;
                     return View("DisplayEmail");
                 }
+
                 AddErrors(result);
             }
 
@@ -199,10 +196,7 @@ namespace SisConv.Mvc.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> ConfirmEmail(string userId, string code)
         {
-            if (userId == null || code == null)
-            {
-                return View("Error");
-            }
+            if (userId == null || code == null) return View("Error");
             var result = await _userManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
@@ -226,19 +220,21 @@ namespace SisConv.Mvc.Controllers
             {
                 var user = await _userManager.FindByNameAsync(model.Email);
 
-                if (user == null)                                    
+                if (user == null)
                     return View("EmailNaoCadastrado");
-              
+
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha", "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
+                var callbackUrl = Url.Action("ResetPassword", "Account", new {userId = user.Id, code},
+                    Request.Url.Scheme);
+                await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha",
+                    "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
                 ViewBag.Link = callbackUrl;
                 ViewBag.Status = "DEMO: Caso o link não chegue: ";
                 ViewBag.LinkAcesso = callbackUrl;
                 return View("ForgotPasswordConfirmation");
             }
 
-            // No caso de falha, reexibir a view. 
+            // No caso de falha, reexibir a view.
             return View(model);
         }
 
@@ -265,21 +261,11 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
+            if (!ModelState.IsValid) return View(model);
             var user = await _userManager.FindByNameAsync(model.Email);
-            if (user == null)
-            {
-                // Não revelar se o usuario nao existe ou nao esta confirmado
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
+            if (user == null) return RedirectToAction("ResetPasswordConfirmation", "Account");
             var result = await _userManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
-            if (result.Succeeded)
-            {
-                return RedirectToAction("ResetPasswordConfirmation", "Account");
-            }
+            if (result.Succeeded) return RedirectToAction("ResetPasswordConfirmation", "Account");
             AddErrors(result);
             return View();
         }
@@ -300,7 +286,8 @@ namespace SisConv.Mvc.Controllers
         public ActionResult ExternalLogin(string provider, string returnUrl)
         {
             // Request a redirect to the external login provider
-            return new ChallengeResult(provider, Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
+            return new ChallengeResult(provider,
+                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
         }
 
         //
@@ -309,13 +296,16 @@ namespace SisConv.Mvc.Controllers
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
             var userId = await _signInManager.GetVerifiedUserIdAsync();
-            if (userId == null)
-            {
-                return View("Error");
-            }
+            if (userId == null) return View("Error");
             var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
-            return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
+            var factorOptions = userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose})
+                .ToList();
+            return View(new SendCodeViewModel
+            {
+                Providers = factorOptions,
+                ReturnUrl = returnUrl,
+                RememberMe = rememberMe
+            });
         }
 
         //
@@ -325,17 +315,12 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> SendCode(SendCodeViewModel model)
         {
-            if (!ModelState.IsValid)
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View();
 
             // Generate the token and send it
-            if (!await _signInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
-            {
-                return View("Error");
-            }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            if (!await _signInManager.SendTwoFactorCodeAsync(model.SelectedProvider)) return View("Error");
+            return RedirectToAction("VerifyCode",
+                new {Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe});
         }
 
         //
@@ -344,27 +329,28 @@ namespace SisConv.Mvc.Controllers
         public async Task<ActionResult> ExternalLoginCallback(string returnUrl)
         {
             var loginInfo = await AuthenticationManager.GetExternalLoginInfoAsync();
-            if (loginInfo == null)
-            {
-                return RedirectToAction("Login");
-            }
+            if (loginInfo == null) return RedirectToAction("Login");
 
             // Sign in the user with this external login provider if the user already has a login
-            var result = await _signInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
+            var result = await _signInManager.ExternalSignInAsync(loginInfo, false);
             switch (result)
             {
                 case SignInStatus.Success:
                     return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
+                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = false});
+
                 case SignInStatus.Failure:
                 default:
                     // Se ele nao tem uma conta solicite que crie uma
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
-                    return View("ExternalLoginConfirmation", new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
+                    return View("ExternalLoginConfirmation",
+                        new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
             }
         }
 
@@ -373,32 +359,28 @@ namespace SisConv.Mvc.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model,
+            string returnUrl)
         {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
+            if (User.Identity.IsAuthenticated) return RedirectToAction("Index", "Manage");
 
             if (ModelState.IsValid)
             {
                 // Pegar a informação do login externo.
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                if (info == null) return View("ExternalLoginFailure");
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
                     result = await _userManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+                        await _signInManager.SignInAsync(user, false, false);
                         return RedirectToLocal(returnUrl);
                     }
                 }
+
                 AddErrors(result);
             }
 
@@ -444,79 +426,70 @@ namespace SisConv.Mvc.Controllers
             base.Dispose(disposing);
         }
 
-	    [HttpPost]
-	    [AllowAnonymous]
-	    [ValidateAntiForgeryToken]
-		public async Task<ActionResult> PrimeiroAcesso(RegisterViewModel model)
-	    {
-			if (ModelState.IsValid)
-			{
-				model.Cnpj = Regex.Replace(model.Cnpj, "[^0-9a-zA-Z]+", "");
-				var user = new ApplicationUser { UserName = model.Email, Email = model.Email};
-			    var result = await _userManager.CreateAsync(user, model.Password);
-			    if (result.Succeeded)
-			    {
-				    await _signInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-				    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-				    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-				    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta", "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
-				    ViewBag.Link = callbackUrl;
-				    AdicionarAdministrador(model);
-				    
-					return View("DisplayEmail");
-			    }
-				AddErrors(result);
-		    }
-
-		    // If we got this far, something failed, redisplay form
-		    return View(model);
-		}
-
-	    private void AdicionarAdministrador(RegisterViewModel model)
-	    {
-		    var admin = new Admin2ViewModel()
-		    {
-			    Nome = model.Nome,
-			    Ativo = true,
-			    Email = model.Email,
-			    Empresa = model.Empresa,
-			    Cnpj = model.Cnpj,
-			    Telefone = model.Telefone,
-			    Senha = model.Password,
-                Imagem = model.Imagem
-		    };
-
-		    _adminAppService.Add(admin);
-	    }
-		   
-
-	    #region Helpers
-		// Used for XSRF protection when adding external logins
-		private const string XsrfKey = "XsrfId";
-
-        private IAuthenticationManager AuthenticationManager
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> PrimeiroAcesso(RegisterViewModel model)
         {
-            get
+            if (ModelState.IsValid)
             {
-                return HttpContext.GetOwinContext().Authentication;
+                model.Cnpj = Regex.Replace(model.Cnpj, "[^0-9a-zA-Z]+", "");
+                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var result = await _userManager.CreateAsync(user, model.Password);
+                if (result.Succeeded)
+                {
+                    await _signInManager.SignInAsync(user, false, false);
+
+                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new {userId = user.Id, code},
+                        Request.Url.Scheme);
+                    await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta",
+                        "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
+                    ViewBag.Link = callbackUrl;
+                    AdicionarAdministrador(model);
+
+                    return View("DisplayEmail");
+                }
+
+                AddErrors(result);
             }
+
+            // If we got this far, something failed, redisplay form
+            return View(model);
         }
+
+        private void AdicionarAdministrador(RegisterViewModel model)
+        {
+            var admin = new Admin2ViewModel
+            {
+                Nome = model.Nome,
+                Ativo = true,
+                Email = model.Email,
+                Empresa = model.Empresa,
+                Cnpj = model.Cnpj,
+                Telefone = model.Telefone,
+                Senha = model.Password,
+                Imagem = model.Imagem
+            };
+
+            _adminAppService.Add(admin);
+        }
+
+        #region Helpers
+
+        // Used for XSRF protection when adding external logins
+        private const string XsrfKey = "XsrfId";
+
+        private IAuthenticationManager AuthenticationManager => HttpContext.GetOwinContext().Authentication;
 
         private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors)
-            {
-                ModelState.AddModelError("", error);
-            }
+            foreach (var error in result.Errors) ModelState.AddModelError("", error);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
         {
-            if (Url.IsLocalUrl(returnUrl))
-            {
-                return Redirect(returnUrl);
-            }
+            if (Url.IsLocalUrl(returnUrl)) return Redirect(returnUrl);
             return RedirectToAction("Index", "Home");
         }
 
@@ -540,14 +513,12 @@ namespace SisConv.Mvc.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties { RedirectUri = RedirectUri };
-                if (UserId != null)
-                {
-                    properties.Dictionary[XsrfKey] = UserId;
-                }
+                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
+                if (UserId != null) properties.Dictionary[XsrfKey] = UserId;
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
+
+        #endregion Helpers
     }
 }

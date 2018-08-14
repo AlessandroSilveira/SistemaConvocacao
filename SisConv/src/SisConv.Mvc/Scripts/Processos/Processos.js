@@ -5,7 +5,7 @@
     $.ajax({
         async: true,
         type: "post",
-        data: { "opcaoConvocacao": opcaoConvocacao, "processoId": processoId, "ConvocacaoId":id },
+        data: { "opcaoConvocacao": opcaoConvocacao, "processoId": processoId, "ConvocacaoId": id },
         dataType: "json",
         url: "../AtualizarConvocacao",
         success: function (response) {

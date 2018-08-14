@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using System.Web;
 using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
@@ -11,14 +10,13 @@ using SisConv.Domain.Interfaces.Services;
 
 namespace SisConv.Application.Services
 {
-    public class ConvocadoAppService : ApplicationService ,IConvocadoAppService
+    public class ConvocadoAppService : ApplicationService, IConvocadoAppService
     {
         private readonly IConvocadoService _convocadoService;
-	    
+
         public ConvocadoAppService(IUnitOfWork unitOfWork, IConvocadoService convocadoService) : base(unitOfWork)
         {
-	        _convocadoService = convocadoService;
-	       
+            _convocadoService = convocadoService;
         }
 
         public void Dispose()
@@ -62,18 +60,18 @@ namespace SisConv.Application.Services
 
         public IEnumerable<ConvocadoViewModel> Search(Expression<Func<Convocado, bool>> predicate)
         {
-            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<ConvocadoViewModel>>(_convocadoService.Search(predicate));
+            return Mapper.Map<IEnumerable<Convocado>, IEnumerable<ConvocadoViewModel>>(
+                _convocadoService.Search(predicate));
         }
 
-	    public bool VerificaSeHaSobrenome(string nome)
-	    {
-		    return _convocadoService.VerificaSeHaSobrenome(nome);
+        public bool VerificaSeHaSobrenome(string nome)
+        {
+            return _convocadoService.VerificaSeHaSobrenome(nome);
+        }
 
-	    }
-
-		public ConvocadoViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
-		{
-			return Mapper.Map<Convocado, ConvocadoViewModel>(_convocadoService.GetOne(predicate));
-		}
-	}
+        public ConvocadoViewModel GetOne(Expression<Func<Convocado, bool>> predicate)
+        {
+            return Mapper.Map<Convocado, ConvocadoViewModel>(_convocadoService.GetOne(predicate));
+        }
+    }
 }

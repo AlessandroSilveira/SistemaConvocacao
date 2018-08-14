@@ -12,9 +12,9 @@ namespace SisConv.Infra.Data.Repository
         {
         }
 
-	    public void SalvarCandidatos(string file)
-	    {
-		    throw new System.NotImplementedException();
-	    }
+        public void SalvarCandidatos(string file)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

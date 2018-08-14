@@ -13,6 +13,6 @@ namespace SisConv.Domain.Interfaces.Services
         Processo Update(Processo obj);
         void Remove(Guid id);
         IEnumerable<Processo> Search(Expression<Func<Processo, bool>> predicate);
-		Processo GetOne(Expression<Func<Processo, bool>> predicate);
-	}
+        Processo GetOne(Expression<Func<Processo, bool>> predicate);
+    }
 }

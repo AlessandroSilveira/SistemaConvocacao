@@ -9,27 +9,29 @@ using SisConv.Domain.Services;
 
 namespace SisConv.Mvc.Controllers
 {
-	public class RelatorioController : Controller
-	{
-	    private readonly ICargoAppService _cargoAppService;
-	    private readonly IConvocadoAppService _convocadoAppService;
-	    private readonly IConvocacaoAppService _convocacaoAppService;
-		private readonly IEnumDescription _enumDescription;
-		private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
+    [Authorize(Roles = "Cliente")]
+    public class RelatorioController : Controller
+    {
+        private readonly ICargoAppService _cargoAppService;
+        private readonly IConvocacaoAppService _convocacaoAppService;
+        private readonly IConvocadoAppService _convocadoAppService;
+        private readonly IEnumDescription _enumDescription;
+        private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
 
-	    public RelatorioController(ICargoAppService cargoAppService, 
-			IConvocadoAppService convocadoAppService, 
-			IConvocacaoAppService convocacaoAppService,
-			IEnumDescription enumDescription,
-			IPrimeiroAcessoAppService primeiroAcessoAppService)
-	    {
-	        _cargoAppService = cargoAppService;
-	        _convocadoAppService = convocadoAppService;
-	        _convocacaoAppService = convocacaoAppService;
-			_enumDescription = enumDescription;
-			_primeiroAcessoAppService = primeiroAcessoAppService;
-		}
-	   
+        public RelatorioController(
+            ICargoAppService cargoAppService,
+            IConvocadoAppService convocadoAppService,
+            IConvocacaoAppService convocacaoAppService,
+            IEnumDescription enumDescription,
+            IPrimeiroAcessoAppService primeiroAcessoAppService)
+        {
+            _cargoAppService = cargoAppService;
+            _convocadoAppService = convocadoAppService;
+            _convocacaoAppService = convocacaoAppService;
+            _enumDescription = enumDescription;
+            _primeiroAcessoAppService = primeiroAcessoAppService;
+        }
+
         public ActionResult Index(Guid Id)
         {
             ViewBag.ProcessoId = Id;
@@ -39,160 +41,178 @@ namespace SisConv.Mvc.Controllers
         public ActionResult ClassificadosPorCargo(Guid id)
         {
             ViewBag.ProcessoId = id;
-            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
             ViewBag.ListaConvocadosPorCargo = null;
             return View();
         }
 
         [HttpPost]
-	    public ActionResult ClassificadosPorCargo(Guid id, Guid cargo)
-	    {
-	        ViewBag.ProcessoId = id;
+        public ActionResult ClassificadosPorCargo(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
 
-	        var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b => b.StatusConvocacao != null);
-	        var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id))
+                .Where(b => b.StatusConvocacao != null);
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
 
-	        ViewBag.ListaConvocadosPorCargo = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados).OrderBy(x => x.Posicao);
-	        ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosPorCargo = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados)
+                .OrderBy(x => x.Posicao);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
 
             return View();
-	    }
+        }
 
-		public ActionResult ConvocadosQueDesistiram(Guid id)
-		{
-			ViewBag.ProcessoId = id;
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
-			ViewBag.ListaConvocadosQueDesistiram = null;
+        public ActionResult ConvocadosQueDesistiram(Guid id)
+        {
+            ViewBag.ProcessoId = id;
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosQueDesistiram = null;
 
-			return View();
-		}
+            return View();
+        }
 
-		[HttpPost]
-		public ActionResult ConvocadosQueDesistiram(Guid id, Guid cargo)
-		{
-			ViewBag.ProcessoId = id;
-			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b => b.StatusConvocacao.Equals(_enumDescription.GetEnumDescription(StatusConvocacao.Desistente)));
-			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
+        [HttpPost]
+        public ActionResult ConvocadosQueDesistiram(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b =>
+                b.StatusConvocacao.Equals(_enumDescription.GetEnumDescription(StatusConvocacao.Desistente)));
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
 
-			ViewBag.ListaConvocadosQueDesistiram = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados).OrderBy(x => x.Posicao);
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosQueDesistiram = _convocacaoAppService
+                .MontaListaDeConvocados(dadosConfirmados, convocados).OrderBy(x => x.Posicao);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
 
-			return View();
-		}
-		
-		public ActionResult ConvocadosQueIngressaram(Guid id)
-		{
-			ViewBag.ProcessoId = id;
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
-			ViewBag.ListaConvocadosQueIngressaram = null;
+            return View();
+        }
 
-			return View();
-		}
+        public ActionResult ConvocadosQueIngressaram(Guid id)
+        {
+            ViewBag.ProcessoId = id;
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosQueIngressaram = null;
 
-		[HttpPost]
-		public ActionResult ConvocadosQueIngressaram(Guid id,Guid cargo)
-		{
-			ViewBag.ProcessoId = id;
-			
-			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b => b.StatusConvocacao!=null);
-			var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
-			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
+            return View();
+        }
 
-			ViewBag.ListConvocadosQueIngressaram = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados,convocados);
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+        [HttpPost]
+        public ActionResult ConvocadosQueIngressaram(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
 
-			return View();
-		}
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id))
+                .Where(b => b.StatusConvocacao != null);
+            var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
 
-		public ActionResult ConvocadosQueNaoIngressaram(Guid id)
-		{
-			ViewBag.ProcessoId = id;
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
-			ViewBag.ListaConvocadosQueIngressaram = null;
+            ViewBag.ListConvocadosQueIngressaram =
+                _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
 
-			return View();
-		}
+            return View();
+        }
 
-		[HttpPost]
-		public ActionResult ConvocadosQueNaoIngressaram(Guid id, Guid cargo)
-		{
-			ViewBag.ProcessoId = id;
-			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id));
-			var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
-			
-			var naoIngressaram = new HashSet<Guid>(candidadosQueFizeramPrimeiroAcesso.Select(x => x.ConvocadoId));
-			var candidatosQueNaoIngressaram = dadosConfirmados.Where(x => !naoIngressaram.Contains(x.ConvocadoId));
+        public ActionResult ConvocadosQueNaoIngressaram(Guid id)
+        {
+            ViewBag.ProcessoId = id;
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosQueIngressaram = null;
 
-			var dados = new List<ConvocacaoViewModel>();
+            return View();
+        }
 
-			foreach (var item in candidatosQueNaoIngressaram)
-			{
-				dados.Add(dadosConfirmados.FirstOrDefault(x => x.ConvocadoId.Equals(item.ConvocadoId)));
-			}
+        [HttpPost]
+        public ActionResult ConvocadosQueNaoIngressaram(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id));
+            var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
 
-			var dados2 = new List<ConvocadoViewModel>();
+            var naoIngressaram = new HashSet<Guid>(candidadosQueFizeramPrimeiroAcesso.Select(x => x.ConvocadoId));
+            var candidatosQueNaoIngressaram = dadosConfirmados.Where(x => !naoIngressaram.Contains(x.ConvocadoId));
 
-			foreach (var item in dados)
-			{
-				
-				dados2.Add(_convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo) && a.ConvocadoId.Equals(item.ConvocadoId)).FirstOrDefault());
-			}
+            var dados = new List<ConvocacaoViewModel>();
 
-			ViewBag.ListConvocadosQueNaoIngressaram = _convocacaoAppService.MontaListaDeConvocados(dados,dados2);
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+            foreach (var item in candidatosQueNaoIngressaram)
+                dados.Add(dadosConfirmados.FirstOrDefault(x => x.ConvocadoId.Equals(item.ConvocadoId)));
 
-			return View();
-		}
+            var dados2 = new List<ConvocadoViewModel>();
 
-		public ActionResult ConvocadosPorInstituicaoEnsinoSuperior(Guid id)
-		{
-			ViewBag.ProcessoId = id;
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
-			ViewBag.ListaConvocadosPorInstituicaoEnsinoSuperior = null;
+            foreach (var item in dados)
+                dados2.Add(_convocadoAppService.Search(a =>
+                        a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo) && a.ConvocadoId.Equals(item.ConvocadoId))
+                    .FirstOrDefault());
 
-			return View();
-		}
+            ViewBag.ListConvocadosQueNaoIngressaram = _convocacaoAppService.MontaListaDeConvocados(dados, dados2);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
 
-		[HttpPost]
-		public ActionResult ConvocadosPorInstituicaoEnsinoSuperior(Guid id,Guid cargo)
-		{
-			ViewBag.ProcessoId = id;
+            return View();
+        }
 
-			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b => b.StatusConvocacao!= null);
-			var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
-			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
+        public ActionResult ConvocadosPorInstituicaoEnsinoSuperior(Guid id)
+        {
+            ViewBag.ProcessoId = id;
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosPorInstituicaoEnsinoSuperior = null;
 
-			ViewBag.ListaConvocadosPorInstituicaoEnsinoSuperior = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+            return View();
+        }
 
-			return View();
-		}
+        [HttpPost]
+        public ActionResult ConvocadosPorInstituicaoEnsinoSuperior(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
 
-		public ActionResult PendentesDadosBancarios(Guid id)
-		{
-			ViewBag.ProcessoId = id;
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
-			ViewBag.ListaConvocadosPendentesDadosBancarios = null;
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id))
+                .Where(b => b.StatusConvocacao != null);
+            var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo));
 
-			return View();
-		}
+            ViewBag.ListaConvocadosPorInstituicaoEnsinoSuperior =
+                _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
 
-		[HttpPost]
-		public ActionResult PendentesDadosBancarios(Guid id,Guid cargo)
-		{
-			ViewBag.ProcessoId = id;
+            return View();
+        }
 
-			var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id)).Where(b => b.StatusConvocacao != null);
-			var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
-			var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo)).Where(a => string.IsNullOrEmpty(a.Agencia) || string.IsNullOrEmpty(a.ContaCorrente) || string.IsNullOrEmpty(a.NomeAgencia));
+        public ActionResult PendentesDadosBancarios(Guid id)
+        {
+            ViewBag.ProcessoId = id;
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+            ViewBag.ListaConvocadosPendentesDadosBancarios = null;
 
+            return View();
+        }
 
-			
-			ViewBag.ListaConvocadosPendentesDadosBancarios = _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
-			ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true)).OrderBy(x => x.Nome);
+        [HttpPost]
+        public ActionResult PendentesDadosBancarios(Guid id, Guid cargo)
+        {
+            ViewBag.ProcessoId = id;
 
-			return View();
-		}
+            var dadosConfirmados = _convocacaoAppService.Search(a => a.ProcessoId.Equals(id))
+                .Where(b => b.StatusConvocacao != null);
+            var candidadosQueFizeramPrimeiroAcesso = _primeiroAcessoAppService.GetAll();
+            var convocados = _convocadoAppService.Search(a => a.ProcessoId.Equals(id) && a.CargoId.Equals(cargo))
+                .Where(a => string.IsNullOrEmpty(a.Agencia) || string.IsNullOrEmpty(a.ContaCorrente) ||
+                            string.IsNullOrEmpty(a.NomeAgencia));
 
-	}
+            ViewBag.ListaConvocadosPendentesDadosBancarios =
+                _convocacaoAppService.MontaListaDeConvocados(dadosConfirmados, convocados);
+            ViewBag.ListaCargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
+                .OrderBy(x => x.Nome);
+
+            return View();
+        }
+    }
 }
