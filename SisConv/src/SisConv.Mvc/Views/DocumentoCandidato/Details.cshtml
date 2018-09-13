@@ -1,0 +1,66 @@
+﻿@model SisConv.Application.ViewModels.DocumentoCandidatoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>DocumentoCandidatoViewModel</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ProcessoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ProcessoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ConvocadoId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ConvocadoId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Documento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Documento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DataInclusao)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DataInclusao)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.DocumentoCandidatoId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

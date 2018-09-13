@@ -1,0 +1,45 @@
+﻿@model SisConv.Application.ViewModels.DocumentoCandidatoViewModel
+
+@{
+	ViewBag.Title = "Delete";
+}
+
+<h2>Excluir Documento</h2>
+
+<h3>Você tem certeza que deseja excluir esse documento?</h3>
+<div>
+	
+	<hr />
+	<dl class="dl-horizontal">
+
+		<dt>
+			@Html.DisplayNameFor(model => model.Documento)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.Documento)
+		</dd>
+
+		<dt>
+			@Html.DisplayNameFor(model => model.DataInclusao)
+		</dt>
+
+		<dd>
+			@Html.DisplayFor(model => model.DataInclusao)
+		</dd>
+
+
+	</dl>
+
+	@using (Html.BeginForm())
+	{
+		@Html.AntiForgeryToken()
+
+		<div class="form-actions no-color">
+			<input type="submit" value="Delete" class="btn btn-default" /> |
+			@Html.ActionLink("Voltar", "Index")
+			<input type="hidden" name="ConvocadoId" id="ConvocacaoId" value="@ViewBag.ConvocacaoId" />
+			<input type="hidden" name="ProcessoId" id="ProcessoId" value="@ViewBag.ProcessoId" />
+		</div>
+	}
+</div>

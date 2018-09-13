@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
+using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
 
 namespace SisConv.Application.Interfaces.Repository

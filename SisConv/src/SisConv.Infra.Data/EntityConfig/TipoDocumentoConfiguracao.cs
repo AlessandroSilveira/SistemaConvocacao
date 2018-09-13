@@ -12,7 +12,7 @@ namespace SisConv.Infra.Data.EntityConfig
             Property(c => c.TipoDocumentoId)
                 .HasColumnName("DocumentoCandidatoId");
 
-            Property(c => c.TipoDocumento)
+            Property(c => c.TipoDocumentos)
                 .IsRequired()
                 .HasMaxLength(100);
 

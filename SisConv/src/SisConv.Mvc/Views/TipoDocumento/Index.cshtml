@@ -1,0 +1,41 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.TipoDocumentoViewModel>
+
+@{
+    ViewBag.Title = "Tipo de Documento Para Envio do Candidato";
+}
+<h2>Tipo de Documentação Para Envio do Candidato.</h2>
+<p>
+    @Html.ActionLink("Incluir", "Create")
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.TipoDocumentos)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Ativo)
+		</th>
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem => item.TipoDocumentos)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem => item.Ativo)
+			</td>
+			<td>
+				@Html.ActionLink("Editar", "Edit", new { id = item.TipoDocumentoId }) |
+				@Html.ActionLink("Detalhes", "Details", new { id = item.TipoDocumentoId }) |
+				@Html.ActionLink("Excluir", "Delete", new { id = item.TipoDocumentoId })
+			</td>
+		</tr>
+	}
+
+</table>
+<div>
+	@Html.ActionLink("Voltar", "Index")
+</div>

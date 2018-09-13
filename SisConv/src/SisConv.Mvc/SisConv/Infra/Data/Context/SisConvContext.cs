@@ -29,5 +29,9 @@ namespace SisConv.Infra.Data.Context
         public DbSet<DocumentacaoViewModel> DocumentacaoViewModels { get; set; }
 
         public DbSet<PessoaViewModel> PessoaViewModels { get; set; }
-    }
+
+		public System.Data.Entity.DbSet<SisConv.Application.ViewModels.TipoDocumentoViewModel> TipoDocumentoViewModels { get; set; }
+
+		public System.Data.Entity.DbSet<SisConv.Application.ViewModels.DocumentoCandidatoViewModel> DocumentoCandidatoViewModels { get; set; }
+	}
 }

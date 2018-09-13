@@ -141,9 +141,12 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bi
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Application.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Domain.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\System.ValueTuple.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Domain.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\SisConv.Domain.dll.config
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\AutoMapper.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\bin\Debug\System.ValueTuple.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csprojAssemblyReference.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Application\obj\Debug\SisConv.Application.csproj.CopyComplete

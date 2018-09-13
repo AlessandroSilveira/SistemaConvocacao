@@ -63,5 +63,10 @@ namespace SisConv.Domain.Services
         {
             return _convocacaoRepository.GetOne(predicate);
         }
+
+        public IEnumerable<Convocacao> MontarListaDeConvocados(IEnumerable<Convocacao> dadosConfirmados, IEnumerable<Convocacao> convocados)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

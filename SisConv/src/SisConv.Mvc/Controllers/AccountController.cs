@@ -1,10 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
-using System.Web;
-using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
+﻿using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using SisConv.Application.Interfaces.Repository;
@@ -13,6 +7,12 @@ using SisConv.Domain.Helpers;
 using SisConv.Domain.Services.PasswordGenerator;
 using SisConv.Infra.CrossCutting.Identity.Configuration;
 using SisConv.Infra.CrossCutting.Identity.Model;
+using System;
+using System.Linq;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using System.Web;
+using System.Web.Mvc;
 
 namespace SisConv.Mvc.Controllers
 {
@@ -22,7 +22,6 @@ namespace SisConv.Mvc.Controllers
         private readonly IAdminAppService _adminAppService;
         private readonly IConvocadoAppService _convocadoAppService;
         private readonly IPasswordGenerator _passwordGenerator;
-
         private readonly IPrimeiroAcessoAppService _primeiroAcessoAppService;
         private readonly ISysConfig _sysConfig;
         private ApplicationSignInManager _signInManager;
@@ -83,7 +82,7 @@ namespace SisConv.Mvc.Controllers
                     return View("Lockout");
 
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, model.RememberMe});
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
 
                 case SignInStatus.Failure:
                 default:
@@ -123,7 +122,7 @@ namespace SisConv.Mvc.Controllers
                 ViewBag.CodigoAcesso = await _userManager.GenerateTwoFactorTokenAsync(user.Id, provider);
             }
 
-            return View(new VerifyCodeViewModel {Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe});
+            return View(new VerifyCodeViewModel { Provider = provider, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
 
         //
@@ -169,14 +168,14 @@ namespace SisConv.Mvc.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false, false);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new {userId = user.Id, code},
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code },
                         Request.Url.Scheme);
                     await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta",
                         "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
@@ -224,7 +223,7 @@ namespace SisConv.Mvc.Controllers
                     return View("EmailNaoCadastrado");
 
                 var code = await _userManager.GeneratePasswordResetTokenAsync(user.Id);
-                var callbackUrl = Url.Action("ResetPassword", "Account", new {userId = user.Id, code},
+                var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code },
                     Request.Url.Scheme);
                 await _userManager.SendEmailAsync(user.Id, "Esqueci minha senha",
                     "Por favor altere sua senha clicando aqui: <a href='" + callbackUrl + "'></a>");
@@ -287,7 +286,7 @@ namespace SisConv.Mvc.Controllers
         {
             // Request a redirect to the external login provider
             return new ChallengeResult(provider,
-                Url.Action("ExternalLoginCallback", "Account", new {ReturnUrl = returnUrl}));
+                Url.Action("ExternalLoginCallback", "Account", new { ReturnUrl = returnUrl }));
         }
 
         //
@@ -298,7 +297,7 @@ namespace SisConv.Mvc.Controllers
             var userId = await _signInManager.GetVerifiedUserIdAsync();
             if (userId == null) return View("Error");
             var userFactors = await _userManager.GetValidTwoFactorProvidersAsync(userId);
-            var factorOptions = userFactors.Select(purpose => new SelectListItem {Text = purpose, Value = purpose})
+            var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose })
                 .ToList();
             return View(new SendCodeViewModel
             {
@@ -320,7 +319,7 @@ namespace SisConv.Mvc.Controllers
             // Generate the token and send it
             if (!await _signInManager.SendTwoFactorCodeAsync(model.SelectedProvider)) return View("Error");
             return RedirectToAction("VerifyCode",
-                new {Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe});
+                new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -342,7 +341,7 @@ namespace SisConv.Mvc.Controllers
                     return View("Lockout");
 
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new {ReturnUrl = returnUrl, RememberMe = false});
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = false });
 
                 case SignInStatus.Failure:
                 default:
@@ -350,7 +349,7 @@ namespace SisConv.Mvc.Controllers
                     ViewBag.ReturnUrl = returnUrl;
                     ViewBag.LoginProvider = loginInfo.Login.LoginProvider;
                     return View("ExternalLoginConfirmation",
-                        new ExternalLoginConfirmationViewModel {Email = loginInfo.Email});
+                        new ExternalLoginConfirmationViewModel { Email = loginInfo.Email });
             }
         }
 
@@ -369,7 +368,7 @@ namespace SisConv.Mvc.Controllers
                 // Pegar a informação do login externo.
                 var info = await AuthenticationManager.GetExternalLoginInfoAsync();
                 if (info == null) return View("ExternalLoginFailure");
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -395,7 +394,7 @@ namespace SisConv.Mvc.Controllers
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut();
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -434,14 +433,14 @@ namespace SisConv.Mvc.Controllers
             if (ModelState.IsValid)
             {
                 model.Cnpj = Regex.Replace(model.Cnpj, "[^0-9a-zA-Z]+", "");
-                var user = new ApplicationUser {UserName = model.Email, Email = model.Email};
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     await _signInManager.SignInAsync(user, false, false);
 
                     var code = await _userManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new {userId = user.Id, code},
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code },
                         Request.Url.Scheme);
                     await _userManager.SendEmailAsync(user.Id, "Confirme sua Conta",
                         "Por favor confirme sua conta clicando neste link: <a href='" + callbackUrl + "'></a>");
@@ -484,7 +483,7 @@ namespace SisConv.Mvc.Controllers
 
         private void AddErrors(IdentityResult result)
         {
-            foreach (var error in result.Errors) ModelState.AddModelError("", error);
+            foreach (string error in result.Errors) ModelState.AddModelError("", error);
         }
 
         private ActionResult RedirectToLocal(string returnUrl)
@@ -513,7 +512,7 @@ namespace SisConv.Mvc.Controllers
 
             public override void ExecuteResult(ControllerContext context)
             {
-                var properties = new AuthenticationProperties {RedirectUri = RedirectUri};
+                AuthenticationProperties properties = new AuthenticationProperties { RedirectUri = RedirectUri };
                 if (UserId != null) properties.Dictionary[XsrfKey] = UserId;
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }

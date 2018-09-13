@@ -1,0 +1,32 @@
+﻿@model SisConv.Application.ViewModels.TipoDocumentoViewModel
+
+@{
+    ViewBag.Title = "Detalhes do Tipo de Documento";
+}
+<h2>@ViewBag.Title</h2>
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TipoDocumentos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TipoDocumentos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ativo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ativo)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.TipoDocumentoId }) |
+    @Html.ActionLink("Voltar", "Index")
+</p>

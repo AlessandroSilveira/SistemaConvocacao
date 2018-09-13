@@ -18,7 +18,8 @@ namespace SisConv.Application.ViewModels
         [Display(Name = "Data de Criação")]
         public DateTime DataCriacao { get; set; }
 
-        [Required] [Display(Name = "Ativo")] public bool Ativo { get; set; }
+        [Required] [Display(Name = "Ativo")]
+        public bool Ativo { get; set; }
 
         [Required(AllowEmptyStrings = false)]
         [Display(Name = "Texto de Aceitação da Convocação")]

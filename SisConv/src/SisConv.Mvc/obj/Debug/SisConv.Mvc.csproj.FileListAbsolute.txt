@@ -240,12 +240,6 @@ C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csproj.CopyComplete
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.dll
 C:\Users\Alessandro Silveira\Source\Repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.pdb
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.IO.Compression.dll
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\VBCSCompiler.exe
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\ApplicationInsights.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Mvc.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Mvc.dll
@@ -257,9 +251,13 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\csi.exe.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\csi.rsp
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.Managed.Core.targets
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\Microsoft.VisualBasic.Core.targets
@@ -268,6 +266,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.Console.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.Diagnostics.StackTrace.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.IO.Compression.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.IO.FileSystem.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\System.IO.Pipes.AccessControl.dll
@@ -289,6 +288,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\vbc.exe
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\vbc.exe.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\vbc.rsp
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\VBCSCompiler.exe
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\roslyn\VBCSCompiler.exe.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Antlr3.Runtime.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\AutoMapper.dll
@@ -330,6 +330,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Security.Cryptography.Encoding.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Security.Cryptography.Primitives.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Security.Cryptography.X509Certificates.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.ValueTuple.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Helpers.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Mvc.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Optimization.dll
@@ -349,12 +350,19 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisCon
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.CrossCutting.IoC.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.CrossCutting.IoC.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Antlr3.Runtime.pdb
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\AutoMapper.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\AutoMapper.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\EntityFramework.SqlServer.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AI.PerfCounterCollector.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AI.ServerTelemetryChannel.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AI.Web.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.ApplicationInsights.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.TelemetryCorrelation.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.Owin.xml
@@ -371,6 +379,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Simple
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SimpleInjector.Integration.Web.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SimpleInjector.Integration.Web.Mvc.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Diagnostics.DiagnosticSource.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.ValueTuple.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Helpers.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Mvc.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Razor.xml
@@ -378,9 +387,6 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.WebPages.Deployment.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.WebPages.Razor.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\System.Web.Optimization.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.Core.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.Owin.xml
-C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.Data.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\bin\SisConv.Infra.Data.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Mvc\obj\Debug\SisConv.Mvc.csprojAssemblyReference.cache

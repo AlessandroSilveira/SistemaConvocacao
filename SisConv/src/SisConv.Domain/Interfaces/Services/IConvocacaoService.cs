@@ -15,5 +15,6 @@ namespace SisConv.Domain.Interfaces.Services
         IEnumerable<Convocacao> Search(Expression<Func<Convocacao, bool>> predicate);
         Convocacao GetOne(Expression<Func<Convocacao, bool>> predicate);
         string GeneratePassword();
+        IEnumerable<Convocacao> MontarListaDeConvocados(IEnumerable<Convocacao> dadosConfirmados, IEnumerable<Convocacao> convocados);
     }
 }

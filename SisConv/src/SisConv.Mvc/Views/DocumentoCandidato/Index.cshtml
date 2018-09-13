@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.DocumentoCandidatoViewModel>
+
+@{
+	ViewBag.Title = "Lista de Documentos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+<p>
+	@Html.ActionLink("Novo Documento", "Create", new { id = ViewBag.ConvocacaoId, ProcessoId = ViewBag.ProcessoId })
+</p>
+<table class="table">
+	<tr>
+
+		<th>
+			@Html.DisplayNameFor(model => model.Documento)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.DataInclusao)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.TipoDocumento)
+		</th>
+		
+		<th></th>
+	</tr>
+
+	@foreach (var item in Model)
+	{
+	<tr>
+
+		<td>
+			@Html.DisplayFor(modelItem => item.Documento)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.DataInclusao)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.TipoDocumento)
+		</td>		
+        <td>
+            @Html.ActionLink("Protocolo", "Protocolo", new { id = item.DocumentoCandidatoId, ConvocacaoId = ViewBag.ConvocacaoId, ProcessoId = ViewBag.ProcessoId }) |
+            @Html.ActionLink("Excluir", "Delete", new { id = item.DocumentoCandidatoId, ConvocacaoId = ViewBag.ConvocacaoId, ProcessoId = ViewBag.ProcessoId })
+        </td>
+	</tr>
+	}
+
+	<button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#myModal" style="display: none"></button>
+	<div class="modal fade" id="myModal" role="dialog">
+		<div class="modal-dialog">
+
+			<div class="modal-content">
+				<div class="modal-header">
+
+					<h4 class="modal-title">Documentação Candidato</h4>
+				</div>
+				<div class="modal-body">
+					<br />
+					<span id="disc"></span>
+					<h5 class="modal-title">Já existe um arquivo salvo com esse nome.</h5>
+					<br />
+				</div>
+				<div class="modal-footer">
+
+					<button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<input type="hidden" name="arquivoExiste" value="@ViewBag.ArquivoExiste" id="arquivoExiste" />
+
+
+</table>
+<script src="~/Scripts/jquery-1.7.1.min.js"></script>
+<script>
+	$(document).ready(function () {
+		if ($("#arquivoExiste").val() === "value") {
+			$("#mensagem_sucesso").trigger("click");
+		}
+	});
+</script>

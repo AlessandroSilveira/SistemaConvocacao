@@ -159,6 +159,7 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Domain.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.Data.dll
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\System.ValueTuple.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\System.Web.Mvc.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.Owin.dll
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.AspNet.Identity.Owin.dll
@@ -177,12 +178,14 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCut
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.CrossCutting.Identity.dll.config
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.Data.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SisConv.Infra.Data.dll.config
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\AutoMapper.pdb
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\AutoMapper.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.AspNet.Identity.Core.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\SimpleInjector.xml
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\System.ValueTuple.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\System.Web.Mvc.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.Owin.xml
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.CrossCutting.IoC\bin\Debug\Microsoft.AspNet.Identity.Owin.xml

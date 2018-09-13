@@ -1,8 +1,8 @@
-﻿using System;
+﻿using SisConv.Application.ViewModels;
+using SisConv.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using SisConv.Application.ViewModels;
-using SisConv.Domain.Entities;
 
 namespace SisConv.Application.Interfaces.Repository
 {
@@ -21,5 +21,7 @@ namespace SisConv.Application.Interfaces.Repository
         IEnumerable<DocumentoCandidatoViewModel> Search(Expression<Func<DocumentoCandidato, bool>> predicate);
 
         DocumentoCandidatoViewModel GetOne(Expression<Func<DocumentoCandidato, bool>> predicate);
+
+        List<ListaDocumentosViewModel> MontarListaDeDocumentosDoCandidatos(IEnumerable<DocumentoCandidatoViewModel> documentos, IEnumerable<ConvocadoViewModel> dadosCandidatos);
     }
 }

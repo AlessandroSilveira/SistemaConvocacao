@@ -11,7 +11,7 @@ namespace SisConv.Application.ViewModels
         [Required(AllowEmptyStrings = false)]
         [MaxLength(100)]
         [Display(Name = "Tipo de Documento:*")]
-        public string TipoDocumentos { get; private set; }
+        public string TipoDocumentos { get;  set; }
         
         [Required(AllowEmptyStrings = false)]
        

@@ -1,0 +1,67 @@
+﻿@model IEnumerable<SisConv.Application.ViewModels.ListaDocumentosViewModel>
+
+@{
+    ViewBag.Title = "Lista de Documentos";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Inscricao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nome)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Curso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Path)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoDocumento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DataPostagem)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Inscricao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nome)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Curso)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Path)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocumento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DataPostagem)
+        </td>
+        <td>
+           @Html.ActionLink("Download", "Download", "DocumentoCandidato", new { DocumentoCandidatoId = item.DocumentoCandidatoId },null) 
+           
+        </td>
+    </tr>
+    }
+
+    
+
+
+</table>
+

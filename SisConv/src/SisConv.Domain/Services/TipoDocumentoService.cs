@@ -22,7 +22,7 @@ namespace SisConv.Domain.Services
 
         public TipoDocumento Add(TipoDocumento obj)
         {
-            _tipoDocumentoRepository.Add(obj);
+          return  _tipoDocumentoRepository.Add(obj);
         }
 
         public TipoDocumento GetById(Guid id)

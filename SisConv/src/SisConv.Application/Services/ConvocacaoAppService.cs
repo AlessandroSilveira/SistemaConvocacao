@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using AutoMapper;
+﻿using AutoMapper;
 using SisConv.Application.Interfaces.Repository;
 using SisConv.Application.ViewModels;
 using SisConv.Domain.Entities;
@@ -10,6 +6,10 @@ using SisConv.Domain.Enums;
 using SisConv.Domain.Interfaces.Repositories;
 using SisConv.Domain.Interfaces.Services;
 using SisConv.Domain.Services;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 
 namespace SisConv.Application.Services
 {
@@ -119,9 +119,7 @@ namespace SisConv.Application.Services
                     StatusConvocacao = string.IsNullOrEmpty(statusConvocacao)
                         ? ""
                         : _opcoesComparecimento.EnumDescription(
-                            (StatusConvocacao) Enum.Parse(typeof(StatusConvocacao), statusConvocacao))
-
-                    //StatusConvocacao = string.IsNullOrEmpty(statusConvocacao) ? "" :  statusConvocacao
+                            (StatusConvocacao)Enum.Parse(typeof(StatusConvocacao), statusConvocacao))
                 }));
             }
 

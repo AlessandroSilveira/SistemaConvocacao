@@ -7,6 +7,7 @@ namespace SisConv.Application.ViewModels
     {
         [Key] public Guid Id { get; set; }
 
-        [Display(Name = "Arquivo")] public string File { get; set; }
+        [Display(Name = "Arquivo")]
+        public string File { get; set; }
     }
 }

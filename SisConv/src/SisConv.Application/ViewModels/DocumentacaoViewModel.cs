@@ -10,7 +10,8 @@ namespace SisConv.Application.ViewModels
             DocumentoId = Guid.NewGuid();
         }
 
-        [Key] [Display(Name = "Id")] public Guid DocumentoId { get; set; }
+        [Key] [Display(Name = "Id")]
+        public Guid DocumentoId { get; set; }
 
         [Required]
         [Display(Name = "ProcessoId")]

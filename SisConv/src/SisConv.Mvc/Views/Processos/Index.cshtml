@@ -1,52 +1,72 @@
 ﻿@model IEnumerable<SisConv.Application.ViewModels.ProcessoViewModel>
 
 @{
+    Layout = "~/Views/Shared/Painel/LayoutPainelIndex.cshtml";
+}
+
+
+@{
     ViewBag.Title = "Convocações";
 }
-<h1>Sistema de Convocações</h1>
-<h2>@ViewBag.Title</h2>
 
-<p>
-    @Html.ActionLink("Nova Convocação", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Nome)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DataCriacao)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Ativo)
-        </th>
-        <th></th>
-        <th></th>
-    </tr>
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.ActionLink(item.Nome, "Painel", "Processos", new {id = item.ProcessoId}, null)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DataCriacao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ativo)
-            </td>
-            <td>
-                @Html.ActionLink("Configurações", "Configuracoes", new {id = item.ProcessoId}, null)
-            </td>
-            <td>
-                @Html.ActionLink("Relatórios", "Index", "Relatorio", new {id = item.ProcessoId}, null)
-            </td>
-        </tr>
-    }
-    <tr>
-        <td colspan="5">
-            <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
-        </td>
-    </tr>
-</table>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">@ViewBag.Title</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    @*<div class="panel panel-default">
+        <div class="panel-heading">
+            @ViewBag.Title
+        </div>
+    </div>*@
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.DataCriacao)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </th>
+                    <th></th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.ActionLink(item.Nome, "Painel", "Processos", new { id = item.ProcessoId }, null)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DataCriacao)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Ativo)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Configurações", "Configuracoes", new { id = item.ProcessoId }, null)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Relatórios", "Index", "Relatorio", new { id = item.ProcessoId }, null)
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="5">
+                        <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+

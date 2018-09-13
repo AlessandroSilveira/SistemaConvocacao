@@ -5,26 +5,29 @@
 <h2>@ViewBag.dadosProcesso.Nome - Configurações</h2>
 <div class="container">
     <div class="form-horizontal">
-        <div class="jumbotron">
-            <h4>
-                @Html.ActionLink("Editar", "Edit", new {id = ViewBag.dadosProcesso.ProcessoId})
-            </h4>
-            <h4>
-                @Html.ActionLink("Detalhes", "Details", new {id = ViewBag.dadosProcesso.ProcessoId})
-            </h4>
-            <h4>
-                @Html.ActionLink("Cargos", "Index", "Cargo", new {id = ViewBag.dadosProcesso.ProcessoId}, null)
-            </h4>
-            <h4>
-                @Html.ActionLink("Carregar Convocados desta Convocação", "Create", "DadosConvocados", new {id = ViewBag.dadosProcesso.ProcessoId}, null)
-            </h4>
-            <h4>
-                @Html.ActionLink("Documentação do Candidato", "Index", "Documentacao", new {id = ViewBag.dadosProcesso.ProcessoId}, null)
-            </h4>
-            <h4>
-                @Html.ActionLink("Excluír", "Delete", new {id = ViewBag.dadosProcesso.ProcessoId})
-            </h4>
-        </div>
+		<div class="jumbotron">
+			<h4>
+				@Html.ActionLink("Editar", "Edit", new { id = ViewBag.dadosProcesso.ProcessoId })
+			</h4>
+			<h4>
+				@Html.ActionLink("Detalhes", "Details", new { id = ViewBag.dadosProcesso.ProcessoId })
+			</h4>
+			<h4>
+				@Html.ActionLink("Cargos", "Index", "Cargo", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+			</h4>
+			<h4>
+				@Html.ActionLink("Carregar Convocados desta Convocação", "Create", "DadosConvocados", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+			</h4>
+			<h4>
+				@Html.ActionLink("Documentação da Convocação", "Index", "Documentacao", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+			</h4>
+			<h4>
+				@Html.ActionLink("Tipo de Documentação Para Envio do Candidato", "Index", "TipoDocumento", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
+			</h4>
+			<h4>
+				@Html.ActionLink("Excluír", "Delete", new { id = ViewBag.dadosProcesso.ProcessoId })
+			</h4>
+		</div>
     </div>
 </div>
 <div>

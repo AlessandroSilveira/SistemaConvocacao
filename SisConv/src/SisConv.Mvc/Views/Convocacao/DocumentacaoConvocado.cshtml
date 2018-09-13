@@ -6,30 +6,33 @@
     <div class="form-horizontal">
         <h4></h4>
         <h4></h4>
-        <div class="jumbotron">
-            <h1 class="display-3">@ViewBag.dadosConvocado.Nome</h1>
-            <p class="lead">Parabéns você foi Convocado.</p>
-            <p class="lead">@ViewBag.dadosProcesso.TextoDeAceitacaoDaConvocacao</p>
+		<div class="jumbotron">
+			<h1 class="display-3">@ViewBag.dadosConvocado.Nome</h1>
+			<p class="lead">Parabéns você foi Convocado.</p>
+			<p class="lead">@ViewBag.dadosProcesso.TextoDeAceitacaoDaConvocacao</p>
 
-            <p class="lead">Para dar prosseguimento com a sua convocação é de muita importância que você realize as seguintes etapas: </p>
-            <hr class="my-4">
-            <p class="lead">1 - Atualize seus dados cadastrais</p>
-            <p class="lead">
-                @Html.ActionLink("Atualizar Dados Cadastrais", "Edit", "Convocado", new {id = ViewBag.dadosConvocado.ConvocadoId}, null)
-            </p>
-            <hr class="my-4">
-            <p class="lead">2 - Leia e imprima a documentação necessária para a sua apresentação.</p>
-            <p class="lead">Lista de Documentos para apresentação:</p>
-            @foreach (var itens in ViewBag.ListaDocumentacao)
-            {
-                <p>
-                    <a href="@Url.Content("~/Convocacao/Download?arquivo=" + itens.Path)">@itens.Descricao</a>
-                </p>
-            }
-            <p>
-            <hr class="my-4">
+			<p class="lead">Para dar prosseguimento com a sua convocação é de muita importância que você realize as seguintes etapas: </p>
+			<hr class="my-4">
+			<p class="lead">1 - Atualize seus dados cadastrais</p>
+			<p class="lead">
+				@Html.ActionLink("Atualizar Dados Cadastrais", "Edit", "Convocado", new { id = ViewBag.dadosConvocado.ConvocadoId }, null)
+			</p>
+			<hr class="my-4">
+			<p class="lead">2 - Leia e imprima a documentação necessária para a sua apresentação.</p>
+			<p class="lead">Lista de Documentos para apresentação:</p>
+			@foreach (var itens in ViewBag.ListaDocumentacao)
+			{
+				<p>
+					<a href="@Url.Content("~/Convocacao/Download?arquivo=" + itens.Path)">@itens.Descricao</a>
+				</p>
+			}
+			<p>
+				<hr class="my-4">
 
-            <p class="lead">3 - Aguarde as próximas etapas de sua convocação.</p>
-        </div>
+			<p class="lead">3 - Faça o upload dos arquivos obrigatórios.</p>
+			<p class="lead">
+				@Html.ActionLink("Upload dos documentos.", "Index", "DocumentoCandidato", new { id = ViewBag.dadosConvocado.ConvocadoId, ProcessoId = ViewBag.dadosProcesso.ProcessoId }, null)
+			</p>
+		</div>
     </div>
 </div>

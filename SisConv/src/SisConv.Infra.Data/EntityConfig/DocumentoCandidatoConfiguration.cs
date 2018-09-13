@@ -22,7 +22,11 @@ namespace SisConv.Infra.Data.EntityConfig
                 .IsRequired()
                 .HasMaxLength(100);
 
-            Property(c => c.Ativo)
+			Property(c => c.TipoDocumento)
+				.IsRequired()
+				.HasMaxLength(100);
+
+			Property(c => c.Ativo)
                 .IsRequired();
 
             Property(c => c.DataInclusao)

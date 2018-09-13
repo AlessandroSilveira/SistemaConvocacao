@@ -67,6 +67,8 @@ C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.atualizandoPrimeiroAcesso.resources
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.ajustePrimeiroAcesso.resources
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.addConvocadoId.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.documentos.resources
+C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.Migrations.AddTipoDocumento.resources
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.GenerateResource.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CoreCompileInputs.cache
 C:\Users\alesi\source\repos\SistemaConvocacao\SisConv\src\SisConv.Infra.Data\obj\Debug\SisConv.Infra.Data.csproj.CopyComplete

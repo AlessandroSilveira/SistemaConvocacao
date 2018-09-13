@@ -196,5 +196,6 @@ namespace SisConv.Application.ViewModels
         [MaxLength(100)]
         [Display(Name = "Conta Corrente:*")]
         public string ContaCorrente { get; set; }
+       
     }
 }
