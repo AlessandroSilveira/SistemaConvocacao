@@ -7,6 +7,8 @@ namespace SisConv.Application.ViewModels
     {
         [Key]
         public Guid TipoDocumentoId { get; set; }
+
+        public Guid ProcessoId { get; set; }
         
         [Required(AllowEmptyStrings = false)]
         [MaxLength(100)]

@@ -1,35 +1,33 @@
 ﻿@{
+    Layout = "~/Views/Shared/Processos/Configuracoes/_LayoutProcessosConfiguracoes.cshtml";
     ViewBag.Title = "Configuracoes";
 }
 
-<h2>@ViewBag.dadosProcesso.Nome - Configurações</h2>
-<div class="container">
-    <div class="form-horizontal">
-		<div class="jumbotron">
-			<h4>
-				@Html.ActionLink("Editar", "Edit", new { id = ViewBag.dadosProcesso.ProcessoId })
-			</h4>
-			<h4>
-				@Html.ActionLink("Detalhes", "Details", new { id = ViewBag.dadosProcesso.ProcessoId })
-			</h4>
-			<h4>
-				@Html.ActionLink("Cargos", "Index", "Cargo", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
-			</h4>
-			<h4>
-				@Html.ActionLink("Carregar Convocados desta Convocação", "Create", "DadosConvocados", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
-			</h4>
-			<h4>
-				@Html.ActionLink("Documentação da Convocação", "Index", "Documentacao", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
-			</h4>
-			<h4>
-				@Html.ActionLink("Tipo de Documentação Para Envio do Candidato", "Index", "TipoDocumento", new { id = ViewBag.dadosProcesso.ProcessoId }, null)
-			</h4>
-			<h4>
-				@Html.ActionLink("Excluír", "Delete", new { id = ViewBag.dadosProcesso.ProcessoId })
-			</h4>
-		</div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.dadosProcesso.Nome - Configurações</b></h1>
+        </div>
     </div>
-</div>
-<div>
-    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div>
+                        Nesta página o usuário pode alterar detalhes da convocação como seus atributos, cargos, candidatos e documentação.
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div>
+                        <br><br>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <div>
+                        <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -1,86 +1,99 @@
 ﻿@model SisConv.Application.ViewModels.ProcessoViewModel
-
 @{
+    Layout = "~/Views/Shared/Processos/Configuracoes/_LayoutProcessosConfiguracoes.cshtml";
     ViewBag.Title = "Editar Convocação";
 }
 
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        <hr/>
-        @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-        @Html.HiddenFor(model => model.ProcessoId)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.ClienteId, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Nome, "", new {@class = "text-danger"})
-            </div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@Html.ValueFor(model => model.Nome)</b></h1>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.DataCriacao, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.DataCriacao, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.DataCriacao, "", new {@class = "text-danger"})
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TextoDeAceitacaoDaConvocacao, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.TextAreaFor(model => model.TextoDeAceitacaoDaConvocacao)
-                    @Html.ValidationMessageFor(model => model.TextoDeAceitacaoDaConvocacao, "", new {@class = "text-danger"})
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="margin-bottom:-30px !important">
+                <div class="panel-heading">
+                    <b>@ViewBag.Title</b>
                 </div>
             </div>
-        </div>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="form-horizontal">
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ProcessoId)
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.ClienteId, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control",@style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.TextoInicialTelaConvocado, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.TextAreaFor(model => model.TextoInicialTelaConvocado)
-                    @Html.ValidationMessageFor(model => model.TextoInicialTelaConvocado, "", new {@class = "text-danger"})
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataCriacao, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DataCriacao, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.DataCriacao, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TextoDeAceitacaoDaConvocacao, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.TextAreaFor(model => model.TextoDeAceitacaoDaConvocacao, 5, 55, new { htmlAttributes = new { @class = "form-control", maxlegth = 100 } })
+                                        @Html.ValidationMessageFor(model => model.TextoDeAceitacaoDaConvocacao, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TextoInicialTelaConvocado, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.TextAreaFor(model => model.TextoInicialTelaConvocado, 5, 55, new { htmlAttributes = new { @class = "form-control", maxlegth = 100 } })
+                                        @Html.ValidationMessageFor(model => model.TextoInicialTelaConvocado, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TextoParaDesistentes, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.TextAreaFor(model => model.TextoParaDesistentes, 5, 55, new { htmlAttributes = new { @class = "form-control", maxlegth = 100 } })
+                                        @Html.ValidationMessageFor(model => model.TextoParaDesistentes, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Ativo, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Ativo)
+                                        @Html.ValidationMessageFor(model => model.Ativo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Salvar" class="btn btn-success" />
+                                    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
                 </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.TextoParaDesistentes, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.TextAreaFor(model => model.TextoParaDesistentes)
-                    @Html.ValidationMessageFor(model => model.TextoParaDesistentes, "", new {@class = "text-danger"})
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Ativo, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Ativo)
-                    @Html.ValidationMessageFor(model => model.Ativo, "", new {@class = "text-danger"})
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default"/>
             </div>
         </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Voltar", "Index")
 </div>
+

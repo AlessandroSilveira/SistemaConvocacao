@@ -1,43 +1,61 @@
 ﻿@model SisConv.Application.ViewModels.CargoViewModel
 
 @{
+    Layout = "~/Views/Shared/Processos/Configuracoes/_LayoutProcessosConfiguracoes.cshtml";
     ViewBag.Title = "Novo Cargo";
 }
-
-<h2>@ViewBag.Title</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-        <hr/>
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nome, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.ConvocacaoId, new {htmlAttributes = new {@class = "form-control"}, Value = ViewBag.Id})
-                @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.Nome, "", new {@class = "text-danger"})
-            </div>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.dadosProcesso.Nome</b></h1>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CodigoCargo, new {@class = "control-label col-md-2"})
-            <div class="col-md-10">
-                @Html.HiddenFor(model => model.Ativo, new {Value = true})
-                @Html.EditorFor(model => model.CodigoCargo, new {htmlAttributes = new {@class = "form-control"}})
-                @Html.ValidationMessageFor(model => model.CodigoCargo, "", new {@class = "text-danger"})
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="margin-bottom:-30px !important">
+                <div class="panel-heading">
+                    <b>@ViewBag.Title</b>
+                </div>
             </div>
-        </div>
+            <div class="panel-body">
+                <div class="table-responsive">
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Salvar" class="btn btn-default"/>
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <hr />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.ProcessoId, new { htmlAttributes = new { @class = "form-control" }, Value = ViewBag.Id })
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CodigoCargo, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.HiddenFor(model => model.Ativo, new { Value = true })
+                                    @Html.EditorFor(model => model.CodigoCargo, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.CodigoCargo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Salvar" class="btn btn-success" />
+                                    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
             </div>
         </div>
     </div>
-}
-<div>
-    @Html.ActionLink("Voltar", "Index")
 </div>

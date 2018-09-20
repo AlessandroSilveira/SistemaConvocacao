@@ -545,8 +545,11 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
-    <Content Include="Views\Shared\Painel\LayoutProcessosPainel.cshtml" />
-    <None Include="Views\Shared\Painel\_NavBarPainelIndex.cshtml" />
+    <Content Include="Views\Shared\Processos\LayoutProcessosPainel.cshtml" />
+    <Content Include="Views\Shared\Processos\Configuracoes\_LayoutProcessosConfiguracoes.cshtml" />
+    <Content Include="Views\Shared\Processos\Configuracoes\_NavBarProcessosConfiguracoes.cshtml" />
+    <Content Include="Views\Shared\Processos\Configuracoes\_SidebarProcessosConfiguracoes.cshtml" />
+    <None Include="Views\Shared\Processos\_NavBarPainelIndex.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -677,10 +680,10 @@
     <Content Include="Views\Shared\_NavBar.cshtml" />
     <Content Include="Views\Shared\_Profile.cshtml" />
     <Content Include="Views\Shared\_Sidebar.cshtml" />
-    <Content Include="Views\Shared\Painel\LayoutPainelIndex.cshtml" />
-    <Content Include="Views\Shared\Painel\_SideBarPainelIndex.cshtml" />
-    <Content Include="Views\Shared\Painel\_NavBarProcessosPainel.cshtml" />
-    <Content Include="Views\Shared\Painel\_SidebarProcessosPainel.cshtml" />
+    <Content Include="Views\Shared\Processos\LayoutPainelIndex.cshtml" />
+    <Content Include="Views\Shared\Processos\_SideBarPainelIndex.cshtml" />
+    <Content Include="Views\Shared\Processos\_NavBarProcessosPainel.cshtml" />
+    <Content Include="Views\Shared\Processos\_SidebarProcessosPainel.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

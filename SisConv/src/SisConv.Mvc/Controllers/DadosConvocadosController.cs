@@ -11,15 +11,19 @@ namespace SisConv.Mvc.Controllers
     public class DadosConvocadosController : Controller
     {
         private readonly IDadosConvocacaoAppService _dadosConvocacaoAppService;
+        private readonly IProcessoAppService _processoAppService;
 
-        public DadosConvocadosController(IDadosConvocacaoAppService dadosConvocacaoAppService)
+        public DadosConvocadosController(IDadosConvocacaoAppService dadosConvocacaoAppService, IProcessoAppService processoAppService)
         {
             _dadosConvocacaoAppService = dadosConvocacaoAppService;
+            _processoAppService = processoAppService;
         }
 
         public ActionResult Create(Guid id)
         {
             ViewBag.id = id;
+            ViewBag.ProcessoId = id;
+            ViewBag.dadosProcesso = _processoAppService.GetById(id);
             return View();
         }
 
@@ -31,13 +35,16 @@ namespace SisConv.Mvc.Controllers
 
             var pathArquivo = WebConfigurationManager.AppSettings["SisConvDocs"];
             var arquivo = Request.Files[0];
+
             if (arquivo == null) return View(dadosConvocadosViewModel);
+
             var nomeArquivo = Path.GetFileName(arquivo.FileName);
 
             if (SalvarArquivoConvocados(out _))
 
                 _dadosConvocacaoAppService.SalvarCargos(dadosConvocadosViewModel.Id,
                     string.Format("{0}{1}", pathArquivo, nomeArquivo));
+
             _dadosConvocacaoAppService.SalvarCandidatos(dadosConvocadosViewModel.Id,
                 string.Format("{0}{1}", pathArquivo, nomeArquivo));
 

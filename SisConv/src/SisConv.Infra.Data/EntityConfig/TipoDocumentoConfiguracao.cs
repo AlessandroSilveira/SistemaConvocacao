@@ -1,5 +1,5 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using SisConv.Domain.Entities;
+﻿using SisConv.Domain.Entities;
+using System.Data.Entity.ModelConfiguration;
 
 namespace SisConv.Infra.Data.EntityConfig
 {
@@ -10,7 +10,10 @@ namespace SisConv.Infra.Data.EntityConfig
             HasKey(c => c.TipoDocumentoId);
 
             Property(c => c.TipoDocumentoId)
-                .HasColumnName("DocumentoCandidatoId");
+                .HasColumnName("TipoDocumentoId");
+
+            Property(c => c.ProcessoId)
+                .IsRequired();
 
             Property(c => c.TipoDocumentos)
                 .IsRequired()

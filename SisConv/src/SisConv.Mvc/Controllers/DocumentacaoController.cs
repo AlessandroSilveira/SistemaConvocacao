@@ -11,15 +11,21 @@ namespace SisConv.Mvc.Controllers
     public class DocumentacaoController : Controller
     {
         private readonly IDocumentacaoAppService _documentacaoAppService;
+        private readonly IProcessoAppService _processoAppService;
 
-        public DocumentacaoController(IDocumentacaoAppService documentacaoAppService)
+        public DocumentacaoController(
+            IDocumentacaoAppService documentacaoAppService,
+            IProcessoAppService processoAppService
+            )
         {
             _documentacaoAppService = documentacaoAppService;
+            _processoAppService = processoAppService;
         }
 
         public ActionResult Index(Guid Id)
         {
             ViewBag.ProcessoId = Id;
+            ViewBag.dadosProcesso = _processoAppService.GetById(Id);
             return View(_documentacaoAppService.GetAll());
         }
 
@@ -32,6 +38,7 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Create(Guid Id)
         {
             ViewBag.ProcessoId = Id;
+            ViewBag.dadosProcesso = _processoAppService.GetById(Id);
             return View();
         }
 
@@ -39,6 +46,7 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(DocumentacaoViewModel documentacaoViewModel)
         {
+            ViewBag.dadosProcesso = _processoAppService.GetById(documentacaoViewModel.ProcessoId);
             documentacaoViewModel.DataCriacao = DateTime.Now;
             if (!ModelState.IsValid) return View(documentacaoViewModel);
 

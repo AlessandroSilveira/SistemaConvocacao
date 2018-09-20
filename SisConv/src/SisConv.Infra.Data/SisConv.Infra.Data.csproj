@@ -99,6 +99,10 @@
     <Compile Include="Migrations\201808300700348_AddTipoDocumento.Designer.cs">
       <DependentUpon>201808300700348_AddTipoDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201809190250120_ajsuteTipoDocumento.cs" />
+    <Compile Include="Migrations\201809190250120_ajsuteTipoDocumento.Designer.cs">
+      <DependentUpon>201809190250120_ajsuteTipoDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AdminRepository.cs" />
@@ -155,6 +159,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808300700348_AddTipoDocumento.resx">
       <DependentUpon>201808300700348_AddTipoDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809190250120_ajsuteTipoDocumento.resx">
+      <DependentUpon>201809190250120_ajsuteTipoDocumento.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

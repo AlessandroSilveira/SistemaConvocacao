@@ -1,47 +1,66 @@
 ﻿@model SisConv.Application.ViewModels.CargoViewModel
 
 @{
-    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Processos/Configuracoes/_LayoutProcessosConfiguracoes.cshtml";
+    ViewBag.Title = "Deletar Cargo/Curso";
 }
 
-<h2>Cargo</h2>
 
-<h3>Você tem certeza que deseja excluír esse cargo?</h3>
-<div>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CodigoCargo)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CodigoCargo)
-        </dd>
+<h3></h3>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Ativo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Ativo)
-        </dd>
-    </dl>
-
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default"/> |
-            @Html.ActionLink("Voltar", "Index", new {ViewBag.Id})
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.Title</b></h1>
         </div>
-    }
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="margin-bottom:-30px !important">
+                <div class="panel-heading">
+                    <b>Você tem certeza que deseja excluír esse cargo?</b>
+                </div>
+            </div>
+
+            <div>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        @Html.DisplayNameFor(model => model.CodigoCargo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.CodigoCargo)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Nome)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Nome)
+                    </dd>
+
+                    <dt>
+                        @Html.DisplayNameFor(model => model.Ativo)
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.Ativo)
+                    </dd>
+                </dl>
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+
+                    <div class="form-actions no-color">
+                        <input type="submit" value="Delete" class="btn btn-danger" />
+                        <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
 </div>

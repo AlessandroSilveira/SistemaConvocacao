@@ -40,6 +40,8 @@ namespace SisConv.Mvc.Controllers
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.dadosProcesso = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.ProcessoId = id;
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
@@ -59,6 +61,7 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult Edit(Guid? id)
         {
+            ViewBag.ProcessoId = id;
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
@@ -77,6 +80,8 @@ namespace SisConv.Mvc.Controllers
         {
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             var processoViewModel = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.dadosProcesso = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.ProcessoId = id;
             return processoViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(processoViewModel);
         }
 
@@ -85,6 +90,8 @@ namespace SisConv.Mvc.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(Guid id)
         {
+            ViewBag.dadosProcesso = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.ProcessoId = id;
             _processoAppService.Remove(id);
             return RedirectToAction("Index");
         }
@@ -151,6 +158,7 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult Configuracoes(Guid id)
         {
+            ViewBag.ProcessoId = id;
             ViewBag.dadosProcesso = _processoAppService.GetById(id);
             return View();
         }

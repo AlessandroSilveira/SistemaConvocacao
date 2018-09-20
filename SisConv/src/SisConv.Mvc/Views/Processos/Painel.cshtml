@@ -2,7 +2,7 @@
     ViewBag.Title = "Painel";
 }
 @{
-    Layout = "~/Views/Shared/Painel/LayoutProcessosPainel.cshtml";
+    Layout = "~/Views/Shared/Processos/LayoutProcessosPainel.cshtml";
 }
 
 <div class="col-lg-12">
@@ -13,24 +13,4 @@
         <!-- /.col-lg-12 -->
     </div>
 </div>
-@*<div class="container">
-        <div class="form-horizontal">
-            <h4></h4>
-            <h4></h4>
-            <div class="jumbotron">
-                <h2>@ViewBag.dadosProcesso.Nome</h2>
 
-                <h4>@Html.ActionLink("Convocar Candidatos", "EscolherCargo", new { id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
-
-                <h4>@Html.ActionLink("Atualização dos candidatos que confirmaram participação", "AtualizarCandidatosConfirmados", new { id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
-
-                <h4>@Html.ActionLink("Atualização de Status dos candidatos", "AtualizarStatusEstudante", new { id = ViewBag.dadosProcesso.ProcessoId }, null)</h4>
-
-                <h4>@Html.ActionLink("Documentação do Candidato", "ListaDocumentos", "DocumentoCandidato", new { ProcessoId= ViewBag.dadosProcesso.ProcessoId }, null)</h4>
-
-            </div>
-        </div>
-    </div>
-    <div>
-        <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
-    </div>*@
