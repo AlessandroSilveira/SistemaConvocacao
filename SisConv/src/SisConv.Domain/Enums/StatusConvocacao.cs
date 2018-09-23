@@ -12,8 +12,14 @@ namespace SisConv.Domain.Enums
 
         [Description("Aguardando Término do Estágio")]
         AguardandoTerminoEstagio,
-        [Description("Em Convocação")] EmConvocacao,
-        [Description("Contratado")] Contratado,
-        [Description("Desistente")] Desistente
+
+        [Description("Em Convocação")]
+        EmConvocacao,
+
+        [Description("Contratado")]
+        Contratado,
+
+        [Description("Desistente")]
+        Desistente
     }
 }

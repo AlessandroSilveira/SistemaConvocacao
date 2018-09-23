@@ -13,16 +13,19 @@ namespace SisConv.Mvc.Controllers
         private readonly IDocumentoCandidatoAppService _documentoCandidatoAppService;
         private readonly ITipoDocumentoAppService _tipoDocumentoAppService;
         private readonly IConvocadoAppService _convocadoAppService;
+        private readonly IProcessoAppService _processoAppService;
 
         public DocumentoCandidatoController(
             IDocumentoCandidatoAppService documentoCandidatoAppService,
              ITipoDocumentoAppService tipoDocumentoAppService,
-             IConvocadoAppService convocadoAppService
+             IConvocadoAppService convocadoAppService,
+             IProcessoAppService processoAppService
             )
         {
             _documentoCandidatoAppService = documentoCandidatoAppService;
             _tipoDocumentoAppService = tipoDocumentoAppService;
             _convocadoAppService = convocadoAppService;
+            _processoAppService = processoAppService;
         }
 
         // GET: DocumentoCandidato
@@ -38,7 +41,8 @@ namespace SisConv.Mvc.Controllers
         {
             var documentos = _documentoCandidatoAppService.Search(a => a.ProcessoId == ProcessoId);
             var dadosCandidatos = _convocadoAppService.GetAll();
-
+            ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
             return View(_documentoCandidatoAppService.MontarListaDeDocumentosDoCandidatos(documentos, dadosCandidatos));
         }
 

@@ -106,7 +106,7 @@ namespace SisConv.Application.Services
                     ConvocacaoId = itens.ConvocadoId,
                     Inscricao = lista.Inscricao,
                     Nome = lista.Nome,
-                    Curso = lista.Curso,
+                    Curso = lista.Cargo,
                     Path = itens.Path,
                     TipoDocumento = itens.TipoDocumento,
                     DataPostagem = itens.DataInclusao,

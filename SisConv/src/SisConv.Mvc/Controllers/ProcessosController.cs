@@ -98,6 +98,8 @@ namespace SisConv.Mvc.Controllers
 
         public ActionResult EscolherCargo(Guid id)
         {
+            ViewBag.dadosProcesso = _processoAppService.GetById(Guid.Parse(id.ToString()));
+            ViewBag.ProcessoId = id;
             ViewBag.DadosConvocacao = _processoAppService.GetById(id);
             ViewBag.Cargos = _cargoAppService.Search(a => a.ProcessoId.Equals(id) && a.Ativo.Equals(true))
                 .OrderBy(a => a.CodigoCargo);
@@ -123,6 +125,7 @@ namespace SisConv.Mvc.Controllers
 
             ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
             ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosProcesso = _processoAppService.GetById(Guid.Parse(ProcessoId));
 
             return View();
         }
@@ -146,6 +149,7 @@ namespace SisConv.Mvc.Controllers
 
             ViewBag.DadosCargo = _cargoAppService.GetById(dadosConvocadoViewModel.CargoId);
             ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
             return View();
         }
 

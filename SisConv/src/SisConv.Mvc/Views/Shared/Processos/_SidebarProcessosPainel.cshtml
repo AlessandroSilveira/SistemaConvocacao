@@ -6,8 +6,8 @@
                
                 <a href="@Url.Content("~/Processos/EscolherCargo/"+@ViewBag.dadosProcesso.ProcessoId)"><i class="fa fa-users fa-fw" aria-hidden="true"></i>Convocar Candidatos</a>
                 <a href="@Url.Content("~/Processos/AtualizarCandidatosConfirmados/"+@ViewBag.dadosProcesso.ProcessoId)"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Atualizar candidatos confirmados.</a>
-                <a href="@Url.Content("Create")"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Atualização de Status dos candidatos</a>
-                <a href="@Url.Content("DocumentoCandidato/ListaDocumentos")"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Documentação do Candidato</a>
+                <a href="@Url.Content("~/Processos/AtualizarStatusEstudante/"+@ViewBag.dadosProcesso.ProcessoId)"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Atualização de Status dos candidatos</a>
+                <a href="@Url.Content("~/DocumentoCandidato/ListaDocumentos?ProcessoId="+@ViewBag.dadosProcesso.ProcessoId)"><i class="fa fa-file-text fa-fw" aria-hidden="true"></i> Documentação do Candidato</a>
             </li>
         </ul>
     </div>
