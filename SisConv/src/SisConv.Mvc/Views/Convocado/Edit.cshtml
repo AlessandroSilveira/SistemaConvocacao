@@ -1,438 +1,412 @@
 ﻿@model SisConv.Application.ViewModels.ConvocadoViewModel
 
 @{
-    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/Convocacao/DocumentacaoConvocado/_LayoutConvocacaoDocumentacaoConvocado.cshtml";
+    ViewBag.Title = "Atualizar Dados Cadastrais";
 }
 
-<h2>Dados do Convocado</h2>
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-
-    <div class="form-horizontal">
-
-    <hr/>
-    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
-    @Html.HiddenFor(model => model.ConvocadoId)
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nome, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Nome, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Nome, "", new {@class = "text-danger"})
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@Html.ValueFor(model => model.Nome)</b></h1>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Mae, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Mae, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Mae, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Pai, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Pai, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Pai, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Sexo, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.Sexo, new { htmlAttributes = new { @class = "form-control" } })*@
-
-            <select name="Sexo" id="Sexo" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaSexo)
-                {
-                    <option value="@itens.Key"
-                            @if (Model.Sexo.Equals(itens.Key.ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-
-            @Html.ValidationMessageFor(model => model.Sexo, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.DataNascimento, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.DataNascimento, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.DataNascimento, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Documento, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Documento, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Documento, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.OrgaoEmissor, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.OrgaoEmissor, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.OrgaoEmissor, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cpf, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cpf, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Cpf, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Email, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Email, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Email, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Telefone, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Telefone, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Telefone, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Recados, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Recados, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Recados, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Celular, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Celular, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Celular, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Endereco, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Endereco, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Endereco, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Numero, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Numero, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Numero, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Complemento, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Complemento, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Complemento, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Bairro, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Bairro, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Bairro, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cidade, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cidade, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Cidade, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Uf, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.Uf, new { htmlAttributes = new { @class = "form-control" } })*@
-
-            <select name="Uf" id="Uf" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaEstados)
-                {
-                    <option value="@itens.Key"
-                            @if (Model.Uf.Equals(itens.Key.ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-            @Html.ValidationMessageFor(model => model.Uf, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Cep, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Cep, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Cep, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Naturalidade, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Naturalidade, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Naturalidade, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Nacionalidade, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            <select name="Nacionalidade" id="Nacionalidade" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaNacionalidade)
-                {
-                    <option value="@itens.Key.GetHashCode()"
-                            @if (Model.EstadoCivil.ToString().Equals(itens.Key.GetHashCode().ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-            @Html.ValidationMessageFor(model => model.Nacionalidade, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.EstadoCivil, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.EstadoCivil, new { htmlAttributes = new { @class = "form-control" } })*@
-
-            <select name="EstadoCivil" id="EstadoCivil" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaEstadoCivil)
-                {
-                    <option value="@itens.Key.GetHashCode()"
-                            @if (Model.EstadoCivil.ToString().Equals(itens.Key.GetHashCode().ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-
-            @Html.ValidationMessageFor(model => model.EstadoCivil, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.FatorSanguineo, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.FatorSanguineo, new { htmlAttributes = new { @class = "form-control" } })*@
-
-            <select name="FatorSanguineo" id="FatorSanguineo" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaFatorSanguineo)
-                {
-                    <option value="@itens.Value"
-                            @if (Model.FatorSanguineo.Equals(itens.Value.ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-            @Html.ValidationMessageFor(model => model.FatorSanguineo, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Doador, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @*@Html.EditorFor(model => model.Doador, new { htmlAttributes = new { @class = "form-control" } })*@
-
-            <select name="Doador" id="Doador" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaSimNao)
-                {
-                    <option value="@itens.Key"
-                            @if (Model.Doador.Equals(itens.Key.ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-
-            @Html.ValidationMessageFor(model => model.Doador, "", new {@class = "text-danger"})
-        </div>
-    </div>
-    <br>
-    <br/>
-    <h2>Dados Escolares</h2>
-    <hr/>
-    <br/>
-    <div class="form-group">
-        @Html.LabelFor(model => model.GrauInstrucao, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            <select name="GrauInstrucao" id="GrauInstrucao" class="form-control">
-                <option value=" ">Selecione</option>
-                @foreach (var itens in ViewBag.ListaGrauInstrucao)
-                {
-                    <option value="@itens.Value"
-                            @if (Model.GrauInstrucao.Equals(itens.Value.ToString()))
-                            {
-                                var selected = "selected";
-                                @selected
-                                ;
-                            }>
-                        @itens.Value
-                    </option>
-                }
-            </select>
-            @Html.ValidationMessageFor(model => model.GrauInstrucao, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.InstituicaoEnsino, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.InstituicaoEnsino, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.InstituicaoEnsino, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.TelefoneIES, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.TelefoneIES, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.TelefoneIES, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.HorarioAulaIes, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.HorarioAulaIes, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.HorarioAulaIes, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.PeriodoAtual, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.PeriodoAtual, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.PeriodoAtual, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ColacaoGrau, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ColacaoGrau, new {htmlAttributes = new {@class = "form-control MesEAno"}})
-            @Html.ValidationMessageFor(model => model.ColacaoGrau, "", new {@class = "text-danger"})
-        </div>
-    </div>
-    <br>
-    <br/>
-    <h2>Dados Bancários</h2>
-    <hr/>
-    <br/>
-    <div class="form-group">
-        @Html.LabelFor(model => model.Agencia, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Agencia, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.Agencia, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.NomeAgencia, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NomeAgencia, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.NomeAgencia, "", new {@class = "text-danger"})
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.ContaCorrente, new {@class = "control-label col-md-2"})
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.ContaCorrente, new {htmlAttributes = new {@class = "form-control"}})
-            @Html.ValidationMessageFor(model => model.ContaCorrente, "", new {@class = "text-danger"})
-            @Html.HiddenFor(model => model.CargoId)
-            @Html.HiddenFor(model => model.Posicao)
-            @Html.HiddenFor(model => model.Resultado)
-            @Html.HiddenFor(model => model.ProcessoId)
-            @Html.HiddenFor(model => model.Inscricao)
-            @Html.HiddenFor(model => model.Cargo)
-            @Html.HiddenFor(model => model.Pontuacao)
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Salvar" class="btn btn-default"/>
-        </div>
-    </div>
-    </div>
-}
-
-<div>
-    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
-</div>
-
-<input type="hidden" id="modal" value="@ViewBag.modal.ToString()"/>
-
-<button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#update_sucesso" style="display: none"></button>
-
-<div class="modal" id="update_sucesso" role="dialog">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h4 class="modal-title">Sistema de Convocação</h4>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="margin-bottom:-30px !important">
+                <div class="panel-heading">
+                    <b>@ViewBag.Title</b>
+                </div>
             </div>
-            <div class="modal-body">
-                <p>Dados Atualizados com sucesso.</p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(model => model.ConvocadoId)
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nome, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Mae, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Mae, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Mae, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Pai, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Pai, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Pai, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Sexo, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="Sexo" id="Sexo" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaSexo)
+                                        {
+                                            <option value="@itens.Key"
+                                                    @if (Model.Sexo.Equals(itens.Key.ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+
+                                    @Html.ValidationMessageFor(model => model.Sexo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.DataNascimento, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.DataNascimento, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.DataNascimento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Documento, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Documento, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Documento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.OrgaoEmissor, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.OrgaoEmissor, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.OrgaoEmissor, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cpf, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Cpf, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Cpf, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Email, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Telefone, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Telefone, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Recados, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Recados, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Recados, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Celular, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Celular, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Celular, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Endereco, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Endereco, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Endereco, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Numero, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Numero, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Numero, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Complemento, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Complemento, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Complemento, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Bairro, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Bairro, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Bairro, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cidade, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Cidade, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Cidade, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Uf, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="Uf" id="Uf" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaEstados)
+                                        {
+                                            <option value="@itens.Key"
+                                                    @if (Model.Uf.Equals(itens.Key.ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Uf, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cep, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Cep, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Cep, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Naturalidade, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Naturalidade, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Naturalidade, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nacionalidade, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="Nacionalidade" id="Nacionalidade" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaNacionalidade)
+                                        {
+                                            <option value="@itens.Key.GetHashCode()"
+                                                    @if (Model.EstadoCivil.ToString().Equals(itens.Key.GetHashCode().ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.Nacionalidade, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.EstadoCivil, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="EstadoCivil" id="EstadoCivil" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaEstadoCivil)
+                                        {
+                                            <option value="@itens.Key.GetHashCode()"
+                                                    @if (Model.EstadoCivil.ToString().Equals(itens.Key.GetHashCode().ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+
+                                    @Html.ValidationMessageFor(model => model.EstadoCivil, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FatorSanguineo, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="FatorSanguineo" id="FatorSanguineo" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaFatorSanguineo)
+                                        {
+                                            <option value="@itens.Value"
+                                                    @if (Model.FatorSanguineo.Equals(itens.Value.ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.FatorSanguineo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Doador, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @*@Html.EditorFor(model => model.Doador, new { htmlAttributes = new { @class = "form-control" } })*@
+
+                                    <select name="Doador" id="Doador" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaSimNao)
+                                        {
+                                            <option value="@itens.Key"
+                                                    @if (Model.Doador.Equals(itens.Key.ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+
+                                    @Html.ValidationMessageFor(model => model.Doador, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br>
+                            <br />
+                            <h2>Dados Escolares</h2>
+                            <hr />
+                            <br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.GrauInstrucao, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <select name="GrauInstrucao" id="GrauInstrucao" class="form-control" style="width:50%">
+                                        <option value=" ">Selecione</option>
+                                        @foreach (var itens in ViewBag.ListaGrauInstrucao)
+                                        {
+                                            <option value="@itens.Value"
+                                                    @if (Model.GrauInstrucao.Equals(itens.Value.ToString())) { var selected = "selected"; @selected ; }>
+                                                @itens.Value
+                                            </option>
+                                        }
+                                    </select>
+                                    @Html.ValidationMessageFor(model => model.GrauInstrucao, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.InstituicaoEnsino, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.InstituicaoEnsino, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.InstituicaoEnsino, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.TelefoneIES, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.TelefoneIES, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.TelefoneIES, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.HorarioAulaIes, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.HorarioAulaIes, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.HorarioAulaIes, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PeriodoAtual, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.PeriodoAtual, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.PeriodoAtual, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ColacaoGrau, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ColacaoGrau, new { htmlAttributes = new { @class = "form-control MesEAno", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.ColacaoGrau, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <br>
+                            <br />
+                            <h2>Dados Bancários</h2>
+                            <hr />
+                            <br />
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Agencia, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Agencia, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.Agencia, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NomeAgencia, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.NomeAgencia, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.NomeAgencia, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ContaCorrente, new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.ContaCorrente, new { htmlAttributes = new { @class = "form-control", @style = "width:50%" } })
+                                    @Html.ValidationMessageFor(model => model.ContaCorrente, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.CargoId)
+                                    @Html.HiddenFor(model => model.Posicao)
+                                    @Html.HiddenFor(model => model.Resultado)
+                                    @Html.HiddenFor(model => model.ProcessoId)
+                                    @Html.HiddenFor(model => model.Inscricao)
+                                    @Html.HiddenFor(model => model.Cargo)
+                                    @Html.HiddenFor(model => model.Pontuacao)
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Salvar" class="btn btn-success" />
+                                    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                   
+                    <input type="hidden" id="modal" value="@ViewBag.modal.ToString()" />
+
+                    <button type="button" class="btn btn-primary" id="mensagem_sucesso" data-toggle="modal" data-target="#update_sucesso" style="display: none"></button>
+
+                    <div class="modal" id="update_sucesso" role="dialog">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Sistema de Convocação</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Dados Atualizados com sucesso.</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

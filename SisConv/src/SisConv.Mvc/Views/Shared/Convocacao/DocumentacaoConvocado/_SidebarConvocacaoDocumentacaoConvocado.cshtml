@@ -1,0 +1,12 @@
+﻿<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li>
+                <a href="@Url.Content("~/Convocado/Edit/"+@ViewBag.dadosConvocado.ConvocadoId)"><i class="fa fa-edit fa-fw" aria-hidden="true"></i> Atualizar Dados Cadastrais</a>
+                @*<a href="@Url.Content("~/Convocacao/Edit/"+@ViewBag.dadosConvocado.ConvocadoId)"><i class="fa fa-edit fa-fw" aria-hidden="true"></i> Lista de Documentos para apresentação.</a>*@
+                <a href="@Url.Content("~/DocumentoCandidato/Index/"+@ViewBag.dadosConvocado.ConvocadoId+"?ProcessoId="+@ViewBag.dadosProcesso.ProcessoId)"><i class="fa fa-edit fa-fw" aria-hidden="true"></i> Upload dos documentos.</a>
+
+            </li>
+        </ul>
+    </div>
+</div>

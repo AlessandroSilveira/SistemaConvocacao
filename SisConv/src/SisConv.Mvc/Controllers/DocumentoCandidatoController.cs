@@ -32,6 +32,8 @@ namespace SisConv.Mvc.Controllers
         public ActionResult Index(Guid id, Guid ProcessoId, bool arquivoExiste = false)
         {
             ViewBag.ConvocacaoId = id;
+            ViewBag.dadosConvocado = _convocadoAppService.GetById(id);
+            ViewBag.dadosProcesso = _processoAppService.GetById(ProcessoId);
             ViewBag.ProcessoId = ProcessoId;
             ViewBag.ArquivoExiste = arquivoExiste;
             return View(_documentoCandidatoAppService.Search(a => a.ConvocadoId == id));
@@ -63,6 +65,9 @@ namespace SisConv.Mvc.Controllers
         {
             ViewBag.ConvocacaoId = id;
             ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosDocumentoCandidato = _documentoCandidatoAppService.GetById(id);
+            ViewBag.dadosConvocado = _convocadoAppService.GetById(id);
+            ViewBag.DadosProcesso = _processoAppService.GetById(ProcessoId);
             ViewBag.ListaTipoDocumento = _tipoDocumentoAppService.Search(a => a.Ativo);
             return View();
         }
@@ -179,6 +184,14 @@ namespace SisConv.Mvc.Controllers
             HttpContext.Response.Flush();
             HttpContext.Response.WriteFile(fInfo.FullName);
             fInfo = null;
+        }
+
+        public ActionResult Protocolo(Guid id, Guid ConvocadoId, Guid ProcessoId)
+        {
+            ViewBag.dadosDocumentoCandidato = _documentoCandidatoAppService.GetById(id);
+            ViewBag.dadosConvocado = _convocadoAppService.GetById(ConvocadoId);
+            ViewBag.DadosProcesso = _processoAppService.GetById(ProcessoId);
+            return View();
         }
     }
 }

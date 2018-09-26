@@ -11,11 +11,13 @@ namespace SisConv.Mvc.Controllers
     {
         private readonly IConvocadoAppService _convocadoAppService;
         private readonly IListaOpcoes _listaOpcoes;
+        private readonly IProcessoAppService _processoAppService;
 
-        public ConvocadoController(IConvocadoAppService convocadoAppService, IListaOpcoes listaOpcoes)
+        public ConvocadoController(IConvocadoAppService convocadoAppService, IListaOpcoes listaOpcoes, IProcessoAppService processoAppService)
         {
             _convocadoAppService = convocadoAppService;
             _listaOpcoes = listaOpcoes;
+            _processoAppService = processoAppService;
         }
 
         // GET: Convocado
@@ -55,6 +57,8 @@ namespace SisConv.Mvc.Controllers
             var pessoaViewModel = _convocadoAppService.GetById(id);
             RetornaViewBagsDasSelectList();
             ViewBag.modal = modal.ToString();
+            ViewBag.dadosConvocado =  _convocadoAppService.GetById(id);
+            ViewBag.dadosProcesso = _processoAppService.GetById(pessoaViewModel.ProcessoId);
             return pessoaViewModel.Equals(null) ? (ActionResult) HttpNotFound() : View(pessoaViewModel);
         }
 

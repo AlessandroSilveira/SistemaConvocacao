@@ -549,6 +549,10 @@
     <Content Include="Views\Shared\Processos\Configuracoes\_LayoutProcessosConfiguracoes.cshtml" />
     <Content Include="Views\Shared\Processos\Configuracoes\_NavBarProcessosConfiguracoes.cshtml" />
     <Content Include="Views\Shared\Processos\Configuracoes\_SidebarProcessosConfiguracoes.cshtml" />
+    <Content Include="Views\Shared\Convocacao\DocumentacaoConvocado\_LayoutConvocacaoDocumentacaoConvocado.cshtml" />
+    <Content Include="Views\Shared\Convocacao\DocumentacaoConvocado\_NavBarConvocacaoDocumentacaoConvocado.cshtml" />
+    <Content Include="Views\Shared\Convocacao\DocumentacaoConvocado\_SidebarConvocacaoDocumentacaoConvocado.cshtml" />
+    <Content Include="Views\DocumentoCandidato\Protocolo.cshtml" />
     <None Include="Views\Shared\Processos\_NavBarPainelIndex.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
