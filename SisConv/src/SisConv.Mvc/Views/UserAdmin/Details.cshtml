@@ -1,39 +1,55 @@
 ﻿@model SisConv.Infra.CrossCutting.Identity.Model.ApplicationUser
 
 @{
-    ViewBag.Title = "Detalhes";
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Detalhes do Usuário";
 }
 
-<div>
-    <h4>Usuário:</h4>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.UserName)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UserName)
-        </dd>
-    </dl>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.Title</b></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <div>
+                   
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.UserName):
+                        </dt>
+                        <dd>
+                            @Html.DisplayFor(model => model.UserName)
+                        </dd>
+                    </dl>
+                </div>
+                <h4>Regra de acesso para esse usuário.</h4>
+                @if (ViewBag.RoleNames.Count == 0)
+                {
+                    <hr />
+                    <p>Não há regras de acesso para esse usuário.</p>
+                }
+
+                <table class="table">
+                    <dl class="dl-horizontal">
+                        @foreach (var item in ViewBag.RoleNames)
+                        {
+                            <dt>
+                                @item
+                            </dt>
+                        }
+                    </dl>
+                </table>
+                <p>
+                    <button type="button" class="btn btn-primary" title="" data-placement="left" onclick=" window.location.href='@Url.Content("~/UserAdmin/Edit/"+Model.Id)'">Editar</button>
+                    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+
+                    @*@Html.ActionLink("Editar", "Edit", new { id = Model.Id }) |
+                    @Html.ActionLink("Voltar", "Index")*@
+                </p>
+            </div>
+        </div>
+    </div>
 </div>
-<h4>Lista de regra de acesso para esse usuário.</h4>
-@if (ViewBag.RoleNames.Count == 0)
-{
-    <hr/>
-    <p>Não há regras de acesso para esse usuário.</p>
-}
-
-<table class="table">
-    <dl class="dl-horizontal">
-        @foreach (var item in ViewBag.RoleNames)
-        {
-            <dt>
-                @item
-            </dt>
-        }
-    </dl>
-</table>
-<p>
-    @Html.ActionLink("Editar", "Edit", new {id = Model.Id}) |
-    @Html.ActionLink("Voltar", "Index")
-</p>

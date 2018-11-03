@@ -142,10 +142,13 @@ namespace SisConv.Mvc.Controllers
         }
 
         // GET: DocumentoCandidato/Delete/5
-        public ActionResult Delete(Guid? id, Guid ConvocacaoId, Guid ProcessoId)
+        public ActionResult Delete(Guid? id, Guid ConvocadoId, Guid ProcessoId)
         {
-            ViewBag.ConvocacaoId = ConvocacaoId;
+            ViewBag.ConvocadoId = ConvocadoId;
             ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosConvocado = _convocadoAppService.GetById(ConvocadoId);
+            ViewBag.DadosProcesso = _processoAppService.GetById(ProcessoId);
+
             if (id.Equals(null)) return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             return _documentoCandidatoAppService.GetById(Guid.Parse(id.ToString())).Equals(null)
                 ? (ActionResult)HttpNotFound()
@@ -155,10 +158,15 @@ namespace SisConv.Mvc.Controllers
         // POST: DocumentoCandidato/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(Guid id, Guid ConvocacaoId, Guid ProcessoId)
+        public ActionResult DeleteConfirmed(Guid id, Guid ConvocadoId, Guid ProcessoId)
         {
+            ViewBag.ConvocadoId = ConvocadoId;
+            ViewBag.ProcessoId = ProcessoId;
+            ViewBag.dadosConvocado = _convocadoAppService.GetById(ConvocadoId);
+            ViewBag.DadosProcesso = _processoAppService.GetById(ProcessoId);
+
             _documentoCandidatoAppService.Remove(id);
-            return RedirectToAction("Index", new { @id = ConvocacaoId, @ProcessoId = ProcessoId });
+            return RedirectToAction("Index", new { @id = ConvocadoId, @ProcessoId = ProcessoId });
         }
 
         protected override void Dispose(bool disposing)

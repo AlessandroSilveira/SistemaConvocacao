@@ -1,45 +1,65 @@
 ﻿@model SisConv.Application.ViewModels.DocumentoCandidatoViewModel
 
 @{
-	ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Convocacao/DocumentacaoConvocado/_LayoutConvocacaoDocumentacaoConvocado.cshtml";
+    ViewBag.Title = "Excluir Documento";
 }
 
-<h2>Excluir Documento</h2>
 
-<h3>Você tem certeza que deseja excluir esse documento?</h3>
-<div>
-	
-	<hr />
-	<dl class="dl-horizontal">
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.Title</b></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default" style="margin-bottom:-30px !important">
+                <div class="panel-heading">
+                    <b>Você tem certeza que deseja excluir esse documento?</b>
+                </div>
+            </div><br>
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <div>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.Documento)
-		</dt>
+                        <hr />
+                        <dl class="dl-horizontal">
 
-		<dd>
-			@Html.DisplayFor(model => model.Documento)
-		</dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Documento)
+                            </dt>
 
-		<dt>
-			@Html.DisplayNameFor(model => model.DataInclusao)
-		</dt>
+                            <dd>
+                                @Html.DisplayFor(model => model.Documento)
+                            </dd>
 
-		<dd>
-			@Html.DisplayFor(model => model.DataInclusao)
-		</dd>
+                            <dt>
+                                @Html.DisplayNameFor(model => model.DataInclusao)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.DataInclusao)
+                            </dd>
 
 
-	</dl>
+                        </dl>
 
-	@using (Html.BeginForm())
-	{
-		@Html.AntiForgeryToken()
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
 
-		<div class="form-actions no-color">
-			<input type="submit" value="Delete" class="btn btn-default" /> |
-			@Html.ActionLink("Voltar", "Index")
-			<input type="hidden" name="ConvocadoId" id="ConvocacaoId" value="@ViewBag.ConvocacaoId" />
-			<input type="hidden" name="ProcessoId" id="ProcessoId" value="@ViewBag.ProcessoId" />
-		</div>
-	}
+                        <div class="form-actions no-color">
+                            <input type="submit" value="Delete" class="btn btn-danger" />
+                            <input type="button" value="Voltar" class="btn btn-default" />
+                           
+                            <input type="hidden" name="ConvocadoId" id="ConvocacaoId" value="@ViewBag.ConvocacaoId" />
+                            <input type="hidden" name="ProcessoId" id="ProcessoId" value="@ViewBag.ProcessoId" />
+                        </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

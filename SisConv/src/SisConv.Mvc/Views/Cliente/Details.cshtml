@@ -1,49 +1,62 @@
 ﻿@model SisConv.Application.ViewModels.ClienteViewModel
 
 @{
-    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Admin/_LayoutAdmin.cshtml";
+    ViewBag.Title = "Detalhes do Cliente";
 }
 
-<h2>Details</h2>
+<div class="col-lg-12">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header"><b>@ViewBag.Title</b></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel-body">
+                <div class="table-responsive">
 
-<div>
-    <h4>ClienteViewModel</h4>
-    <hr/>
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nome)
-        </dt>
+                    <dl class="dl-horizontal">
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Nome)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nome)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Nome)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Cnpj)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Cnpj)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Cnpj)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Cnpj)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Email)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Email)
-        </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.Email)
+                        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Telefone)
-        </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Telefone)
+                        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Telefone)
-        </dd>
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new {id = Model.ClienteId}) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                        <dd>
+                            @Html.DisplayFor(model => model.Telefone)
+                        </dd>
+                    </dl>
+                </div>
+                <p>
+                    <button type="button" class="btn btn-primary" title="" data-placement="left" onclick=" window.location.href='@Url.Content("~/Cliente/Edit/"+Model.ClienteId)'">Editar</button>
+                    <button type="button" class="btn btn-secondary" title="" data-placement="left" onclick="history.back();">Voltar</button>
+                    @*@Html.ActionLink("Edit", "Edit", new { id = Model.ClienteId }) |
+                    @Html.ActionLink("Back to List", "Index")*@
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>

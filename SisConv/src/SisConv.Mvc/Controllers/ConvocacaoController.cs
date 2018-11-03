@@ -92,6 +92,7 @@ namespace SisConv.Mvc.Controllers
 
                 if (gravaConvocacao == null)
                     break;
+
                 confirmacao = true;
 
                 EnviarEmailAsync(dadosConvocado);
@@ -237,9 +238,9 @@ namespace SisConv.Mvc.Controllers
             dadosConvocacao.Desistente = decisao;
 
             if (decisao.Equals("S"))
-                dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.Desistente);
+                dadosConvocacao.StatusConvocacao = StatusConvocacao.Desistente.ToString();
             else
-                dadosConvocacao.StatusConvocacao = _enumDescription.GetEnumDescription(StatusConvocacao.EmConvocacao);
+                dadosConvocacao.StatusConvocacao = StatusConvocacao.EmConvocacao.ToString();
 
             _convocacaoAppService.Update(dadosConvocacao);
             return RedirectToAction(decisao.Equals("S") ? "DesistenciaCandidato" : "DocumentacaoConvocado",
